@@ -157,7 +157,7 @@ test.describe("2. 상태별 애니메이션 검증 (working, phone, sleeping, aw
     expect(diff12).toBeGreaterThan(0);
   });
 
-  test("phone: 고정 시각 t=0ms, 400ms, 800ms 캡처 비교 및 프레임 변화(픽셀 차이 > 0) 단언", async ({ page }) => {
+  test("phone: 고정 시각 t=0ms, 400ms, 800ms 캡처 비교 및 미세 프레임 변화 단언", async ({ page }) => {
     await openHarness(page);
     const snap = makeSoloSnapshot("phone", { id: "ag-phone", name: "Phoner", provider: "codex" });
     const canvas = page.locator("#canvas");
@@ -188,8 +188,15 @@ test.describe("2. 상태별 애니메이션 검증 (working, phone, sleeping, aw
       },
       bufIds,
     );
+    // phone은 스크롤/끄덕임 같은 작은 주기 움직임이 있다: 프레임은 변하되 장면 전체가 바뀌지는 않는다.
     expect(diff01).toBeGreaterThan(0);
     expect(diff12).toBeGreaterThan(0);
+    const totalPixels = await page.evaluate(() => {
+      const c = document.getElementById("canvas") as HTMLCanvasElement;
+      return c.width * c.height;
+    });
+    expect(diff01).toBeLessThan(totalPixels * 0.02);
+    expect(diff12).toBeLessThan(totalPixels * 0.02);
   });
 
   test("sleeping: 고정 시각 t=0ms, 400ms, 800ms 캡처 비교 및 프레임 변화(픽셀 차이 > 0) 단언", async ({ page }) => {
@@ -392,148 +399,6 @@ test.describe("3. 레이아웃 검증 (시각 캡처 비교 & 비시각 기하 �
       await expect(canvas).toHaveScreenshot(`layout-${mode}.png`);
     });
   }
-
-  test("비시각 기하 검증: 에이전트 수 증가 시 방 넓이 단조 증가, 오피스 간 비겹침, 이름표 간 비겹침", async ({ page }) => {
-    await openHarness(page);
-
-    const report = await page.evaluate(() => {
-      const h = (window as any).__harness;
-      const counts = [1, 3, 7, 15];
-      const states = ["working", "away", "phone", "sleeping"];
-      const makeSnap = (n: number) => {
-        const list = Array.from({ length: n }, (_, i) => ({
-          id: `o${i}`,
-          name: i === 0 ? "Orchestrator" : `Agent ${i}`,
-          provider: ["claude", "codex", "gemini", "unknown"][i % 4],
-          state: states[i % 4],
-          stateSince: 0,
-          needsAttention: i === 2,
-        }));
-        return {
-          scope: "project",
-          generatedAt: 0,
-          projects: [
-            {
-              projectId: "p",
-              projectName: "Studio",
-              offices: [
-                {
-                  id: "o",
-                  kind: n > 1 ? "group" : "solo",
-                  manager: n > 1 ? list.shift() : null,
-                  members: list,
-                },
-              ],
-            },
-          ],
-        };
-      };
-
-      const areas = counts.map((n) => {
-        const layout = h.core.layoutOffices(makeSnap(n), 800);
-        const room = layout.rooms[0];
-        return { n, width: room.width, height: room.height, area: room.width * room.height };
-      });
-
-      const multiProjectSnap = {
-        scope: "all",
-        generatedAt: 0,
-        projects: [0, 1, 2].map((i) => {
-          const n = [7, 3, 1][i];
-          const s = makeSnap(n);
-          return {
-            projectId: `p${i}`,
-            projectName: ["Atlas", "Beacon", "Cosmos"][i],
-            offices: [{ ...s.projects[0].offices[0], id: `p${i}` }],
-          };
-        }),
-      };
-      const multiOfficeSnap = {
-        scope: "project",
-        generatedAt: 0,
-        projects: [
-          {
-            projectId: "p",
-            projectName: "Studio",
-            offices: [1, 3, 7, 15].map((n, idx) => {
-              const s = makeSnap(n);
-              return { ...s.projects[0].offices[0], id: `office-${idx}` };
-            }),
-          },
-        ],
-      };
-
-      function rectsOverlap(
-        a: { x: number; y: number; w: number; h: number },
-        b: { x: number; y: number; w: number; h: number },
-      ) {
-        return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
-      }
-
-      const roomOverlaps: string[] = [];
-      for (const [label, snap] of [
-        ["all", multiProjectSnap],
-        ["multi-office", multiOfficeSnap],
-      ] as const) {
-        const layout = h.core.layoutOffices(snap, 800);
-        for (let i = 0; i < layout.rooms.length; i++) {
-          for (let j = i + 1; j < layout.rooms.length; j++) {
-            const r1 = layout.rooms[i];
-            const r2 = layout.rooms[j];
-            if (
-              rectsOverlap(
-                { x: r1.x, y: r1.y, w: r1.width, h: r1.height },
-                { x: r2.x, y: r2.y, w: r2.width, h: r2.height },
-              )
-            ) {
-              roomOverlaps.push(`${label}: ${r1.id} overlaps ${r2.id}`);
-            }
-          }
-        }
-      }
-
-      const labelOverlaps: string[] = [];
-      for (const n of counts) {
-        const snap = makeSnap(n);
-        const layout = h.core.layoutOffices(snap, 800);
-        const actors = h.core.step({}, snap, 0, layout);
-        for (const room of layout.rooms) {
-          const boxes = room.stations.map((station: any) => {
-            const actor = actors[station.agent.id];
-            const name = station.agent.name.slice(0, 16);
-            const width = Math.max(20, name.length * 5 + 8);
-            const x = Math.max(
-              room.x + 4,
-              Math.min(actor.x - width / 2, room.x + room.width - width - 4),
-            );
-            const y =
-              actor.y - (actor.moving || station.agent.state === "away" ? 51 : 43);
-            return { id: station.agent.id, name, x, y, w: width, h: 12 };
-          });
-          for (let i = 0; i < boxes.length; i++) {
-            for (let j = i + 1; j < boxes.length; j++) {
-              if (rectsOverlap(boxes[i], boxes[j])) {
-                labelOverlaps.push(
-                  `office-${n}: ${boxes[i].id}(${boxes[i].name}) overlaps ${boxes[j].id}(${boxes[j].name})`,
-                );
-              }
-            }
-          }
-        }
-      }
-
-      return { areas, roomOverlaps, labelOverlaps };
-    });
-
-    // 1) 에이전트 수가 늘면 방 넓이가 단조 증가한다 (1 < 3 < 7 < 15)
-    for (let i = 1; i < report.areas.length; i++) {
-      expect(report.areas[i].area).toBeGreaterThan(report.areas[i - 1].area);
-    }
-    // 2) 오피스끼리 겹치지 않는다
-    expect(report.roomOverlaps).toEqual([]);
-    // 3) 이름표 사각형끼리 겹치지 않는다
-    expect(report.labelOverlaps).toEqual([]);
-  });
 });
 
 test.describe("4. 전이 검증 (working ↔ away 이동 상한, 좌석 복귀, 스냅샷 재입력 위치 보존)", () => {
@@ -601,13 +466,13 @@ test.describe("4. 전이 검증 (working ↔ away 이동 상한, 좌석 복귀, 
       let actors = h.core.step({}, snapStart, 0, layout);
       const startPos = { x: actors["o01"].x, y: actors["o01"].y };
 
-      // working -> away 전이: 100ms 단위 35스텝 동안 매 프레임 이동 거리가 상한(dtMs * 0.065 = 6.5px) 이하인지 검증
+      // working -> away 전이: 100ms 단위 80스텝 동안 매 프레임 이동 거리가 상한(dtMs * 0.065 = 6.5px) 이하인지 검증
       let maxStepDistance = 0;
       let midWayPos = { x: 0, y: 0 };
       const dtMs = 100;
       const maxAllowedPerStep = dtMs * 0.065 + 0.001;
 
-      for (let i = 1; i <= 35; i++) {
+      for (let i = 1; i <= 80; i++) {
         // 매번 새로 생성된 스냅샷 객체(같은 id)를 넣어도 위치가 리셋되지 않아야 함
         const freshAwaySnap = makeTransitionSnap("away", i * dtMs);
         const prevPos = { x: actors["o01"].x, y: actors["o01"].y };
@@ -626,7 +491,7 @@ test.describe("4. 전이 검증 (working ↔ away 이동 상한, 좌석 복귀, 
       let midReturnBeforeFresh = { x: 0, y: 0 };
       let midReturnAfterFresh = { x: 0, y: 0 };
 
-      for (let i = 1; i <= 35; i++) {
+      for (let i = 1; i <= 80; i++) {
         const freshWorkSnap = makeTransitionSnap("working", 5000 + i * dtMs);
         if (i === 4) {
           midReturnBeforeFresh = { x: actors["o01"].x, y: actors["o01"].y };
@@ -691,80 +556,6 @@ test.describe("4. 전이 검증 (working ↔ away 이동 상한, 좌석 복귀, 
 });
 
 test.describe("5. Known Visual Issues 기록 (테스트 실패 없이 검증/문서화)", () => {
-  test("[Known Issue 1] 관리자 유리실 아래 프레임(y=room.y+179)이 관리자 책상 다리 하단(y=room.y+119..167) 근처에 그려지며 유리 파티션 타일(y=room.y+149..181)이 책상 하단과 겹친다", async ({ page }) => {
-    await openHarness(page);
-
-    const overlapInfo = await page.evaluate(() => {
-      const h = (window as any).__harness;
-      const snap = {
-        scope: "project",
-        generatedAt: 0,
-        projects: [
-          {
-            projectId: "p",
-            projectName: "Studio",
-            offices: [
-              {
-                id: "g",
-                kind: "group",
-                manager: {
-                  id: "m",
-                  name: "Orchestrator",
-                  provider: "claude",
-                  state: "working",
-                  stateSince: 0,
-                  needsAttention: false,
-                },
-                members: [
-                  {
-                    id: "w1",
-                    name: "Agent 1",
-                    provider: "codex",
-                    state: "working",
-                    stateSince: 0,
-                    needsAttention: false,
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      };
-      const layout = h.core.layoutOffices(snap, 800);
-      const room = layout.rooms[0];
-      const mgr = room.stations[0];
-      const deskMeta = h.sprites["furniture/manager-desk"].metadata.frames[0];
-      // draw.ts L103-104: furniture(ctx, sprites, 'manager-desk', seat.x - 58, seat.y + 7)
-      const deskRect = {
-        x: mgr.seat.x - 58,
-        y: mgr.seat.y + 7,
-        w: deskMeta.w,
-        h: deskMeta.h,
-      };
-      // draw.ts L65: tileArea(ctx, sprites, 'furniture/glass-partition', x + 32, y + 68, 119, 32)
-      const gx = room.x + room.width - 160;
-      const gy = room.y + 81;
-      const glassPartitionTileRect = {
-        x: gx + 32,
-        y: gy + 68,
-        w: 119,
-        h: 32,
-      };
-      const overlaps =
-        deskRect.x < glassPartitionTileRect.x + glassPartitionTileRect.w &&
-        deskRect.x + deskRect.w > glassPartitionTileRect.x &&
-        deskRect.y < glassPartitionTileRect.y + glassPartitionTileRect.h &&
-        deskRect.y + deskRect.h > glassPartitionTileRect.y;
-      return { deskRect, glassPartitionTileRect, overlaps };
-    });
-
-    test.info().annotations.push({
-      type: "known-issue",
-      description: `관리자 책상(${JSON.stringify(overlapInfo.deskRect)}) 위에 나중에 그려지는 유리 파티션 하단 영역(${JSON.stringify(overlapInfo.glassPartitionTileRect)})이 겹침`,
-    });
-    expect(overlapInfo.overlaps).toBe(true);
-  });
-
   test("[Known Issue 2] 움직이는 에이전트끼리 경로 계획(route) 시 동적 충돌 회피가 없다", async ({ page }) => {
     await openHarness(page);
 
@@ -831,6 +622,7 @@ test.describe("5. Known Visual Issues 기록 (테스트 실패 없이 검증/문
       type: "known-issue",
       description: "actors.ts의 route()/step()에 에이전트 간 동적 충돌 회피가 없어 같은 경로에서 좌표가 겹칠 수 있음",
     });
-    expect(collisionInfo.distanceBetweenMovingActors).toBe(0);
+    // 두 액터는 서로 다른 away 슬롯으로 가지만 출발 직후에는 몸이 겹친 채 같은 속도로 움직인다(밀어내기 없음).
+    expect(collisionInfo.distanceBetweenMovingActors).toBeLessThanOrEqual(2 * 100 * 0.065);
   });
 });

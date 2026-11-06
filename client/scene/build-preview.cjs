@@ -1,7 +1,7 @@
 // Run from repository root; the output contains the same core used by the app.
 const fs = require('fs');
 const ts = require('typescript');
-const names = ['layout', 'actors', 'sprites', 'effects', 'draw', 'index'];
+const names = ['layout', 'actors', 'sprites', 'effects', 'clay', 'draw', 'index'];
 const modules = names.map(name => {
   const source = fs.readFileSync(`client/scene/core/${name}.ts`, 'utf8');
   const code = ts.transpileModule(source, {
@@ -9,16 +9,17 @@ const modules = names.map(name => {
   }).outputText;
   return `${JSON.stringify('./' + name)}: function(exports, require) {\n${code}\n}`;
 }).join(',\n');
-const data = fs.readFileSync('client/scene/generated/sprites.ts', 'utf8')
-  .replace(/^.*export const spriteData = /s, '').replace(/ as const;\s*$/, '');
+const data = fs.readFileSync('client/scene/generated/clay.ts', 'utf8')
+  .replace(/^.*export const clayData = /s, '').replace(/ as const;\s*$/, '');
 const html = `<!doctype html><html><head><meta charset="utf-8">
 <title>Office scene preview</title><style>
 body{margin:0;background:#111a28;color:white;font:14px sans-serif}
 nav{position:sticky;top:0;background:#243344;padding:10px;z-index:1}
-canvas{display:block;image-rendering:pixelated}
+canvas{display:block;image-rendering:auto}
 </style></head><body><nav><label>Scenario <select id="scenario">
 <option value="project">Project overview</option><option value="project-1">Project: 1</option>
-<option value="project-3">Project: 3</option><option value="project-7">Project: 7</option>
+<option value="project-3">Project: 3</option><option value="project-5">Project: 5</option>
+<option value="project-7">Project: 7</option>
 <option value="project-15">Project: 15</option><option value="all">All projects</option>
 <option value="transition">Transition</option><option value="empty">Empty</option>
 </select></label> <span id="status"></span></nav><canvas id="canvas"></canvas><script>
@@ -26,9 +27,18 @@ const modules={${modules}}, cache={};
 function require(name){if(!cache[name]){const exports={};cache[name]=exports;modules[name](exports,require)}return cache[name]}
 const core=require('./index');
 const data=${data};const sprites={};
-for(const [key,s] of Object.entries(data)){
-  const image=new Image();image.onload=()=>sprites[key]={image,metadata:s.metadata};image.src=s.uri;
-}
+const spritesReady=Promise.all(Object.entries(data).map(([key,s])=>new Promise((resolve,reject)=>{
+  const image=new Image(); image.onload=()=>{
+    const expectedWidth=s.metadata.size[0]*s.rasterScale, expectedHeight=s.metadata.size[1]*s.rasterScale;
+    if(image.naturalWidth!==expectedWidth || image.naturalHeight!==expectedHeight){
+      reject(new Error('Unexpected SVG image size for '+key+': '+image.naturalWidth+'x'+image.naturalHeight+
+        ', expected '+expectedWidth+'x'+expectedHeight));return;
+    }
+    sprites[key]={image,metadata:s.metadata};resolve();
+  };
+  image.onerror=reject; image.src=s.uri;
+})));
+window.spritesReady=spritesReady;
 const states=['working','away','phone','sleeping'];
 function agent(id,state){return {id,name:id==='0'?'Orchestrator':'Agent '+id,
   provider:['claude','codex','antigravity','copilot','muse','opencode','pi'][Number(id)%7],state,stateSince:0,
@@ -66,12 +76,15 @@ function tick(t){
   const now=performance.now();
   const snap=snapshot(select.value,now),scale=innerWidth<500?1:2;
   const layout=core.layoutOffices(snap,Math.max(192,Math.floor(innerWidth/scale)));
-  if(canvas.width!==layout.width*scale||canvas.height!==layout.height*scale){
-    canvas.width=layout.width*scale;canvas.height=layout.height*scale;
-    canvas.style.width=canvas.width+'px';canvas.style.height=canvas.height+'px';
+  const pixelRatio=Math.min(2,Math.max(1,window.devicePixelRatio||1));
+  const logicalWidth=layout.width*scale,logicalHeight=layout.height*scale;
+  const physicalWidth=Math.round(logicalWidth*pixelRatio),physicalHeight=Math.round(logicalHeight*pixelRatio);
+  if(canvas.width!==physicalWidth||canvas.height!==physicalHeight){
+    canvas.width=physicalWidth;canvas.height=physicalHeight;
+    canvas.style.width=logicalWidth+'px';canvas.style.height=logicalHeight+'px';
   }
   actors=core.step(actors,snap,last?Math.min(100,t-last):0,layout);last=t;
-  ctx.setTransform(scale,0,0,scale,0,0);core.draw(ctx,layout,actors,t,sprites);
+  ctx.setTransform(scale*pixelRatio,0,0,scale*pixelRatio,0,0);core.draw(ctx,layout,actors,t,sprites);
   requestAnimationFrame(tick);
 }requestAnimationFrame(tick);
 </script></body></html>`;

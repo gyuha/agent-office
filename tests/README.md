@@ -16,7 +16,7 @@ cd tests && npm run test:unit
 
 ## 2. Playwright 시각 회귀 테스트 실행 방법 (`tests/visual/`)
 
-`tests/` 디렉터리 안에 독립된 `package.json`과 `@playwright/test`가 설치되어 있다. `client/scene/core/`와 `client/scene/generated/sprites.ts`를 번들한 결정적 하네스(`tests/visual/harness/index.html`)를 통해 실시간 `requestAnimationFrame` 대신 고정 시각 `t`와 고정 `dtMs` 스텝을 주입해 렌더링한다.
+`tests/` 디렉터리 안에 독립된 `package.json`과 `@playwright/test`가 설치되어 있다. `client/scene/core/`와 `client/scene/generated/clay.ts`(SVG 파츠 data URI)를 번들한 결정적 하네스(`tests/visual/harness/index.html`)를 통해 실시간 `requestAnimationFrame` 대신 고정 시각 `t`와 고정 `dtMs` 스텝을 주입해 렌더링한다.
 
 ```bash
 # 시각 회귀 테스트 실행 (하네스 자동 빌드 포함)
@@ -54,3 +54,11 @@ cd tests && npm test
   3. **레이아웃**: `project-1`, `project-3`, `project-7`, `project-15`, `all`(3개 프로젝트), `empty` 캡처 비교 + 비시각 기하 검증(에이전트 수 증가 시 방 넓이 단조 증가, 오피스 간 비겹침, 이름표 사각형 간 비겹침)
   4. **전이**: `working → away → working` 전이 시 프레임당 이동 거리 상한(`dtMs * 0.065`) 단언(순간이동 방지), 좌석 복귀, 동일 ID 신규 스냅샷 투입 시 위치 보존 및 중간 장면 캡처 비교
   5. **Known Issues**: 관리자 책상과 유리 파티션 하단 겹침, 이동 액터 간 동적 충돌 회피 부재를 실패 없이 검증/문서화
+
+## 4. 클레이 전환 후 변경 사항
+
+- 하네스는 `generated/clay.ts`의 `clayData`를 디코드하고 `spritesReady`로 대기한다.
+- 레이아웃 기하(섬당 4석, 방 크기 단조 증가, 15명 범위, away 슬롯, 이름표/오피스 비겹침, 관리자실)는 브라우저 없이 `tests/unit/layoutGeometry.test.ts`에서 검증한다. `tests/unit/helpers/scene.ts`가 확장자 없는 import를 위한 resolve 훅을 등록한다.
+- `tests/unit/providerMonitor.test.ts`: provider별 monitor 자산을 front(모니터 뒷면)와 back(화면 쪽 아이콘) 좌석 모두에서 검증한다.
+- phone 자세는 시간 곡선이 없으므로 프레임이 변하지 않는 것을 단언한다.
+- `{ todo }`로 표시한 테스트는 알려진 결함이다(away 이름표 겹침, 서 있는 캐릭터 히트 박스). 결함이 고쳐지면 todo를 제거한다.

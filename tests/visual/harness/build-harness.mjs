@@ -27,8 +27,8 @@ export function buildVisualHarness() {
     .join(",\n");
 
   const spriteDataSource = fs
-    .readFileSync(path.join(repoRoot, "client/scene/generated/sprites.ts"), "utf8")
-    .replace(/^.*export const spriteData = /s, "")
+    .readFileSync(path.join(repoRoot, "client/scene/generated/clay.ts"), "utf8")
+    .replace(/^.*export const clayData = /s, "")
     .replace(/ as const;\s*$/, "");
 
   const html = `<!doctype html>

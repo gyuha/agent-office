@@ -1,35 +1,13 @@
 import type { OfficeSnapshot } from '../../../shared/state/contract';
 import { layoutOffices, type Actors, type Point, type Room } from './layout';
 
-interface Rect { x: number; y: number; w: number; h: number }
-
-/** Plan on a small grid, keeping feet out of furniture and partition frames. */
+/** Plan along a grid using the same furniture bounds exposed by layout. */
 function route(room: Room, from: Point, to: Point): Point[] {
-  const obstacles: Rect[] = [];
-  for (const station of room.stations) {
-    obstacles.push({ x: station.seat.x - (station.manager ? 58 : 40),
-      y: station.seat.y + 7, w: station.manager ? 128 : 96, h: 48 });
-  }
-  if (room.group) {
-    obstacles.push({ x: room.x + 8, y: room.y + 84, w: 120, h: 58 });
-    if (room.width > 350) {
-      obstacles.push({ x: room.x + 145, y: room.y + 94, w: 80, h: 62 });
-      obstacles.push({ x: room.x + room.width - 74, y: room.y + room.height - 80,
-        w: 64, h: 56 });
-    }
-    const left = room.x + room.width - 160;
-    const top = room.y + 81;
-    obstacles.push({ x: left - 3, y: top, w: 6, h: 100 });
-    obstacles.push({ x: room.x + room.width - 12, y: top, w: 6, h: 100 });
-    // Door occupies the leftmost 32 pixels of the lower partition.
-    obstacles.push({ x: left + 32, y: top + 96, w: 119, h: 6 });
-  } else {
-    obstacles.push({ x: room.x + room.width - 43, y: room.y + 81, w: 32, h: 32 });
-  }
+  const obstacles = room.obstacles;
   const grid = 8;
   const cols = Math.floor((room.width - 16) / grid);
-  const rows = Math.floor((room.height - 88) / grid);
-  const ox = room.x + 8, oy = room.y + 80;
+  const rows = Math.floor((room.height - 64) / grid);
+  const ox = room.x + 8, oy = room.y + 56;
   const cell = (p: Point) => ({ x: Math.max(0, Math.min(cols - 1, Math.round((p.x - ox) / grid))),
     y: Math.max(0, Math.min(rows - 1, Math.round((p.y - oy) / grid))) });
   const start = cell(from), end = cell(to);
@@ -37,8 +15,16 @@ function route(room: Room, from: Point, to: Point): Point[] {
   const startKey = key(start.x, start.y), endKey = key(end.x, end.y);
   const blocked = (x: number, y: number) => {
     const px = ox + x * grid, py = oy + y * grid;
-    return obstacles.some(r => px > r.x - 4 && px < r.x + r.w + 4 &&
-      py > r.y - 4 && py < r.y + r.h + 4);
+    return obstacles.some(r => {
+      const inside = (p: Point) => p.x > r.x - 4 && p.x < r.x + r.width + 4 &&
+        p.y > r.y - 4 && p.y < r.y + r.height + 4;
+      if (!inside({ x: px, y: py })) return false;
+      // A seated actor may overlap the front edge of a desk. Permit the short
+      // step out of (and back into) that edge, not a route through the desk.
+      const near = (p: Point) => Math.hypot(px - p.x, py - p.y) <= 16;
+      if ((inside(from) && near(from)) || (inside(to) && near(to))) return false;
+      return true;
+    });
   };
   const queue = [startKey];
   const previous = new Map<number, number>();

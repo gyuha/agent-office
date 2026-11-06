@@ -8,8 +8,8 @@ new Function(script);
 let now = 0, frame;
 const status = { textContent: '' };
 const select = { value: '', options: ['project','project-1','project-3','project-7',
-  'project-15','all','transition','empty'].map(value => ({value})) };
-const ctx = {setTransform(){},fillRect(){},strokeRect(){},fillText(){},drawImage(){}};
+  'project-15','project-5','all','transition','empty'].map(value => ({value})) };
+const ctx = {setTransform(){},fillRect(){},strokeRect(){},fillText(){},drawImage(){},save(){},restore(){},translate(){},rotate(){},scale(){}};
 const canvas = {width:0,height:0,style:{},getContext(){return ctx}};
 const document = {querySelector(q) {return q === '#status' ? status : q === '#scenario' ? select : canvas}};
 const sandbox = {document, location:{hash:'#transition'}, innerWidth:1600,

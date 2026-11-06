@@ -38,8 +38,8 @@
     },
     {
       "name": "qa",
-      "provider": "antigravity",
-      "model": "gemini-4-argon-medium",
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
       "folders": [
         "tests"
       ],

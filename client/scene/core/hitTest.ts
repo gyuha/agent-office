@@ -1,23 +1,30 @@
 import type { Actors, Layout } from './layout';
 
-/** Convert the displayed canvas position to scene coordinates, including CSS scaling. */
-export function scenePoint(clientX: number, clientY: number, bounds: { left: number; top: number; width: number; height: number }, layout: Layout) {
+/** Convert displayed canvas coordinates into logical scene coordinates. */
+export function scenePoint(clientX: number, clientY: number,
+  bounds: { left: number; top: number; width: number; height: number }, layout: Layout) {
   if (bounds.width <= 0 || bounds.height <= 0) return null;
   return { x: (clientX - bounds.left) * layout.width / bounds.width,
     y: (clientY - bounds.top) * layout.height / bounds.height };
 }
 
-/** Search backwards so overlapping characters follow the canvas drawing order. */
+/** Pick the nearest figure in overlapping hit boxes; ties favor the last drawn. */
 export function agentAtPoint(layout: Layout, actors: Actors, x: number, y: number): string | null {
-  for (let r = layout.rooms.length - 1; r >= 0; r--) {
-    const stations = layout.rooms[r].stations;
-    for (let s = stations.length - 1; s >= 0; s--) {
-      const station = stations[s];
-      const actor = actors[station.agent.id] ?? station.seat;
-      if (x >= actor.x - 20 && x <= actor.x + 20 && y >= actor.y - 50 && y <= actor.y + 6) {
-        return station.agent.id;
-      }
+  let nearest: string | null = null;
+  let distance = Infinity;
+  for (const room of layout.rooms) {
+    for (const station of room.stations) {
+      const current = actors[station.agent.id];
+      const actor = current ?? station.seat;
+      const standing = current?.moving || station.agent.state === 'away' ||
+        (!!current && station.agent.state == null);
+      const halfWidth = standing ? 28 : 22;
+      const bottom = standing ? 30 : 22;
+      if (x < actor.x - halfWidth || x > actor.x + halfWidth ||
+          y < actor.y - 50 || y > actor.y + bottom) continue;
+      const d = (x - actor.x) ** 2 + (y - actor.y) ** 2;
+      if (d <= distance) { nearest = station.agent.id; distance = d; }
     }
   }
-  return null;
+  return nearest;
 }

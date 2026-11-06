@@ -1,0 +1,4877 @@
+{
+  "version": 1,
+  "units": "SVG user units",
+  "scaleRelativeToMockup": 1.3,
+  "appearanceIds": [
+    "agent-01",
+    "agent-02",
+    "agent-03",
+    "agent-04",
+    "agent-05",
+    "agent-06",
+    "agent-07",
+    "agent-08",
+    "manager-01",
+    "manager-02"
+  ],
+  "states": [
+    "working",
+    "phone",
+    "sleeping",
+    "away",
+    "idle"
+  ],
+  "rig": {
+    "body": {
+      "parent": null,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "head": {
+      "parent": "body",
+      "offset": [
+        0,
+        -42
+      ]
+    },
+    "face": {
+      "parent": "head",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "hair": {
+      "parent": "head",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "arm-upper-l": {
+      "parent": "body",
+      "offset": [
+        -22,
+        -15
+      ]
+    },
+    "arm-lower-l": {
+      "parent": "arm-upper-l",
+      "offset": [
+        -21,
+        20
+      ]
+    },
+    "hand-l": {
+      "parent": "arm-lower-l",
+      "offset": [
+        -13,
+        18
+      ]
+    },
+    "leg-l": {
+      "parent": "body",
+      "offset": [
+        -12,
+        35
+      ]
+    },
+    "arm-upper-r": {
+      "parent": "body",
+      "offset": [
+        22,
+        -15
+      ]
+    },
+    "arm-lower-r": {
+      "parent": "arm-upper-r",
+      "offset": [
+        21,
+        20
+      ]
+    },
+    "hand-r": {
+      "parent": "arm-lower-r",
+      "offset": [
+        13,
+        18
+      ]
+    },
+    "leg-r": {
+      "parent": "body",
+      "offset": [
+        12,
+        35
+      ]
+    }
+  },
+  "drawOrder": [
+    "leg-l",
+    "leg-r",
+    "body",
+    "arm-upper-l",
+    "arm-lower-l",
+    "hand-l",
+    "arm-upper-r",
+    "arm-lower-r",
+    "hand-r",
+    "head",
+    "face",
+    "hair"
+  ],
+  "files": {
+    "characters/agent-01/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/head.svg": {
+      "viewBox": [
+        -38.0,
+        -40.0,
+        76.0,
+        80.0
+      ],
+      "size": [
+        76.0,
+        80.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/face-working.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/face-phone.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/face-sleeping.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/face-away.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/face-idle.svg": {
+      "viewBox": [
+        -30.0,
+        -22.0,
+        60.0,
+        52.0
+      ],
+      "size": [
+        60.0,
+        52.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/hair.svg": {
+      "viewBox": [
+        -43.0,
+        -60.0,
+        86.0,
+        92.0
+      ],
+      "size": [
+        86.0,
+        92.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/body.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-upper-l.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-lower-l.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/hand-l.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/leg-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/leg-seated-l.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-upper-r.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-lower-r.svg": {
+      "viewBox": [
+        -24.0,
+        -10.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/hand-r.svg": {
+      "viewBox": [
+        -9.0,
+        -9.0,
+        18.0,
+        18.0
+      ],
+      "size": [
+        18.0,
+        18.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/leg-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/leg-seated-r.svg": {
+      "viewBox": [
+        -32.0,
+        -9.0,
+        64.0,
+        44.0
+      ],
+      "size": [
+        64.0,
+        44.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "furniture/desk-front.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": [
+        90,
+        5
+      ]
+    },
+    "furniture/desk-back.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": [
+        90,
+        75
+      ]
+    },
+    "furniture/manager-desk.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": [
+        90,
+        5
+      ]
+    },
+    "furniture/chair.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        73
+      ],
+      "floorContact": [
+        90,
+        73
+      ],
+      "seat": [
+        90,
+        35
+      ]
+    },
+    "furniture/glass-room-back.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        75
+      ],
+      "floorContact": [
+        90,
+        75
+      ],
+      "seat": null
+    },
+    "furniture/glass-room-front.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        75
+      ],
+      "floorContact": [
+        90,
+        75
+      ],
+      "seat": null
+    },
+    "furniture/meeting-table.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        67
+      ],
+      "floorContact": [
+        90,
+        67
+      ],
+      "seat": null
+    },
+    "furniture/sofa.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        72
+      ],
+      "floorContact": [
+        90,
+        72
+      ],
+      "seat": [
+        90,
+        44
+      ]
+    },
+    "furniture/coffee-machine.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": null
+    },
+    "furniture/water-cooler.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": null
+    },
+    "furniture/bookshelf.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        72
+      ],
+      "floorContact": [
+        90,
+        72
+      ],
+      "seat": null
+    },
+    "furniture/plant.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        72
+      ],
+      "floorContact": [
+        90,
+        72
+      ],
+      "seat": null
+    },
+    "furniture/window.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": null
+    },
+    "furniture/whiteboard.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        67
+      ],
+      "floorContact": [
+        90,
+        67
+      ],
+      "seat": null
+    },
+    "furniture/rug.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        70
+      ],
+      "floorContact": [
+        90,
+        70
+      ],
+      "seat": null
+    },
+    "room/floor-perspective.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        80
+      ]
+    },
+    "room/wall.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        80
+      ]
+    },
+    "room/floor-shadow.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        80
+      ]
+    },
+    "effects/steam.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/sweat.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/paper.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/exclamation.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/zzz.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/phone-glow.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/attention.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "effects/keyboard-fragments.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        60.0,
+        40.0
+      ],
+      "size": [
+        60.0,
+        40.0
+      ],
+      "pivot": [
+        30,
+        40
+      ]
+    },
+    "monitors/monitor-claude.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-codex.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-antigravity.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-copilot.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-muse.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-opencode.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-unknown.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "monitors/monitor-screen.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        140.0,
+        80.0
+      ],
+      "size": [
+        140.0,
+        80.0
+      ],
+      "pivot": [
+        70,
+        77
+      ]
+    },
+    "characters/agent-01/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-01/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-02/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-03/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-04/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-05/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-06/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-07/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/agent-08/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-01/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/head-back.svg": {
+      "viewBox": [
+        -43.0,
+        -42.0,
+        86.0,
+        84.0
+      ],
+      "size": [
+        86.0,
+        84.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/hair-back.svg": {
+      "viewBox": [
+        -52.0,
+        -70.0,
+        104.0,
+        130.0
+      ],
+      "size": [
+        104.0,
+        130.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/body-back.svg": {
+      "viewBox": [
+        -36.0,
+        -30.0,
+        72.0,
+        78.0
+      ],
+      "size": [
+        72.0,
+        78.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-upper-l-back.svg": {
+      "viewBox": [
+        -34.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-lower-l-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-upper-r-back.svg": {
+      "viewBox": [
+        -14.0,
+        -12.0,
+        48.0,
+        42.0
+      ],
+      "size": [
+        48.0,
+        42.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "characters/manager-02/arm-lower-r-back.svg": {
+      "viewBox": [
+        -24.0,
+        -12.0,
+        48.0,
+        38.0
+      ],
+      "size": [
+        48.0,
+        38.0
+      ],
+      "pivot": [
+        0,
+        0
+      ]
+    },
+    "furniture/chair-back.svg": {
+      "viewBox": [
+        0.0,
+        0.0,
+        180.0,
+        80.0
+      ],
+      "size": [
+        180.0,
+        80.0
+      ],
+      "pivot": [
+        90,
+        74
+      ],
+      "floorContact": [
+        90,
+        74
+      ],
+      "seat": [
+        90,
+        35
+      ]
+    }
+  },
+  "backRig": {
+    "body-back": {
+      "parent": null,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "head-back": {
+      "parent": "body-back",
+      "offset": [
+        0,
+        -42
+      ]
+    },
+    "hair-back": {
+      "parent": "head-back",
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "arm-upper-l-back": {
+      "parent": "body-back",
+      "offset": [
+        -22,
+        -15
+      ]
+    },
+    "arm-lower-l-back": {
+      "parent": "arm-upper-l-back",
+      "offset": [
+        -21,
+        20
+      ]
+    },
+    "hand-l": {
+      "parent": "arm-lower-l-back",
+      "offset": [
+        -13,
+        18
+      ]
+    },
+    "leg-l": {
+      "parent": "body-back",
+      "offset": [
+        -12,
+        35
+      ]
+    },
+    "arm-upper-r-back": {
+      "parent": "body-back",
+      "offset": [
+        22,
+        -15
+      ]
+    },
+    "arm-lower-r-back": {
+      "parent": "arm-upper-r-back",
+      "offset": [
+        21,
+        20
+      ]
+    },
+    "hand-r": {
+      "parent": "arm-lower-r-back",
+      "offset": [
+        13,
+        18
+      ]
+    },
+    "leg-r": {
+      "parent": "body-back",
+      "offset": [
+        12,
+        35
+      ]
+    }
+  },
+  "backDrawOrder": [
+    "leg-l",
+    "leg-r",
+    "body-back",
+    "arm-upper-l-back",
+    "arm-lower-l-back",
+    "hand-l",
+    "arm-upper-r-back",
+    "arm-lower-r-back",
+    "hand-r",
+    "head-back",
+    "hair-back",
+    "chair-back"
+  ]
+}

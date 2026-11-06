@@ -1,7 +1,7 @@
 import AppKit
 import Foundation
 
-let modes = ["project-1", "project-3", "project-7", "project-15", "all", "transition-start", "transition-away", "transition-return", "empty"]
+let modes = ["project-1", "project-3", "project-5", "project-7", "project-15", "away-3", "away-7", "away-15", "all", "transition-start", "transition-away", "transition-return", "empty"]
 var images: [String: NSImage] = [:]
 func color(_ value: String, _ alpha: Double) -> NSColor {
     let hex = String(value.dropFirst())
@@ -26,16 +26,19 @@ for mode in modes {
     cg.interpolationQuality = .none
     for command in json["commands"] as! [[Any]] {
         let kind = command[0] as! String
+        if kind == "save" { cg.saveGState(); continue }
+        if kind == "restore" { cg.restoreGState(); continue }
+        if kind == "translate" { cg.translateBy(x:num(command,1),y:num(command,2)); continue }
+        if kind == "rotate" { cg.rotate(by:num(command,1)); continue }
+        if kind == "scale" { cg.scaleBy(x:num(command,1),y:num(command,2)); continue }
         if kind == "image" {
             let alpha = num(command, 1), path = command[2] as! String
             if images[path] == nil { images[path] = NSImage(contentsOfFile: path) }
-            guard let image = images[path], let source = image.cgImage(forProposedRect: nil, context: nil, hints: nil),
-              let crop = source.cropping(to: CGRect(x: num(command,3), y: num(command,4),
-                                                    width: num(command,5), height: num(command,6))) else { continue }
-            let target = CGRect(x:num(command,7), y:num(command,8), width:num(command,9), height:num(command,10))
+            guard let image = images[path], let source = image.cgImage(forProposedRect: nil, context: nil, hints: nil) else { continue }
+            let target = CGRect(x:num(command,3), y:num(command,4), width:num(command,5), height:num(command,6))
             cg.saveGState(); cg.setAlpha(alpha)
             cg.translateBy(x: target.minX, y: target.maxY); cg.scaleBy(x: 1, y: -1)
-            cg.draw(crop, in: CGRect(x:0, y:0, width:target.width, height:target.height))
+            cg.draw(source, in: CGRect(x:0, y:0, width:target.width, height:target.height))
             cg.restoreGState()
         } else if kind == "rect" || kind == "stroke" {
             let c = color(command[1] as! String, Double(num(command,2)))

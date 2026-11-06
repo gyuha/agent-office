@@ -14,14 +14,13 @@
     "client/",
     "server/",
     "shared/",
-    "assets/sprites/",
     "assets/CREDITS.md"
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
     "check:state": "node --experimental-strip-types shared/state/selfcheck.ts",
     "test": "node --experimental-strip-types --test 'tests/unit/*.test.ts'",
-    "sprites": "node client/scene/generate-sprites.cjs",
+    "sprites": "node client/scene/generate-clay.cjs",
     "preview": "node client/scene/build-preview.cjs"
   },
   "devDependencies": {

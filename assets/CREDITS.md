@@ -1,5 +1,11 @@
 # Asset credits
 
+## Clay illustration assets
+
+`assets/clay/`의 캐릭터, 가구, 방과 효과는 이 프로젝트에서 직접 그렸습니다. 모니터의 프로바이더 아이콘은 Paseo 앱에 포함된 원본 SVG를 참고하여 사용합니다. 아이콘은 Anthropic, OpenAI, Google, GitHub 및 해당 소유자의 상표이며 프로바이더 식별 목적으로만 사용합니다. 이 상표 아이콘에는 LPC의 CC-BY-SA가 적용되지 않습니다.
+
+**LPC 픽셀 자산은 클레이 전환 완료 후 제거 예정입니다.** 전환 전까지 아래의 원본 저작자 및 라이선스 고지는 계속 유효합니다.
+
 ## Universal LPC character layers
 
 Source: https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator . The paths below are relative to `assets/vendor/lpc/spritesheets/`. The v4 character PNGs are composites; hair and clothing colors were edited. Individual licenses and upstream links are preserved below from the supplied CREDITS.csv.

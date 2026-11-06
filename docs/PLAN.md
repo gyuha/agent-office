@@ -1,6 +1,6 @@
 # Agent Office — Paseo plugin 구현 계획 (orchestrator)
 
-비주얼 기준: assets/mockups/v4 (확정, 2026-11-06). LPC 캐릭터 + LPC 오피스 타일, 3/4 탑다운.
+비주얼 기준: assets/mockups/v6/02-clay3d (2026-11-06 사용자 선택). 픽셀아트(v4)는 폐기했다. 클레이/소프트 3D 일러스트, SVG 리그 캐릭터, 섬 배치, 원근 바닥.
 
 ## 플랫폼 사실 (Paseo 0.15.2, @getpaseo/plugin 0.15.2에서 확인)
 - 저장소 루트 = 플러그인 패키지. `paseo plugin init`의 구조를 따른다: `paseo-plugin.json`, `index.server.ts`, `index.client.tsx`, `OVERVIEW.md`, `package.json`(files 목록), `tsconfig.json`.
@@ -36,3 +36,8 @@
 1. (병렬) plugin: 스캐폴드, 상태 기계, store, 계약 타입 / art: 배포용 sprite sheet와 규격 문서
 2. scene: 계약과 시트로 OfficeView 구현. qa: 상태 기계 unit test (병렬)
 3. qa: Playwright 시각 회귀
+
+## 클레이 전환 (2026-11-06)
+- art: assets/clay/에 SVG 파츠 자산과 manifest.json, README(리그, 기준점, 레이어, 애니메이션 곡선)를 만든다. assets/sprites(픽셀)는 전환이 끝나면 지운다.
+- scene: 렌더링 파이프라인을 SVG 파츠 + canvas 변환 합성으로 바꾸고, 레이아웃을 클레이 시안의 구도로 바꾼다. core의 결정성(시간과 난수 주입)을 유지한다.
+- qa: 시각 기준 이미지를 다시 만들고, 레이아웃 기하 테스트를 새 구도에 맞춘다.

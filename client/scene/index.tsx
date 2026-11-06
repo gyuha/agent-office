@@ -2,8 +2,8 @@ import React, { useEffect, useRef, type JSX } from "react";
 
 import { Platform, ScrollView, Text, View } from 'react-native';
 import type { OfficeSnapshot } from '../../shared/state/contract';
-import { draw, layoutOffices, step, type Actors, type Sprites } from './core';
-import { spriteData } from './generated/sprites';
+import { draw, layoutOffices, step, type Actors } from './core';
+import { loadClayAssets } from './clay-assets';
 import { fitSceneWidth } from './core/viewport';
 import { agentAtPoint, scenePoint } from './core/hitTest';
 import type { Layout } from './core/layout';
@@ -21,12 +21,11 @@ function WebOffice({ snapshot, onAgentSelect }: { snapshot: OfficeSnapshot; onAg
   useEffect(() => {
     const parent = holder.current; if (!parent) return;
     const canvas = document.createElement('canvas');
-    canvas.style.display = 'block'; canvas.style.imageRendering = 'pixelated'; canvas.style.maxWidth = '100%'; parent.appendChild(canvas);
+    canvas.style.display = 'block'; canvas.style.imageRendering = 'auto'; canvas.style.maxWidth = '100%'; parent.appendChild(canvas);
     const ctx = canvas.getContext('2d');
-    const sprites: Sprites = {};
-    for (const [key, data] of Object.entries(spriteData)) {
-      const image = new Image(); image.onload = () => { sprites[key] = { image, metadata: data.metadata }; }; image.src = data.uri;
-    }
+    const { sprites, spritesReady } = loadClayAssets();
+    let ready = false;
+    spritesReady.then(() => { ready = true; }).catch(() => { ready = true; });
     let actors: Actors = {}, last = 0, frame = 0, active = true;
     let displayed: { layout: Layout; actors: Actors } | null = null;
     const targetAt = (event: { clientX: number; clientY: number }) => {
@@ -48,18 +47,23 @@ function WebOffice({ snapshot, onAgentSelect }: { snapshot: OfficeSnapshot; onAg
       const scale = panelWidth < 500 ? 1 : 2;
       const layout = layoutOffices(current.current, Math.max(192, Math.floor(panelWidth / scale)));
       const w = layout.width * scale, h = layout.height * scale;
-      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      const pixelRatio = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+      const physicalWidth = Math.round(w * pixelRatio), physicalHeight = Math.round(h * pixelRatio);
+      if (canvas.width !== physicalWidth || canvas.height !== physicalHeight) {
+        canvas.width = physicalWidth; canvas.height = physicalHeight;
+      }
       const fitted = fitSceneWidth(w, h, panelWidth);
       canvas.style.width = `${fitted.width}px`; canvas.style.height = `${fitted.height}px`;
       actors = step(actors, current.current, last ? Math.min(100, time - last) : 0, layout); last = time;
-      ctx.setTransform(scale, 0, 0, scale, 0, 0); draw(ctx, layout, actors, time, sprites);
+      ctx.setTransform(scale * pixelRatio, 0, 0, scale * pixelRatio, 0, 0);
+      if (ready) draw(ctx, layout, actors, time, sprites);
       displayed = { layout, actors };
       frame = requestAnimationFrame(tick);
     };
     frame = requestAnimationFrame(tick);
     return () => { active = false; cancelAnimationFrame(frame); canvas.removeEventListener('click', click); canvas.removeEventListener('mousemove', move); parent.removeChild(canvas); };
   }, []);
-  return React.createElement('div' as any, { ref: holder, style: { width: '100%', height: '100%', overflow: 'auto', background: '#172130' } });
+  return React.createElement('div' as any, { ref: holder, style: { width: '100%', height: '100%', overflow: 'auto', background: '#e8e9f4' } });
 }
 
 export function OfficeView({ snapshot, onAgentSelect }: { snapshot: OfficeSnapshot; onAgentSelect?: (agentId: string) => void }): JSX.Element {
