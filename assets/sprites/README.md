@@ -33,7 +33,7 @@ JSON은 `frameWidth`, `frameHeight`, `frames`(각 `name`, `x`, `y`, `w`, `h`), `
 
 ## 공급자
 
-`claude` → `furniture/monitor-claude.png`, `codex` → `monitor-codex.png`, `antigravity` 또는 `gemini` → `monitor-antigravity.png`, 그 외 또는 누락 → `monitor-unknown.png`. 엠블럼은 실제 로고가 아닌 픽셀 기호입니다.
+`claude` → `furniture/monitor-claude.png`, `codex` → `monitor-codex.png`, `antigravity` 또는 `gemini` → `monitor-antigravity.png`, `copilot` → `monitor-copilot.png`, `muse` → `monitor-muse.png`, `opencode` → `monitor-opencode.png`. `pi`, `omp`, 알 수 없는 값과 누락은 `monitor-unknown.png`로 처리합니다. 아이콘은 Paseo에 포함된 각 프로바이더 아이콘을 참고해 픽셀로 편집한 상표입니다.
 
 ## 방 크기 권장안
 
@@ -46,4 +46,4 @@ JSON은 `frameWidth`, `frameHeight`, `frames`(각 `name`, `x`, `y`, `w`, `h`), `
 | 관리자 + 6 | 최소 15×14 | 상단 5×4 관리자 공간, 4×4 이상 라운지와 회의 공간 |
 | 추가 직원 | 좌석 3개마다 최소 3타일 깊이 추가 | 좌석과 가구 사이 최소 1타일 통로 확보 |
 
-`assets/tools/build_sprites.py`는 로컬 vendor와 v4에서 직접 그린 소품을 이용해 PNG·JSON·manifest를 재생성합니다. `assets/tools/contact_sheet.py`는 외형 10개 × 상태 5개 순서의 확인 이미지를 만듭니다. 자세한 출처와 파생물 라이선스는 [크레딧](../CREDITS.md)을 보세요.
+`assets/tools/build_sprites.py`는 로컬 vendor와 v4에서 직접 그린 소품을 이용해 PNG·JSON·manifest를 재생성합니다. `assets/tools/contact_sheet.py`는 외형 10개 × 상태 5개와 모니터 7종을 포함한 확인 이미지를 만듭니다. 자세한 출처와 파생물 라이선스는 [크레딧](../CREDITS.md)을 보세요.

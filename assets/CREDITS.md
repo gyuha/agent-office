@@ -107,4 +107,9 @@ The monitor emblems, wheeled chair, city window, plant, sofa, whiteboard, glass 
 
 `furniture/desk.png`, `manager-desk.png`, `meeting-table.png`는 위 Wooden Furniture 팩의 파생물이고, `furniture/bookshelf.png`는 위 Shelves Rework 파생물입니다. `coffee-machine.png`, `water-cooler.png`, `copier.png`, `bin.png`, `tv.png`는 위 LPC Revised: The Office의 Eliza Wyatt 자산을 잘라낸 것으로 OGA-BY 3.0이 적용됩니다. `tiles/floor.png`는 위 LPC Floors의 CC-BY-SA 4.0 파생물입니다. 자른 자산도 각 원본의 저자 표시와 적용되는 동일조건변경허락을 유지합니다.
 
-모니터와 엠블럼, 의자, 도시 창, 화분, 소파, 화이트보드, 유리 테이블·파티션, 시계, 옷걸이, 벽 및 탕비 타일, 효과는 프로젝트용으로 직접 그린 것입니다. 개별 원본의 서로 다른 CC-BY-SA 버전과 OGA-BY 조건은 위 원본별 기재를 따르며, 모든 파일에 단일한 동일 라이선스를 일괄 적용한다고 가정하지 마세요.
+모니터 본체와 의자, 도시 창, 화분, 소파, 화이트보드, 유리 테이블·파티션, 시계, 옷걸이, 벽 및 탕비 타일, 효과는 프로젝트용으로 직접 그린 것입니다. 개별 원본의 서로 다른 CC-BY-SA 버전과 OGA-BY 조건은 위 원본별 기재를 따르며, 모든 파일에 단일한 동일 라이선스를 일괄 적용한다고 가정하지 마세요.
+
+
+## 프로바이더 아이콘과 상표
+
+`assets/sprites/furniture/monitor-{claude,codex,antigravity,copilot,muse,opencode}.png`의 아이콘은 Paseo 앱에 포함된 `/Applications/Paseo.app/Contents/Resources/builtin-plugins/*/icon.svg`를 참고해 12px 격자로 수작업 편집한 것입니다. Claude는 Anthropic, Codex/OpenAI 매듭은 OpenAI, Antigravity는 Google, Copilot은 GitHub의 상표이며 Muse와 OpenCode 역시 각각의 권리자에게 속한 상표입니다. 이 표시들은 해당 프로바이더를 식별하는 목적으로만 사용합니다. 아이콘과 상표는 이 문서의 다른 LPC 파생물에 적용되는 CC-BY-SA 라이선스 대상이 아닙니다. 모니터 본체와 unknown 물음표는 직접 그렸습니다.

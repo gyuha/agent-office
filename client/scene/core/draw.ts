@@ -2,6 +2,16 @@ import type { Actors, Layout, Room } from './layout';
 import { drawEffect } from './effects';
 import { hash, sprite, tileArea, type CanvasContext, type Sprites } from './sprites';
 
+const PROVIDER_MONITORS: Readonly<Record<string, string>> = {
+  claude: 'claude',
+  codex: 'codex',
+  antigravity: 'antigravity',
+  gemini: 'antigravity',
+  copilot: 'copilot',
+  muse: 'muse',
+  opencode: 'opencode',
+};
+
 function furniture(
   ctx: CanvasContext, sprites: Sprites, name: string, x: number, y: number,
   time: number, width?: number, height?: number,
@@ -115,8 +125,7 @@ export function draw(
       furniture(ctx, sprites, station.manager ? 'manager-desk' : 'desk',
         seat.x - (station.manager ? 58 : 40), seat.y + 7, timeMs);
       const p = agent.provider.toLowerCase();
-      const provider = p === 'claude' || p === 'codex' ? p
-        : p === 'gemini' || p === 'antigravity' ? 'antigravity' : 'unknown';
+      const provider = Object.hasOwn(PROVIDER_MONITORS, p) ? PROVIDER_MONITORS[p] : 'unknown';
       furniture(ctx, sprites, `monitor-${provider}`, seat.x + 5, seat.y - 10, timeMs);
     }
     glass(ctx, room, sprites, timeMs);

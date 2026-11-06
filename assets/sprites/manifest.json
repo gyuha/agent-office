@@ -239,6 +239,18 @@
       "metadata": "furniture/monitor-antigravity.json"
     },
     {
+      "png": "furniture/monitor-copilot.png",
+      "metadata": "furniture/monitor-copilot.json"
+    },
+    {
+      "png": "furniture/monitor-muse.png",
+      "metadata": "furniture/monitor-muse.json"
+    },
+    {
+      "png": "furniture/monitor-opencode.png",
+      "metadata": "furniture/monitor-opencode.json"
+    },
+    {
       "png": "furniture/monitor-unknown.png",
       "metadata": "furniture/monitor-unknown.json"
     },

@@ -3,6 +3,7 @@
 from pathlib import Path
 import json,csv,struct,zlib,shutil,subprocess,sys
 from pnglib import png_read,png_write
+from provider_icons import ICONS
 A=Path(__file__).resolve().parents[1]; V=A/'vendor'; OUT=A/'sprites'; LPC=V/'lpc/spritesheets'; USED=set(); entries=[]
 def blank(w,h):return bytearray(w*h*4)
 def put(dst,dw,dh,src,sw,sh,x=0,y=0,sx=0,sy=0,cw=None,ch=None):
@@ -80,9 +81,14 @@ for i,identity in enumerate(ids):
 # Existing independent pixel props from approved mockup.
 for n in ['chair','city-window','plant','sofa','whiteboard','glass-table']:
  w,h,p=png_read(A/'mockups/v4/sprites'/f'{n}.png');make_png(Path('furniture')/(n+'.png'),w,h,p)
-for k,name in enumerate(['claude','codex','antigravity']):
- w,h,p=png_read(A/'mockups/v4/sprites'/f'monitor-{k}.png');make_png(Path('furniture')/f'monitor-{name}.png',w,h,p)
-w,h,p=png_read(A/'mockups/v4/sprites/monitor-1.png');rect(p,w,h,11,5,10,10,'#7b8790');rect(p,w,h,15,7,2,2,'#eff0d7');rect(p,w,h,17,9,2,2,'#eff0d7');rect(p,w,h,15,11,2,2,'#eff0d7');rect(p,w,h,15,13,2,1,'#eff0d7');make_png('furniture/monitor-unknown.png',w,h,p)
+for name,(color,mask) in ICONS.items():
+ w,h,p=png_read(A/'mockups/v4/sprites/monitor-1.png')
+ # Keep a dark enclosure and use a 12×12 hand-edited icon in the middle.
+ rect(p,w,h,3,4,26,13,'#354149')
+ for yy,row in enumerate(mask):
+  for xx,pixel in enumerate(row):
+   if pixel=='#':rect(p,w,h,10+xx,4+yy,1,1,color)
+ make_png(Path('furniture')/f'monitor-{name}.png',w,h,p)
 # Precise crops from original vendor art.
 crops=[('furniture/desk.png','lpc-furniture/dark-wood_3.png',(0,304,96,32)),('furniture/meeting-table.png','lpc-furniture/dark-wood_3.png',(136,176,80,64)),('furniture/bookshelf.png','lpc-shelves/bookshelf-brown_0.png',(0,0,64,96)),('furniture/coffee-machine.png','lpc-office/Coffee Maker.png',(0,0,32,32)),('furniture/water-cooler.png','lpc-office/Water Cooler.png',(0,0,32,64)),('furniture/copier.png','lpc-office/Copy Machine.png',(0,0,64,64)),('furniture/bin.png','lpc-office/Bins.png',(0,0,32,32)),('furniture/tv.png','lpc-office/TV, Widescreen.png',(0,0,96,64)),('tiles/floor.png','lpc-floors/lpc-floors/floors.png',(192,1216,32,32))]
 for dst,source,(sx,sy,w,h) in crops:

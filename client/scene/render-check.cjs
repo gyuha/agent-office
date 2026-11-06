@@ -19,7 +19,7 @@ for (const s of manifest.sheets) sprites[s.png.replace(/\.png$/, '')] = {
   metadata: JSON.parse(fs.readFileSync('assets/sprites/' + s.metadata)),
 };
 function agent(id, state='working') { return {id, name:id==='0'?'Orchestrator':'Agent '+id,
-  provider:['claude','codex','gemini'][Number(id)%3],state,stateSince:0,needsAttention:id==='2'}; }
+  provider:['claude','codex','antigravity','copilot','muse','opencode','pi'][Number(id)%7],state,stateSince:0,needsAttention:id==='2'}; }
 function office(n, prefix) {
   const members = Array.from({length:n},(_,i)=>agent(String(i),['working','away','phone','sleeping'][i%4]));
   members.forEach(a=>a.id=prefix+a.id);

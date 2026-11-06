@@ -31,7 +31,7 @@ for(const [key,s] of Object.entries(data)){
 }
 const states=['working','away','phone','sleeping'];
 function agent(id,state){return {id,name:id==='0'?'Orchestrator':'Agent '+id,
-  provider:['claude','codex','gemini','unknown'][Number(id)%4],state,stateSince:0,
+  provider:['claude','codex','antigravity','copilot','muse','opencode','pi'][Number(id)%7],state,stateSince:0,
   needsAttention:id==='2'}}
 function office(n,prefix){
   const members=Array.from({length:n},(_,i)=>agent(String(i),states[i%4]));
