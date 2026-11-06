@@ -1,0 +1,49 @@
+{
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frames": [
+    {
+      "name": "steam-0",
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "steam-1",
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "steam-2",
+      "x": 64,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "steam-3",
+      "x": 96,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    }
+  ],
+  "animations": {
+    "steam": {
+      "frames": [
+        "steam-0",
+        "steam-1",
+        "steam-2",
+        "steam-3"
+      ],
+      "fps": 6
+    }
+  },
+  "anchor": {
+    "x": 16,
+    "y": 32
+  }
+}

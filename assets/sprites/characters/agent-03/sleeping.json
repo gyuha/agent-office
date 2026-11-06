@@ -1,0 +1,41 @@
+{
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "frames": [
+    {
+      "name": "sleeping-0",
+      "x": 0,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "sleeping-1",
+      "x": 64,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "sleeping-2",
+      "x": 128,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    }
+  ],
+  "animations": {
+    "sleeping": {
+      "frames": [
+        "sleeping-0",
+        "sleeping-1",
+        "sleeping-2"
+      ],
+      "fps": 3
+    }
+  },
+  "anchor": {
+    "x": 32,
+    "y": 48
+  }
+}

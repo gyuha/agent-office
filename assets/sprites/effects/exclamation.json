@@ -1,0 +1,49 @@
+{
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frames": [
+    {
+      "name": "exclamation-0",
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "exclamation-1",
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "exclamation-2",
+      "x": 64,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "exclamation-3",
+      "x": 96,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    }
+  ],
+  "animations": {
+    "exclamation": {
+      "frames": [
+        "exclamation-0",
+        "exclamation-1",
+        "exclamation-2",
+        "exclamation-3"
+      ],
+      "fps": 6
+    }
+  },
+  "anchor": {
+    "x": 16,
+    "y": 32
+  }
+}

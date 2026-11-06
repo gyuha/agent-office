@@ -1,0 +1,41 @@
+{
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "frames": [
+    {
+      "name": "phone-0",
+      "x": 0,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "phone-1",
+      "x": 64,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "phone-2",
+      "x": 128,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    }
+  ],
+  "animations": {
+    "phone": {
+      "frames": [
+        "phone-0",
+        "phone-1",
+        "phone-2"
+      ],
+      "fps": 3
+    }
+  },
+  "anchor": {
+    "x": 32,
+    "y": 48
+  }
+}

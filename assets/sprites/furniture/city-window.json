@@ -1,0 +1,25 @@
+{
+  "frameWidth": 96,
+  "frameHeight": 48,
+  "frames": [
+    {
+      "name": "default",
+      "x": 0,
+      "y": 0,
+      "w": 96,
+      "h": 48
+    }
+  ],
+  "animations": {
+    "default": {
+      "frames": [
+        "default"
+      ],
+      "fps": 1
+    }
+  },
+  "anchor": {
+    "x": 48,
+    "y": 48
+  }
+}

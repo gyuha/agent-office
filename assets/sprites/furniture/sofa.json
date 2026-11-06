@@ -1,0 +1,25 @@
+{
+  "frameWidth": 64,
+  "frameHeight": 32,
+  "frames": [
+    {
+      "name": "default",
+      "x": 0,
+      "y": 0,
+      "w": 64,
+      "h": 32
+    }
+  ],
+  "animations": {
+    "default": {
+      "frames": [
+        "default"
+      ],
+      "fps": 1
+    }
+  },
+  "anchor": {
+    "x": 32,
+    "y": 32
+  }
+}
