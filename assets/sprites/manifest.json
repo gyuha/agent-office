@@ -1,0 +1,338 @@
+{
+  "version": 1,
+  "tileSize": 32,
+  "sheets": [
+    {
+      "png": "characters/agent-01/walk.png",
+      "metadata": "characters/agent-01/walk.json"
+    },
+    {
+      "png": "characters/agent-01/idle.png",
+      "metadata": "characters/agent-01/idle.json"
+    },
+    {
+      "png": "characters/agent-01/working.png",
+      "metadata": "characters/agent-01/working.json"
+    },
+    {
+      "png": "characters/agent-01/phone.png",
+      "metadata": "characters/agent-01/phone.json"
+    },
+    {
+      "png": "characters/agent-01/sleeping.png",
+      "metadata": "characters/agent-01/sleeping.json"
+    },
+    {
+      "png": "characters/agent-02/walk.png",
+      "metadata": "characters/agent-02/walk.json"
+    },
+    {
+      "png": "characters/agent-02/idle.png",
+      "metadata": "characters/agent-02/idle.json"
+    },
+    {
+      "png": "characters/agent-02/working.png",
+      "metadata": "characters/agent-02/working.json"
+    },
+    {
+      "png": "characters/agent-02/phone.png",
+      "metadata": "characters/agent-02/phone.json"
+    },
+    {
+      "png": "characters/agent-02/sleeping.png",
+      "metadata": "characters/agent-02/sleeping.json"
+    },
+    {
+      "png": "characters/agent-03/walk.png",
+      "metadata": "characters/agent-03/walk.json"
+    },
+    {
+      "png": "characters/agent-03/idle.png",
+      "metadata": "characters/agent-03/idle.json"
+    },
+    {
+      "png": "characters/agent-03/working.png",
+      "metadata": "characters/agent-03/working.json"
+    },
+    {
+      "png": "characters/agent-03/phone.png",
+      "metadata": "characters/agent-03/phone.json"
+    },
+    {
+      "png": "characters/agent-03/sleeping.png",
+      "metadata": "characters/agent-03/sleeping.json"
+    },
+    {
+      "png": "characters/agent-04/walk.png",
+      "metadata": "characters/agent-04/walk.json"
+    },
+    {
+      "png": "characters/agent-04/idle.png",
+      "metadata": "characters/agent-04/idle.json"
+    },
+    {
+      "png": "characters/agent-04/working.png",
+      "metadata": "characters/agent-04/working.json"
+    },
+    {
+      "png": "characters/agent-04/phone.png",
+      "metadata": "characters/agent-04/phone.json"
+    },
+    {
+      "png": "characters/agent-04/sleeping.png",
+      "metadata": "characters/agent-04/sleeping.json"
+    },
+    {
+      "png": "characters/agent-05/walk.png",
+      "metadata": "characters/agent-05/walk.json"
+    },
+    {
+      "png": "characters/agent-05/idle.png",
+      "metadata": "characters/agent-05/idle.json"
+    },
+    {
+      "png": "characters/agent-05/working.png",
+      "metadata": "characters/agent-05/working.json"
+    },
+    {
+      "png": "characters/agent-05/phone.png",
+      "metadata": "characters/agent-05/phone.json"
+    },
+    {
+      "png": "characters/agent-05/sleeping.png",
+      "metadata": "characters/agent-05/sleeping.json"
+    },
+    {
+      "png": "characters/agent-06/walk.png",
+      "metadata": "characters/agent-06/walk.json"
+    },
+    {
+      "png": "characters/agent-06/idle.png",
+      "metadata": "characters/agent-06/idle.json"
+    },
+    {
+      "png": "characters/agent-06/working.png",
+      "metadata": "characters/agent-06/working.json"
+    },
+    {
+      "png": "characters/agent-06/phone.png",
+      "metadata": "characters/agent-06/phone.json"
+    },
+    {
+      "png": "characters/agent-06/sleeping.png",
+      "metadata": "characters/agent-06/sleeping.json"
+    },
+    {
+      "png": "characters/agent-07/walk.png",
+      "metadata": "characters/agent-07/walk.json"
+    },
+    {
+      "png": "characters/agent-07/idle.png",
+      "metadata": "characters/agent-07/idle.json"
+    },
+    {
+      "png": "characters/agent-07/working.png",
+      "metadata": "characters/agent-07/working.json"
+    },
+    {
+      "png": "characters/agent-07/phone.png",
+      "metadata": "characters/agent-07/phone.json"
+    },
+    {
+      "png": "characters/agent-07/sleeping.png",
+      "metadata": "characters/agent-07/sleeping.json"
+    },
+    {
+      "png": "characters/agent-08/walk.png",
+      "metadata": "characters/agent-08/walk.json"
+    },
+    {
+      "png": "characters/agent-08/idle.png",
+      "metadata": "characters/agent-08/idle.json"
+    },
+    {
+      "png": "characters/agent-08/working.png",
+      "metadata": "characters/agent-08/working.json"
+    },
+    {
+      "png": "characters/agent-08/phone.png",
+      "metadata": "characters/agent-08/phone.json"
+    },
+    {
+      "png": "characters/agent-08/sleeping.png",
+      "metadata": "characters/agent-08/sleeping.json"
+    },
+    {
+      "png": "characters/manager-01/walk.png",
+      "metadata": "characters/manager-01/walk.json"
+    },
+    {
+      "png": "characters/manager-01/idle.png",
+      "metadata": "characters/manager-01/idle.json"
+    },
+    {
+      "png": "characters/manager-01/working.png",
+      "metadata": "characters/manager-01/working.json"
+    },
+    {
+      "png": "characters/manager-01/phone.png",
+      "metadata": "characters/manager-01/phone.json"
+    },
+    {
+      "png": "characters/manager-01/sleeping.png",
+      "metadata": "characters/manager-01/sleeping.json"
+    },
+    {
+      "png": "characters/manager-02/walk.png",
+      "metadata": "characters/manager-02/walk.json"
+    },
+    {
+      "png": "characters/manager-02/idle.png",
+      "metadata": "characters/manager-02/idle.json"
+    },
+    {
+      "png": "characters/manager-02/working.png",
+      "metadata": "characters/manager-02/working.json"
+    },
+    {
+      "png": "characters/manager-02/phone.png",
+      "metadata": "characters/manager-02/phone.json"
+    },
+    {
+      "png": "characters/manager-02/sleeping.png",
+      "metadata": "characters/manager-02/sleeping.json"
+    },
+    {
+      "png": "furniture/chair.png",
+      "metadata": "furniture/chair.json"
+    },
+    {
+      "png": "furniture/city-window.png",
+      "metadata": "furniture/city-window.json"
+    },
+    {
+      "png": "furniture/plant.png",
+      "metadata": "furniture/plant.json"
+    },
+    {
+      "png": "furniture/sofa.png",
+      "metadata": "furniture/sofa.json"
+    },
+    {
+      "png": "furniture/whiteboard.png",
+      "metadata": "furniture/whiteboard.json"
+    },
+    {
+      "png": "furniture/glass-table.png",
+      "metadata": "furniture/glass-table.json"
+    },
+    {
+      "png": "furniture/monitor-claude.png",
+      "metadata": "furniture/monitor-claude.json"
+    },
+    {
+      "png": "furniture/monitor-codex.png",
+      "metadata": "furniture/monitor-codex.json"
+    },
+    {
+      "png": "furniture/monitor-antigravity.png",
+      "metadata": "furniture/monitor-antigravity.json"
+    },
+    {
+      "png": "furniture/monitor-unknown.png",
+      "metadata": "furniture/monitor-unknown.json"
+    },
+    {
+      "png": "furniture/desk.png",
+      "metadata": "furniture/desk.json"
+    },
+    {
+      "png": "furniture/meeting-table.png",
+      "metadata": "furniture/meeting-table.json"
+    },
+    {
+      "png": "furniture/bookshelf.png",
+      "metadata": "furniture/bookshelf.json"
+    },
+    {
+      "png": "furniture/coffee-machine.png",
+      "metadata": "furniture/coffee-machine.json"
+    },
+    {
+      "png": "furniture/water-cooler.png",
+      "metadata": "furniture/water-cooler.json"
+    },
+    {
+      "png": "furniture/copier.png",
+      "metadata": "furniture/copier.json"
+    },
+    {
+      "png": "furniture/bin.png",
+      "metadata": "furniture/bin.json"
+    },
+    {
+      "png": "furniture/tv.png",
+      "metadata": "furniture/tv.json"
+    },
+    {
+      "png": "tiles/floor.png",
+      "metadata": "tiles/floor.json"
+    },
+    {
+      "png": "furniture/manager-desk.png",
+      "metadata": "furniture/manager-desk.json"
+    },
+    {
+      "png": "furniture/glass-partition.png",
+      "metadata": "furniture/glass-partition.json"
+    },
+    {
+      "png": "furniture/clock.png",
+      "metadata": "furniture/clock.json"
+    },
+    {
+      "png": "furniture/coat-rack.png",
+      "metadata": "furniture/coat-rack.json"
+    },
+    {
+      "png": "tiles/wall.png",
+      "metadata": "tiles/wall.json"
+    },
+    {
+      "png": "tiles/wall-top.png",
+      "metadata": "tiles/wall-top.json"
+    },
+    {
+      "png": "tiles/pantry-floor.png",
+      "metadata": "tiles/pantry-floor.json"
+    },
+    {
+      "png": "effects/steam.png",
+      "metadata": "effects/steam.json"
+    },
+    {
+      "png": "effects/sweat.png",
+      "metadata": "effects/sweat.json"
+    },
+    {
+      "png": "effects/paper.png",
+      "metadata": "effects/paper.json"
+    },
+    {
+      "png": "effects/exclamation.png",
+      "metadata": "effects/exclamation.json"
+    },
+    {
+      "png": "effects/zzz.png",
+      "metadata": "effects/zzz.json"
+    },
+    {
+      "png": "effects/phone-glow.png",
+      "metadata": "effects/phone-glow.json"
+    },
+    {
+      "png": "effects/attention.png",
+      "metadata": "effects/attention.json"
+    }
+  ]
+}

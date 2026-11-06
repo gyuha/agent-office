@@ -1,0 +1,49 @@
+{
+  "frameWidth": 32,
+  "frameHeight": 32,
+  "frames": [
+    {
+      "name": "phone-glow-0",
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "phone-glow-1",
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "phone-glow-2",
+      "x": 64,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    {
+      "name": "phone-glow-3",
+      "x": 96,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    }
+  ],
+  "animations": {
+    "phone-glow": {
+      "frames": [
+        "phone-glow-0",
+        "phone-glow-1",
+        "phone-glow-2",
+        "phone-glow-3"
+      ],
+      "fps": 6
+    }
+  },
+  "anchor": {
+    "x": 16,
+    "y": 32
+  }
+}

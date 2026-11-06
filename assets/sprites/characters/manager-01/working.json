@@ -1,0 +1,49 @@
+{
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "frames": [
+    {
+      "name": "working-0",
+      "x": 0,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "working-1",
+      "x": 64,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "working-2",
+      "x": 128,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    {
+      "name": "working-3",
+      "x": 192,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    }
+  ],
+  "animations": {
+    "working": {
+      "frames": [
+        "working-0",
+        "working-1",
+        "working-2",
+        "working-3"
+      ],
+      "fps": 12
+    }
+  },
+  "anchor": {
+    "x": 32,
+    "y": 48
+  }
+}

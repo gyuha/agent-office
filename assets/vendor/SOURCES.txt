@@ -1,0 +1,7 @@
+pack | page | licenses   (authors: see each pack credits file; lpc-shelves authors in attribution_7.png)
+office | https://opengameart.org/content/lpc-revised-the-office | CC-BY-SA 3.0,OGA-BY 3.0
+floors | https://opengameart.org/content/lpc-floors | CC-BY-SA 4.0
+walls | https://opengameart.org/content/lpc-walls | CC-BY-SA 3.0
+wooden-furniture | https://opengameart.org/content/lpc-wooden-furniture | CC-BY-SA 4.0,CC-BY-SA 3.0,GPL 3.0
+shelves-rework | https://opengameart.org/content/lpc-shelves-rework | CC-BY-SA 3.0,GPL 3.0
+lpc characters | https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator | per-file, see lpc/CREDITS.csv (CC0, CC-BY 4.0, CC-BY-SA 3.0, GPL 3.0, OGA-BY 3.0)

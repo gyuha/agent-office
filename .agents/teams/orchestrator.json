@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "goal": "paseo plugin 제작. 에이전트를 오피스 처럼 보이고, 게임처럼 일 할 때는 열심히 움직이고, 일하지 않을때는 잠자거나 휴대폰을 쳐다 보고 있도록.",
+  "orchestrator": {
+    "workspace": "orchestrator",
+    "provider": "claude",
+    "model": "claude-opus-5-5"
+  },
+  "roles": [
+    {
+      "name": "plugin",
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
+      "folders": [
+        "src/plugin",
+        "src/state",
+        "package.json"
+      ],
+      "instructions": "paseo plugin의 entry point, manifest와 빌드 설정을 만들고, 에이전트 이벤트를 구독해서 각 에이전트의 상태를 working, idle, sleeping, phone 같은 상태 기계로 바꾸는 typed store를 구현한다. 렌더러가 쓸 상태 인터페이스는 scene 역할과 계약으로 정하고, 이 인터페이스는 시각 표현과 무관하게 유지한다."
+    },
+    {
+      "name": "scene",
+      "provider": "codex",
+      "model": "gpt-6.1-terra",
+      "folders": [
+        "src/scene"
+      ],
+      "instructions": "plugin이 내보내는 상태를 구독해서 게임 같은 오피스 뷰를 렌더링한다. 책상 배치와 에이전트 캐릭터를 그리고, 상태별 애니메이션을 만든다: working이면 타이핑하고 바쁘게 움직이고, idle이면 잠을 자거나(Zzz) 휴대폰을 본다. 상태가 바뀔 때는 부드럽게 전환한다."
+    },
+    {
+      "name": "art",
+      "provider": "codex",
+      "model": "gpt-6.1-terra",
+      "folders": [
+        "assets"
+      ],
+      "instructions": "통일된 픽셀아트 스타일로 오피스 타일, 가구, 캐릭터 sprite sheet를 만든다. 캐릭터 sprite sheet에는 working, walking, sleeping, phone 프레임이 들어가며, 프레임 크기와 이름 규칙을 문서화해서 scene이 바로 로드할 수 있게 한다."
+    },
+    {
+      "name": "qa",
+      "provider": "antigravity",
+      "model": "gemini-4-argon-medium",
+      "folders": [
+        "tests"
+      ],
+      "instructions": "상태 기계 전환(이벤트→상태, idle timeout→sleep/phone)을 unit test로 검증하고, Playwright로 실제 렌더링에서 상태별 애니메이션이 맞게 나오는지 시각 회귀 테스트를 만든다. 발견한 결함은 담당 역할과 재현 단계를 붙여 orchestrator에게 보고한다."
+    }
+  ]
+}

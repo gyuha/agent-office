@@ -1,0 +1,8 @@
+{
+  "id": "agent-office",
+  "name": "Agent Office",
+  "media": [],
+  "requirements": {
+    "paseo": ">=0.15.2"
+  }
+}

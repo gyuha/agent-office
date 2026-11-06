@@ -1,0 +1,8 @@
+node_modules/
+*.log
+.DS_Store
+tests/test-results/
+tests/playwright-report/
+tests/blob-report/
+tests/visual/harness/index.html
+client/scene/review/

@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Little Workplace — Isometric</title><style>html,body{margin:0;background:#dcece4}canvas{display:block;width:100%;height:auto;image-rendering:pixelated}</style></head><body><canvas id="scene" width="1600" height="1000" aria-label="Three independent animated isometric offices with a manager and agent states"></canvas><script>
+const c=document.querySelector('canvas'),g=c.getContext('2d');g.imageSmoothingEnabled=false;
+const names=['tile','wall-left','wall-right','window-left','window-right','plant','coffee','rug','desk-0','desk-1','desk-2','manager-desk','working-0','working-1','working-2','working-3','away-0','phone-0','phone-1','sleeping-0','sleeping-1'];const sprites=Object.fromEntries(names.map(n=>{let i=new Image();i.src='sprites/'+n+'.png';return[n,i]}));
+function image(n,x,y,s=1){let i=sprites[n];if(i.complete&&i.naturalWidth)g.drawImage(i,Math.round(x),Math.round(y),i.naturalWidth*s,i.naturalHeight*s)}function fill(x,y,w,h,col){g.fillStyle=col;g.fillRect(x,y,w,h)}function text(s,x,y,size=14,col='#365b56',align='left'){g.fillStyle=col;g.font=`bold ${size}px monospace`;g.textAlign=align;g.fillText(s,x,y)}
+// Each step is half the 96×48 tile: a true 2:1 isometric projection.
+function project(ox,oy,u,v){return [ox+(u-v)*48,oy+(u+v)*24]}
+function office(ox,oy,cols,rows,title,states,time,solo=false){let W=solo?3:(cols===3?10:7),H=solo?3:(cols===3?9:7);
+ text(title,ox,oy-105,17,'#365b56','center');text(solo?'INDEPENDENT OFFICE':'GROUP OFFICE',ox,oy-84,11,'#6e9890','center');
+ for(let v=0;v<H;v++)for(let u=0;u<W;u++){let [x,y]=project(ox,oy,u,v);image('tile',x-48,y,2)}
+ // Only the two far walls are drawn; the near edges remain open.
+ for(let v=0;v<H;v++){let [x,y]=project(ox,oy,0,v);image('wall-right',x-48,y-40)}
+ for(let u=0;u<W;u++){let [x,y]=project(ox,oy,u,0);image('wall-left',x,y-40)}
+ let [lx,ly]=project(ox,oy,0,1);image('window-right',lx-44,ly-34);let [rx,ry]=project(ox,oy,1,0);image('window-left',rx+4,ry-34);
+ let objects=[];function add(u,v,render){objects.push({u,v,render})}
+ add(0,H-1,(x,y)=>image('plant',x-16,y-24,2));add(W-1,0,(x,y)=>image('coffee',x-16,y-30,2));
+ if(solo){add(1,1,(x,y)=>station(x,y,'phone',2,time,false))}else{
+  add(1,1,(x,y)=>{image('rug',x-72,y-10,2);station(x,y,'working',0,time,true)});
+  const positions=cols===3?[[4,1],[7,1],[2,4],[6,5],[8,4],[4,7]]:[[4,1],[1,4]];states.forEach((state,i)=>{let [u,v]=positions[i];add(u,v,(x,y)=>station(x,y,state,(i+1)%3,time,false))});
+ }
+ // Larger u+v is closer to the viewer. Stable tie-breaker preserves coherent overlap.
+ objects.sort((a,b)=>(a.u+a.v)-(b.u+b.v)||a.u-b.u);for(const obj of objects){let [x,y]=project(ox,oy,obj.u,obj.v);obj.render(x,y)}
+}
+let labels=[];
+function station(x,y,state,provider,time,manager){let f=state==='working'?Math.floor(time/140)%4:state==='away'?0:Math.floor(time/550)%2;image(state+'-'+f,x-64,y-115,2);image(manager?'manager-desk':'desk-'+provider,x-(manager?84:64),y-28,2);labels.push([manager?'ORCHESTRATOR / WORKING':state.toUpperCase(),x,y+(manager?118:94)])}
+function frame(t){labels=[];fill(0,0,1600,1000,'#dcece4');text('THE LITTLE WORKPLACE',50,58,30);text('B / ISOMETRIC 2:1   •   ONE ROOM FOR EACH GROUP',52,86,14,'#6e9890');office(470,230,3,2,'ALPHA  /  7 AGENTS',['working','away','phone','sleeping','working','phone'],t);office(1240,230,2,1,'BETA  /  3 AGENTS',['away','sleeping'],t);office(1300,690,1,1,'SOLO  /  1 AGENT',['phone'],t,true);for(const [s,x,y] of labels)text(s,x,y,11,'#294c47','center');fill(55,830,900,112,'#eff8ea');text('✚ CLAUDE     ▣ CODEX     ✦ ANTIGRAVITY',80,870,15);text('WORKING  /  AWAY  /  PHONE  /  SLEEPING',80,907,14);requestAnimationFrame(frame)}requestAnimationFrame(frame);
+</script></body></html>
