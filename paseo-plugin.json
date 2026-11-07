@@ -1,7 +1,14 @@
 {
   "id": "agent-office",
   "name": "Agent Office",
-  "media": [],
+  "description": "Shows your agents as characters in a small office that type while working, rest or sleep when idle, and flag pending approvals.",
+  "media": [
+    "https://raw.githubusercontent.com/gyuha/agent-office/main/docs/screenshots/panel-mixed.webp",
+    "https://raw.githubusercontent.com/gyuha/agent-office/main/docs/screenshots/all-offices.webp",
+    "https://raw.githubusercontent.com/gyuha/agent-office/main/docs/screenshots/state-working.webp",
+    "https://raw.githubusercontent.com/gyuha/agent-office/main/docs/screenshots/state-away.webp",
+    "https://raw.githubusercontent.com/gyuha/agent-office/main/docs/screenshots/state-attention.webp"
+  ],
   "requirements": {
     "paseo": ">=0.15.2"
   }
