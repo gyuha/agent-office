@@ -133,6 +133,7 @@ describe("server/mapping.ts — 순수 함수 단위 테스트", () => {
         workspaceId: "wks_1",
         projectId: "prj_1",
         projectName: "Actual Project",
+        workspaceName: "ws-fallback-name",
       });
 
       const withoutProject: ListedWorkspaceLike = {
@@ -145,6 +146,7 @@ describe("server/mapping.ts — 순수 함수 단위 테스트", () => {
         workspaceId: "wks_2",
         projectId: "prj_2",
         projectName: "ws-fallback-name",
+        workspaceName: "ws-fallback-name",
       });
     });
   });

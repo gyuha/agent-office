@@ -1,126 +1,143 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { agentAtPoint, scenePoint } from '../../client/scene/core/hitTest.ts';
+import { agentAtPoint, advance, group, layoutOffices, mixed, scenePoint, snap, snapAll, solo, step, withState } from './helpers/scene.ts';
 import { fitSceneWidth } from '../../client/scene/core/viewport.ts';
-import type { Actors, Layout } from '../../client/scene/core/layout.ts';
 
-const layout = {
-  width: 600, height: 400, headers: [], rooms: [{ id: 'room', title: '', x: 0, y: 0, width: 600, height: 400, group: true, stations: [
-    { agent: { id: 'manager', state: 'working' }, seat: { x: 100, y: 100 }, manager: true },
-    { agent: { id: 'member', state: 'working' }, seat: { x: 200, y: 200 }, manager: false },
-  ] }],
-} as unknown as Layout;
-const actors = { member: { x: 350, y: 250, moving: true, direction: 'right', phase: 0 } } as Actors;
+const everyone = (layout: any) => layout.rooms.flatMap((r: any) => r.stations);
 
-test('maps a scaled canvas click back to the current character location', () => {
-  const point = scenePoint(225, 150, { left: 50, top: 50, width: 300, height: 200 }, layout);
-  assert.deepEqual(point, { x: 350, y: 200 });
-  assert.equal(agentAtPoint(layout, actors, point!.x, point!.y), 'member');
-  assert.equal(agentAtPoint(layout, actors, 200, 180), null);
-  assert.equal(agentAtPoint(layout, actors, 100, 70), 'manager');
-  assert.equal(scenePoint(0, 0, { left: 0, top: 0, width: 0, height: 0 }, layout), null);
+for (const n of [1, 3, 6, 10, 16]) {
+  test(`N=${n}: a click on each nameplate and on each seated figure returns that agent's id`, () => {
+    const s = snap([group(n)]);
+    const layout = layoutOffices(s);
+    const actors = step({}, s, 0, layout);
+    for (const st of everyone(layout)) {
+      assert.equal(agentAtPoint(layout, actors, st.plate.x, st.plate.y), st.agent.id, `plate ${st.agent.id}`);
+      assert.equal(agentAtPoint(layout, actors, st.plate.x - st.plateWidth / 2 + 2, st.plate.y), st.agent.id, `plate edge ${st.agent.id}`);
+      assert.equal(agentAtPoint(layout, actors, st.seat.x, st.seat.y - st.actorHeight * 0.4), st.agent.id, `desk ${st.agent.id}`);
+    }
+  });
+}
+
+test('the desk body (middle of the pod) selects the owner of that desk', () => {
+  const s = snap([group(6)]);
+  const layout = layoutOffices(s);
+  const actors = step({}, s, 0, layout);
+  for (const st of everyone(layout).filter((x: any) => !x.manager)) {
+    assert.equal(agentAtPoint(layout, actors, st.x + st.width * 0.4, st.y + st.height * 0.4), st.agent.id, st.agent.id);
+  }
 });
 
-test('the last drawn character wins when hit regions overlap', () => {
-  const overlap = { ...actors, member: { ...actors.member, x: 100, y: 100 } };
-  assert.equal(agentAtPoint(layout, overlap, 100, 80), 'member');
+test('solo office: desk and nameplate both select the solo agent', () => {
+  const s = snap([solo('only')]);
+  const layout = layoutOffices(s);
+  const st = layout.rooms[0].stations[0];
+  const actors = step({}, s, 0, layout);
+  assert.equal(agentAtPoint(layout, actors, st.plate.x, st.plate.y), 'only');
+  assert.equal(agentAtPoint(layout, actors, st.seat.x, st.seat.y - 60), 'only');
 });
 
-test('click on a fit-to-width (shrunk) canvas hits the agent drawn under the pointer', () => {
-  const big = { ...layout, width: 912, height: 800, rooms: [{ ...layout.rooms[0], width: 912, height: 800, stations: [
-    { agent: { id: 'near', state: 'working' }, seat: { x: 100, y: 100 }, manager: false },
-    { agent: { id: 'far', state: 'working' }, seat: { x: 760, y: 700 }, manager: false },
-  ] }] } as unknown as Layout;
-  const shown = fitSceneWidth(big.width, big.height, 300);
-  const bounds = { left: 40, top: 10, ...shown };
-  const click = (x: number, y: number) => {
-    const point = scenePoint(bounds.left + x * shown.width / big.width, bounds.top + y * shown.height / big.height, bounds, big)!;
-    return agentAtPoint(big, {}, point.x, point.y);
-  };
-  assert.equal(click(760, 680), 'far');
-  assert.equal(click(100, 80), 'near');
-  assert.equal(click(400, 400), null);
-  // 축소 후 화면에서 1px 차이는 장면에서 약 3px이므로 몸 바깥 4px 지점은 빗나가야 한다.
-  assert.equal(click(760 + 24, 680), null);
+test('scope all: clicks resolve in the right room, ids stay unique per room', () => {
+  const s = snapAll([{ name: 'a', offices: [group(3, 'a'), solo('as')] }, { name: 'b', offices: [mixed(9, 'b')] }]);
+  const layout = layoutOffices(s);
+  const actors = step({}, s, 0, layout);
+  for (const st of everyone(layout)) assert.equal(agentAtPoint(layout, actors, st.plate.x, st.plate.y), st.agent.id);
 });
 
-test('scenePoint handles independent horizontal and vertical scaling and fractional offsets', () => {
-  const point = scenePoint(110.5, 60.25, { left: 10.5, top: 20.25, width: 300, height: 100 }, layout)!;
-  assert.deepEqual(point, { x: 200, y: 160 });
-});
-
-test('a moving agent is hit where it is now, not at its seat', () => {
-  assert.equal(agentAtPoint(layout, actors, 350, 230), 'member');
-  assert.equal(agentAtPoint(layout, actors, 200, 180), null);
-  assert.equal(agentAtPoint(layout, actors, 200, 200 - 30), null);
+test('empty space, headers and out-of-scene points return null', () => {
+  const s = snap([group(3)]);
+  const layout = layoutOffices(s);
+  const actors = step({}, s, 0, layout);
+  assert.equal(agentAtPoint(layout, actors, 5, 5), null);
+  assert.equal(agentAtPoint(layout, actors, -50, -50), null);
+  assert.equal(agentAtPoint(layout, actors, 99999, 99999), null);
+  assert.equal(agentAtPoint(layout, actors, 700, 10), null, 'top bar');
 });
 
 test('an agent without an actor yet is hit at its seat', () => {
-  assert.equal(agentAtPoint(layout, {}, 200, 180), 'member');
-  assert.equal(agentAtPoint(layout, {}, 100, 80), 'manager');
+  const layout = layoutOffices(snap([solo('a')]));
+  const st = layout.rooms[0].stations[0];
+  assert.equal(agentAtPoint(layout, {}, st.seat.x, st.seat.y - 50), 'a');
+  assert.equal(agentAtPoint(layout, {}, st.seat.x + 400, st.seat.y), null);
 });
 
-test('seated hit box is inclusive at x±22, y-50..y+22 and exclusive just outside', () => {
-  const at = (x: number, y: number) => agentAtPoint(layout, {}, x, y);
-  assert.equal(at(78, 100), 'manager');
-  assert.equal(at(122, 122), 'manager');
-  assert.equal(at(100, 50), 'manager');
-  assert.equal(at(77.9, 100), null);
-  assert.equal(at(122.1, 100), null);
-  assert.equal(at(100, 49.9), null);
-  assert.equal(at(100, 122.1), null);
+test('a walking agent is hit where it is now, not at its seat', () => {
+  const s = snap([solo('a', { state: 'away' })]);
+  const layout = layoutOffices(s);
+  const st = layout.rooms[0].stations[0];
+  const actors = advance({}, s, 700, layout);
+  const a = actors.a;
+  assert.ok(a.moving);
+  assert.equal(agentAtPoint(layout, actors, a.x, a.y - st.actorHeight * 0.4), 'a');
+  assert.equal(agentAtPoint(layout, actors, st.seat.x - 200, st.seat.y), null);
 });
 
-test('empty space, negative and out-of-scene points return null', () => {
-  for (const [x, y] of [[0, 0], [599, 399], [-10, -10], [10000, 10000], [300, 300]]) {
-    assert.equal(agentAtPoint(layout, actors, x, y), null);
+test('hit box: x within ±0.36 of the figure height, y from 0.92 height above the feet to 10px below', () => {
+  const s = snap([solo('a', { state: 'phone' })]);
+  const layout = layoutOffices(s);
+  const st = layout.rooms[0].stations[0], h = st.actorHeight, a = { x: st.seat.x, y: st.seat.y };
+  const actors = step({}, s, 0, layout);
+  const hit = (dx: number, dy: number) => agentAtPoint(layout, actors, a.x + dx, a.y + dy) === 'a';
+  const e = 0.01; // 부동소수 경계 오차를 피한다.
+  assert.ok(hit(h * 0.36 - e, -h * 0.4) && hit(-h * 0.36 + e, -h * 0.4));
+  assert.ok(!hit(h * 0.36 + e, -h * 0.4) && !hit(-h * 0.36 - e, -h * 0.4));
+  assert.ok(hit(0, -h * 0.92 + e) && !hit(0, -h * 0.92 - e));
+  // 발치 바로 아래는 같은 높이의 이름표 영역이라 아래쪽 경계 바깥은 검사하지 않는다.
+  assert.ok(hit(0, 10 - e));
+});
+
+test('overlapping walking figures: the one standing in front (larger y) wins, even if the other is nearer; equal depth goes to the later one', () => {
+  const s = snap([group(3)]);
+  const layout = layoutOffices(s);
+  const [, m0, m1] = layout.rooms[0].stations;
+  const base: any = step({}, s, 0, layout);
+  const walk = (id: string, x: number, y: number) => ({ ...base[id], moving: true, x, y });
+  const actors: any = { ...base, [m0.agent.id]: walk(m0.agent.id, 200, 300), [m1.agent.id]: walk(m1.agent.id, 240, 320) };
+  const h = m0.actorHeight, y = 300 - h * 0.4;
+  assert.equal(agentAtPoint(layout, actors, 205, y), m1.agent.id, 'in front wins although m0 is nearer');
+  assert.equal(agentAtPoint(layout, actors, 150, y), m0.agent.id, 'outside the front figure box');
+  actors[m1.agent.id] = walk(m1.agent.id, 240, 300);
+  assert.equal(agentAtPoint(layout, actors, 220, y), m1.agent.id, 'equal depth -> later station');
+});
+
+for (const width of [1536, 900, 410]) {
+  test(`plate click at ${width}px panel width hits the plate rectangle exactly (plate grows when the scene is scaled down)`, () => {
+    const s = snap([group(6)]);
+    const layout = layoutOffices(s, width);
+    const actors = step({}, s, 0, layout);
+    const scale = Math.min(1, width / 1536);
+    assert.equal(layout.viewportScale, scale);
+    for (const st of layout.rooms[0].stations) {
+      const font = Math.max(18, 6.5 / scale), pad = Math.max(3, 1 / scale), height = font * 1.35 + pad * 2;
+      const left = st.plate.x - st.plateWidth / 2, top = st.plate.y - height / 2, e = 0.01;
+      for (const [dx, dy] of [[e, e], [st.plateWidth - e, e], [e, height - e], [st.plateWidth - e, height - e], [st.plateWidth / 2, height / 2]]) {
+        assert.equal(agentAtPoint(layout, actors, left + dx, top + dy), st.agent.id, `${st.agent.id} +(${dx},${dy})`);
+      }
+      assert.ok(height * scale >= 6.5 * 1.35, 'plate stays readable on screen');
+    }
+  });
+}
+
+test('plate depth: a walker in front of a desk owns the plate area, a walker behind it does not', () => {
+  const s = snap([group(3)]);
+  const layout = layoutOffices(s);
+  const [, owner, other] = layout.rooms[0].stations;
+  const base: any = step({}, s, 0, layout);
+  const depth = owner.y + owner.height;
+  const walk = (y: number) => ({ ...base, [other.agent.id]: { ...base[other.agent.id], moving: true, x: owner.plate.x, y } });
+  assert.equal(agentAtPoint(layout, walk(depth + 20), owner.plate.x, owner.plate.y), other.agent.id, 'front');
+  assert.equal(agentAtPoint(layout, walk(depth - 20), owner.plate.x, owner.plate.y), owner.agent.id, 'behind');
+});
+
+test('scenePoint maps a scaled canvas click to scene coordinates, including fractional offsets and fit-to-width', () => {
+  const layout = layoutOffices(snap([group(6)]));
+  assert.deepEqual(scenePoint(225, 150, { left: 50, top: 50, width: 768, height: layout.height / 2 }, layout), { x: 350, y: 200 });
+  assert.equal(scenePoint(0, 0, { left: 0, top: 0, width: 0, height: 0 }, layout), null);
+  const shown = fitSceneWidth(layout.width, layout.height, 400);
+  const bounds = { left: 40, top: 10, ...shown };
+  const s = snap([group(6)]);
+  const actors = step({}, s, 0, layout);
+  for (const st of everyone(layout)) {
+    const p = scenePoint(bounds.left + st.plate.x * shown.width / layout.width, bounds.top + st.plate.y * shown.height / layout.height, bounds, layout)!;
+    assert.equal(agentAtPoint(layout, actors, p.x, p.y), st.agent.id);
   }
-  assert.equal(agentAtPoint({ ...layout, rooms: [] }, {}, 100, 100), null);
-});
-
-test('overlapping agents across rooms pick the later room, matching draw order', () => {
-  const two = { ...layout, rooms: [
-    { ...layout.rooms[0], id: 'first', stations: [{ agent: { id: 'a', state: 'working' }, seat: { x: 100, y: 100 }, manager: false }] },
-    { ...layout.rooms[0], id: 'second', stations: [{ agent: { id: 'b', state: 'working' }, seat: { x: 100, y: 100 }, manager: false }] },
-  ] } as unknown as Layout;
-  assert.equal(agentAtPoint(two, {}, 100, 80), 'b');
-});
-
-test('agents that do not overlap stay individually selectable when their boxes are adjacent', () => {
-  const adjacent = { ...actors, member: { ...actors.member, x: 141, y: 100 } };
-  assert.equal(agentAtPoint(layout, adjacent, 121, 80), 'member');
-  assert.equal(agentAtPoint(layout, adjacent, 119, 80), 'manager');
-});
-
-const awayLayout = { ...layout, rooms: [{ ...layout.rooms[0], stations: [
-  { agent: { id: 'idle', state: 'away' }, seat: { x: 100, y: 100 }, manager: false },
-] }] } as unknown as Layout;
-const standing = { idle: { x: 350, y: 250, moving: false, direction: 'down', phase: 0 } } as Actors;
-
-test('a standing (away) figure is hit on its legs, feet and hands, not just its torso', () => {
-  for (const [x, y, part] of [[342, 275, 'left foot'], [358, 275, 'right foot'], [350, 280, 'legs'],
-    [350 - 26, 260, 'left hand'], [350 + 26, 260, 'right hand'], [350, 205, 'head top']] as const) {
-    assert.equal(agentAtPoint(awayLayout, standing, x, y), 'idle', part);
-  }
-  assert.equal(agentAtPoint(awayLayout, standing, 350 + 28.1, 250), null);
-  assert.equal(agentAtPoint(awayLayout, standing, 350, 280.1), null);
-});
-
-test('a moving agent uses the standing hit box even while its state is working', () => {
-  const walking = { ...standing, idle: { ...standing.idle, moving: true } };
-  const working = { ...awayLayout, rooms: [{ ...awayLayout.rooms[0], stations: [
-    { agent: { id: 'idle', state: 'working' }, seat: { x: 100, y: 100 }, manager: false },
-  ] }] } as unknown as Layout;
-  assert.equal(agentAtPoint(working, walking, 350, 278), 'idle');
-  assert.equal(agentAtPoint(working, standing, 350, 278), null);
-});
-
-test('overlapping hit boxes pick the figure nearest the pointer, ties go to the last drawn', () => {
-  const pair = { ...layout, rooms: [{ ...layout.rooms[0], stations: [
-    { agent: { id: 'left', state: 'working' }, seat: { x: 100, y: 100 }, manager: false },
-    { agent: { id: 'right', state: 'working' }, seat: { x: 130, y: 100 }, manager: false },
-  ] }] } as unknown as Layout;
-  assert.equal(agentAtPoint(pair, {}, 105, 90), 'left');
-  assert.equal(agentAtPoint(pair, {}, 125, 90), 'right');
-  assert.equal(agentAtPoint(pair, {}, 115, 90), 'right');
 });

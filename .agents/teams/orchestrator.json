@@ -2,7 +2,7 @@
   "version": 1,
   "goal": "paseo plugin 제작. 에이전트를 오피스 처럼 보이고, 게임처럼 일 할 때는 열심히 움직이고, 일하지 않을때는 잠자거나 휴대폰을 쳐다 보고 있도록.",
   "orchestrator": {
-    "workspace": "orchestrator",
+    "workspace": "Greeting with no task specified",
     "provider": "claude",
     "model": "claude-opus-5-5"
   },
@@ -12,8 +12,10 @@
       "provider": "claude",
       "model": "claude-sonnet-5-5",
       "folders": [
-        "src/plugin",
-        "src/state",
+        "server",
+        "shared",
+        "index.server.ts",
+        "paseo-plugin.json",
         "package.json"
       ],
       "instructions": "paseo plugin의 entry point, manifest와 빌드 설정을 만들고, 에이전트 이벤트를 구독해서 각 에이전트의 상태를 working, idle, sleeping, phone 같은 상태 기계로 바꾸는 typed store를 구현한다. 렌더러가 쓸 상태 인터페이스는 scene 역할과 계약으로 정하고, 이 인터페이스는 시각 표현과 무관하게 유지한다."
@@ -21,16 +23,17 @@
     {
       "name": "scene",
       "provider": "codex",
-      "model": "gpt-6.1-terra",
+      "model": "gpt-6.1-sol",
       "folders": [
-        "src/scene"
+        "client",
+        "index.client.tsx"
       ],
       "instructions": "plugin이 내보내는 상태를 구독해서 게임 같은 오피스 뷰를 렌더링한다. 책상 배치와 에이전트 캐릭터를 그리고, 상태별 애니메이션을 만든다: working이면 타이핑하고 바쁘게 움직이고, idle이면 잠을 자거나(Zzz) 휴대폰을 본다. 상태가 바뀔 때는 부드럽게 전환한다."
     },
     {
       "name": "art",
       "provider": "codex",
-      "model": "gpt-6.1-terra",
+      "model": "gpt-6.1-sol",
       "folders": [
         "assets"
       ],

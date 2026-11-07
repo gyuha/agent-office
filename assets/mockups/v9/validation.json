@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-06",
+  "browser": "headless Chrome, file://",
+  "captures": [
+    {
+      "n": 3,
+      "elapsed": 2.8729000000953673,
+      "cols": 3,
+      "rows": 1,
+      "world": [
+        608,
+        512
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v9/preview-3.png",
+      "bytes": 70843
+    },
+    {
+      "n": 6,
+      "elapsed": 2.8755,
+      "cols": 3,
+      "rows": 2,
+      "world": [
+        608,
+        512
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v9/preview-6.png",
+      "bytes": 74136
+    },
+    {
+      "n": 10,
+      "elapsed": 2.8814000000953675,
+      "cols": 4,
+      "rows": 3,
+      "world": [
+        736,
+        608
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v9/preview-10.png",
+      "bytes": 82556
+    },
+    {
+      "n": 16,
+      "elapsed": 2.8842000000476835,
+      "cols": 4,
+      "rows": 4,
+      "world": [
+        736,
+        736
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v9/preview-16.png",
+      "bytes": 95368
+    }
+  ],
+  "consoleErrors": 0,
+  "checks": {
+    "N1through16StationBoundsAndNonOverlap": true,
+    "all28PngsFixed24ColorPalette": true,
+    "all28PngDimensionsMultipleOf16": true,
+    "alphaBinary": true,
+    "layoutDataMatchesJson": true,
+    "manualPhoneUi": true,
+    "idleAfter12SecondsBecomesSleeping": true,
+    "countButtons3And16": true,
+    "singleWalkingVisitor": true,
+    "width900DocumentHasNoHorizontalOverflow": true,
+    "width900RoomScrollable": true
+  },
+  "automaticTransitionsSeconds": [
+    3,
+    5,
+    7
+  ],
+  "narrow": {
+    "viewportWidth": 900,
+    "documentWidth": 885,
+    "roomScrollWidth": 1472
+  },
+  "notes": [
+    "4개 preview는 2.85초 이상 실행한 뒤 full-page 캡처했습니다.",
+    "3·6·10·16명 캡처를 직접 열어 가구·명패·말풍선의 겹침과 잘림을 확인했습니다.",
+    "900px에서는 방만 가로 스크롤되며 픽셀 배율을 유지합니다."
+  ]
+}

@@ -16,7 +16,7 @@ cd tests && npm run test:unit
 
 ## 2. Playwright 시각 회귀 테스트 실행 방법 (`tests/visual/`)
 
-`tests/` 디렉터리 안에 독립된 `package.json`과 `@playwright/test`가 설치되어 있다. `client/scene/core/`와 `client/scene/generated/clay.ts`(SVG 파츠 data URI)를 번들한 결정적 하네스(`tests/visual/harness/index.html`)를 통해 실시간 `requestAnimationFrame` 대신 고정 시각 `t`와 고정 `dtMs` 스텝을 주입해 렌더링한다.
+`tests/` 디렉터리 안에 독립된 `package.json`과 `@playwright/test`가 있다(`cd tests && npm install`). `client/scene/core/`와 `client/scene/generated/office.ts`(v10 매니페스트 + 시트 data URI)를 번들한 결정적 하네스(`tests/visual/harness/index.html`)가 시간을 전부 주입한다: 액터 시계는 `core.step`의 dt, 효과·flame은 `draw(..., timeMs, sprites, epoch)` 인자로 정한다. DOM 오버레이(상단바·이름표 버튼)는 canvas 밖이라 스크린샷에 없으며 `tests/unit/sceneHeader.test.ts`가 가짜 DOM으로 검증한다.
 
 ```bash
 # 시각 회귀 테스트 실행 (하네스 자동 빌드 포함)
@@ -48,17 +48,15 @@ cd tests && npm test
 - `tests/unit/machine.test.ts`: `shared/state/machine.ts` 상태 기계 단위 테스트 (이벤트→상태, `SLEEP_AFTER_MS`, `needsAttention` 회귀, 생명주기, 부모 트리/순환/다중 워크스페이스 그룹, 스냅샷 범위, 순서 위반 내성)
 - `tests/unit/mapping.test.ts`: `server/mapping.ts` 순수 매핑 함수 단위 테스트 (`identityFromHook`, `parentFromLabels`, `identityFromListed`, `seedFromListed`, `workspaceProjectFromListed`)
 - `tests/unit/office.test.ts`: `server/office.ts` `contributeOffice(server, { now })` 통합 및 `refreshWorkspaces`/`loadAgents` 재시도 회귀 테스트
-- `tests/visual/scene.spec.ts`: `client/scene/core/` Playwright 시각 회귀 및 기하/전이 검증
-  1. **결정성**: 동일 입력(스냅샷, 액터, 시각 `t`) 재렌더링 시 픽셀 차이 `0` 단언
-  2. **상태별 애니메이션**: `working`(`t=0, 100, 200`), `phone`(`t=0, 400, 800`), `sleeping`(`t=0, 400, 800`), `away` 이동 중(`t=200, 350`) 및 도착 후(`t=2000, 2400`), `needsAttention`(`t=0, 200`) 기준 이미지 비교 및 시간 경과에 따른 프레임 변화(`diff > 0`) 단언
-  3. **레이아웃**: `project-1`, `project-3`, `project-7`, `project-15`, `all`(3개 프로젝트), `empty` 캡처 비교 + 비시각 기하 검증(에이전트 수 증가 시 방 넓이 단조 증가, 오피스 간 비겹침, 이름표 사각형 간 비겹침)
-  4. **전이**: `working → away → working` 전이 시 프레임당 이동 거리 상한(`dtMs * 0.065`) 단언(순간이동 방지), 좌석 복귀, 동일 ID 신규 스냅샷 투입 시 위치 보존 및 중간 장면 캡처 비교
-  5. **Known Issues**: 관리자 책상과 유리 파티션 하단 겹침, 이동 액터 간 동적 충돌 회피 부재를 실패 없이 검증/문서화
+- `tests/unit/sceneAnimation.test.ts`: 상태→애니메이션 매핑(working 타이핑·60초 flame, away 소파 walk→away 루프·소파 만석 시 자리, phone 자리, sleeping zzz, needsAttention 효과), 2초 폴링에도 시계 불변, 상태 전환 crossfade, 리사이즈 연속성
+- `tests/unit/layoutGeometry.test.ts`: N=1~16 v10 배치 공식·비겹침·방 경계, 관리자 위치/명판, solo, scope all 스택
+- `tests/unit/hitTest.test.ts`: 명판·책상(앉은 캐릭터·책상 몸체) 클릭 → agent id, 이동 중, 겹침, 스케일 보정
+- `tests/unit/sceneHeader.test.ts`: 가짜 DOM으로 `mountOfficeScene`을 실행해 상단바(PROJECT / WORKSPACE(null이면 숨김) / AGENT)와 명판 버튼 검증, `providerColor`
+- `tests/unit/manifestSheets.test.ts`: 매니페스트·generated 일관성, `sheetFrame`·`draw`가 임의 frames/fps에서 동작
+- `tests/unit/viewport.test.ts`: `fitSceneWidth`, 1536 고정 좌표
+- `tests/visual/scene.spec.ts`: 상태별(working/away-on-sofa/phone/sleeping/attention/flame) 및 레이아웃(solo/n3/n6/n10/n16/all/empty) 기준 스크린샷, 결정성·flame 60초·폴링 위상 불변 단언
 
-## 4. 클레이 전환 후 변경 사항
+## 4. 알려진 결함 / 대기 항목 (`{ todo }` 테스트)
 
-- 하네스는 `generated/clay.ts`의 `clayData`를 디코드하고 `spritesReady`로 대기한다.
-- 레이아웃 기하(섬당 4석, 방 크기 단조 증가, 15명 범위, away 슬롯, 이름표/오피스 비겹침, 관리자실)는 브라우저 없이 `tests/unit/layoutGeometry.test.ts`에서 검증한다. `tests/unit/helpers/scene.ts`가 확장자 없는 import를 위한 resolve 훅을 등록한다.
-- `tests/unit/providerMonitor.test.ts`: provider별 monitor 자산을 front(모니터 뒷면)와 back(화면 쪽 아이콘) 좌석 모두에서 검증한다.
-- phone 자세는 시간 곡선이 없으므로 프레임이 변하지 않는 것을 단언한다.
-- `{ todo }`로 표시한 테스트는 알려진 결함이다(away 이름표 겹침, 서 있는 캐릭터 히트 박스). 결함이 고쳐지면 todo를 제거한다.
+- `generated/office.ts`가 `assets/office/manifest.json`보다 낡았다(`npm run sprites`로 재생성). 재생성 후 `manifestSheets.test.ts`의 todo와 `scene.spec.ts`의 skip(다중 프레임 시트)을 확인하고, 기준 스크린샷은 art 시트 교체가 끝난 뒤 `cd tests && npm run test:visual:update`로 한 번 갱신한다.
+- `providerColor`가 프로토타입 키(`constructor` 등)에 함수를 돌려준다(scene).

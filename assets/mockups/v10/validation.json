@@ -1,0 +1,709 @@
+{
+  "reports": [
+    {
+      "n": 6,
+      "elapsed": 2.8437999999523162,
+      "cols": 3,
+      "rows": 2,
+      "world": [
+        1536,
+        1024
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-6.png",
+      "bytes": 2669695
+    },
+    {
+      "n": 3,
+      "elapsed": 2.8730999998092654,
+      "cols": 3,
+      "rows": 1,
+      "world": [
+        1536,
+        1024
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-3.png",
+      "bytes": 2412532
+    },
+    {
+      "n": 10,
+      "elapsed": 2.8737000000953676,
+      "cols": 4,
+      "rows": 3,
+      "world": [
+        1536,
+        1536
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-10.png",
+      "bytes": 3204285
+    },
+    {
+      "n": 16,
+      "elapsed": 2.872800000143051,
+      "cols": 4,
+      "rows": 4,
+      "world": [
+        1536,
+        1536
+      ],
+      "errors": 0,
+      "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-16.png",
+      "bytes": 3403917
+    }
+  ],
+  "errors": [],
+  "checks": {
+    "manualPhoneThenSleepingAfter12Seconds": true,
+    "automaticTransitionsSeconds": [
+      3,
+      5,
+      7
+    ],
+    "countButtonWorks": true,
+    "singleVisitor": true,
+    "hoverTooltip": "Mina · claude · working",
+    "htmlHudUpdate": 130,
+    "narrow900": {
+      "documentWidth": 885,
+      "sceneWidth": 885
+    },
+    "consoleErrors": 0,
+    "N1to16PodBoundsAndNonOverlap": true,
+    "allGenerationCallsReferenceOfficeC": true,
+    "finalImagesVisuallyReviewed": true
+  },
+  "deskCorrection": {
+    "date": "2026-11-07",
+    "reports": [
+      {
+        "n": 6,
+        "elapsed": 2.8590999999523166,
+        "cols": 3,
+        "rows": 2,
+        "world": [
+          1536,
+          1024
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-6.png",
+        "bytes": 2666124
+      },
+      {
+        "n": 3,
+        "elapsed": 2.8752000000953677,
+        "cols": 3,
+        "rows": 1,
+        "world": [
+          1536,
+          1024
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-3.png",
+        "bytes": 2408093
+      },
+      {
+        "n": 10,
+        "elapsed": 2.880000000047684,
+        "cols": 4,
+        "rows": 3,
+        "world": [
+          1536,
+          1536
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-10.png",
+        "bytes": 3206716
+      },
+      {
+        "n": 16,
+        "elapsed": 2.877200000143051,
+        "cols": 4,
+        "rows": 4,
+        "world": [
+          1536,
+          1536
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-16.png",
+        "bytes": 3405974
+      }
+    ],
+    "consoleErrors": 0,
+    "sceneHtmlAndLayoutHashesUnchanged": true,
+    "protectedFileCount": 113,
+    "protectedFilesChanged": 0,
+    "generatedEdits": 4,
+    "visualReview": [
+      "flat desk fronts, no drawer/handle/subdivision",
+      "CRT/LCD rear cases face viewer",
+      "faces remain unobstructed"
+    ],
+    "scope": "v10 only"
+  },
+  "currentRevision": "context-header-desk-nameplates",
+  "headerAndNameplates": {
+    "captures": [
+      {
+        "n": 6,
+        "elapsed": 2.843699999856949,
+        "cols": 3,
+        "rows": 2,
+        "world": [
+          1536,
+          1024
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-6.png",
+        "bytes": 2603625
+      },
+      {
+        "n": 3,
+        "elapsed": 2.8748,
+        "cols": 3,
+        "rows": 1,
+        "world": [
+          1536,
+          1024
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-3.png",
+        "bytes": 2361207
+      },
+      {
+        "n": 10,
+        "elapsed": 2.8721999999046326,
+        "cols": 4,
+        "rows": 3,
+        "world": [
+          1536,
+          1536
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-10.png",
+        "bytes": 3141661
+      },
+      {
+        "n": 16,
+        "elapsed": 2.8702000000476837,
+        "cols": 4,
+        "rows": 4,
+        "world": [
+          1536,
+          1536
+        ],
+        "errors": 0,
+        "file": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/preview-16.png",
+        "bytes": 3326617
+      }
+    ],
+    "narrow": [
+      {
+        "N": 3,
+        "documentWidth": 900,
+        "viewport": 900,
+        "bottomBars": 0,
+        "headers": [
+          {
+            "text": "agent-office",
+            "title": "agent-office",
+            "overflow": false
+          },
+          {
+            "text": "Greeting with no task specified",
+            "title": "Greeting with no task specified",
+            "overflow": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "overflow": false
+          }
+        ],
+        "plates": [
+          {
+            "text": "plugin#FDF9",
+            "title": "plugin#FDF9",
+            "x": 228.6875,
+            "right": 363.09375,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "scene#3C71",
+            "title": "scene#3C71",
+            "x": 451.34375,
+            "right": 585.75,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "art#94A2",
+            "title": "art#94A2",
+            "x": 674,
+            "right": 808.40625,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "x": 401.359375,
+            "right": 541.984375,
+            "width": 140.625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          }
+        ],
+        "errors": 0
+      },
+      {
+        "N": 6,
+        "documentWidth": 900,
+        "viewport": 900,
+        "bottomBars": 0,
+        "headers": [
+          {
+            "text": "agent-office",
+            "title": "agent-office",
+            "overflow": false
+          },
+          {
+            "text": "Greeting with no task specified",
+            "title": "Greeting with no task specified",
+            "overflow": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "overflow": false
+          }
+        ],
+        "plates": [
+          {
+            "text": "plugin#FDF9",
+            "title": "plugin#FDF9",
+            "x": 228.6875,
+            "right": 363.09375,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "scene#3C71",
+            "title": "scene#3C71",
+            "x": 451.34375,
+            "right": 585.75,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "art#94A2",
+            "title": "art#94A2",
+            "x": 674,
+            "right": 808.40625,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "qa#0499",
+            "title": "qa#0499",
+            "x": 228.6875,
+            "right": 363.09375,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "review#A1C2",
+            "title": "review#A1C2",
+            "x": 451.34375,
+            "right": 585.75,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "docs#7B10",
+            "title": "docs#7B10",
+            "x": 674,
+            "right": 808.40625,
+            "width": 134.40625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "x": 397.265625,
+            "right": 537.890625,
+            "width": 140.625,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          }
+        ],
+        "errors": 0
+      },
+      {
+        "N": 10,
+        "documentWidth": 885,
+        "viewport": 900,
+        "bottomBars": 0,
+        "headers": [
+          {
+            "text": "agent-office",
+            "title": "agent-office",
+            "overflow": false
+          },
+          {
+            "text": "Greeting with no task specified",
+            "title": "Greeting with no task specified",
+            "overflow": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "overflow": false
+          }
+        ],
+        "plates": [
+          {
+            "text": "plugin#FDF9",
+            "title": "plugin#FDF9",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "scene#3C71",
+            "title": "scene#3C71",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "art#94A2",
+            "title": "art#94A2",
+            "x": 544.78125,
+            "right": 654.78125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "qa#0499",
+            "title": "qa#0499",
+            "x": 709.578125,
+            "right": 819.578125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "review#A1C2",
+            "title": "review#A1C2",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "docs#7B10",
+            "title": "docs#7B10",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "infra#55E3",
+            "title": "infra#55E3",
+            "x": 544.78125,
+            "right": 654.78125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "api#C0DE",
+            "title": "api#C0DE",
+            "x": 709.578125,
+            "right": 819.578125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "ui#5E19",
+            "title": "ui#5E19",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "perf#0F42",
+            "title": "perf#0F42",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "x": 402.15625,
+            "right": 540.4375,
+            "width": 138.28125,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          }
+        ],
+        "errors": 0
+      },
+      {
+        "N": 16,
+        "documentWidth": 885,
+        "viewport": 900,
+        "bottomBars": 0,
+        "headers": [
+          {
+            "text": "agent-office",
+            "title": "agent-office",
+            "overflow": false
+          },
+          {
+            "text": "Greeting with no task specified",
+            "title": "Greeting with no task specified",
+            "overflow": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "overflow": false
+          }
+        ],
+        "plates": [
+          {
+            "text": "plugin#FDF9",
+            "title": "plugin#FDF9",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "scene#3C71",
+            "title": "scene#3C71",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "art#94A2",
+            "title": "art#94A2",
+            "x": 544.78125,
+            "right": 654.78125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "qa#0499",
+            "title": "qa#0499",
+            "x": 709.578125,
+            "right": 819.578125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "review#A1C2",
+            "title": "review#A1C2",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "docs#7B10",
+            "title": "docs#7B10",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "infra#55E3",
+            "title": "infra#55E3",
+            "x": 544.78125,
+            "right": 654.78125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "api#C0DE",
+            "title": "api#C0DE",
+            "x": 709.578125,
+            "right": 819.578125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "ui#5E19",
+            "title": "ui#5E19",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "perf#0F42",
+            "title": "perf#0F42",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "data#91AB",
+            "title": "data#91AB",
+            "x": 544.78125,
+            "right": 654.78125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "auth#3D7E",
+            "title": "auth#3D7E",
+            "x": 709.578125,
+            "right": 819.578125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "ci#B8F0",
+            "title": "ci#B8F0",
+            "x": 215.21875,
+            "right": 325.21875,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "search#64CA",
+            "title": "search#64CA",
+            "x": 380,
+            "right": 490,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "mobile#E27D",
+            "title": "mobile#E27D",
+            "x": 544.78125,
+            "right": 654.78125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "ops#4A09",
+            "title": "ops#4A09",
+            "x": 709.578125,
+            "right": 819.578125,
+            "width": 110,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          },
+          {
+            "text": "Orchestrator",
+            "title": "Orchestrator",
+            "x": 402.15625,
+            "right": 540.4375,
+            "width": 138.28125,
+            "height": 22.1875,
+            "font": "12px",
+            "truncated": false
+          }
+        ],
+        "errors": 0
+      }
+    ],
+    "overflow": {
+      "headerTitle": "Greeting with no task specified — long workspace title for overflow verification",
+      "headerTruncated": true,
+      "headerEllipsis": "ellipsis",
+      "plateTitle": "plugin#FDF9-very-long-dynamic-agent-name",
+      "plateTruncated": true,
+      "plateEllipsis": "ellipsis"
+    },
+    "unchangedArtFiles": 136,
+    "worldAndAssetLayoutUnchanged": true,
+    "consoleErrors": 0
+  }
+}

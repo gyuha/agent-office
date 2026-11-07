@@ -1,95 +1,24 @@
-// Run from repository root; the output contains the same core used by the app.
-const fs = require('fs');
-const ts = require('typescript');
-const names = ['layout', 'actors', 'sprites', 'effects', 'clay', 'draw', 'index'];
-const modules = names.map(name => {
-  const source = fs.readFileSync(`client/scene/core/${name}.ts`, 'utf8');
-  const code = ts.transpileModule(source, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 },
-  }).outputText;
-  return `${JSON.stringify('./' + name)}: function(exports, require) {\n${code}\n}`;
-}).join(',\n');
-const data = fs.readFileSync('client/scene/generated/clay.ts', 'utf8')
-  .replace(/^.*export const clayData = /s, '').replace(/ as const;\s*$/, '');
-const html = `<!doctype html><html><head><meta charset="utf-8">
-<title>Office scene preview</title><style>
-body{margin:0;background:#111a28;color:white;font:14px sans-serif}
-nav{position:sticky;top:0;background:#243344;padding:10px;z-index:1}
-canvas{display:block;image-rendering:auto}
-</style></head><body><nav><label>Scenario <select id="scenario">
-<option value="project">Project overview</option><option value="project-1">Project: 1</option>
-<option value="project-3">Project: 3</option><option value="project-5">Project: 5</option>
-<option value="project-7">Project: 7</option>
-<option value="project-15">Project: 15</option><option value="all">All projects</option>
-<option value="transition">Transition</option><option value="empty">Empty</option>
-</select></label> <span id="status"></span></nav><canvas id="canvas"></canvas><script>
-const modules={${modules}}, cache={};
-function require(name){if(!cache[name]){const exports={};cache[name]=exports;modules[name](exports,require)}return cache[name]}
-const core=require('./index');
-const data=${data};const sprites={};
-const spritesReady=Promise.all(Object.entries(data).map(([key,s])=>new Promise((resolve,reject)=>{
-  const image=new Image(); image.onload=()=>{
-    const expectedWidth=s.metadata.size[0]*s.rasterScale, expectedHeight=s.metadata.size[1]*s.rasterScale;
-    if(image.naturalWidth!==expectedWidth || image.naturalHeight!==expectedHeight){
-      reject(new Error('Unexpected SVG image size for '+key+': '+image.naturalWidth+'x'+image.naturalHeight+
-        ', expected '+expectedWidth+'x'+expectedHeight));return;
-    }
-    sprites[key]={image,metadata:s.metadata};resolve();
-  };
-  image.onerror=reject; image.src=s.uri;
-})));
-window.spritesReady=spritesReady;
-const states=['working','away','phone','sleeping'];
-function agent(id,state){return {id,name:id==='0'?'Orchestrator':'Agent '+id,
-  provider:['claude','codex','antigravity','copilot','muse','opencode','pi'][Number(id)%7],state,stateSince:0,
-  needsAttention:id==='2'}}
-function office(n,prefix){
-  const members=Array.from({length:n},(_,i)=>agent(String(i),states[i%4]));
-  for(const member of members)member.id=prefix+member.id;
-  return {id:prefix,kind:n>1?'group':'solo',manager:n>1?members.shift():null,members};
+// The standalone preview executes exactly the app's mountOfficeScene implementation.
+const fs=require('fs'),ts=require('typescript');
+const modules={};
+for(const name of ['core/layout','core/actors','core/draw','core/office-assets','core/hitTest','core/nameplates','core/viewport','core/index','mount-scene','generated/office']){
+  const source=fs.readFileSync(`client/scene/${name}.ts`,'utf8');
+  modules[name]=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2020}}).outputText;
 }
-let start=performance.now();
-function snapshot(mode,now){
-  let projects;
-  if(mode==='all')projects=[0,1,2].map((i)=>({projectId:'p'+i,
-    projectName:['Atlas','Beacon','Cosmos'][i],offices:[office([7,3,1][i],'p'+i)]}));
-  else {
-    const counts=mode==='project'?[7,3,1]:mode==='empty'?[]:
-      mode==='transition'?[3]:[Number(mode.split('-')[1])];
-    projects=[{projectId:'p',projectName:'Studio',offices:counts.map((n,i)=>office(n,'o'+i))}];
-  }
-  if(mode==='transition'){
-    const state=['working','away','working'][Math.floor((now-start)/5000)%3];
-    projects[0].offices[0].members[0].state=state;
-    document.querySelector('#status').textContent='First member: '+state+' (changes every 5 seconds)';
-  }else document.querySelector('#status').textContent='';
-  return {scope:mode==='all'?'all':'project',projects,generatedAt:0};
-}
-const canvas=document.querySelector('#canvas'),ctx=canvas.getContext('2d');
-const select=document.querySelector('#scenario');let actors={},last=0;
-function selectHash(){const mode=location.hash.slice(1)||'project';
-  select.value=[...select.options].some(o=>o.value===mode)?mode:'project';
-  actors={};last=0;start=performance.now();}
-window.addEventListener('hashchange',selectHash);
-select.onchange=()=>{location.hash=select.value};selectHash();
-function tick(t){
-  const now=performance.now();
-  const snap=snapshot(select.value,now),scale=innerWidth<500?1:2;
-  const layout=core.layoutOffices(snap,Math.max(192,Math.floor(innerWidth/scale)));
-  const pixelRatio=Math.min(2,Math.max(1,window.devicePixelRatio||1));
-  const logicalWidth=layout.width*scale,logicalHeight=layout.height*scale;
-  const physicalWidth=Math.round(logicalWidth*pixelRatio),physicalHeight=Math.round(logicalHeight*pixelRatio);
-  if(canvas.width!==physicalWidth||canvas.height!==physicalHeight){
-    canvas.width=physicalWidth;canvas.height=physicalHeight;
-    canvas.style.width=logicalWidth+'px';canvas.style.height=logicalHeight+'px';
-  }
-  actors=core.step(actors,snap,last?Math.min(100,t-last):0,layout);last=t;
-  ctx.setTransform(scale*pixelRatio,0,0,scale*pixelRatio,0,0);core.draw(ctx,layout,actors,t,sprites);
-  requestAnimationFrame(tick);
-}requestAnimationFrame(tick);
-</script></body></html>`;
-const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)];
-if (!scripts.length) throw new Error('Preview has no inline script');
-for (const match of scripts) new Function(match[1]);
-fs.writeFileSync('client/scene/preview.html', html);
-console.log('Preview inline script syntax OK');
+const fixture=fs.readFileSync('client/scene/fixtures.cjs','utf8');
+const html=`<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Office v10 runtime preview</title><style>body{margin:0;background:#f2e6d1}nav{padding:8px;font:14px monospace;background:#f2e6d1}#mount{max-width:1536px;margin:auto}select,button{font:inherit}#picked{margin-left:12px}</style><nav><label>Scenario <select id="scenario">${['3','4','6','10','16','solo','group-solos','all','empty'].map(n=>`<option>${n}</option>`).join('')}</select></label> <label>State <select id="state">${['mixed','working','away','phone','sleeping','attention'].map(n=>`<option>${n}</option>`).join('')}</select></label> <button id="poll">Poll identical snapshot</button><span id="picked"></span></nav><main id="mount"></main><script>
+const source=${JSON.stringify(modules)},cache={};
+function load(name){if(cache[name])return cache[name];const exports={};cache[name]=exports;const base=name.split('/').slice(0,-1);function require(p){const parts=[...base,...p.split('/')],out=[];for(const part of parts){if(part==='.'||part==='')continue;if(part==='..')out.pop();else out.push(part);}let key=out.join('/');if(!source[key])key+='/index';return load(key);}new Function('exports','require',source[name])(exports,require);return exports;}
+const module={exports:{}};${fixture}
+const fixtureFn=module.exports.fixture;
+const scenario=document.querySelector('#scenario'),stateSelect=document.querySelector('#state');
+scenario.value=location.hash.slice(1)||'6';
+let snap=fixtureFn(scenario.value),selected=null;
+const mounted=load('mount-scene').mountOfficeScene(document.querySelector('#mount'),()=>snap,id=>{selected=id;document.querySelector('#picked').textContent=id;});
+window.preview={setTime:mounted.setTime,inspect:mounted.inspect,reset:mounted.reset,pause:mounted.pause,resume:mounted.resume,get selected(){return selected},snapshot:()=>snap,setSnapshot(value){snap=value},setState(state){snap=fixtureFn(scenario.value,state)},poll(){snap=JSON.parse(JSON.stringify(snap));}};
+scenario.onchange=()=>{location.hash=scenario.value;snap=fixtureFn(scenario.value,stateSelect.value)};
+stateSelect.onchange=()=>{snap=fixtureFn(scenario.value,stateSelect.value==='attention'?'working':stateSelect.value);if(stateSelect.value==='attention')for(const p of snap.projects)for(const o of p.offices)for(const a of [o.manager,...o.members].filter(Boolean))a.needsAttention=true;};
+document.querySelector('#poll').onclick=()=>window.preview.poll();
+</script></html>`;
+fs.writeFileSync('client/scene/preview.html',html);
+console.log(`preview.html: ${Buffer.byteLength(html)} bytes`);

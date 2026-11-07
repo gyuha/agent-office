@@ -23,6 +23,8 @@ export interface WorkspaceProject {
   workspaceId: string;
   projectId: string;
   projectName: string;
+  /** 워크스페이스 제목. */
+  workspaceName: string;
 }
 
 export interface OfficeStoreOptions {
@@ -203,8 +205,8 @@ export function createOfficeStore(options: OfficeStoreOptions) {
       return false;
     },
 
-    /** projectId가 있으면 그 프로젝트만(scope "project"), 없으면 에이전트가 있는 모든 프로젝트(scope "all"). */
-    snapshot(projectId?: string): OfficeSnapshot {
+    /** projectId가 있으면 그 프로젝트만(scope "project"), 없으면 에이전트가 있는 모든 프로젝트(scope "all"). workspaceId는 scope "project"일 때 workspaceName을 채우는 데만 쓴다. */
+    snapshot(projectId?: string, workspaceId?: string): OfficeSnapshot {
       const at = now();
       const byProject = new Map<string, AgentRecord[]>();
       for (const record of agents.values()) {
@@ -221,7 +223,9 @@ export function createOfficeStore(options: OfficeStoreOptions) {
       const projects: ProjectOffices[] = projectIds
         .map((id) => ({ projectId: id, projectName: names.get(id) ?? id, offices: buildOffices(byProject.get(id) ?? [], at) }))
         .sort((a, b) => a.projectName.localeCompare(b.projectName) || a.projectId.localeCompare(b.projectId));
-      return { scope: projectId === undefined ? "all" : "project", projects, generatedAt: at };
+      const scope = projectId === undefined ? "all" : "project";
+      const workspaceName = scope === "project" && workspaceId !== undefined ? (workspaceProjects.get(workspaceId)?.workspaceName ?? null) : null;
+      return { scope, projects, generatedAt: at, workspaceName };
     },
   };
 }

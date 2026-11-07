@@ -1,0 +1,40 @@
+{
+  "sheets": 49,
+  "frames": 165,
+  "edgeHits": [
+    {
+      "id": "bubble_done",
+      "frame": 0
+    },
+    {
+      "id": "bubble_prup",
+      "frame": 0
+    }
+  ],
+  "detachedEdgeFragments": [],
+  "selectedSourceCutCrossings": [],
+  "originalNominalCutCrossings": [
+    {
+      "id": "actor-1-sleeping",
+      "crossings": [
+        {
+          "x": 1183,
+          "opaquePixels": 58
+        }
+      ]
+    },
+    {
+      "id": "actor-1-away",
+      "crossings": [
+        {
+          "x": 1183,
+          "opaquePixels": 418
+        }
+      ]
+    }
+  ],
+  "expectedSingleFrameBalloonBorders": [
+    "bubble_done",
+    "bubble_prup"
+  ]
+}

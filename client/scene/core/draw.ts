@@ -1,191 +1,117 @@
-import type { Actors, Layout, Station } from './layout';
-import { hash, part, rectPart, type ClayContext, type ClaySprites } from './clay';
-
-const PROVIDERS: Readonly<Record<string, string>> = {
-  claude: 'claude', codex: 'codex', antigravity: 'antigravity', gemini: 'antigravity',
-  copilot: 'copilot', muse: 'muse', opencode: 'opencode',
-};
-const wave = (time: number, period: number) => Math.sin(2 * Math.PI * time / period);
-
-function rig(ctx: ClayContext, sprites: ClaySprites, station: Station,
-  actor: { x: number; y: number; moving: boolean }, time: number): void {
-  const agent = station.agent;
-  const state = actor.moving ? 'away' : agent.state;
-  const variant = station.manager ? `manager-0${hash(agent.id) % 2 + 1}`
-    : `agent-0${hash(agent.id) % 8 + 1}`;
-  const base = `characters/${variant}/`;
-  const walking = actor.moving;
-  const back = station.facing === 'back' && !walking && agent.state !== 'away';
-  const t = time / 1000;
-  const work = state === 'working';
-  const sleeping = state === 'sleeping';
-  const idleY = state === 'away' && !walking ? 1.5 * wave(t, 2.5) : 0;
-  const bodyX = work ? 2 * wave(t, 0.2) : 0;
-  const walkAngle = walking ? 25 * wave(t, 0.35) : 0;
-  const radians = Math.PI / 180;
-  const phoneMotion = state === 'phone' ? wave(t, 2.7) : 0;
-  ctx.save();
-  ctx.translate(actor.x, actor.y);
-  ctx.scale(0.46, 0.46);
-  ctx.translate(bodyX, idleY + (back && sleeping ? 10 : 0));
-  ctx.rotate((sleeping ? 25 : 0) * radians);
-  for (const [side, sign] of [['l', -1], ['r', 1]] as const) {
-    ctx.save(); ctx.translate(sign * 12, 35); ctx.rotate(sign * walkAngle * radians);
-    part(ctx, sprites, base + (walking || state === 'away' ? `leg-${side}` : `leg-seated-${side}`), 0, 0);
-    ctx.restore();
-  }
-  part(ctx, sprites, base + (back ? 'body-back' : 'body'), 0, 0);
-  for (const [side, sign] of [['l', -1], ['r', 1]] as const) {
-    const upper = work ? sign * 18 * wave(t, 0.30)
-      : walking ? -sign * walkAngle : state === 'phone' && side === 'r' ? -160
-        : sleeping ? sign * 40 : 0;
-    const shoulderY = back && work ? 2 * wave(t, 0.30) : 0;
-    ctx.save(); ctx.translate(sign * 22, -15 + shoulderY); ctx.rotate(upper * radians);
-    part(ctx, sprites, base + `arm-upper-${side}${back ? '-back' : ''}`, 0, 0);
-    ctx.translate(sign * 21, 20);
-    if (state === 'phone' && side === 'r') ctx.rotate((75 + 3 * phoneMotion) * radians);
-    part(ctx, sprites, base + `arm-lower-${side}${back ? '-back' : ''}`, 0, 0);
-    ctx.translate(sign * 13, 18); part(ctx, sprites, base + `hand-${side}`, 0, 0);
-    ctx.restore();
-  }
-  ctx.save();
-  ctx.translate(sleeping ? 14 : 0, -42 + (sleeping ? 21 : back && state === 'phone' ? 7 : 0) + phoneMotion);
-  ctx.rotate((sleeping ? 65 : state === 'phone' ? 12 + 2 * phoneMotion : work ? 3 * wave(t, 0.4) : 0) * radians);
-  if (back) {
-    part(ctx, sprites, base + 'head-back', 0, 0);
-    part(ctx, sprites, base + 'hair-back', 0, 0);
-  } else {
-    part(ctx, sprites, base + 'head', 0, 0);
-    part(ctx, sprites, base + `face-${state}`, 0, 0);
-    part(ctx, sprites, base + 'hair', 0, 0);
-  }
-  ctx.restore();
-  if (state === 'phone') {
-    ctx.fillStyle = '#526a79'; ctx.fillRect(19, -36, 15, 25);
-    ctx.fillStyle = '#bce7ea'; ctx.fillRect(21, -34, 11, 18);
-    part(ctx, sprites, 'effects/phone-glow', 27, -15);
-  }
-  ctx.restore();
+import type {Actors,Layout,Room,Station,Actor} from './layout';
+import {manifest,type OfficeSprites} from './office-assets';
+import {plateGeometry,deskDepth} from './nameplates';
+export interface Context {
+  [key:string]:any;
+  drawImage(...args:any[]):void;
 }
-
-function decorations(ctx: ClayContext, sprites: ClaySprites, station: Station,
-  actor: { x: number; y: number; moving: boolean }, time: number): void {
-  const t = time / 1000;
-  if (!actor.moving && station.agent.state === 'working') {
-    const steam = (t % 1.3) / 1.3;
-    ctx.save(); ctx.globalAlpha = 1 - steam;
-    part(ctx, sprites, 'effects/steam', actor.x - 18, actor.y - 40 - steam * 7, 25, 17);
-    ctx.restore();
-    part(ctx, sprites, 'effects/sweat', actor.x + 16, actor.y - 19 + wave(t, 1) * 2, 20, 14);
-    part(ctx, sprites, 'effects/paper', actor.x - 23 + wave(t, 1.4) * 3, actor.y - 10, 22, 15);
-    const burst = (t % 1.4) / 1.4;
-    const deskY = station.seat.y + (station.facing === 'back' ? -33 : 5);
-    part(ctx, sprites, 'effects/keyboard-fragments', station.seat.x - 26 - burst * 8,
-      deskY + 14 - burst * 5, 17, 12);
-    if (t % 3 < 1) part(ctx, sprites, 'effects/exclamation', actor.x + 25, actor.y - 32, 22, 15);
-  }
-  if (!actor.moving && station.agent.state === 'sleeping') {
-    part(ctx, sprites, 'effects/zzz', actor.x + 35, actor.y - 22 + 3 * wave(t, 1.5), 26, 18);
-  }
-
+const providerColors = new Map<string,string>([['claude','#648c66'],['codex','#5b80b1'],['gemini','#96627f'],['antigravity','#96627f']]);
+export function providerColor(provider:string):string{return providerColors.get(provider)??'#b58a36';}
+/** Frame geometry, length and rate come from the manifest; arbitrary sheet lengths are supported. */
+export function sheetFrame(spec:any,image:any,time:number){
+  const w=spec.frameW||spec.frame?.[0]||image.naturalWidth||image.width;
+  const h=spec.frameH||spec.frame?.[1]||image.naturalHeight||image.height;
+  const count=Array.isArray(spec.frames)?spec.frames.length:spec.frames||1;
+  const index=spec.loop===false?Math.min(count-1,Math.floor(time*(spec.fps||1))):Math.floor(time*(spec.fps||1))%count;
+  const f=Array.isArray(spec.frames)?spec.frames[index]:null;
+  const cols=Math.max(1,Math.floor((image.naturalWidth||image.width)/w));
+  return {x:f?.x??(index%cols*w),y:f?.y??(Math.floor(index/cols)*h),w:f?.w||w,h:f?.h||h};
 }
-
-/** Draw a deterministic frame with pre-decoded SVG parts. */
-export function draw(ctx: ClayContext, layout: Layout, actors: Actors,
-  timeMs: number, sprites: ClaySprites): void {
-  ctx.imageSmoothingEnabled = true;
-  ctx.globalAlpha = 1; ctx.fillStyle = '#e8e9f4';
-  ctx.fillRect(0, 0, layout.width, layout.height);
-  ctx.font = 'bold 11px sans-serif'; ctx.textAlign = 'left'; ctx.fillStyle = '#5e6b72';
-  for (const header of layout.headers) ctx.fillText(header.text, header.x, header.y);
-  for (const room of layout.rooms) {
-    const { x, y, width: w, height: h } = room;
-    ctx.fillStyle = '#f8f5ec'; ctx.fillRect(x, y, w, h);
-    rectPart(ctx, sprites, 'room/wall', x + 4, y + 26, w - 8, 65);
-    rectPart(ctx, sprites, 'room/floor-perspective', x + 4, y + 91, w - 8, h - 95);
-    ctx.fillStyle = '#5e6b72'; ctx.font = 'bold 10px sans-serif'; ctx.textAlign = 'left';
-    ctx.fillText(room.title, x + 10, y + 17);
-    rectPart(ctx, sprites, 'furniture/window', x + 10, y + 28, 108, 54);
-    if (w > 300) rectPart(ctx, sprites, 'furniture/window', x + w - 120, y + 28, 108, 54);
-    if (room.managerRoom) rectPart(ctx, sprites, 'furniture/glass-room-back',
-      room.managerRoom.x, room.managerRoom.y, room.managerRoom.width, room.managerRoom.height);
-    rectPart(ctx, sprites, 'furniture/coffee-machine', room.pantry.x, room.pantry.y, 55, 58);
-    if (room.group) {
-      rectPart(ctx, sprites, 'furniture/water-cooler', room.pantry.x + 45, room.pantry.y, 55, 58);
+function actorKey(s:Station,state:string,sprites:OfficeSprites):string{
+  const actors=manifest.actors;
+  const entry=s.manager?actors?.orchestrator:actors?.[s.variant]||actors?.[`actor-${s.variant}`];
+  const mapped=state==='walking-left'?'walk_left':state==='walking-right'?'walk_right':state;
+  const value=entry?.[mapped]||entry?.animations?.[mapped]||(s.manager?(state==='away'?entry?.phone:entry?.working):undefined);
+  if(typeof value==='string'&&sprites[value])return value;
+  if(value?.sheet&&sprites[value.sheet])return value.sheet;
+  return [`actor-${s.variant}-${state}`,`${s.variant}-${state}`,`actor-${s.variant}-sheet`].find(k=>sprites[k])||'';
+}
+export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:OfficeSprites,epoch=Date.now()){
+  c.fillStyle='#f2e6d1';c.fillRect(0,0,layout.width,layout.height);
+  c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';
+  const image=(key:string,x:number,y:number,w?:number,h?:number,alpha=1,t=time/1000)=>{
+    const asset=sprites[key];if(!asset)return;
+    c.save();c.globalAlpha=alpha;
+    const f=sheetFrame(asset.spec,asset.image,t);
+    c.drawImage(asset.image,f.x,f.y,f.w,f.h,x,y,w??asset.spec.size?.[0]??f.w,h??asset.spec.size?.[1]??f.h);c.restore();
+  };
+  const effect=(name:string,x:number,y:number,w:number,h:number,t:number,alpha=1)=>{
+    const value=manifest.effects?.[name];
+    const key=typeof value==='string'?value:value?.sheet;
+    const fallback:Record<string,string>={flame_aura:`flame-${Math.floor(t*5)%3}`,pop_plus3:'points-3',pop_plus10:'points-10',bubble_done:'bubble-done',bubble_prup:'bubble-pr',attention:'emphasis',zzz:'zzz'};
+    image(key||fallback[name]||name,x,y,w,h,alpha,t);
+  };
+  const figure=(s:Station,a:Actor,state:string,alpha=1,clip?:number[])=>{
+    const key=actorKey(s,state,sprites),asset=sprites[key];if(!asset)return;
+    const sp=asset.spec;
+    let f=sheetFrame(sp,asset.image,a.phase);
+    // v10's original combined 4x3 sheets are a compatibility input only.
+    if(!sp.frameW&&key.endsWith('-sheet')){
+      const i=state==='walking-left'?8+Math.floor(a.phase*6)%2:state==='walking-right'?10+Math.floor(a.phase*6)%2:state==='working'?Math.floor(a.phase*6)%4:state==='phone'||state==='away'?4+Math.floor(a.phase*2.5)%2:6+Math.floor(a.phase)%2;
+      f={x:i%4*320,y:Math.floor(i/4)*432,w:320,h:432};
     }
-    if (room.sofa) rectPart(ctx, sprites, 'furniture/sofa',
-      room.sofa.x, room.sofa.y - 20, room.sofa.width, room.sofa.height + 20);
-    if (room.meeting) rectPart(ctx, sprites, 'furniture/meeting-table',
-      room.meeting.x, room.meeting.y - 15, room.meeting.width, room.meeting.height + 15);
-    const actorFor = (station: Station) => actors[station.agent.id] || {
-      ...station.seat, moving: false,
-    };
-    const drawChair = (station: Station, back = false) => {
-      rectPart(ctx, sprites, back ? 'furniture/chair-back' : 'furniture/chair',
-        station.seat.x - 36, station.seat.y + (back ? 2 : -4), 72, 42);
-    };
-    const drawDesk = (station: Station) => {
-      const deskY = station.seat.y + (station.facing === 'back' ? -33 : 5);
-      const desk = station.manager ? 'manager-desk'
-        : station.facing === 'back' ? 'desk-back' : 'desk-front';
-      rectPart(ctx, sprites, `furniture/${desk}`, station.seat.x - 44, deskY, 88, 39);
-    };
-    const drawMonitor = (station: Station) => {
-      const p = station.agent.provider.toLowerCase();
-      const provider = Object.hasOwn(PROVIDERS, p) ? PROVIDERS[p] : 'unknown';
-      const deskY = station.seat.y + (station.facing === 'back' ? -33 : 5);
-      const mx = station.seat.x + (station.facing === 'back' ? 23 : 4);
-      const my = deskY - 13;
-      rectPart(ctx, sprites, station.monitorSide === 'screen' ? 'monitors/monitor-screen'
-        : `monitors/monitor-${provider}`, mx, my, 42, 25);
-      if (station.monitorSide === 'screen') {
-        rectPart(ctx, sprites, `icons/${provider}`, mx + 16, my + 5, 11, 10);
-      }
-    };
-    // Window and manager seats are independent from the shared islands.
-    for (const station of room.stations.filter(item => item.island === null)) {
-      drawChair(station);
-      rig(ctx, sprites, station, actorFor(station), timeMs);
-      drawDesk(station);
-      drawMonitor(station);
+    const scale=s.actorHeight/f.h*(a.moving?.8:1);
+    const anchor=sp.anchor;const ax=Array.isArray(anchor)?anchor[0]:anchor?.x??f.w*.5;
+    const ay=Array.isArray(anchor)?anchor[1]:anchor?.y??f.h*.95;
+    c.save();c.globalAlpha=alpha;
+    if(clip){c.beginPath();c.rect(...clip);c.clip();}
+    c.drawImage(asset.image,f.x,f.y,f.w,f.h,a.x-ax*scale,a.y-ay*scale,f.w*scale,f.h*scale);
+    c.restore();
+  };
+  const occupant=(s:Station,a:Actor,clip?:number[])=>{
+    const mix=Math.min(1,(a.elapsed-a.changed)/.35);
+    const state=a.moving?`walking-${a.direction}`:a.state;
+    if(a.previous&&mix<1&&!a.moving)figure(s,a,a.previous,1-mix,clip);
+    figure(s,a,state,a.previous&&!a.moving?mix:1,clip);
+  };
+  const nameplate=(s:Station)=>{
+    const p=plateGeometry(s,layout.viewportScale);c.save();
+    const gradient=c.createLinearGradient?.(0,p.y,0,p.y+p.height);
+    if(gradient?.addColorStop){gradient.addColorStop(0,'#efcf99');gradient.addColorStop(1,'#d4ad72');}
+    c.fillStyle=gradient?.addColorStop?gradient:'#dfbc87';c.strokeStyle='#81603c';c.lineWidth=1;
+    c.beginPath();if(c.roundRect)c.roundRect(p.x,p.y,p.width,p.height,3);else c.rect(p.x,p.y,p.width,p.height);c.fill();c.stroke();
+    c.font=`800 ${p.font}px monospace`;c.textAlign='left';c.textBaseline='middle';
+    const measure=(text:string)=>c.measureText?.(text)?.width??Array.from(text).length*p.font*.6;
+    const available=p.width-p.padding*2-p.icon-p.gap;
+    let label=s.agent.name;
+    if(measure(label)>available){const chars=Array.from(label);while(chars.length&&measure(chars.join('')+'…')>available)chars.pop();label=chars.join('')+'…';}
+    const content=p.icon+p.gap+measure(label),left=p.x+(p.width-content)/2;
+    const icon=sprites['provider-icon-'+s.agent.provider];
+    if(icon)image('provider-icon-'+s.agent.provider,left,s.plate.y-p.icon/2,p.icon,p.icon);
+    else{c.fillStyle=providerColor(s.agent.provider);c.beginPath();c.arc(left+p.icon/2,s.plate.y,p.icon*.3,0,Math.PI*2);c.fill();}
+    c.fillStyle='#4d3327';c.fillText(label,left+p.icon+p.gap,s.plate.y);c.restore();
+  };
+  for(const room of layout.rooms){
+    image(`background-${room.background}`,0,room.sceneY,1536,room.sceneHeight);
+    const jobs:{y:number;draw:()=>void}[]=[];
+    for(const s of room.stations){
+      const a=actors[s.agent.id];if(!a)continue;
+      const seated=!a.moving&&Math.hypot(a.x-s.seat.x,a.y-s.seat.y)<2;
+      const drawStation=()=>{
+        if(!s.manager)image(`pod-${s.pod}-back`,s.x,s.y,s.width,s.height);
+        if(seated){
+          if(a.state==='working'&&epoch-s.agent.stateSince>=60000)effect('flame_aura',s.seat.x-108,s.seat.y-s.actorHeight-35,215,220,a.phase,.92);
+          occupant(s,a);
+        }
+        if(s.manager){const sp=sprites[`lead-front-${room.background}`]?.spec,b=sp?.sourceBox;
+          if(sp&&b){const scale=1536/(sprites[`background-${room.background}`]?.spec.size?.[0]||1536);image(`lead-front-${room.background}`,b[0]*scale,room.sceneY+b[1]*scale,(sp.size?.[0]||0)*scale,(sp.size?.[1]||0)*scale);}
+        }else image(`pod-${s.pod}-front`,s.x,s.y,s.width,s.height);
+        if(seated){const clip=s.manager?[s.seat.x-130,s.seat.y-s.actorHeight,260,s.actorHeight*(1-125/432)]:[s.x-12,s.y-80,s.width*.53+12,s.seat.y-125*s.actorHeight/432-(s.y-80)];occupant(s,a,clip);}
+        nameplate(s);
+      };
+      jobs.push({y:deskDepth(s,room.sceneY),draw:drawStation});
+      if(!seated)jobs.push({y:a.y,draw:()=>occupant(s,a)});
     }
-    for (let i = 0; i < room.islands.length; i++) {
-      const seats = room.stations.filter(station => station.island === i);
-      const rear = seats.filter(station => station.facing === 'front');
-      const front = seats.filter(station => station.facing === 'back');
-      // Each occupied desk gets a shadow directly beneath its own footprint.
-      for (const station of seats) {
-        const deskY = station.seat.y + (station.facing === 'back' ? -33 : 5);
-        rectPart(ctx, sprites, 'room/floor-shadow', station.seat.x - 44, deskY + 21, 88, 22);
-      }
-      for (const station of rear) {
-        drawChair(station);
-        rig(ctx, sprites, station, actorFor(station), timeMs);
-      }
-      for (const station of rear) drawMonitor(station);
-      for (const station of seats) drawDesk(station);
-      for (const station of front) drawMonitor(station);
-      for (const station of front) {
-        rig(ctx, sprites, station, actorFor(station), timeMs);
-        drawChair(station, true);
-      }
-    }
-    if (room.managerRoom) rectPart(ctx, sprites, 'furniture/glass-room-front',
-      room.managerRoom.x, room.managerRoom.y, room.managerRoom.width, room.managerRoom.height);
-    for (const station of room.stations) {
-      const actor = actors[station.agent.id] || { ...station.seat, moving: false };
-      decorations(ctx, sprites, station, actor, timeMs);
-      const name = station.agent.name.slice(0, 18);
-      const labelWidth = Math.max(30, name.length * 5.3 + 10);
-      const rear = station.facing === 'back' && !actor.moving && station.agent.state !== 'away';
-      const labelY = actor.y + (rear ? 15 : -54);
-      ctx.fillStyle = '#fffefa'; ctx.fillRect(actor.x - labelWidth / 2, labelY, labelWidth, 13);
-      ctx.fillStyle = '#66777e'; ctx.font = 'bold 8px sans-serif'; ctx.textAlign = 'center';
-      ctx.fillText(name, actor.x, labelY + 9);
-      if (station.agent.needsAttention) {
-        // The entire badge stays above the label and is drawn after it.
-        part(ctx, sprites, 'effects/attention', actor.x, labelY - 3, 25, 17);
+    jobs.sort((a,b)=>a.y-b.y).forEach(j=>j.draw());
+    for(const s of room.stations){const a=actors[s.agent.id];if(!a)continue;
+      const fy=a.y-s.actorHeight;
+      if(a.state==='sleeping'&&!a.moving)effect('zzz',a.x+48,fy,75,57,a.phase);
+      if(s.agent.needsAttention)effect('attention',a.x-35,fy-45,70,65,a.phase);
+      if(a.state==='working'&&!a.moving){const p=(a.phase+s.index*.43)%6;
+        if(p<1.5)effect(s.index%2?'pop_plus10':'pop_plus3',a.x+40,fy+20-p*23,70,54,p,1-p/1.5);
+        if((a.phase+s.index*.93)%13<1.3){const x=a.x-44,y=fy-35;const blocked=room.stations.some(b=>b!==s&&!b.manager&&x<b.x+b.width&&x+95>b.x&&y<b.y+b.height&&y+62>b.y);if(!blocked)effect(s.index%2?'bubble_prup':'bubble_done',x,y,95,62,(a.phase+s.index*.93)%13);}
       }
     }
   }
+  for(const h of layout.headers){c.fillStyle='#4d3327';c.font='24px monospace';c.fillText(h.text,h.x,h.y);}
 }

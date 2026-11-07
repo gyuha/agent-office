@@ -81,5 +81,6 @@ export function workspaceProjectFromListed(workspace: ListedWorkspaceLike): Work
     workspaceId: workspace.id,
     projectId: workspace.projectId,
     projectName: workspace.project?.projectName ?? workspace.name,
+    workspaceName: workspace.name,
   };
 }

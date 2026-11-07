@@ -95,10 +95,10 @@ export function contributeOffice(server: PluginServerContext, options: OfficeOpt
     store.removeWorkspace(workspace.id);
   });
 
-  server.handle(officeSnapshotRpc, async ({ projectId }, { paseo }) => {
+  server.handle(officeSnapshotRpc, async ({ projectId, workspaceId }, { paseo }) => {
     await ensureInitialized(paseo);
     await refreshWorkspaces(paseo);
-    return store.snapshot(projectId);
+    return store.snapshot(projectId, workspaceId);
   });
 
   return () => {};

@@ -1,0 +1,1516 @@
+{
+  "actor-0-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        54,
+        158,
+        408,
+        744
+      ],
+      [
+        54,
+        158,
+        407,
+        744
+      ],
+      [
+        54,
+        158,
+        408,
+        744
+      ],
+      [
+        54,
+        158,
+        408,
+        744
+      ]
+    ],
+    "scale": 0.32593856655290104,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-0-phone": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      724,
+      1448,
+      2172
+    ],
+    "boxes": [
+      [
+        184,
+        41,
+        572,
+        679
+      ],
+      [
+        183,
+        30,
+        572,
+        679
+      ],
+      [
+        183,
+        45,
+        572,
+        679
+      ]
+    ],
+    "scale": 0.2942989214175655,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-0-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        61,
+        145,
+        541,
+        785
+      ],
+      [
+        61,
+        135,
+        540,
+        784
+      ],
+      [
+        58,
+        146,
+        540,
+        784
+      ]
+    ],
+    "scale": 0.29045643153526973,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-0-walk_left": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        80,
+        164,
+        409,
+        737
+      ],
+      [
+        77,
+        163,
+        398,
+        737
+      ],
+      [
+        64,
+        164,
+        387,
+        737
+      ],
+      [
+        61,
+        163,
+        382,
+        737
+      ]
+    ],
+    "scale": 0.3327526132404181,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-0-walk_right": {
+    "mirroredFrom": "actor-0-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-0-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        112,
+        116,
+        561,
+        785
+      ],
+      [
+        78,
+        113,
+        530,
+        785
+      ],
+      [
+        48,
+        116,
+        500,
+        782
+      ]
+    ],
+    "scale": 0.28422619047619047,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-1-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        23,
+        151,
+        435,
+        708
+      ],
+      [
+        22,
+        151,
+        434,
+        708
+      ],
+      [
+        23,
+        151,
+        435,
+        708
+      ],
+      [
+        24,
+        151,
+        436,
+        708
+      ]
+    ],
+    "scale": 0.33980582524271846,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-1-phone": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        59,
+        127,
+        551,
+        769
+      ],
+      [
+        37,
+        124,
+        530,
+        769
+      ],
+      [
+        17,
+        127,
+        514,
+        769
+      ]
+    ],
+    "scale": 0.28169014084507044,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-1-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      597,
+      1167,
+      1774
+    ],
+    "boxes": [
+      [
+        35,
+        145,
+        584,
+        776
+      ],
+      [
+        14,
+        141,
+        554,
+        776
+      ],
+      [
+        16,
+        146,
+        562,
+        776
+      ]
+    ],
+    "scale": 0.2550091074681239,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-1-walk_left": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        44,
+        143,
+        438,
+        739
+      ],
+      [
+        53,
+        147,
+        425,
+        740
+      ],
+      [
+        36,
+        147,
+        428,
+        739
+      ],
+      [
+        51,
+        148,
+        422,
+        740
+      ]
+    ],
+    "scale": 0.32046979865771813,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-1-walk_right": {
+    "mirroredFrom": "actor-1-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      590,
+      1148,
+      1774
+    ],
+    "boxes": [
+      [
+        49,
+        125,
+        578,
+        791
+      ],
+      [
+        14,
+        127,
+        545,
+        792
+      ],
+      [
+        12,
+        127,
+        546,
+        792
+      ]
+    ],
+    "scale": 0.26217228464419473,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-2-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        54,
+        132,
+        420,
+        754
+      ],
+      [
+        54,
+        131,
+        420,
+        754
+      ],
+      [
+        54,
+        132,
+        420,
+        754
+      ],
+      [
+        55,
+        132,
+        421,
+        754
+      ]
+    ],
+    "scale": 0.30658105939004815,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-2-phone": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        116,
+        108,
+        526,
+        787
+      ],
+      [
+        95,
+        103,
+        503,
+        786
+      ],
+      [
+        65,
+        109,
+        476,
+        787
+      ]
+    ],
+    "scale": 0.2796486090775988,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-2-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        108,
+        159,
+        530,
+        742
+      ],
+      [
+        77,
+        153,
+        494,
+        742
+      ],
+      [
+        71,
+        159,
+        492,
+        742
+      ]
+    ],
+    "scale": 0.3242784380305603,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-2-walk_left": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      543,
+      1086,
+      1629,
+      2172
+    ],
+    "boxes": [
+      [
+        136,
+        55,
+        475,
+        662
+      ],
+      [
+        155,
+        56,
+        448,
+        661
+      ],
+      [
+        104,
+        56,
+        453,
+        662
+      ],
+      [
+        124,
+        56,
+        421,
+        660
+      ]
+    ],
+    "scale": 0.31466227347611203,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-2-walk_right": {
+    "mirroredFrom": "actor-2-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        80,
+        81,
+        546,
+        817
+      ],
+      [
+        76,
+        79,
+        546,
+        817
+      ],
+      [
+        70,
+        80,
+        545,
+        817
+      ]
+    ],
+    "scale": 0.2588075880758808,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-3-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        42,
+        152,
+        426,
+        701
+      ],
+      [
+        42,
+        152,
+        426,
+        701
+      ],
+      [
+        43,
+        152,
+        426,
+        701
+      ],
+      [
+        44,
+        152,
+        427,
+        701
+      ]
+    ],
+    "scale": 0.34790528233151186,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-3-phone": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        78,
+        92,
+        540,
+        787
+      ],
+      [
+        79,
+        86,
+        539,
+        787
+      ],
+      [
+        78,
+        93,
+        540,
+        787
+      ]
+    ],
+    "scale": 0.2724679029957204,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-3-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        74,
+        138,
+        544,
+        774
+      ],
+      [
+        57,
+        130,
+        523,
+        774
+      ],
+      [
+        31,
+        140,
+        502,
+        774
+      ]
+    ],
+    "scale": 0.296583850931677,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-3-walk_left": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        47,
+        157,
+        409,
+        736
+      ],
+      [
+        76,
+        157,
+        409,
+        736
+      ],
+      [
+        54,
+        157,
+        409,
+        736
+      ],
+      [
+        77,
+        157,
+        410,
+        736
+      ]
+    ],
+    "scale": 0.3298791018998273,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-3-walk_right": {
+    "mirroredFrom": "actor-3-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        103,
+        130,
+        559,
+        761
+      ],
+      [
+        74,
+        132,
+        522,
+        761
+      ],
+      [
+        42,
+        132,
+        494,
+        761
+      ]
+    ],
+    "scale": 0.30269413629160064,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-4-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        40,
+        148,
+        418,
+        717
+      ],
+      [
+        39,
+        148,
+        417,
+        717
+      ],
+      [
+        40,
+        148,
+        418,
+        717
+      ],
+      [
+        40,
+        148,
+        419,
+        717
+      ]
+    ],
+    "scale": 0.335676625659051,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-4-phone": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        90,
+        122,
+        526,
+        765
+      ],
+      [
+        85,
+        122,
+        521,
+        765
+      ],
+      [
+        79,
+        122,
+        520,
+        765
+      ]
+    ],
+    "scale": 0.29704510108864696,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-4-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        89,
+        131,
+        539,
+        739
+      ],
+      [
+        63,
+        122,
+        516,
+        739
+      ],
+      [
+        39,
+        131,
+        491,
+        739
+      ]
+    ],
+    "scale": 0.3090507726269316,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-4-walk_left": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        72,
+        143,
+        406,
+        717
+      ],
+      [
+        77,
+        143,
+        401,
+        719
+      ],
+      [
+        70,
+        142,
+        402,
+        716
+      ],
+      [
+        76,
+        142,
+        402,
+        720
+      ]
+    ],
+    "scale": 0.3304498269896194,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-4-walk_right": {
+    "mirroredFrom": "actor-4-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        104,
+        133,
+        561,
+        778
+      ],
+      [
+        66,
+        133,
+        524,
+        778
+      ],
+      [
+        36,
+        133,
+        486,
+        778
+      ]
+    ],
+    "scale": 0.2961240310077519,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-5-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        49,
+        119,
+        413,
+        735
+      ],
+      [
+        49,
+        119,
+        412,
+        735
+      ],
+      [
+        49,
+        119,
+        412,
+        735
+      ],
+      [
+        51,
+        119,
+        413,
+        735
+      ]
+    ],
+    "scale": 0.31006493506493504,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-5-phone": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        97,
+        109,
+        520,
+        788
+      ],
+      [
+        98,
+        109,
+        521,
+        788
+      ],
+      [
+        97,
+        114,
+        520,
+        788
+      ]
+    ],
+    "scale": 0.2812960235640648,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-5-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        59,
+        139,
+        543,
+        765
+      ],
+      [
+        57,
+        128,
+        542,
+        765
+      ],
+      [
+        59,
+        139,
+        543,
+        765
+      ]
+    ],
+    "scale": 0.28865979381443296,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-5-walk_left": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        84,
+        164,
+        406,
+        744
+      ],
+      [
+        88,
+        163,
+        395,
+        744
+      ],
+      [
+        70,
+        163,
+        392,
+        744
+      ],
+      [
+        82,
+        163,
+        389,
+        744
+      ]
+    ],
+    "scale": 0.3287435456110155,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "actor-5-walk_right": {
+    "mirroredFrom": "actor-5-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        84,
+        113,
+        554,
+        786
+      ],
+      [
+        64,
+        113,
+        534,
+        786
+      ],
+      [
+        49,
+        113,
+        516,
+        786
+      ]
+    ],
+    "scale": 0.2838038632986627,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "orchestrator-working": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        57,
+        176,
+        411,
+        714
+      ],
+      [
+        57,
+        176,
+        411,
+        714
+      ],
+      [
+        58,
+        176,
+        411,
+        714
+      ],
+      [
+        58,
+        176,
+        412,
+        714
+      ]
+    ],
+    "scale": 0.3550185873605948,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "orchestrator-phone": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      887,
+      1774
+    ],
+    "boxes": [
+      [
+        215,
+        80,
+        748,
+        830
+      ],
+      [
+        146,
+        86,
+        696,
+        830
+      ]
+    ],
+    "scale": 0.2545454545454545,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "orchestrator-sleeping": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      887,
+      1774
+    ],
+    "boxes": [
+      [
+        220,
+        132,
+        729,
+        814
+      ],
+      [
+        145,
+        121,
+        649,
+        814
+      ]
+    ],
+    "scale": 0.275049115913556,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "flame_aura": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      543,
+      1086,
+      1629,
+      2172
+    ],
+    "boxes": [
+      [
+        33,
+        158,
+        503,
+        523
+      ],
+      [
+        34,
+        125,
+        504,
+        523
+      ],
+      [
+        38,
+        148,
+        507,
+        523
+      ],
+      [
+        38,
+        161,
+        505,
+        522
+      ]
+    ],
+    "scale": 0.25316455696202533,
+    "alignment": "common crop per set preserves generated vertical offsets and alpha fades"
+  },
+  "pop_plus3": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      543,
+      1086,
+      1629,
+      2172
+    ],
+    "boxes": [
+      [
+        66,
+        235,
+        498,
+        594
+      ],
+      [
+        57,
+        206,
+        488,
+        562
+      ],
+      [
+        52,
+        178,
+        485,
+        535
+      ],
+      [
+        48,
+        143,
+        483,
+        500
+      ]
+    ],
+    "scale": 0.15521064301552107,
+    "alignment": "common crop per set preserves generated vertical offsets and alpha fades"
+  },
+  "pop_plus10": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      543,
+      1086,
+      1629,
+      2172
+    ],
+    "boxes": [
+      [
+        58,
+        229,
+        488,
+        564
+      ],
+      [
+        56,
+        204,
+        486,
+        538
+      ],
+      [
+        55,
+        172,
+        485,
+        505
+      ],
+      [
+        55,
+        141,
+        485,
+        473
+      ]
+    ],
+    "scale": 0.16548463356973994,
+    "alignment": "common crop per set preserves generated vertical offsets and alpha fades"
+  },
+  "zzz": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      724,
+      1448,
+      2172
+    ],
+    "boxes": [
+      [
+        70,
+        141,
+        661,
+        635
+      ],
+      [
+        64,
+        114,
+        661,
+        611
+      ],
+      [
+        63,
+        143,
+        657,
+        635
+      ]
+    ],
+    "scale": 0.1343570057581574,
+    "alignment": "common crop per set preserves generated vertical offsets and alpha fades"
+  },
+  "attention": {
+    "sourceSize": [
+      2172,
+      724
+    ],
+    "sourceCuts": [
+      0,
+      724,
+      1448,
+      2172
+    ],
+    "boxes": [
+      [
+        115,
+        196,
+        611,
+        550
+      ],
+      [
+        100,
+        164,
+        624,
+        535
+      ],
+      [
+        114,
+        201,
+        613,
+        556
+      ]
+    ],
+    "scale": 0.13740458015267176,
+    "alignment": "common crop per set preserves generated vertical offsets and alpha fades"
+  },
+  "orchestrator-away": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      591,
+      1183,
+      1774
+    ],
+    "boxes": [
+      [
+        75,
+        139,
+        573,
+        778
+      ],
+      [
+        50,
+        139,
+        546,
+        779
+      ],
+      [
+        18,
+        135,
+        516,
+        779
+      ]
+    ],
+    "scale": 0.28112449799196787,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "orchestrator-walk_left": {
+    "sourceSize": [
+      1774,
+      887
+    ],
+    "sourceCuts": [
+      0,
+      444,
+      887,
+      1330,
+      1774
+    ],
+    "boxes": [
+      [
+        65,
+        139,
+        419,
+        745
+      ],
+      [
+        87,
+        139,
+        399,
+        746
+      ],
+      [
+        34,
+        139,
+        375,
+        745
+      ],
+      [
+        39,
+        139,
+        352,
+        746
+      ]
+    ],
+    "scale": 0.31466227347611203,
+    "alignment": "common scale per set; fixed feet/hip baseline, centered body"
+  },
+  "orchestrator-walk_right": {
+    "mirroredFrom": "orchestrator-walk_left",
+    "anchor": [
+      80,
+      205
+    ]
+  }
+}

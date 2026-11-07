@@ -25,9 +25,9 @@ const agent = (id: string, parentAgentId: string | null = null): AgentIdentity =
 const newStore = () => {
   const store = createOfficeStore({ now: () => clock });
   store.setWorkspaces([
-    { workspaceId: WS, projectId: PROJECT, projectName: "test" },
-    { workspaceId: WS2, projectId: PROJECT, projectName: "test" },
-    { workspaceId: OTHER_WS, projectId: "prj_other", projectName: "alpha" },
+    { workspaceId: WS, projectId: PROJECT, projectName: "test", workspaceName: "main" },
+    { workspaceId: WS2, projectId: PROJECT, projectName: "test", workspaceName: "second" },
+    { workspaceId: OTHER_WS, projectId: "prj_other", projectName: "alpha", workspaceName: "other" },
   ]);
   return store;
 };
@@ -149,6 +149,17 @@ const checks: Array<[string, () => void]> = [
       assert.equal(all.scope, "all");
       assert.deepEqual(all.projects.map((entry) => entry.projectName), ["alpha", "test"]);
       assert.deepEqual(store.snapshot("prj_unknown").projects, []);
+    },
+  ],
+  [
+    "workspaceName: project 범위에서만 요청한 워크스페이스 제목, 그 외(all·알 수 없음·미지정)는 null",
+    () => {
+      const store = newStore();
+      assert.equal(store.snapshot(PROJECT, WS2).workspaceName, "second");
+      assert.equal(store.snapshot(PROJECT, "wks_unknown").workspaceName, null);
+      assert.equal(store.snapshot(PROJECT).workspaceName, null);
+      assert.equal(store.snapshot(undefined, WS2).workspaceName, null);
+      assert.equal(store.snapshot().workspaceName, null);
     },
   ],
   [

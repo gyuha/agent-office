@@ -1,0 +1,49 @@
+[
+  {
+    "key": "pods-facing-inward",
+    "target": "pods",
+    "transparent": true,
+    "prompt": "Use image 1 (office-c) only as our own art-style reference. Image 2 is the current v10 pod reference; preserve its exact warm detailed high-resolution pixel illustration and material rendering. No palette reduction, no blocky redraw, no logos, no game or developer names. ONLY correct the desk anatomy and monitor direction. No changes to camera, dimensions, furniture locations, chair locations, object sizes, plants, books, mugs, pencil cups, lighting, shadows or unrelated detail. Image 2 is also the edit target. Edit this same 1536x1024 transparent three-column sprite atlas in place. Keep three complete isolated pods in the EXACT same pixel footprints, chair heights and desktop heights as image 2. On ALL THREE desks, replace the ENTIRE viewer-facing vertical apron below the desktop with ONE flat continuous wooden modesty board. Remove all drawers, handles, center vertical subdivision seams, inset panels, cabinet doors, shelves or open compartments. One wide uninterrupted wood-grain board with only its OUTER edge border and natural shading. Preserve the wooden legs, outer silhouette and desktop. On each desk turn the MONITOR on its stand so its screen faces the empty chair behind the desk, NOT the viewer. The viewer sees only the BACK CASE, vents, rear casing, stand and a short cable, absolutely no visible display, code, green lines or screen bezel. First pod is a beige CRT: show its bulky back shell, not its glass. Second and third are dark LCDs: rear flat cases facing viewer. Keep monitors on the RIGHT side of desktop so the future character face at the LEFT seat is unobstructed. Keep all three colored chairs and exact accessory variants. True transparent background, no new floor.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-3f0cd380-3468-429a-8534-3832a7ae1a08.png",
+    "references": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/pods.png"
+    ]
+  },
+  {
+    "key": "bg-small-desk-corrected",
+    "target": "bg-small",
+    "transparent": false,
+    "prompt": "Use image 1 (office-c) only as our own art-style reference. Image 2 is the current v10 pod reference; preserve its exact warm detailed high-resolution pixel illustration and material rendering. No palette reduction, no blocky redraw, no logos, no game or developer names. ONLY correct the desk anatomy and monitor direction. No changes to camera, dimensions, furniture locations, chair locations, object sizes, plants, books, mugs, pencil cups, lighting, shadows or unrelated detail. Image 3 is the EDIT TARGET: the existing empty single-room background. Preserve every pixel outside the central orchestrator desk as closely as possible, preserving exact room geometry and image dimensions. Edit ONLY the large central desk: its viewer-facing vertical front must become ONE wide flat uninterrupted wooden modesty panel. Remove ALL vertical inset-panel divider seams and any drawer/handle/cabinet features from that desk front; retain only outer perimeter trim, wood grain and the same soft shading. Keep desktop edge, lamp, books, mug, chair, monitor position and plants unchanged. Ensure the right-offset monitor presents ONLY its back case/vents, stand and cable toward the viewer, screen toward the empty chair. If already showing its back, preserve that direction. No text, no people, no HUD. No changes to the room, other furniture or floor. Keep original aspect ratio and resolution.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-d412ee8c-7837-4f53-85d7-c1822645fc9b.png",
+    "references": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/pods.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/bg-small.png"
+    ]
+  },
+  {
+    "key": "bg-medium-desk-corrected",
+    "target": "bg-medium",
+    "transparent": false,
+    "prompt": "Use image 1 (office-c) only as our own art-style reference. Image 2 is the current v10 pod reference; preserve its exact warm detailed high-resolution pixel illustration and material rendering. No palette reduction, no blocky redraw, no logos, no game or developer names. ONLY correct the desk anatomy and monitor direction. No changes to camera, dimensions, furniture locations, chair locations, object sizes, plants, books, mugs, pencil cups, lighting, shadows or unrelated detail. Image 3 is the EDIT TARGET: the existing empty single-room background. Preserve every pixel outside the central orchestrator desk as closely as possible, preserving exact room geometry and image dimensions. Edit ONLY the large central desk: its viewer-facing vertical front must become ONE wide flat uninterrupted wooden modesty panel. Remove ALL vertical inset-panel divider seams and any drawer/handle/cabinet features from that desk front; retain only outer perimeter trim, wood grain and the same soft shading. Keep desktop edge, lamp, books, mug, chair, monitor position and plants unchanged. Ensure the right-offset monitor presents ONLY its back case/vents, stand and cable toward the viewer, screen toward the empty chair. If already showing its back, preserve that direction. No text, no people, no HUD. No changes to the room, other furniture or floor. Keep original aspect ratio and resolution.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-29904290-7e89-48cd-81e0-44820aed5e28.png",
+    "references": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/pods.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/bg-medium.png"
+    ]
+  },
+  {
+    "key": "bg-large-final-desk-corrected",
+    "target": "bg-large-final",
+    "transparent": false,
+    "prompt": "Use image 1 (office-c) only as our own art-style reference. Image 2 is the current v10 pod reference; preserve its exact warm detailed high-resolution pixel illustration and material rendering. No palette reduction, no blocky redraw, no logos, no game or developer names. ONLY correct the desk anatomy and monitor direction. No changes to camera, dimensions, furniture locations, chair locations, object sizes, plants, books, mugs, pencil cups, lighting, shadows or unrelated detail. Image 3 is the EDIT TARGET: the existing empty single-room background. Preserve every pixel outside the central orchestrator desk as closely as possible, preserving exact room geometry and image dimensions. Edit ONLY the large central desk: its viewer-facing vertical front must become ONE wide flat uninterrupted wooden modesty panel. Remove ALL vertical inset-panel divider seams and any drawer/handle/cabinet features from that desk front; retain only outer perimeter trim, wood grain and the same soft shading. Keep desktop edge, lamp, books, mug, chair, monitor position and plants unchanged. Ensure the right-offset monitor presents ONLY its back case/vents, stand and cable toward the viewer, screen toward the empty chair. If already showing its back, preserve that direction. No text, no people, no HUD. No changes to the room, other furniture or floor. Keep original aspect ratio and resolution.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-3ba829cb-74ad-49ae-a3e0-48d08c56e211.png",
+    "references": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/pods.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/source/bg-large-final.png"
+    ]
+  }
+]

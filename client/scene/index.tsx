@@ -2,68 +2,18 @@ import React, { useEffect, useRef, type JSX } from "react";
 
 import { Platform, ScrollView, Text, View } from 'react-native';
 import type { OfficeSnapshot } from '../../shared/state/contract';
-import { draw, layoutOffices, step, type Actors } from './core';
-import { loadClayAssets } from './clay-assets';
-import { fitSceneWidth } from './core/viewport';
-import { agentAtPoint, scenePoint } from './core/hitTest';
-import type { Layout } from './core/layout';
-
-declare const document: any;
-declare const window: any;
-declare const Image: any;
-declare function requestAnimationFrame(callback: (time: number) => void): number;
-declare function cancelAnimationFrame(id: number): void;
+import { mountOfficeScene } from './mount-scene';
 
 function WebOffice({ snapshot, onAgentSelect }: { snapshot: OfficeSnapshot; onAgentSelect?: (agentId: string) => void }): JSX.Element {
   const holder = useRef<any>(null);
   const current = useRef(snapshot); current.current = snapshot;
   const select = useRef(onAgentSelect); select.current = onAgentSelect;
   useEffect(() => {
-    const parent = holder.current; if (!parent) return;
-    const canvas = document.createElement('canvas');
-    canvas.style.display = 'block'; canvas.style.imageRendering = 'auto'; canvas.style.maxWidth = '100%'; parent.appendChild(canvas);
-    const ctx = canvas.getContext('2d');
-    const { sprites, spritesReady } = loadClayAssets();
-    let ready = false;
-    spritesReady.then(() => { ready = true; }).catch(() => { ready = true; });
-    let actors: Actors = {}, last = 0, frame = 0, active = true;
-    let displayed: { layout: Layout; actors: Actors } | null = null;
-    const targetAt = (event: { clientX: number; clientY: number }) => {
-      if (!displayed || !select.current) return null;
-      const point = scenePoint(event.clientX, event.clientY, canvas.getBoundingClientRect(), displayed.layout);
-      return point ? agentAtPoint(displayed.layout, displayed.actors, point.x, point.y) : null;
-    };
-    const click = (event: { clientX: number; clientY: number }) => {
-      const id = targetAt(event); if (id) select.current?.(id);
-    };
-    const move = (event: { clientX: number; clientY: number }) => {
-      canvas.style.cursor = targetAt(event) ? 'pointer' : 'default';
-    };
-    canvas.addEventListener('click', click);
-    canvas.addEventListener('mousemove', move);
-    const tick = (time: number) => {
-      if (!active) return;
-      const panelWidth = parent.clientWidth || 700;
-      const scale = panelWidth < 500 ? 1 : 2;
-      const layout = layoutOffices(current.current, Math.max(192, Math.floor(panelWidth / scale)));
-      const w = layout.width * scale, h = layout.height * scale;
-      const pixelRatio = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
-      const physicalWidth = Math.round(w * pixelRatio), physicalHeight = Math.round(h * pixelRatio);
-      if (canvas.width !== physicalWidth || canvas.height !== physicalHeight) {
-        canvas.width = physicalWidth; canvas.height = physicalHeight;
-      }
-      const fitted = fitSceneWidth(w, h, panelWidth);
-      canvas.style.width = `${fitted.width}px`; canvas.style.height = `${fitted.height}px`;
-      actors = step(actors, current.current, last ? Math.min(100, time - last) : 0, layout); last = time;
-      ctx.setTransform(scale * pixelRatio, 0, 0, scale * pixelRatio, 0, 0);
-      if (ready) draw(ctx, layout, actors, time, sprites);
-      displayed = { layout, actors };
-      frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => { active = false; cancelAnimationFrame(frame); canvas.removeEventListener('click', click); canvas.removeEventListener('mousemove', move); parent.removeChild(canvas); };
+    if (!holder.current) return;
+    const scene = mountOfficeScene(holder.current, () => current.current, id => select.current?.(id));
+    return () => scene.dispose();
   }, []);
-  return React.createElement('div' as any, { ref: holder, style: { width: '100%', height: '100%', overflow: 'auto', background: '#e8e9f4' } });
+  return React.createElement('div' as any, { ref: holder, style: { width: '100%', height: '100%', minHeight: 0, minWidth: 0, flex: '1 1 0%', overflowY: 'auto', overflowX: 'hidden', background: '#f2e6d1' } });
 }
 
 export function OfficeView({ snapshot, onAgentSelect }: { snapshot: OfficeSnapshot; onAgentSelect?: (agentId: string) => void }): JSX.Element {

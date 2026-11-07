@@ -1,0 +1,4525 @@
+{
+  "version": 10,
+  "reference": "../v8/office-c.png",
+  "processing": "cropping, padding, alpha-preserving layer separation only; no palette reduction, no low-resolution redraw",
+  "assets": {
+    "background-small": {
+      "file": "runtime/static-background-small.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "sourceFile": "src/v10/background-small.png",
+      "runtimeSize": [
+        960,
+        640
+      ]
+    },
+    "lead-front-small": {
+      "file": "runtime/static-lead-front-small.webp",
+      "size": [
+        520,
+        153
+      ],
+      "sourceBox": [
+        545,
+        255,
+        1065,
+        408
+      ],
+      "sourceFile": "src/v10/lead-front-small.png",
+      "runtimeSize": [
+        320,
+        94
+      ]
+    },
+    "background-medium": {
+      "file": "runtime/static-background-medium.webp",
+      "size": [
+        1536,
+        1024
+      ],
+      "sourceFile": "src/v10/background-medium.png",
+      "runtimeSize": [
+        960,
+        640
+      ]
+    },
+    "lead-front-medium": {
+      "file": "runtime/static-lead-front-medium.webp",
+      "size": [
+        498,
+        134
+      ],
+      "sourceBox": [
+        550,
+        235,
+        1048,
+        369
+      ],
+      "sourceFile": "src/v10/lead-front-medium.png",
+      "runtimeSize": [
+        320,
+        86
+      ]
+    },
+    "background-large": {
+      "file": "runtime/static-background-large.webp",
+      "size": [
+        1254,
+        1254
+      ],
+      "sourceFile": "src/v10/background-large.png",
+      "runtimeSize": [
+        960,
+        960
+      ]
+    },
+    "lead-front-large": {
+      "file": "runtime/static-lead-front-large.webp",
+      "size": [
+        453,
+        133
+      ],
+      "sourceBox": [
+        447,
+        228,
+        900,
+        361
+      ],
+      "sourceFile": "src/v10/lead-front-large.png",
+      "runtimeSize": [
+        320,
+        94
+      ]
+    },
+    "pod-0-back": {
+      "file": "runtime/static-pod-0-back.webp",
+      "size": [
+        479,
+        365
+      ],
+      "sourceBox": [
+        21,
+        355,
+        500,
+        720
+      ],
+      "sourceFile": "src/v10/pod-0-back.png",
+      "runtimeSize": [
+        256,
+        195
+      ]
+    },
+    "pod-0-front": {
+      "file": "runtime/static-pod-0-front.webp",
+      "size": [
+        479,
+        365
+      ],
+      "split": {
+        "leftTopTransparent": [
+          0,
+          0,
+          0.53,
+          0.4
+        ]
+      },
+      "sourceFile": "src/v10/pod-0-front.png",
+      "runtimeSize": [
+        256,
+        195
+      ]
+    },
+    "pod-1-back": {
+      "file": "runtime/static-pod-1-back.webp",
+      "size": [
+        475,
+        369
+      ],
+      "sourceBox": [
+        527,
+        351,
+        1002,
+        720
+      ],
+      "sourceFile": "src/v10/pod-1-back.png",
+      "runtimeSize": [
+        256,
+        199
+      ]
+    },
+    "pod-1-front": {
+      "file": "runtime/static-pod-1-front.webp",
+      "size": [
+        475,
+        369
+      ],
+      "split": {
+        "leftTopTransparent": [
+          0,
+          0,
+          0.53,
+          0.4
+        ]
+      },
+      "sourceFile": "src/v10/pod-1-front.png",
+      "runtimeSize": [
+        256,
+        199
+      ]
+    },
+    "pod-2-back": {
+      "file": "runtime/static-pod-2-back.webp",
+      "size": [
+        482,
+        369
+      ],
+      "sourceBox": [
+        1030,
+        351,
+        1512,
+        720
+      ],
+      "sourceFile": "src/v10/pod-2-back.png",
+      "runtimeSize": [
+        256,
+        196
+      ]
+    },
+    "pod-2-front": {
+      "file": "runtime/static-pod-2-front.webp",
+      "size": [
+        482,
+        369
+      ],
+      "split": {
+        "leftTopTransparent": [
+          0,
+          0,
+          0.53,
+          0.4
+        ]
+      },
+      "sourceFile": "src/v10/pod-2-front.png",
+      "runtimeSize": [
+        256,
+        196
+      ]
+    },
+    "actor-0-working-0": {
+      "file": "runtime/static-actor-0-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-working-1": {
+      "file": "runtime/static-actor-0-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-working-2": {
+      "file": "runtime/static-actor-0-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-working-3": {
+      "file": "runtime/static-actor-0-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-phone-0": {
+      "file": "runtime/static-actor-0-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-phone-1": {
+      "file": "runtime/static-actor-0-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-sleeping-0": {
+      "file": "runtime/static-actor-0-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-sleeping-1": {
+      "file": "runtime/static-actor-0-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-walking-left-0": {
+      "file": "runtime/static-actor-0-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-walking-left-1": {
+      "file": "runtime/static-actor-0-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-walking-right-0": {
+      "file": "runtime/static-actor-0-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-walking-right-1": {
+      "file": "runtime/static-actor-0-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-0-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-0-sheet": {
+      "file": "runtime/static-actor-0-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-0-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "actor-1-working-0": {
+      "file": "runtime/static-actor-1-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-working-1": {
+      "file": "runtime/static-actor-1-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-working-2": {
+      "file": "runtime/static-actor-1-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-working-3": {
+      "file": "runtime/static-actor-1-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-phone-0": {
+      "file": "runtime/static-actor-1-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-phone-1": {
+      "file": "runtime/static-actor-1-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-sleeping-0": {
+      "file": "runtime/static-actor-1-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-sleeping-1": {
+      "file": "runtime/static-actor-1-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-walking-left-0": {
+      "file": "runtime/static-actor-1-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-walking-left-1": {
+      "file": "runtime/static-actor-1-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-walking-right-0": {
+      "file": "runtime/static-actor-1-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-walking-right-1": {
+      "file": "runtime/static-actor-1-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-1-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-1-sheet": {
+      "file": "runtime/static-actor-1-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-1-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "actor-2-working-0": {
+      "file": "runtime/static-actor-2-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-working-1": {
+      "file": "runtime/static-actor-2-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-working-2": {
+      "file": "runtime/static-actor-2-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-working-3": {
+      "file": "runtime/static-actor-2-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-phone-0": {
+      "file": "runtime/static-actor-2-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-phone-1": {
+      "file": "runtime/static-actor-2-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-sleeping-0": {
+      "file": "runtime/static-actor-2-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-sleeping-1": {
+      "file": "runtime/static-actor-2-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-walking-left-0": {
+      "file": "runtime/static-actor-2-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-walking-left-1": {
+      "file": "runtime/static-actor-2-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-walking-right-0": {
+      "file": "runtime/static-actor-2-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-walking-right-1": {
+      "file": "runtime/static-actor-2-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-2-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-2-sheet": {
+      "file": "runtime/static-actor-2-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-2-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "actor-3-working-0": {
+      "file": "runtime/static-actor-3-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-working-1": {
+      "file": "runtime/static-actor-3-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-working-2": {
+      "file": "runtime/static-actor-3-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-working-3": {
+      "file": "runtime/static-actor-3-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-phone-0": {
+      "file": "runtime/static-actor-3-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-phone-1": {
+      "file": "runtime/static-actor-3-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-sleeping-0": {
+      "file": "runtime/static-actor-3-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-sleeping-1": {
+      "file": "runtime/static-actor-3-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-walking-left-0": {
+      "file": "runtime/static-actor-3-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-walking-left-1": {
+      "file": "runtime/static-actor-3-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-walking-right-0": {
+      "file": "runtime/static-actor-3-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-walking-right-1": {
+      "file": "runtime/static-actor-3-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-3-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-3-sheet": {
+      "file": "runtime/static-actor-3-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-3-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "actor-4-working-0": {
+      "file": "runtime/static-actor-4-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-working-1": {
+      "file": "runtime/static-actor-4-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-working-2": {
+      "file": "runtime/static-actor-4-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-working-3": {
+      "file": "runtime/static-actor-4-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-phone-0": {
+      "file": "runtime/static-actor-4-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-phone-1": {
+      "file": "runtime/static-actor-4-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-sleeping-0": {
+      "file": "runtime/static-actor-4-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-sleeping-1": {
+      "file": "runtime/static-actor-4-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-walking-left-0": {
+      "file": "runtime/static-actor-4-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-walking-left-1": {
+      "file": "runtime/static-actor-4-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-walking-right-0": {
+      "file": "runtime/static-actor-4-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-walking-right-1": {
+      "file": "runtime/static-actor-4-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-4-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-4-sheet": {
+      "file": "runtime/static-actor-4-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-4-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "actor-5-working-0": {
+      "file": "runtime/static-actor-5-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-working-1": {
+      "file": "runtime/static-actor-5-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-working-2": {
+      "file": "runtime/static-actor-5-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-working-3": {
+      "file": "runtime/static-actor-5-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-phone-0": {
+      "file": "runtime/static-actor-5-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-phone-1": {
+      "file": "runtime/static-actor-5-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-sleeping-0": {
+      "file": "runtime/static-actor-5-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-sleeping-1": {
+      "file": "runtime/static-actor-5-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-walking-left-0": {
+      "file": "runtime/static-actor-5-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-walking-left-1": {
+      "file": "runtime/static-actor-5-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-walking-right-0": {
+      "file": "runtime/static-actor-5-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-walking-right-1": {
+      "file": "runtime/static-actor-5-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-5-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-5-sheet": {
+      "file": "runtime/static-actor-5-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-5-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "actor-lead-working-0": {
+      "file": "runtime/static-actor-lead-working-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-working-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-working-1": {
+      "file": "runtime/static-actor-lead-working-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-working-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-working-2": {
+      "file": "runtime/static-actor-lead-working-2.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-working-2.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-working-3": {
+      "file": "runtime/static-actor-lead-working-3.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-working-3.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-phone-0": {
+      "file": "runtime/static-actor-lead-phone-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-phone-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-phone-1": {
+      "file": "runtime/static-actor-lead-phone-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-phone-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-sleeping-0": {
+      "file": "runtime/static-actor-lead-sleeping-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-sleeping-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-sleeping-1": {
+      "file": "runtime/static-actor-lead-sleeping-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-sleeping-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-walking-left-0": {
+      "file": "runtime/static-actor-lead-walking-left-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-walking-left-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-walking-left-1": {
+      "file": "runtime/static-actor-lead-walking-left-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-walking-left-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-walking-right-0": {
+      "file": "runtime/static-actor-lead-walking-right-0.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-walking-right-0.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-walking-right-1": {
+      "file": "runtime/static-actor-lead-walking-right-1.webp",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "sourceFile": "src/v10/actor-lead-walking-right-1.png",
+      "runtimeSize": [
+        128,
+        173
+      ]
+    },
+    "actor-lead-sheet": {
+      "file": "runtime/static-actor-lead-sheet.webp",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ],
+      "sourceFile": "src/v10/actor-lead-sheet.png",
+      "runtimeSize": [
+        320,
+        324
+      ]
+    },
+    "flame-0": {
+      "file": "runtime/static-flame-0.webp",
+      "size": [
+        305,
+        226
+      ],
+      "sourceCell": [
+        0,
+        0,
+        384,
+        341
+      ],
+      "sourceTrim": [
+        40,
+        71,
+        345,
+        297
+      ],
+      "sourceFile": "src/v10/flame-0.png",
+      "runtimeSize": [
+        256,
+        190
+      ]
+    },
+    "flame-1": {
+      "file": "runtime/static-flame-1.webp",
+      "size": [
+        316,
+        261
+      ],
+      "sourceCell": [
+        384,
+        0,
+        768,
+        341
+      ],
+      "sourceTrim": [
+        31,
+        36,
+        347,
+        297
+      ],
+      "sourceFile": "src/v10/flame-1.png",
+      "runtimeSize": [
+        256,
+        211
+      ]
+    },
+    "flame-2": {
+      "file": "runtime/static-flame-2.webp",
+      "size": [
+        351,
+        278
+      ],
+      "sourceCell": [
+        768,
+        0,
+        1152,
+        341
+      ],
+      "sourceTrim": [
+        16,
+        20,
+        367,
+        298
+      ],
+      "sourceFile": "src/v10/flame-2.png",
+      "runtimeSize": [
+        256,
+        203
+      ]
+    },
+    "emphasis": {
+      "file": "runtime/static-emphasis.webp",
+      "size": [
+        243,
+        165
+      ],
+      "sourceCell": [
+        1152,
+        0,
+        1536,
+        341
+      ],
+      "sourceTrim": [
+        75,
+        87,
+        318,
+        252
+      ],
+      "sourceFile": "src/v10/emphasis.png",
+      "runtimeSize": [
+        243,
+        165
+      ]
+    },
+    "points-3": {
+      "file": "runtime/static-points-3.webp",
+      "size": [
+        244,
+        210
+      ],
+      "sourceCell": [
+        0,
+        341,
+        384,
+        683
+      ],
+      "sourceTrim": [
+        70,
+        74,
+        314,
+        284
+      ],
+      "sourceFile": "src/v10/points-3.png",
+      "runtimeSize": [
+        244,
+        210
+      ]
+    },
+    "points-10": {
+      "file": "runtime/static-points-10.webp",
+      "size": [
+        271,
+        210
+      ],
+      "sourceCell": [
+        384,
+        341,
+        768,
+        683
+      ],
+      "sourceTrim": [
+        56,
+        74,
+        327,
+        284
+      ],
+      "sourceFile": "src/v10/points-10.png",
+      "runtimeSize": [
+        256,
+        198
+      ]
+    },
+    "bubble-done": {
+      "file": "runtime/static-bubble-done.webp",
+      "size": [
+        301,
+        210
+      ],
+      "sourceCell": [
+        768,
+        341,
+        1152,
+        683
+      ],
+      "sourceTrim": [
+        42,
+        74,
+        343,
+        284
+      ],
+      "sourceFile": "src/v10/bubble-done.png",
+      "runtimeSize": [
+        256,
+        179
+      ]
+    },
+    "bubble-pr": {
+      "file": "runtime/static-bubble-pr.webp",
+      "size": [
+        319,
+        210
+      ],
+      "sourceCell": [
+        1152,
+        341,
+        1536,
+        683
+      ],
+      "sourceTrim": [
+        32,
+        74,
+        351,
+        284
+      ],
+      "sourceFile": "src/v10/bubble-pr.png",
+      "runtimeSize": [
+        256,
+        169
+      ]
+    },
+    "zzz": {
+      "file": "runtime/static-zzz.webp",
+      "size": [
+        255,
+        205
+      ],
+      "sourceCell": [
+        0,
+        683,
+        384,
+        1024
+      ],
+      "sourceTrim": [
+        66,
+        76,
+        321,
+        281
+      ],
+      "sourceFile": "src/v10/zzz.png",
+      "runtimeSize": [
+        255,
+        205
+      ]
+    },
+    "hud-panel": {
+      "file": "runtime/static-hud-panel.webp",
+      "size": [
+        352,
+        159
+      ],
+      "sourceCell": [
+        384,
+        683,
+        768,
+        1024
+      ],
+      "sourceTrim": [
+        16,
+        87,
+        368,
+        246
+      ],
+      "sourceFile": "src/v10/hud-panel.png",
+      "runtimeSize": [
+        256,
+        116
+      ]
+    },
+    "icon-active": {
+      "file": "runtime/static-icon-active.webp",
+      "size": [
+        276,
+        172
+      ],
+      "sourceCell": [
+        768,
+        683,
+        1152,
+        1024
+      ],
+      "sourceTrim": [
+        53,
+        87,
+        329,
+        259
+      ],
+      "sourceFile": "src/v10/icon-active.png",
+      "runtimeSize": [
+        256,
+        160
+      ]
+    },
+    "icon-tokens": {
+      "file": "runtime/static-icon-tokens.webp",
+      "size": [
+        206,
+        210
+      ],
+      "sourceCell": [
+        1152,
+        683,
+        1536,
+        1024
+      ],
+      "sourceTrim": [
+        85,
+        66,
+        291,
+        276
+      ],
+      "sourceFile": "src/v10/icon-tokens.png",
+      "runtimeSize": [
+        206,
+        210
+      ]
+    }
+  },
+  "frames": {
+    "actor-0": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          382
+        ],
+        "paste": [
+          45,
+          45
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          383
+        ],
+        "paste": [
+          45,
+          44
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          383
+        ],
+        "paste": [
+          45,
+          44
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          18,
+          275,
+          383
+        ],
+        "paste": [
+          45,
+          45
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          43,
+          18,
+          274,
+          382
+        ],
+        "paste": [
+          45,
+          46
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          383
+        ],
+        "paste": [
+          45,
+          44
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          21,
+          57,
+          279,
+          382
+        ],
+        "paste": [
+          31,
+          85
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          22,
+          85,
+          280,
+          383
+        ],
+        "paste": [
+          31,
+          112
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          50,
+          16,
+          262,
+          388
+        ],
+        "paste": [
+          54,
+          38
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          54,
+          16,
+          260,
+          388
+        ],
+        "paste": [
+          57,
+          38
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          55,
+          16,
+          264,
+          389
+        ],
+        "paste": [
+          56,
+          37
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          56,
+          16,
+          266,
+          391
+        ],
+        "paste": [
+          55,
+          35
+        ]
+      }
+    },
+    "actor-1": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          14,
+          25,
+          293,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          6,
+          58,
+          299,
+          385
+        ],
+        "paste": [
+          14,
+          83
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          5,
+          67,
+          299,
+          385
+        ],
+        "paste": [
+          13,
+          92
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          37,
+          21,
+          292,
+          396
+        ],
+        "paste": [
+          33,
+          35
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          44,
+          21,
+          292,
+          396
+        ],
+        "paste": [
+          36,
+          35
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          20,
+          22,
+          274,
+          396
+        ],
+        "paste": [
+          33,
+          36
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          21,
+          22,
+          270,
+          396
+        ],
+        "paste": [
+          36,
+          36
+        ]
+      }
+    },
+    "actor-2": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          46,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          31
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          46,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          31
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          46,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          31
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          47,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          46,
+          31
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          46,
+          17,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          32
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          46,
+          17,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          32
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          31,
+          73,
+          273,
+          390
+        ],
+        "paste": [
+          39,
+          93
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          41,
+          86,
+          281,
+          391
+        ],
+        "paste": [
+          40,
+          105
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          55,
+          20,
+          263,
+          388
+        ],
+        "paste": [
+          56,
+          42
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          61,
+          20,
+          264,
+          387
+        ],
+        "paste": [
+          59,
+          43
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          56,
+          19,
+          271,
+          388
+        ],
+        "paste": [
+          53,
+          41
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          56,
+          19,
+          255,
+          389
+        ],
+        "paste": [
+          61,
+          40
+        ]
+      }
+    },
+    "actor-3": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          287,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          28,
+          15,
+          289,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          40,
+          47,
+          284,
+          382
+        ],
+        "paste": [
+          38,
+          75
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          46,
+          53,
+          295,
+          382
+        ],
+        "paste": [
+          36,
+          81
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          34,
+          15,
+          287,
+          400
+        ],
+        "paste": [
+          34,
+          25
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          58,
+          16,
+          285,
+          400
+        ],
+        "paste": [
+          47,
+          26
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          30,
+          14,
+          285,
+          400
+        ],
+        "paste": [
+          33,
+          24
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          37,
+          14,
+          264,
+          398
+        ],
+        "paste": [
+          47,
+          26
+        ]
+      }
+    },
+    "actor-4": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          33,
+          21,
+          291,
+          389
+        ],
+        "paste": [
+          31,
+          42
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          33,
+          21,
+          290,
+          389
+        ],
+        "paste": [
+          32,
+          42
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          33,
+          21,
+          291,
+          389
+        ],
+        "paste": [
+          31,
+          42
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          34,
+          21,
+          291,
+          389
+        ],
+        "paste": [
+          32,
+          42
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          33,
+          20,
+          291,
+          389
+        ],
+        "paste": [
+          31,
+          41
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          33,
+          20,
+          290,
+          389
+        ],
+        "paste": [
+          32,
+          41
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          23,
+          43,
+          276,
+          380
+        ],
+        "paste": [
+          34,
+          73
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          23,
+          60,
+          285,
+          380
+        ],
+        "paste": [
+          29,
+          90
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          43,
+          23,
+          263,
+          391
+        ],
+        "paste": [
+          50,
+          42
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          45,
+          23,
+          263,
+          392
+        ],
+        "paste": [
+          51,
+          41
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          36,
+          23,
+          266,
+          391
+        ],
+        "paste": [
+          45,
+          42
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          36,
+          23,
+          250,
+          391
+        ],
+        "paste": [
+          53,
+          42
+        ]
+      }
+    },
+    "actor-5": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          285,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          284,
+          400
+        ],
+        "paste": [
+          43,
+          31
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          285,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          50,
+          21,
+          286,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          285,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          49,
+          22,
+          284,
+          400
+        ],
+        "paste": [
+          43,
+          32
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          21,
+          67,
+          293,
+          387
+        ],
+        "paste": [
+          24,
+          90
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          23,
+          79,
+          295,
+          385
+        ],
+        "paste": [
+          24,
+          104
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          50,
+          20,
+          267,
+          393
+        ],
+        "paste": [
+          52,
+          37
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          54,
+          20,
+          264,
+          394
+        ],
+        "paste": [
+          55,
+          36
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          52,
+          23,
+          270,
+          393
+        ],
+        "paste": [
+          51,
+          40
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          55,
+          22,
+          271,
+          393
+        ],
+        "paste": [
+          52,
+          39
+        ]
+      }
+    },
+    "actor-lead": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          26,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          26,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          26,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          26,
+          295,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          44,
+          28,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          43
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          44,
+          28,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          43
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          39,
+          73,
+          283,
+          397
+        ],
+        "paste": [
+          38,
+          86
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          38,
+          96,
+          280,
+          395
+        ],
+        "paste": [
+          39,
+          111
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          45,
+          23,
+          269,
+          394
+        ],
+        "paste": [
+          48,
+          39
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          61,
+          22,
+          269,
+          395
+        ],
+        "paste": [
+          56,
+          37
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          42,
+          23,
+          272,
+          394
+        ],
+        "paste": [
+          45,
+          39
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          45,
+          23,
+          250,
+          394
+        ],
+        "paste": [
+          58,
+          39
+        ]
+      }
+    }
+  },
+  "layout": {
+    "minN": 1,
+    "maxN": 16,
+    "columns": "N<=3 ? N : N<=6 ? 3 : 4",
+    "rows": "ceil(N/columns)",
+    "canvas": [
+      1536,
+      1024
+    ],
+    "largeCanvas": [
+      1536,
+      1536
+    ],
+    "background": "N<=3 small;N<=6 medium;else large",
+    "podWidth": "N<=6 ? 310 : 258",
+    "podLeft": "N<=6 ? 350+i%columns*380 : 340+i%4*286",
+    "podTop": "N<=3 ? 610 : N<=6 ? 450+floor(i/3)*275 : 500+floor(i/4)*260",
+    "actorAnchorInFrame": [
+      160,
+      410
+    ],
+    "actorFrame": [
+      320,
+      432
+    ],
+    "actorHeight": "N<=6 ? 240 : 200",
+    "slot": "[podLeft+podWidth*.27, podTop+podWidth*.61]",
+    "lead": "per-background placement in assets metadata",
+    "walk": "one reserved visitor per 16-second cycle after 10 seconds; actor (2+cycle)%N, seat→below row→right aisle→rear meeting lane→target, then reverse",
+    "idleSleepSeconds": 12,
+    "crossfadeSeconds": 0.35
+  },
+  "lead": {
+    "small": {
+      "foot": [
+        778,
+        342
+      ],
+      "height": 230
+    },
+    "medium": {
+      "foot": [
+        785,
+        340
+      ],
+      "height": 220
+    },
+    "large": {
+      "foot": [
+        800,
+        385
+      ],
+      "height": 230
+    }
+  },
+  "ui": {
+    "header": {
+      "data": {
+        "project": "agent-office",
+        "workspace": "Greeting with no task specified",
+        "agent": "Orchestrator"
+      },
+      "source": "scene.js top-level const header",
+      "render": "HTML textContent + title",
+      "columns": "desktop 1:1.8:1; <=900px 1:1.65:1.05",
+      "font": "900 25px monospace; <=900px 18px; <=550px 12px",
+      "overflow": "min-width:0; nowrap; hidden; text-overflow:ellipsis; full title",
+      "update": "window.setOfficeHeader({project,workspace,agent})"
+    },
+    "bottomHud": false,
+    "nameplates": {
+      "render": "HTML overlay on unchanged wooden modesty panels",
+      "pod": {
+        "center": [
+          0.5,
+          0.8
+        ],
+        "width": 0.74,
+        "coordinates": "[podLeft + podWidth*.5,podTop + podHeight*.8]"
+      },
+      "leadAnchors": {
+        "small": [
+          805,
+          358
+        ],
+        "medium": [
+          798,
+          324
+        ],
+        "large": [
+          818,
+          385
+        ]
+      },
+      "leadWidth": 240,
+      "font": "800 clamp(12px,1.15vw,18px) monospace; <=550px 8px",
+      "style": "antique brass plate with dark embossed text and provider dot",
+      "overflow": "single line, CSS ellipsis, full name in title",
+      "update": "window.setAgentName(index,name), index=0..15 or lead"
+    },
+    "tooltip": "state only; names visible on desk plates",
+    "mockNames": [
+      "plugin#FDF9",
+      "scene#3C71",
+      "art#94A2",
+      "qa#0499",
+      "review#A1C2",
+      "docs#7B10",
+      "infra#55E3",
+      "api#C0DE",
+      "ui#5E19",
+      "perf#0F42",
+      "data#91AB",
+      "auth#3D7E",
+      "ci#B8F0",
+      "search#64CA",
+      "mobile#E27D",
+      "ops#4A09"
+    ]
+  },
+  "bundleVersion": 1,
+  "drawingOrder": [
+    "background",
+    "orchestrator actor",
+    "lead-front occlusion",
+    "upper body/hand clip",
+    "depth-sort pods and walkers by feet Y",
+    "pod-back",
+    "flame_aura",
+    "actor state",
+    "pod-front",
+    "upper body/hand clip",
+    "effects",
+    "HTML context header and nameplates"
+  ],
+  "stateContract": {
+    "states": [
+      "working",
+      "away",
+      "phone",
+      "sleeping"
+    ],
+    "needsAttention": "independent boolean; draw attention effect above current state",
+    "walking": "auxiliary locomotion, use walk_left/walk_right while traveling",
+    "away": "rest-area seated pose; place on the existing sofa; same feet anchor",
+    "nativeActorFrame": [
+      320,
+      432
+    ],
+    "runtimeActorFrame": [
+      160,
+      216
+    ],
+    "runtimeActorAnchor": [
+      80,
+      205
+    ],
+    "assetGeometry": "assets.size and layout remain v10 native logical coordinates; runtimeSize is actual WebP size; sheets dimensions are actual source pixels",
+    "reservedRuntimePrefix": "runtime/"
+  },
+  "sheets": {
+    "actor-0-working": {
+      "file": "runtime/actor-0-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-0-phone": {
+      "file": "runtime/actor-0-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-0-sleeping": {
+      "file": "runtime/actor-0-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-0-walk_left": {
+      "file": "runtime/actor-0-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-0-walk_right": {
+      "file": "runtime/actor-0-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-0-away": {
+      "file": "runtime/actor-0-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-working": {
+      "file": "runtime/actor-1-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-phone": {
+      "file": "runtime/actor-1-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-sleeping": {
+      "file": "runtime/actor-1-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-walk_left": {
+      "file": "runtime/actor-1-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-walk_right": {
+      "file": "runtime/actor-1-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-away": {
+      "file": "runtime/actor-1-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-working": {
+      "file": "runtime/actor-2-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-phone": {
+      "file": "runtime/actor-2-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-sleeping": {
+      "file": "runtime/actor-2-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-walk_left": {
+      "file": "runtime/actor-2-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-walk_right": {
+      "file": "runtime/actor-2-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-away": {
+      "file": "runtime/actor-2-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-working": {
+      "file": "runtime/actor-3-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-phone": {
+      "file": "runtime/actor-3-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-sleeping": {
+      "file": "runtime/actor-3-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-walk_left": {
+      "file": "runtime/actor-3-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-walk_right": {
+      "file": "runtime/actor-3-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-away": {
+      "file": "runtime/actor-3-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-working": {
+      "file": "runtime/actor-4-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-phone": {
+      "file": "runtime/actor-4-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-sleeping": {
+      "file": "runtime/actor-4-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-walk_left": {
+      "file": "runtime/actor-4-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-walk_right": {
+      "file": "runtime/actor-4-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-away": {
+      "file": "runtime/actor-4-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-working": {
+      "file": "runtime/actor-5-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-phone": {
+      "file": "runtime/actor-5-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-sleeping": {
+      "file": "runtime/actor-5-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-walk_left": {
+      "file": "runtime/actor-5-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-walk_right": {
+      "file": "runtime/actor-5-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-away": {
+      "file": "runtime/actor-5-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "orchestrator-working": {
+      "file": "runtime/orchestrator-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "orchestrator-phone": {
+      "file": "runtime/orchestrator-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 2,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "orchestrator-sleeping": {
+      "file": "runtime/orchestrator-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 2,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "flame_aura": {
+      "file": "runtime/flame_aura.webp",
+      "frameW": 128,
+      "frameH": 160,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        64,
+        144
+      ]
+    },
+    "pop_plus3": {
+      "file": "runtime/pop_plus3.webp",
+      "frameW": 96,
+      "frameH": 80,
+      "frames": 4,
+      "fps": 4,
+      "loop": false,
+      "anchor": [
+        48,
+        72
+      ]
+    },
+    "pop_plus10": {
+      "file": "runtime/pop_plus10.webp",
+      "frameW": 96,
+      "frameH": 80,
+      "frames": 4,
+      "fps": 4,
+      "loop": false,
+      "anchor": [
+        48,
+        72
+      ]
+    },
+    "bubble_done": {
+      "file": "runtime/bubble_done.webp",
+      "frameW": 128,
+      "frameH": 96,
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        64,
+        90
+      ]
+    },
+    "bubble_prup": {
+      "file": "runtime/bubble_prup.webp",
+      "frameW": 128,
+      "frameH": 96,
+      "frames": 1,
+      "fps": 1,
+      "loop": false,
+      "anchor": [
+        64,
+        90
+      ]
+    },
+    "zzz": {
+      "file": "runtime/zzz.webp",
+      "frameW": 96,
+      "frameH": 80,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        48,
+        72
+      ]
+    },
+    "attention": {
+      "file": "runtime/attention.webp",
+      "frameW": 80,
+      "frameH": 96,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        40,
+        88
+      ]
+    },
+    "orchestrator-away": {
+      "file": "runtime/orchestrator-away.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 2,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "orchestrator-walk_left": {
+      "file": "runtime/orchestrator-walk_left.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "orchestrator-walk_right": {
+      "file": "runtime/orchestrator-walk_right.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    }
+  },
+  "actors": {
+    "actor-0": {
+      "working": "actor-0-working",
+      "phone": "actor-0-phone",
+      "sleeping": "actor-0-sleeping",
+      "walk_left": "actor-0-walk_left",
+      "walk_right": "actor-0-walk_right",
+      "away": "actor-0-away"
+    },
+    "actor-1": {
+      "working": "actor-1-working",
+      "phone": "actor-1-phone",
+      "sleeping": "actor-1-sleeping",
+      "walk_left": "actor-1-walk_left",
+      "walk_right": "actor-1-walk_right",
+      "away": "actor-1-away"
+    },
+    "actor-2": {
+      "working": "actor-2-working",
+      "phone": "actor-2-phone",
+      "sleeping": "actor-2-sleeping",
+      "walk_left": "actor-2-walk_left",
+      "walk_right": "actor-2-walk_right",
+      "away": "actor-2-away"
+    },
+    "actor-3": {
+      "working": "actor-3-working",
+      "phone": "actor-3-phone",
+      "sleeping": "actor-3-sleeping",
+      "walk_left": "actor-3-walk_left",
+      "walk_right": "actor-3-walk_right",
+      "away": "actor-3-away"
+    },
+    "actor-4": {
+      "working": "actor-4-working",
+      "phone": "actor-4-phone",
+      "sleeping": "actor-4-sleeping",
+      "walk_left": "actor-4-walk_left",
+      "walk_right": "actor-4-walk_right",
+      "away": "actor-4-away"
+    },
+    "actor-5": {
+      "working": "actor-5-working",
+      "phone": "actor-5-phone",
+      "sleeping": "actor-5-sleeping",
+      "walk_left": "actor-5-walk_left",
+      "walk_right": "actor-5-walk_right",
+      "away": "actor-5-away"
+    },
+    "orchestrator": {
+      "working": "orchestrator-working",
+      "phone": "orchestrator-phone",
+      "sleeping": "orchestrator-sleeping",
+      "away": "orchestrator-away",
+      "walk_left": "orchestrator-walk_left",
+      "walk_right": "orchestrator-walk_right"
+    }
+  },
+  "effects": {
+    "flame_aura": "flame_aura",
+    "pop_plus3": "pop_plus3",
+    "pop_plus10": "pop_plus10",
+    "bubble_done": "bubble_done",
+    "bubble_prup": "bubble_prup",
+    "zzz": "zzz",
+    "attention": "attention"
+  },
+  "defaultActor": "actor-0"
+}

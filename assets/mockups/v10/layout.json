@@ -1,0 +1,3252 @@
+{
+  "version": 10,
+  "reference": "../v8/office-c.png",
+  "processing": "cropping, padding, alpha-preserving layer separation only; no palette reduction, no low-resolution redraw",
+  "assets": {
+    "background-small": {
+      "file": "parts/background-small.png",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "lead-front-small": {
+      "file": "parts/lead-front-small.png",
+      "size": [
+        520,
+        153
+      ],
+      "sourceBox": [
+        545,
+        255,
+        1065,
+        408
+      ]
+    },
+    "background-medium": {
+      "file": "parts/background-medium.png",
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "lead-front-medium": {
+      "file": "parts/lead-front-medium.png",
+      "size": [
+        498,
+        134
+      ],
+      "sourceBox": [
+        550,
+        235,
+        1048,
+        369
+      ]
+    },
+    "background-large": {
+      "file": "parts/background-large.png",
+      "size": [
+        1254,
+        1254
+      ]
+    },
+    "lead-front-large": {
+      "file": "parts/lead-front-large.png",
+      "size": [
+        453,
+        133
+      ],
+      "sourceBox": [
+        447,
+        228,
+        900,
+        361
+      ]
+    },
+    "pod-0-back": {
+      "file": "parts/pod-0-back.png",
+      "size": [
+        479,
+        365
+      ],
+      "sourceBox": [
+        21,
+        355,
+        500,
+        720
+      ]
+    },
+    "pod-0-front": {
+      "file": "parts/pod-0-front.png",
+      "size": [
+        479,
+        365
+      ],
+      "split": {
+        "leftTopTransparent": [
+          0,
+          0,
+          0.53,
+          0.4
+        ]
+      }
+    },
+    "pod-1-back": {
+      "file": "parts/pod-1-back.png",
+      "size": [
+        475,
+        369
+      ],
+      "sourceBox": [
+        527,
+        351,
+        1002,
+        720
+      ]
+    },
+    "pod-1-front": {
+      "file": "parts/pod-1-front.png",
+      "size": [
+        475,
+        369
+      ],
+      "split": {
+        "leftTopTransparent": [
+          0,
+          0,
+          0.53,
+          0.4
+        ]
+      }
+    },
+    "pod-2-back": {
+      "file": "parts/pod-2-back.png",
+      "size": [
+        482,
+        369
+      ],
+      "sourceBox": [
+        1030,
+        351,
+        1512,
+        720
+      ]
+    },
+    "pod-2-front": {
+      "file": "parts/pod-2-front.png",
+      "size": [
+        482,
+        369
+      ],
+      "split": {
+        "leftTopTransparent": [
+          0,
+          0,
+          0.53,
+          0.4
+        ]
+      }
+    },
+    "actor-0-working-0": {
+      "file": "parts/actor-0-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-working-1": {
+      "file": "parts/actor-0-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-working-2": {
+      "file": "parts/actor-0-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-working-3": {
+      "file": "parts/actor-0-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-phone-0": {
+      "file": "parts/actor-0-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-phone-1": {
+      "file": "parts/actor-0-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-sleeping-0": {
+      "file": "parts/actor-0-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-sleeping-1": {
+      "file": "parts/actor-0-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-walking-left-0": {
+      "file": "parts/actor-0-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-walking-left-1": {
+      "file": "parts/actor-0-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-walking-right-0": {
+      "file": "parts/actor-0-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-walking-right-1": {
+      "file": "parts/actor-0-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-0-sheet": {
+      "file": "parts/actor-0-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "actor-1-working-0": {
+      "file": "parts/actor-1-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-working-1": {
+      "file": "parts/actor-1-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-working-2": {
+      "file": "parts/actor-1-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-working-3": {
+      "file": "parts/actor-1-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-phone-0": {
+      "file": "parts/actor-1-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-phone-1": {
+      "file": "parts/actor-1-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-sleeping-0": {
+      "file": "parts/actor-1-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-sleeping-1": {
+      "file": "parts/actor-1-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-walking-left-0": {
+      "file": "parts/actor-1-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-walking-left-1": {
+      "file": "parts/actor-1-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-walking-right-0": {
+      "file": "parts/actor-1-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-walking-right-1": {
+      "file": "parts/actor-1-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-1-sheet": {
+      "file": "parts/actor-1-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "actor-2-working-0": {
+      "file": "parts/actor-2-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-working-1": {
+      "file": "parts/actor-2-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-working-2": {
+      "file": "parts/actor-2-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-working-3": {
+      "file": "parts/actor-2-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-phone-0": {
+      "file": "parts/actor-2-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-phone-1": {
+      "file": "parts/actor-2-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-sleeping-0": {
+      "file": "parts/actor-2-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-sleeping-1": {
+      "file": "parts/actor-2-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-walking-left-0": {
+      "file": "parts/actor-2-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-walking-left-1": {
+      "file": "parts/actor-2-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-walking-right-0": {
+      "file": "parts/actor-2-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-walking-right-1": {
+      "file": "parts/actor-2-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-2-sheet": {
+      "file": "parts/actor-2-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "actor-3-working-0": {
+      "file": "parts/actor-3-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-working-1": {
+      "file": "parts/actor-3-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-working-2": {
+      "file": "parts/actor-3-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-working-3": {
+      "file": "parts/actor-3-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-phone-0": {
+      "file": "parts/actor-3-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-phone-1": {
+      "file": "parts/actor-3-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-sleeping-0": {
+      "file": "parts/actor-3-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-sleeping-1": {
+      "file": "parts/actor-3-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-walking-left-0": {
+      "file": "parts/actor-3-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-walking-left-1": {
+      "file": "parts/actor-3-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-walking-right-0": {
+      "file": "parts/actor-3-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-walking-right-1": {
+      "file": "parts/actor-3-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-3-sheet": {
+      "file": "parts/actor-3-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "actor-4-working-0": {
+      "file": "parts/actor-4-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-working-1": {
+      "file": "parts/actor-4-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-working-2": {
+      "file": "parts/actor-4-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-working-3": {
+      "file": "parts/actor-4-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-phone-0": {
+      "file": "parts/actor-4-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-phone-1": {
+      "file": "parts/actor-4-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-sleeping-0": {
+      "file": "parts/actor-4-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-sleeping-1": {
+      "file": "parts/actor-4-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-walking-left-0": {
+      "file": "parts/actor-4-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-walking-left-1": {
+      "file": "parts/actor-4-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-walking-right-0": {
+      "file": "parts/actor-4-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-walking-right-1": {
+      "file": "parts/actor-4-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-4-sheet": {
+      "file": "parts/actor-4-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "actor-5-working-0": {
+      "file": "parts/actor-5-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-working-1": {
+      "file": "parts/actor-5-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-working-2": {
+      "file": "parts/actor-5-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-working-3": {
+      "file": "parts/actor-5-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-phone-0": {
+      "file": "parts/actor-5-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-phone-1": {
+      "file": "parts/actor-5-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-sleeping-0": {
+      "file": "parts/actor-5-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-sleeping-1": {
+      "file": "parts/actor-5-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-walking-left-0": {
+      "file": "parts/actor-5-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-walking-left-1": {
+      "file": "parts/actor-5-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-walking-right-0": {
+      "file": "parts/actor-5-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-walking-right-1": {
+      "file": "parts/actor-5-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-5-sheet": {
+      "file": "parts/actor-5-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "actor-lead-working-0": {
+      "file": "parts/actor-lead-working-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-working-1": {
+      "file": "parts/actor-lead-working-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-working-2": {
+      "file": "parts/actor-lead-working-2.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-working-3": {
+      "file": "parts/actor-lead-working-3.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-phone-0": {
+      "file": "parts/actor-lead-phone-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-phone-1": {
+      "file": "parts/actor-lead-phone-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-sleeping-0": {
+      "file": "parts/actor-lead-sleeping-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-sleeping-1": {
+      "file": "parts/actor-lead-sleeping-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-walking-left-0": {
+      "file": "parts/actor-lead-walking-left-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-walking-left-1": {
+      "file": "parts/actor-lead-walking-left-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-walking-right-0": {
+      "file": "parts/actor-lead-walking-right-0.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-walking-right-1": {
+      "file": "parts/actor-lead-walking-right-1.png",
+      "size": [
+        320,
+        432
+      ],
+      "anchor": [
+        160,
+        410
+      ]
+    },
+    "actor-lead-sheet": {
+      "file": "parts/actor-lead-sheet.png",
+      "size": [
+        1280,
+        1296
+      ],
+      "anchor": [
+        160,
+        410
+      ],
+      "frame": [
+        320,
+        432
+      ],
+      "grid": [
+        4,
+        3
+      ]
+    },
+    "flame-0": {
+      "file": "parts/flame-0.png",
+      "size": [
+        305,
+        226
+      ],
+      "sourceCell": [
+        0,
+        0,
+        384,
+        341
+      ],
+      "sourceTrim": [
+        40,
+        71,
+        345,
+        297
+      ]
+    },
+    "flame-1": {
+      "file": "parts/flame-1.png",
+      "size": [
+        316,
+        261
+      ],
+      "sourceCell": [
+        384,
+        0,
+        768,
+        341
+      ],
+      "sourceTrim": [
+        31,
+        36,
+        347,
+        297
+      ]
+    },
+    "flame-2": {
+      "file": "parts/flame-2.png",
+      "size": [
+        351,
+        278
+      ],
+      "sourceCell": [
+        768,
+        0,
+        1152,
+        341
+      ],
+      "sourceTrim": [
+        16,
+        20,
+        367,
+        298
+      ]
+    },
+    "emphasis": {
+      "file": "parts/emphasis.png",
+      "size": [
+        243,
+        165
+      ],
+      "sourceCell": [
+        1152,
+        0,
+        1536,
+        341
+      ],
+      "sourceTrim": [
+        75,
+        87,
+        318,
+        252
+      ]
+    },
+    "points-3": {
+      "file": "parts/points-3.png",
+      "size": [
+        244,
+        210
+      ],
+      "sourceCell": [
+        0,
+        341,
+        384,
+        683
+      ],
+      "sourceTrim": [
+        70,
+        74,
+        314,
+        284
+      ]
+    },
+    "points-10": {
+      "file": "parts/points-10.png",
+      "size": [
+        271,
+        210
+      ],
+      "sourceCell": [
+        384,
+        341,
+        768,
+        683
+      ],
+      "sourceTrim": [
+        56,
+        74,
+        327,
+        284
+      ]
+    },
+    "bubble-done": {
+      "file": "parts/bubble-done.png",
+      "size": [
+        301,
+        210
+      ],
+      "sourceCell": [
+        768,
+        341,
+        1152,
+        683
+      ],
+      "sourceTrim": [
+        42,
+        74,
+        343,
+        284
+      ]
+    },
+    "bubble-pr": {
+      "file": "parts/bubble-pr.png",
+      "size": [
+        319,
+        210
+      ],
+      "sourceCell": [
+        1152,
+        341,
+        1536,
+        683
+      ],
+      "sourceTrim": [
+        32,
+        74,
+        351,
+        284
+      ]
+    },
+    "zzz": {
+      "file": "parts/zzz.png",
+      "size": [
+        255,
+        205
+      ],
+      "sourceCell": [
+        0,
+        683,
+        384,
+        1024
+      ],
+      "sourceTrim": [
+        66,
+        76,
+        321,
+        281
+      ]
+    },
+    "hud-panel": {
+      "file": "parts/hud-panel.png",
+      "size": [
+        352,
+        159
+      ],
+      "sourceCell": [
+        384,
+        683,
+        768,
+        1024
+      ],
+      "sourceTrim": [
+        16,
+        87,
+        368,
+        246
+      ]
+    },
+    "icon-active": {
+      "file": "parts/icon-active.png",
+      "size": [
+        276,
+        172
+      ],
+      "sourceCell": [
+        768,
+        683,
+        1152,
+        1024
+      ],
+      "sourceTrim": [
+        53,
+        87,
+        329,
+        259
+      ]
+    },
+    "icon-tokens": {
+      "file": "parts/icon-tokens.png",
+      "size": [
+        206,
+        210
+      ],
+      "sourceCell": [
+        1152,
+        683,
+        1536,
+        1024
+      ],
+      "sourceTrim": [
+        85,
+        66,
+        291,
+        276
+      ]
+    }
+  },
+  "frames": {
+    "actor-0": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          382
+        ],
+        "paste": [
+          45,
+          45
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          383
+        ],
+        "paste": [
+          45,
+          44
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          383
+        ],
+        "paste": [
+          45,
+          44
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          18,
+          275,
+          383
+        ],
+        "paste": [
+          45,
+          45
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          43,
+          18,
+          274,
+          382
+        ],
+        "paste": [
+          45,
+          46
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          43,
+          17,
+          274,
+          383
+        ],
+        "paste": [
+          45,
+          44
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          21,
+          57,
+          279,
+          382
+        ],
+        "paste": [
+          31,
+          85
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          22,
+          85,
+          280,
+          383
+        ],
+        "paste": [
+          31,
+          112
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          50,
+          16,
+          262,
+          388
+        ],
+        "paste": [
+          54,
+          38
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          54,
+          16,
+          260,
+          388
+        ],
+        "paste": [
+          57,
+          38
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          55,
+          16,
+          264,
+          389
+        ],
+        "paste": [
+          56,
+          37
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          56,
+          16,
+          266,
+          391
+        ],
+        "paste": [
+          55,
+          35
+        ]
+      }
+    },
+    "actor-1": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          14,
+          25,
+          293,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          13,
+          25,
+          292,
+          389
+        ],
+        "paste": [
+          21,
+          46
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          6,
+          58,
+          299,
+          385
+        ],
+        "paste": [
+          14,
+          83
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          5,
+          67,
+          299,
+          385
+        ],
+        "paste": [
+          13,
+          92
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          37,
+          21,
+          292,
+          396
+        ],
+        "paste": [
+          33,
+          35
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          44,
+          21,
+          292,
+          396
+        ],
+        "paste": [
+          36,
+          35
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          20,
+          22,
+          274,
+          396
+        ],
+        "paste": [
+          33,
+          36
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          21,
+          22,
+          270,
+          396
+        ],
+        "paste": [
+          36,
+          36
+        ]
+      }
+    },
+    "actor-2": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          46,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          31
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          46,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          31
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          46,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          31
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          47,
+          16,
+          276,
+          395
+        ],
+        "paste": [
+          46,
+          31
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          46,
+          17,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          32
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          46,
+          17,
+          276,
+          395
+        ],
+        "paste": [
+          45,
+          32
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          31,
+          73,
+          273,
+          390
+        ],
+        "paste": [
+          39,
+          93
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          41,
+          86,
+          281,
+          391
+        ],
+        "paste": [
+          40,
+          105
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          55,
+          20,
+          263,
+          388
+        ],
+        "paste": [
+          56,
+          42
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          61,
+          20,
+          264,
+          387
+        ],
+        "paste": [
+          59,
+          43
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          56,
+          19,
+          271,
+          388
+        ],
+        "paste": [
+          53,
+          41
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          56,
+          19,
+          255,
+          389
+        ],
+        "paste": [
+          61,
+          40
+        ]
+      }
+    },
+    "actor-3": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          287,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          28,
+          15,
+          289,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          27,
+          15,
+          288,
+          388
+        ],
+        "paste": [
+          30,
+          37
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          40,
+          47,
+          284,
+          382
+        ],
+        "paste": [
+          38,
+          75
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          46,
+          53,
+          295,
+          382
+        ],
+        "paste": [
+          36,
+          81
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          34,
+          15,
+          287,
+          400
+        ],
+        "paste": [
+          34,
+          25
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          58,
+          16,
+          285,
+          400
+        ],
+        "paste": [
+          47,
+          26
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          30,
+          14,
+          285,
+          400
+        ],
+        "paste": [
+          33,
+          24
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          37,
+          14,
+          264,
+          398
+        ],
+        "paste": [
+          47,
+          26
+        ]
+      }
+    },
+    "actor-4": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          33,
+          21,
+          291,
+          389
+        ],
+        "paste": [
+          31,
+          42
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          33,
+          21,
+          290,
+          389
+        ],
+        "paste": [
+          32,
+          42
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          33,
+          21,
+          291,
+          389
+        ],
+        "paste": [
+          31,
+          42
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          34,
+          21,
+          291,
+          389
+        ],
+        "paste": [
+          32,
+          42
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          33,
+          20,
+          291,
+          389
+        ],
+        "paste": [
+          31,
+          41
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          33,
+          20,
+          290,
+          389
+        ],
+        "paste": [
+          32,
+          41
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          23,
+          43,
+          276,
+          380
+        ],
+        "paste": [
+          34,
+          73
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          23,
+          60,
+          285,
+          380
+        ],
+        "paste": [
+          29,
+          90
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          43,
+          23,
+          263,
+          391
+        ],
+        "paste": [
+          50,
+          42
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          45,
+          23,
+          263,
+          392
+        ],
+        "paste": [
+          51,
+          41
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          36,
+          23,
+          266,
+          391
+        ],
+        "paste": [
+          45,
+          42
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          36,
+          23,
+          250,
+          391
+        ],
+        "paste": [
+          53,
+          42
+        ]
+      }
+    },
+    "actor-5": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          285,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          284,
+          400
+        ],
+        "paste": [
+          43,
+          31
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          285,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          50,
+          21,
+          286,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          49,
+          21,
+          285,
+          400
+        ],
+        "paste": [
+          42,
+          31
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          49,
+          22,
+          284,
+          400
+        ],
+        "paste": [
+          43,
+          32
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          21,
+          67,
+          293,
+          387
+        ],
+        "paste": [
+          24,
+          90
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          23,
+          79,
+          295,
+          385
+        ],
+        "paste": [
+          24,
+          104
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          50,
+          20,
+          267,
+          393
+        ],
+        "paste": [
+          52,
+          37
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          54,
+          20,
+          264,
+          394
+        ],
+        "paste": [
+          55,
+          36
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          52,
+          23,
+          270,
+          393
+        ],
+        "paste": [
+          51,
+          40
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          55,
+          22,
+          271,
+          393
+        ],
+        "paste": [
+          52,
+          39
+        ]
+      }
+    },
+    "actor-lead": {
+      "working-0": {
+        "column": 0,
+        "row": 0,
+        "sourceCell": [
+          0,
+          0,
+          314,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          26,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "working-1": {
+        "column": 1,
+        "row": 0,
+        "sourceCell": [
+          314,
+          0,
+          627,
+          418
+        ],
+        "sourceTrim": [
+          43,
+          26,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "working-2": {
+        "column": 2,
+        "row": 0,
+        "sourceCell": [
+          627,
+          0,
+          940,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          26,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "working-3": {
+        "column": 3,
+        "row": 0,
+        "sourceCell": [
+          940,
+          0,
+          1254,
+          418
+        ],
+        "sourceTrim": [
+          44,
+          26,
+          295,
+          395
+        ],
+        "paste": [
+          35,
+          41
+        ]
+      },
+      "phone-0": {
+        "column": 0,
+        "row": 1,
+        "sourceCell": [
+          0,
+          418,
+          314,
+          836
+        ],
+        "sourceTrim": [
+          44,
+          28,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          43
+        ]
+      },
+      "phone-1": {
+        "column": 1,
+        "row": 1,
+        "sourceCell": [
+          314,
+          418,
+          627,
+          836
+        ],
+        "sourceTrim": [
+          44,
+          28,
+          294,
+          395
+        ],
+        "paste": [
+          35,
+          43
+        ]
+      },
+      "sleeping-0": {
+        "column": 2,
+        "row": 1,
+        "sourceCell": [
+          627,
+          418,
+          940,
+          836
+        ],
+        "sourceTrim": [
+          39,
+          73,
+          283,
+          397
+        ],
+        "paste": [
+          38,
+          86
+        ]
+      },
+      "sleeping-1": {
+        "column": 3,
+        "row": 1,
+        "sourceCell": [
+          940,
+          418,
+          1254,
+          836
+        ],
+        "sourceTrim": [
+          38,
+          96,
+          280,
+          395
+        ],
+        "paste": [
+          39,
+          111
+        ]
+      },
+      "walking-left-0": {
+        "column": 0,
+        "row": 2,
+        "sourceCell": [
+          0,
+          836,
+          314,
+          1254
+        ],
+        "sourceTrim": [
+          45,
+          23,
+          269,
+          394
+        ],
+        "paste": [
+          48,
+          39
+        ]
+      },
+      "walking-left-1": {
+        "column": 1,
+        "row": 2,
+        "sourceCell": [
+          314,
+          836,
+          627,
+          1254
+        ],
+        "sourceTrim": [
+          61,
+          22,
+          269,
+          395
+        ],
+        "paste": [
+          56,
+          37
+        ]
+      },
+      "walking-right-0": {
+        "column": 2,
+        "row": 2,
+        "sourceCell": [
+          627,
+          836,
+          940,
+          1254
+        ],
+        "sourceTrim": [
+          42,
+          23,
+          272,
+          394
+        ],
+        "paste": [
+          45,
+          39
+        ]
+      },
+      "walking-right-1": {
+        "column": 3,
+        "row": 2,
+        "sourceCell": [
+          940,
+          836,
+          1254,
+          1254
+        ],
+        "sourceTrim": [
+          45,
+          23,
+          250,
+          394
+        ],
+        "paste": [
+          58,
+          39
+        ]
+      }
+    }
+  },
+  "layout": {
+    "minN": 1,
+    "maxN": 16,
+    "columns": "N<=3 ? N : N<=6 ? 3 : 4",
+    "rows": "ceil(N/columns)",
+    "canvas": [
+      1536,
+      1024
+    ],
+    "largeCanvas": [
+      1536,
+      1536
+    ],
+    "background": "N<=3 small;N<=6 medium;else large",
+    "podWidth": "N<=6 ? 310 : 258",
+    "podLeft": "N<=6 ? 350+i%columns*380 : 340+i%4*286",
+    "podTop": "N<=3 ? 610 : N<=6 ? 450+floor(i/3)*275 : 500+floor(i/4)*260",
+    "actorAnchorInFrame": [
+      160,
+      410
+    ],
+    "actorFrame": [
+      320,
+      432
+    ],
+    "actorHeight": "N<=6 ? 240 : 200",
+    "slot": "[podLeft+podWidth*.27, podTop+podWidth*.61]",
+    "lead": "per-background placement in assets metadata",
+    "walk": "one reserved visitor per 16-second cycle after 10 seconds; actor (2+cycle)%N, seat→below row→right aisle→rear meeting lane→target, then reverse",
+    "idleSleepSeconds": 12,
+    "crossfadeSeconds": 0.35
+  },
+  "lead": {
+    "small": {
+      "foot": [
+        778,
+        342
+      ],
+      "height": 230
+    },
+    "medium": {
+      "foot": [
+        785,
+        340
+      ],
+      "height": 220
+    },
+    "large": {
+      "foot": [
+        800,
+        385
+      ],
+      "height": 230
+    }
+  },
+  "ui": {
+    "header": {
+      "data": {
+        "project": "agent-office",
+        "workspace": "Greeting with no task specified",
+        "agent": "Orchestrator"
+      },
+      "source": "scene.js top-level const header",
+      "render": "HTML textContent + title",
+      "columns": "desktop 1:1.8:1; <=900px 1:1.65:1.05",
+      "font": "900 25px monospace; <=900px 18px; <=550px 12px",
+      "overflow": "min-width:0; nowrap; hidden; text-overflow:ellipsis; full title",
+      "update": "window.setOfficeHeader({project,workspace,agent})"
+    },
+    "bottomHud": false,
+    "nameplates": {
+      "render": "HTML overlay on unchanged wooden modesty panels",
+      "pod": {
+        "center": [
+          0.5,
+          0.8
+        ],
+        "width": 0.74,
+        "coordinates": "[podLeft + podWidth*.5,podTop + podHeight*.8]"
+      },
+      "leadAnchors": {
+        "small": [
+          805,
+          358
+        ],
+        "medium": [
+          798,
+          324
+        ],
+        "large": [
+          818,
+          385
+        ]
+      },
+      "leadWidth": 240,
+      "font": "800 clamp(12px,1.15vw,18px) monospace; <=550px 8px",
+      "style": "antique brass plate with dark embossed text and provider dot",
+      "overflow": "single line, CSS ellipsis, full name in title",
+      "update": "window.setAgentName(index,name), index=0..15 or lead"
+    },
+    "tooltip": "state only; names visible on desk plates",
+    "mockNames": [
+      "plugin#FDF9",
+      "scene#3C71",
+      "art#94A2",
+      "qa#0499",
+      "review#A1C2",
+      "docs#7B10",
+      "infra#55E3",
+      "api#C0DE",
+      "ui#5E19",
+      "perf#0F42",
+      "data#91AB",
+      "auth#3D7E",
+      "ci#B8F0",
+      "search#64CA",
+      "mobile#E27D",
+      "ops#4A09"
+    ]
+  }
+}

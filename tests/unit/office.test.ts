@@ -111,10 +111,10 @@ function createFakeOfficeHarness(initialClock = 1_000_000) {
     await handler(payload, { paseo });
   };
 
-  const callSnapshot = async (projectId?: string): Promise<OfficeSnapshot> => {
+  const callSnapshot = async (projectId?: string, workspaceId?: string): Promise<OfficeSnapshot> => {
     const handler = rpcs.get(SNAPSHOT_RPC_NAME);
     assert.ok(handler, `RPC ${SNAPSHOT_RPC_NAME} should be registered`);
-    return handler({ projectId }, { paseo });
+    return handler({ projectId, workspaceId }, { paseo });
   };
 
   return {
@@ -334,5 +334,47 @@ describe("server/office.ts — contributeOffice 통합 및 회귀 테스트", ()
     const snap = await callSnapshot("prj_1");
     assert.equal(state.agentsListCalls, 2);
     assert.equal(snap.projects[0]?.offices[0]?.id, "ag_retry");
+  });
+
+  it("agent.close.after: 닫힌 에이전트는 즉시 스냅샷에서 빠지고, 구성원이 없으면 방이 사라진다", async () => {
+    const { emitHook, callSnapshot } = createFakeOfficeHarness();
+    const root = makeHookAgent("root");
+    const kid = makeHookAgent("kid", { parentAgentId: "root" });
+    const kid2 = makeHookAgent("kid2", { parentAgentId: "root" });
+    for (const agent of [root, kid, kid2]) await emitHook("agent.create.after", { agent });
+    let snap = await callSnapshot("prj_1");
+    assert.deepEqual(snap.projects[0].offices[0].members.map((m) => m.id), ["kid", "kid2"]);
+
+    await emitHook("agent.close.after", { agent: { id: "kid" } });
+    snap = await callSnapshot("prj_1");
+    assert.deepEqual(snap.projects[0].offices[0].members.map((m) => m.id), ["kid2"]);
+    assert.equal(JSON.stringify(snap).includes('"kid"'), false);
+
+    await emitHook("agent.close.after", { agent: { id: "kid2" } });
+    snap = await callSnapshot("prj_1");
+    assert.equal(snap.projects[0].offices[0].kind, "solo");
+
+    await emitHook("agent.close.after", { agent: { id: "root" } });
+    snap = await callSnapshot("prj_1");
+    assert.deepEqual(snap.projects[0]?.offices ?? [], []);
+  });
+
+  it("agent.close.after: 관리자를 닫아도 구성원은 남고 서로 다른 오피스로 갈라지지 않고 크래시하지 않는다", async () => {
+    const { emitHook, callSnapshot } = createFakeOfficeHarness();
+    await emitHook("agent.create.after", { agent: makeHookAgent("root") });
+    await emitHook("agent.create.after", { agent: makeHookAgent("kid", { parentAgentId: "root" }) });
+    await emitHook("agent.close.after", { agent: { id: "root" } });
+    const snap = await callSnapshot("prj_1");
+    const ids = snap.projects[0].offices.flatMap((o) => [o.manager?.id, ...o.members.map((m) => m.id)]).filter(Boolean);
+    assert.deepEqual(ids, ["kid"]);
+  });
+
+  it("스냅샷 RPC: workspaceId를 넘기면 project 범위에서 그 워크스페이스 이름이 workspaceName으로 온다", async () => {
+    const { emitHook, callSnapshot } = createFakeOfficeHarness();
+    await emitHook("agent.create.after", { agent: makeHookAgent("root") });
+    assert.equal((await callSnapshot("prj_1", "wks_1")).workspaceName, "ws-one");
+    assert.equal((await callSnapshot("prj_1")).workspaceName ?? null, null);
+    assert.equal((await callSnapshot("prj_1", "wks_unknown")).workspaceName ?? null, null);
+    assert.equal((await callSnapshot(undefined, "wks_1")).workspaceName ?? null, null, "all 범위는 workspaceName 없음");
   });
 });

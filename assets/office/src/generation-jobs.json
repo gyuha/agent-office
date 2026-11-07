@@ -1,0 +1,444 @@
+[
+  {
+    "id": "actor-0-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-b1ad6d28-c473-4601-a491-1c415ee0612a.png"
+  },
+  {
+    "id": "actor-0-phone",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-047c303a-04ea-49f5-b61f-f2a57bfbf01f.png"
+  },
+  {
+    "id": "actor-0-sleeping",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-de238bcc-d6d8-4c81-9965-69c9fa23a7aa.png"
+  },
+  {
+    "id": "actor-0-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-0e0f65ff-1632-4205-be84-33cddefb0ad8.png"
+  },
+  {
+    "id": "actor-0-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-9b4e8ddd-b714-4991-8e7c-effa89a166d5.png"
+  },
+  {
+    "id": "actor-1-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-b62d2fb1-f920-4416-a0bb-ac0b85f48de5.png"
+  },
+  {
+    "id": "actor-1-phone",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-1ee19436-ba01-4b1a-82c6-beeaaa6e720e.png"
+  },
+  {
+    "id": "actor-1-sleeping",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-efcbe439-f0a2-4284-912b-f496b92ac61c.png"
+  },
+  {
+    "id": "actor-1-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-ba0a229f-8ff5-4b45-93e5-6b7a361be180.png"
+  },
+  {
+    "id": "actor-1-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-e747f71c-d9eb-4efc-8b5a-f65fb1c41915.png"
+  },
+  {
+    "id": "actor-2-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-0a7c3330-0709-4463-b9bb-eec61d7dc206.png"
+  },
+  {
+    "id": "actor-2-phone",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-96e9b431-fb4b-4463-a533-7f9c63e7fe34.png"
+  },
+  {
+    "id": "actor-2-sleeping",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-a5ce66a0-b6a7-4bda-9fcf-f0f61f27379a.png"
+  },
+  {
+    "id": "actor-2-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-5f90e3ea-741c-4410-be0e-b8940f5cf370.png"
+  },
+  {
+    "id": "actor-2-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-c697e3e3-c5db-41cb-9fe8-7f30913a3726.png"
+  },
+  {
+    "id": "actor-3-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-4777e2f3-08ac-4c83-b866-af6616015850.png"
+  },
+  {
+    "id": "actor-3-phone",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-68f8621e-d481-4ae6-8c75-06822b4ecd41.png"
+  },
+  {
+    "id": "actor-3-sleeping",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-fc1e38c1-a4a7-4a33-be94-b8018c45fc11.png"
+  },
+  {
+    "id": "actor-3-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-b6c7eb5e-29b6-4c2f-9052-441db662b51f.png"
+  },
+  {
+    "id": "actor-3-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-1dcb6bb0-598f-42cd-a794-38e88c01af99.png"
+  },
+  {
+    "id": "actor-4-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-74c5ab98-9807-4128-82b4-7c22eec4e658.png"
+  },
+  {
+    "id": "actor-4-phone",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-be67cbb7-55ab-433c-8583-01b8cf1b5aae.png"
+  },
+  {
+    "id": "actor-4-sleeping",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-84e026cb-b47f-42b3-9ca1-7ffb45362abd.png"
+  },
+  {
+    "id": "actor-4-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-b75d8a50-37b4-4723-846b-dd6db54b13f2.png"
+  },
+  {
+    "id": "actor-4-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-42dec97c-fc87-48c7-a051-67d8e46ec484.png"
+  },
+  {
+    "id": "actor-5-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-514c10b3-30cd-4c7c-b635-287eded88229.png"
+  },
+  {
+    "id": "actor-5-phone",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-1d8c7847-04a0-432b-ac70-113e065a0d30.png"
+  },
+  {
+    "id": "actor-5-sleeping",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-b2b53641-bd0e-480c-b796-709a5e88766c.png"
+  },
+  {
+    "id": "actor-5-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-147d6f58-041c-4a9e-b97d-fd4aa7a1079b.png"
+  },
+  {
+    "id": "actor-5-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-c129274c-eb8a-4101-8fec-6ab37a048684.png"
+  },
+  {
+    "id": "orchestrator-working",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-working-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. This person is the white-haired, rectangular-glasses orchestrator in the exact navy vest/white shirt from image 2. Seated at the same office chair position facing three-quarter toward the viewer and slightly right, typing on an INVISIBLE keyboard in front. FOUR consecutive loop frames: left fingers down/right fingers up; neutral; right fingers down/left up; neutral. Only fingers, wrists and tiny shoulder motion change. Preserve head, hips, feet positions and calm focused expression. No keyboard or chair drawing.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-1b9dc7c0-8b17-4741-ac74-eeea8f62cc26.png"
+  },
+  {
+    "id": "orchestrator-phone",
+    "kind": "actor",
+    "frames": 2,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 2 identical-sized columns in ONE row. This person is the white-haired, rectangular-glasses orchestrator in the exact navy vest/white shirt from image 2. TWO loop frames reclining slightly in an INVISIBLE chair, looking down at the same smartphone held near chest. Small scrolling thumb movement and slight breathing. Hips and feet stay planted. No furniture. Smartphone is the only prop.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-e47c8102-d338-4b61-8f2c-18a832e1facc.png"
+  },
+  {
+    "id": "orchestrator-sleeping",
+    "kind": "actor",
+    "frames": 2,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-sleeping-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 2 identical-sized columns in ONE row. This person is the white-haired, rectangular-glasses orchestrator in the exact navy vest/white shirt from image 2. TWO loop frames sleeping slumped forward onto folded arms on an INVISIBLE tabletop, eyes closed. Frame1 low breath, frame2 gently inhaling chest/shoulders, frame3 returning. Same sleepy head and folded hand position, minimal 1-2 pixel breathing motion. Keep hips and feet aligned. No table, chair, Zzz letters, icons or effects.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-8faf7d08-3a04-41c3-8e7e-dfb2646e954f.png"
+  },
+  {
+    "id": "flame_aura",
+    "kind": "effect",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/flame-0.png"
+    ],
+    "prompt": "Image 1 is our own original office art style; image 2 is the exact existing effect design. Create an original animation of image 2 with identical shape, line weight, colors and warm detailed high-resolution pixel illustration. True transparent background. ONE horizontal row, exactly 4 equal columns, no grid lines/labels, ample transparent padding, never cross cell boundaries. No palette reduction, no named game or trademark. Four frames of the SAME hollow U-shaped orange-yellow pixel flame aura flickering around an INVISIBLE person. Flame tips shift through a smooth loop. The central character-shaped opening stays transparent. No character, text, ground or shadow.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-4f2cbcff-993b-4104-96d4-37c3a3f4732c.png"
+  },
+  {
+    "id": "pop_plus3",
+    "kind": "effect",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/points-3.png"
+    ],
+    "prompt": "Image 1 is our own office art direction. Image 2 is the exact balloon design to animate. Generate a clean transparent RGBA horizontal sprite row with EXACTLY FOUR equal cells. Same cream balloon with dark navy outline and green exact text '+3' repeated in four frames. Preserve its size, shape, lettering and colors IDENTICALLY in every frame. Frame 1 lower, frame 2 5px higher, frame 3 10px higher, frame 4 15px higher. The ONLY fade is actual object alpha: frames 1/2 fully opaque, frame 3 70% opacity, frame 4 35% opacity. Every pixel outside the balloon must have ZERO alpha. CRITICAL: NO glow, haze, clouds, fog, halo, white wash, gray wash, painted transparency, floor, shadows, background or checkerboard artwork. Never brighten colors or draw white behind a balloon to fake fading. Do not enlarge or distort the balloon. Four separate isolated identical balloons in ONE row, no overlap, generous transparent gutters. Match the exact high-resolution pixel illustration of image 2. No added symbols, no labels.",
+    "previousGenerated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-806ce070-b1cc-45e3-af34-b11acded1038.png",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-05549a08-1dc7-4ecf-9e3c-ab78dc37ef75.png"
+  },
+  {
+    "id": "pop_plus10",
+    "kind": "effect",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/points-10.png"
+    ],
+    "prompt": "Image 1 is our own office art direction. Image 2 is the exact balloon design to animate. Generate a clean transparent RGBA horizontal sprite row with EXACTLY FOUR equal cells. Same cream balloon with dark navy outline and green exact text '+10' repeated in four frames. Preserve its size, shape, lettering and colors IDENTICALLY in every frame. Frame 1 lower, frame 2 5px higher, frame 3 10px higher, frame 4 15px higher. The ONLY fade is actual object alpha: frames 1/2 fully opaque, frame 3 70% opacity, frame 4 35% opacity. Every pixel outside the balloon must have ZERO alpha. CRITICAL: NO glow, haze, clouds, fog, halo, white wash, gray wash, painted transparency, floor, shadows, background or checkerboard artwork. Never brighten colors or draw white behind a balloon to fake fading. Do not enlarge or distort the balloon. Four separate isolated identical balloons in ONE row, no overlap, generous transparent gutters. Match the exact high-resolution pixel illustration of image 2. No added symbols, no labels.",
+    "previousGenerated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-4e4f7320-c543-47cb-91aa-54c696268980.png",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-f2e4e6ca-489e-4350-942d-3fdd06bd244e.png"
+  },
+  {
+    "id": "zzz",
+    "kind": "effect",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/zzz.png"
+    ],
+    "prompt": "Image 1 is our own original office art style; image 2 is the exact existing effect design. Create an original animation of image 2 with identical shape, line weight, colors and warm detailed high-resolution pixel illustration. True transparent background. ONE horizontal row, exactly 3 equal columns, no grid lines/labels, ample transparent padding, never cross cell boundaries. No palette reduction, no named game or trademark. Three frames of the SAME cream sleep speech balloon containing exact dark text 'Zzz', matching image 2, gently bobbing and breathing through a small 3px loop. No character or furniture.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-9187a2fd-773d-423a-804a-51e26c36fa75.png"
+  },
+  {
+    "id": "attention",
+    "kind": "effect",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/emphasis.png"
+    ],
+    "prompt": "Image 1 is our own original office art style; image 2 is the exact existing effect design. Create an original animation of image 2 with identical shape, line weight, colors and warm detailed high-resolution pixel illustration. True transparent background. ONE horizontal row, exactly 3 equal columns, no grid lines/labels, ample transparent padding, never cross cell boundaries. No palette reduction, no named game or trademark. Three loop frames of the SAME yellow exclamation emphasis '!' symbol cluster matching image 2, with orange edges, subtly growing/settling/bobbing above an invisible head. No character, speech balloon, furniture or text besides '!'. Keep positions and shape consistent.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-ad971232-001b-4fc2-8658-df7b2cdbf695.png"
+  },
+  {
+    "id": "orchestrator-away",
+    "kind": "actor",
+    "frames": 3,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-phone-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 3 identical-sized columns in ONE row. THREE loop frames seated relaxed at the rest-area sofa position, gentle coffee break. Lean back slightly, hold the SAME small plain ceramic mug near lap/chest, sip a little then relax. Same hip/foot position across frames. The sofa is INVISIBLE: do not draw sofa or any furniture. No phone. Mug is the only prop. Identity must be the EXACT white-haired orchestrator, rectangular black glasses, navy vest, white shirt and tie of image 2; keep glasses and outfit in every frame.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-5ca4f2ff-fa9c-4847-aaac-ee3bb3cc8d8c.png"
+  },
+  {
+    "id": "orchestrator-walk_left",
+    "kind": "actor",
+    "frames": 4,
+    "refs": [
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v8/office-c.png",
+      "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-walking-left-0.png"
+    ],
+    "prompt": "Use image 1 as the art-direction reference, our own office illustration. Image 2 is the EXACT character identity and outfit reference, also our own generated artwork. Match image 2's face, hairstyle, accessories, clothing colors, outline weight and warm high-resolution pixel-illustration detail. Do not redesign, simplify, quantize the palette or change identity. All frames must show one identical person with stable scale, torso/hip position and foot baseline. True transparent RGBA background. No room, floor, chair, desk, monitor, labels, borders, grid lines, text or extra people. Isolated character only; props limited to the action named below. Make ONE horizontal row of equally spaced animation frames, never multiple rows, all full body, no overlapping cells, generous transparent gutter and padding. Camera stays fixed. No trademarks or named game references. Canvas landscape, ideally 1536x768. Exactly 4 identical-sized columns in ONE row. FOUR consecutive side-view walking LEFT frames completing a leg cycle: left leg forward/contact, passing, right leg forward/contact, passing. Face and body point LEFT in every frame, arms counter-swing, same hip and head size, feet on a common baseline. Character alone. No ground or speed marks. Identity must be the EXACT white-haired orchestrator, rectangular black glasses, navy vest, white shirt and tie of image 2; keep glasses and outfit in every frame.",
+    "generated": "/Users/gyuha/.codex/generated_images/01a1b117-98a9-7153-a00b-81cdc8ae65ef/exec-52e2f8e4-5cd1-4244-9cbb-e02016d1c9a2.png"
+  }
+]

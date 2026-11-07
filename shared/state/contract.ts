@@ -58,4 +58,6 @@ export interface OfficeSnapshot {
   readonly projects: readonly ProjectOffices[];
   /** 서버가 이 스냅샷을 만든 시각(epoch ms). */
   readonly generatedAt: number;
+  /** scope가 "project"일 때 패널이 열린 워크스페이스 제목. "all"이거나 알 수 없으면 null. */
+  readonly workspaceName?: string | null;
 }

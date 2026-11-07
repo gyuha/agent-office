@@ -1,0 +1,508 @@
+{
+  "actor-0-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-0-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-0-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-0-walk_left": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-walking-left-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-0-walk_right": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-walking-right-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-0-away": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-0-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-walk_left": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-walking-left-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-walk_right": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-walking-right-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-1-away": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-1-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-walk_left": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-walking-left-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-walk_right": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-walking-right-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-2-away": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-2-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-walk_left": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-walking-left-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-walk_right": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-walking-right-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-3-away": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-3-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-walk_left": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-walking-left-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-walk_right": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-walking-right-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-4-away": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-4-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-walk_left": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-walking-left-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-walk_right": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-walking-right-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "actor-5-away": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-5-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "orchestrator-working": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-working-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "orchestrator-phone": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-phone-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "orchestrator-sleeping": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/actor-lead-sleeping-0.png",
+    "frame": [
+      160,
+      216
+    ],
+    "anchor": [
+      80,
+      205
+    ]
+  },
+  "flame_aura": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/flame-0.png",
+    "frame": [
+      128,
+      160
+    ],
+    "anchor": [
+      64,
+      144
+    ]
+  },
+  "pop_plus3": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/points-3.png",
+    "frame": [
+      96,
+      80
+    ],
+    "anchor": [
+      48,
+      72
+    ]
+  },
+  "pop_plus10": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/points-10.png",
+    "frame": [
+      96,
+      80
+    ],
+    "anchor": [
+      48,
+      72
+    ]
+  },
+  "bubble_done": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/bubble-done.png",
+    "frame": [
+      128,
+      96
+    ],
+    "anchor": [
+      64,
+      90
+    ]
+  },
+  "bubble_prup": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/bubble-pr.png",
+    "frame": [
+      128,
+      96
+    ],
+    "anchor": [
+      64,
+      90
+    ]
+  },
+  "zzz": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/zzz.png",
+    "frame": [
+      96,
+      80
+    ],
+    "anchor": [
+      48,
+      72
+    ]
+  },
+  "attention": {
+    "source": "/Users/gyuha/workspace/agent-office/assets/mockups/v10/parts/emphasis.png",
+    "frame": [
+      80,
+      96
+    ],
+    "anchor": [
+      40,
+      88
+    ]
+  }
+}
