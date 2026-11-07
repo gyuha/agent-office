@@ -1,0 +1,21 @@
+{
+  "effectsAndCorner": [
+    {
+      "id": "attention-vqa",
+      "prompt": "Our own office reference defines exact warm detailed pixel illustration style. Make a transparent sprite sheet ONE row of THREE equally spaced frames. Each frame the SAME very clear large bright golden-yellow EXCLAMATION MARK ! inside a compact cream speech balloon with dark navy thick border and a small bottom-center tail. Exactly one ! (vertical thick stem and separate round dot), no extra rays, text or logos. 3 subtle pulse frames, identical shape and position, slightly varying golden glow. Readable at tiny 20px display. Transparent gutters, full balloon silhouette in each frame. No characters, office or floor."
+    },
+    {
+      "id": "flame-vqa",
+      "prompt": "Our own office reference sets warm detailed pixel illustration. Make ONE transparent sprite sheet with FOUR equally spaced narrow flame aura frames in one row. A small gentle golden-orange energy aura hugging a seated character's TORSO SIDES from waist to shoulders, NOT around head. Two slender low vertical flame ribbons at left and right, most of silhouette EMPTY transparent inside. Maximum width much narrower than height, narrow shoulders, open top with NO crown or arch and NO flame over head. No person, furniture, smoke, dark shadows, backdrop, text or logos. 4 consecutive subtle flicker frames with stable baseline, equal scale, large transparent gutters. It must look like concentrated work energy, never a burning computer."
+    },
+    {
+      "id": "corner-vqa",
+      "prompt": "Precise local edit. Image 1 our own office style reference. Image 2 exact EDIT TARGET. Remove ONLY the clipped plant pots and piece of low wooden furniture in the extreme BOTTOM RIGHT CORNER. Continue the existing wooden floor tiles and warm lighting into that corner. Keep EVERYTHING ELSE pixel-identical in composition: rear wall, whiteboard, windows, all bookshelves, plants on rear windowsills, top and left floor. No new furniture or people. Same camera and canvas dimensions."
+    }
+  ],
+  "leadCleanup": "Image 1 our own office illustration is the style reference. Image 2 is exact EDIT TARGET isolated wooden manager desk. Clean the faint pale rectangular outline/halo on the clear tabletop left of and behind keyboard, preserving wood grain and warm lighting. The entire middle tabletop must be a seamless natural wood surface with no rectangular mat, ghost box, selection line or pale perimeter. Keep keyboard, mouse, lamp, books, monitor BACK, mug, plant and front panel geometry exactly unchanged. Do not add, remove or move objects. Preserve transparent background and silhouette; no background or new shadows. Match original pixel illustration detail.",
+  "providerFallback": "Use our own warm pixel office illustration as style reference. Create ONE neutral generic AI provider fallback icon, a small cream desktop terminal with navy outline, a simple abstract four-dot status light on its screen, no letters or logos or brand symbols. Square silhouette, centered, strong readable outline at 12px. Transparent background, no floor or outside shadow. This is a generic placeholder for unsupported providers, not a trademark recreation.",
+  "reference": "assets/mockups/v8/office-c.png",
+  "leadReference": "assets/office/src/generated/lead-vqa-edit-target.png",
+  "backgroundReference": "assets/office/src/modules/background-large.png"
+}

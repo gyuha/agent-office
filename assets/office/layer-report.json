@@ -1,0 +1,20 @@
+{
+  "beforeBytes": 1317636,
+  "afterBytes": 1311546,
+  "newAssetKeys": [
+    "lead-back-small",
+    "lead-back-medium",
+    "lead-back-large",
+    "beanbag-moss-back",
+    "beanbag-moss-front",
+    "beanbag-terracotta-back",
+    "beanbag-terracotta-front",
+    "beanbag-navy-back",
+    "beanbag-navy-front",
+    "beanbag-mustard-back",
+    "beanbag-mustard-front"
+  ],
+  "podCombinations": 54,
+  "managerCombinations": 9,
+  "beanbagCombinations": 28
+}

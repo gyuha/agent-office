@@ -1,0 +1,13 @@
+{
+  "prompt": "Precise object removal edit. Image 1 is our own office style reference. Image 2 is the exact EDIT TARGET. Remove ALL furniture and objects sitting on the LEFT FLOOR: sofa, bed, coffee table, rug, floor/table standing lamp and its end table, low bottom-left cabinet, floor pots, boxes. Replace them with EMPTY continuous warm wood tile floor and natural existing wall/baseboard where necessary. KEEP rear-wall windows, blinds, whiteboard, tall bookshelves, picture frame, hanging plants, window-sill plants and back-wall cabinetry. Keep right side, central empty floor, tile scale, sunlight, wall geometry, palette and camera EXACTLY unchanged. No new objects or people, no labels. Same dimensions as target. This is a local edit to clear the left floor for modular lounge seating.",
+  "references": [
+    "assets/mockups/v8/office-c.png",
+    "assets/office/src/modules/background-{small,medium,large}.png"
+  ],
+  "files": [
+    "src/generated/background-left-clear-small.png",
+    "src/generated/background-left-clear-medium.png",
+    "src/generated/background-left-clear-large.png"
+  ],
+  "compositing": "edit rectangles only, retain original outside; masks recorded in left-lounge-report.json"
+}

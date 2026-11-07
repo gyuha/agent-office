@@ -1,12 +1,12 @@
 {
-  "runtimeBytes": 3199304,
-  "runtimeFiles": 164,
-  "sheets": 49,
-  "totalFrames": 165,
+  "runtimeBytes": 1575544,
+  "runtimeFiles": 104,
+  "sheets": 70,
+  "totalFrames": 233,
   "actorStatesComplete": true,
   "stage1ContractStable": true,
   "opaqueOrBlankAnimationFailures": [],
-  "gifCount": 49,
+  "gifCount": 70,
   "gifFrameCounts": {
     "actor-0-working": 4,
     "actor-0-phone": 3,
@@ -61,28 +61,83 @@
   "generatedSourceRows": 40,
   "staticSourcePngsByteIdentical": true,
   "edgeAudit": {
-    "sheetCount": 49,
-    "frameCount": 165,
-    "changedRuntimeSheets": [
-      "actor-1-away"
+    "sheets": 70,
+    "frames": 233,
+    "edgeHits": [
+      {
+        "id": "flame_aura",
+        "frame": 0
+      },
+      {
+        "id": "flame_aura",
+        "frame": 1
+      },
+      {
+        "id": "flame_aura",
+        "frame": 2
+      },
+      {
+        "id": "flame_aura",
+        "frame": 3
+      },
+      {
+        "id": "bubble_done",
+        "frame": 0
+      },
+      {
+        "id": "bubble_prup",
+        "frame": 0
+      }
     ],
-    "detachedNeighborFragments": 0,
-    "selectedCutCrossings": 0,
-    "manifestByteIdentical": true,
-    "safeCuts": {
-      "actor-1-away": [
-        0,
-        590,
-        1148,
-        1774
-      ],
-      "actor-1-sleeping": [
-        0,
-        597,
-        1167,
-        1774
-      ]
-    },
-    "expectedEdgeAlpha": "bubble_done/prup have intentional single-frame outer balloon borders; not neighbor fragments"
-  }
+    "detachedEdgeFragments": [],
+    "selectedSourceCutCrossings": [],
+    "originalNominalCutCrossings": [
+      {
+        "id": "actor-1-sleeping",
+        "crossings": [
+          {
+            "x": 1183,
+            "opaquePixels": 58
+          }
+        ]
+      },
+      {
+        "id": "actor-1-away",
+        "crossings": [
+          {
+            "x": 1183,
+            "opaquePixels": 418
+          }
+        ]
+      }
+    ],
+    "expectedSingleFrameBalloonBorders": [
+      "bubble_done",
+      "bubble_prup"
+    ]
+  },
+  "runtimeScale": 0.625,
+  "sourcePngsUnchanged": true,
+  "dimensionsAndMappingsValid": true,
+  "reviewUsesRuntimePixels": true,
+  "intentionalChangedPngMasters": [
+    "actor-0-away",
+    "actor-1-away",
+    "actor-2-away",
+    "actor-3-away",
+    "actor-4-away",
+    "actor-5-away",
+    "orchestrator-away"
+  ],
+  "otherOriginalSourceHashesUnchanged": true,
+  "rotatedLounge": {
+    "direction": "right-front",
+    "mirrorApplied": true,
+    "all7ActorsAll3FramesVisuallyReviewed": true,
+    "legExitForegroundAlphaZero": true
+  },
+  "rearSeatAndHandMappingValid": true,
+  "armOverlaysComplete": true,
+  "leftSilhouetteClipsRemoved": true,
+  "frontLeftChairAlphaZero": true
 }

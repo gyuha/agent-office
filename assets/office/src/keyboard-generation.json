@@ -1,0 +1,9 @@
+{
+  "prompt": "Use image 1 (our own office) and image 2 (our own desk) as exact art direction references: warm detailed high-resolution pixel illustration, clean dark outlines, cream plastic, soft golden light. Generate one isolated compact cream computer KEYBOARD and one small cream MOUSE to its right, together as ONE transparent-background sprite, no desk, people, hands, cables, text, letters, logos or shadows outside object. Three-quarter elevated FRONT view, matching the office desk tabletop. Keyboard long horizontal axis nearly level, shallow trapezoid with short depth, rows of small warm gray keycaps and spacebar. Keys seen from above. Wide landscape object in center with generous transparent margin. Mouse must be detached to right with a small gap. This will be composited UNDER an existing seated character's typing hands; do not include any character.",
+  "references": [
+    "assets/mockups/v8/office-c.png",
+    "assets/office/src/modules/pod-0-back.png"
+  ],
+  "file": "src/generated/keyboard-mouse.png",
+  "transparent_background": true
+}

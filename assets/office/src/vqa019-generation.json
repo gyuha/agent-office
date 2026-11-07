@@ -1,0 +1,6 @@
+{
+  "prompt": "Use our own office illustration as exact warm detailed pixel illustration style reference. Generate a transparent sprite atlas, exactly FOUR animation frames in one horizontal row, equally spaced with large transparent gutters. Subject: a clearly VISIBLE golden-yellow/orange FOCUS FLAME aura BEHIND a seated person's upper back and shoulders, no person drawn. Broad thick flame masses, not thin lines. Left shoulder plume is taller and broader, several flame tongues rise ABOVE shoulder height on left and right, at sides of an invisible head; TOP CENTER stays open, never a ring/crown over head. Central torso/head area is fully transparent. IMPORTANT bottom third of every frame fully empty transparent: no flame at keyboard/hand/waist level. Most bright flame mass at upper-left and upper side shoulders. Compact footprint so a monitor to the right is safe. Dark orange outer edges, bright yellow core, no haze, smoke, sparkles, floor, furniture, words, logos or backdrop. Four consecutive lively but stable flicker shapes. Flame must be unmistakable at tiny 30px display, chunky readable shapes, not wispy ribbons.",
+  "reference": "assets/mockups/v8/office-c.png",
+  "file": "src/generated/flame-vqa019.png",
+  "transparent_background": true
+}

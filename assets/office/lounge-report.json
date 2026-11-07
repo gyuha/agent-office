@@ -1,0 +1,15 @@
+{
+  "beforeBytes": 1311546,
+  "afterBytes": 1438076,
+  "newKeys": [
+    "rug-lounge-short",
+    "rug-lounge-medium",
+    "rug-lounge-long"
+  ],
+  "beanbagSizeUnchanged": [
+    240,
+    192
+  ],
+  "memberSlots": 4,
+  "managerSlots": 1
+}

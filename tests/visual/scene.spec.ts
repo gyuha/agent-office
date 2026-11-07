@@ -57,7 +57,7 @@ test("rendering the same input twice is pixel-identical (time is fully injected)
 // 상태별 기준 스크린샷. 솔로 오피스(작은 방)라 에이전트 하나의 자세가 또렷하게 보인다.
 const cases: { name: string; office: () => unknown; steps: number; epoch?: number }[] = [
   { name: "working", office: () => solo("working"), steps: 500 },
-  { name: "away-on-sofa", office: () => solo("away"), steps: 20_000 },
+  { name: "away-on-beanbag", office: () => solo("away"), steps: 30_000 },
   { name: "phone", office: () => solo("phone"), steps: 500 },
   { name: "sleeping", office: () => solo("sleeping"), steps: 500 },
   { name: "attention", office: () => solo("working", { needsAttention: true }), steps: 500 },
@@ -130,14 +130,14 @@ for (const l of layouts) {
   });
 }
 
-test("away agents move from desk to sofa and back (position-only check, no baseline)", async ({ page }) => {
+test("away agents walk to their beanbags and back (position-only check, no baseline)", async ({ page }) => {
   await open(page);
-  const away = snapshot([group(3, "away")]);
-  const r = await render(page, { snapshot: away, steps: forMs(20_000), epoch: 1000 });
-  const sofa = Object.values<any>(r.actors).filter((a) => a.destination === "sofa");
-  expect(sofa).toHaveLength(2);
-  const back = await render(page, { snapshot: snapshot([group(3, "working")]), steps: [{ dtMs: 0 }], initialActors: r.actors, epoch: 1000 });
-  expect(Object.values<any>(back.actors).every((a) => a.destination !== "sofa")).toBe(true);
+  const r = await render(page, { snapshot: snapshot([group(3, "away")]), steps: forMs(30_000), epoch: 1000 });
+  const resting = Object.values<any>(r.actors).filter((a) => a.destination === "beanbag");
+  expect(resting).toHaveLength(4); // 관리자 전용 빈백 + 구성원 3
+  expect(resting.every((a) => !a.moving)).toBe(true);
+  const back = await render(page, { snapshot: snapshot([group(3, "working")]), steps: forMs(30_000), initialActors: r.actors, epoch: 1000 });
+  expect(Object.values<any>(back.actors).every((a) => a.destination !== "beanbag" && !a.moving)).toBe(true);
 });
 
 // ───────── 실제 마운트 경로(mountOfficeScene): canvas + DOM 상단바 + 명판, setTime으로 시간 고정 ─────────
@@ -149,7 +149,7 @@ async function openMount(page: Page, snap: unknown, width = 1200, ms = 3500, epo
   await page.evaluate(([snapshot, w]) => (window as any).mount.open({ snapshot, width: w }), [snap, width] as const);
   await page.evaluate(([t, e]) => (window as any).mount.setTime(t, e), [ms, epoch] as const);
 }
-const mountShot = (page: Page, name: string) => expect(page.locator("#mount")).toHaveScreenshot(`mount-${name}.png`);
+const mountShot = (page: Page, name: string) => expect(page.locator(".office-scene")).toHaveScreenshot(`mount-${name}.png`);
 void (null as unknown as Mount);
 
 const mountedStates: { name: string; snap: () => unknown; ms: number; epoch: number }[] = [
@@ -173,8 +173,8 @@ test("mounted layouts: group with workspace, group without workspace, scope all,
   await openMount(page, snapshot([group(6)], { workspaceName: null }));
   await mountShot(page, "group-n6-no-workspace");
   await openMount(page, allProjects());
-  await mountShot(page, "all");
-  await openMount(page, snapshot([group(3)]), 480);
+  await expect(page.locator(".office-collection")).toHaveScreenshot("mount-all.png"); // scope all은 카드 여러 장(masonry)이라 컬렉션 전체를 찍는다
+  await openMount(page, snapshot([group(3)]), 360);
   await mountShot(page, "n3-narrow");
 });
 
@@ -212,11 +212,74 @@ test("mounted 410px panel: plates stay inside the scene and clickable, WORKSPACE
 
 test("setTime is a pure seek: the same time renders the same pixels, also after seeking backwards", async ({ page }) => {
   await openMount(page, snapshot([group(4)]), 1200, 5000, 90_000);
-  const first = await page.locator("#mount").screenshot();
+  const first = await page.locator(".office-scene").screenshot();
   await page.evaluate(() => (window as any).mount.setTime(500, 90_000));
   await page.evaluate(() => (window as any).mount.setTime(5000, 90_000));
-  const again = await page.locator("#mount").screenshot();
+  const again = await page.locator(".office-scene").screenshot();
   expect(again.equals(first)).toBe(true);
   await page.evaluate(() => (window as any).mount.setTime(5600, 90_000));
-  expect((await page.locator("#mount").screenshot()).equals(first)).toBe(false);
+  expect((await page.locator(".office-scene").screenshot()).equals(first)).toBe(false);
+});
+
+test("mounted scene is capped at 480px and centered in a wider panel; backing store = CSS size x DPR (max 2)", async ({ page, browser }) => {
+  await openMount(page, snapshot([group(3)]), 1200);
+  const m = await page.evaluate(() => (window as any).mount.metrics());
+  expect(m.cssWidth).toBe(480);
+  expect(m.rootWidth).toBe(480);
+  expect(m.rootLeft).toBe(360);
+  expect(m.backing[0]).toBe(480);
+  await openMount(page, snapshot([group(3)]), 400);
+  expect((await page.evaluate(() => (window as any).mount.metrics())).cssWidth).toBe(400);
+  for (const [dpr, want] of [[2, 960], [3, 960]] as const) {
+    const ctx = await browser.newContext({ viewport: { width: 1600, height: 1000 }, deviceScaleFactor: dpr });
+    const p = await ctx.newPage();
+    await openMount(p, snapshot([group(3)]), 1200);
+    expect((await p.evaluate(() => (window as any).mount.metrics())).backing[0], `dpr ${dpr}`).toBe(want);
+    await ctx.close();
+  }
+});
+
+// ───────── 전환 순간 고정 캡처 (setTransition): VQA-003/016/017/018 ─────────
+const away = (n: number) => snapshot([group(n, "away")]);
+const working = (n: number) => snapshot([group(n, "working")]);
+for (const [name, n, ms] of [["manager-behind-desk", 3, 400], ["walkers-lanes", 3, 1000], ["walkers-n6-mid", 6, 2500]] as const) {
+  test(`mounted transition baseline: working→away ${name} (N=${n}, +${ms}ms)`, async ({ page }) => {
+    await page.goto(mountUrl);
+    await page.evaluate(([snap]) => (window as any).mount.open({ snapshot: snap, width: 480 }), [away(n)] as any);
+    await page.evaluate(([from, t]) => (window as any).mount.setTransition(from, t, 1000, 3000), [working(n), ms] as any);
+    await mountShot(page, `transition-${name}`);
+  });
+}
+
+// ───────── scope all: masonry (1600px 패널 → 3열, 프로젝트 블록 단위) ─────────
+test("mounted scope all at 1600px: 3 columns, project blocks stay in one column, cards 410..480px", async ({ page }) => {
+  const specs: [string, number[]][] = [["alpha", [3, 6, 1]], ["beta", [12]], ["delta", [3]], ["epsilon", [8, 2]], ["gamma", [4, 16]], ["zeta", [5]]];
+  const snap = {
+    scope: "all", generatedAt: 0,
+    projects: specs.map(([name, sizes]) => ({
+      projectId: name, projectName: name,
+      offices: sizes.map((n, k) => {
+        const o: any = n === 1 ? solo("working") : group(n);
+        const id = `${name}-${k}`;
+        return { ...o, id, manager: o.manager && { ...o.manager, id: `${id}-lead` }, members: o.members.map((m: any, j: number) => ({ ...m, id: `${id}-${j}` })) };
+      }),
+    })),
+  };
+  await page.goto(mountUrl);
+  await page.evaluate(([snapshot, w]) => (window as any).mount.open({ snapshot, width: w }), [snap, 1600] as any);
+  await page.evaluate(([t, e]) => (window as any).mount.setTime(t, e), [3500, 1000] as const);
+  const cols = await page.evaluate(() => {
+    const cards = [...document.querySelectorAll(".office-collection > div")] as HTMLElement[];
+    const rect = (c: HTMLElement) => c.getBoundingClientRect();
+    const byProject: Record<string, number[]> = {};
+    for (const c of cards) (byProject[c.dataset.project!] ??= []).push(Math.round(rect(c).left));
+    return { count: cards.length, lefts: new Set(cards.map((c) => Math.round(rect(c).left))).size, widths: cards.map((c) => Math.round(rect(c).width)), canvases: document.querySelectorAll(".office-collection canvas").length, byProject };
+  });
+  expect(cols.count).toBe(10);
+  expect(cols.lefts).toBe(3);
+  expect(cols.canvases).toBe(10);
+  expect(Math.max(...cols.widths)).toBeLessThanOrEqual(480);
+  expect(Math.min(...cols.widths)).toBeGreaterThanOrEqual(410);
+  for (const [project, lefts] of Object.entries(cols.byProject)) expect(new Set(lefts).size, `project ${project} stays in one column`).toBe(1);
+  await expect(page.locator(".office-collection")).toHaveScreenshot("mount-all-masonry-1600.png");
 });

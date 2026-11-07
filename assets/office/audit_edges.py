@@ -19,13 +19,13 @@ def components(im,threshold=32):
 def audit():
  m=json.loads((R/'manifest.json').read_text());jobs=json.loads((R/'src/generation-jobs.json').read_text());rows=[];nominalRows=[];edge=[];fragments=[];overrides=json.loads((R/'src/frame-cuts.json').read_text()) if (R/'src/frame-cuts.json').exists() else {}
  for id,s in m['sheets'].items():
-  im=Image.open(R/s['file']).convert('RGBA');fw,fh=s['frameW'],s['frameH']
+  im=Image.open(R/s['file']).convert('RGBA');fw,fh=int(s['frameW']*m.get('runtimeScale',1)),int(s['frameH']*m.get('runtimeScale',1))
   for i in range(s['frames']):
    f=im.crop((i*fw,0,(i+1)*fw,fh));a=f.getchannel('A').point(lambda v:255 if v>32 else 0)
    hit=bool(a.crop((0,0,3,fh)).getbbox() or a.crop((fw-3,0,fw,fh)).getbbox())
    if hit:edge.append({'id':id,'frame':i})
    if id.startswith('actor-') or id.startswith('orchestrator-'):
-    cs=components(f);sus=[c for c in cs[1:] if c['pixels']>=30 and (c['box'][0]<fw*.15 or c['box'][2]>fw*.85)]
+    cs=components(f);sus=[c for c in cs[1:] if c['pixels']>=max(8,round(30*m.get('runtimeScale',1)**2)) and (c['box'][0]<fw*.15 or c['box'][2]>fw*.85)]
     if sus:fragments.append({'id':id,'frame':i,'components':sus})
  for j in jobs:
   if j['kind']!='actor':continue

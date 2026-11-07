@@ -1,0 +1,130 @@
+{
+  "beforeBytes": 1409292,
+  "afterBytes": 1407596,
+  "changedSheets": [
+    "actor-0-away",
+    "actor-1-away",
+    "actor-2-away",
+    "actor-3-away",
+    "actor-4-away",
+    "actor-5-away",
+    "orchestrator-away"
+  ],
+  "beanbagKeys": [
+    "beanbag-moss-back",
+    "beanbag-moss-front",
+    "beanbag-terracotta-back",
+    "beanbag-terracotta-front",
+    "beanbag-navy-back",
+    "beanbag-navy-front",
+    "beanbag-mustard-back",
+    "beanbag-mustard-front"
+  ],
+  "registration": {
+    "actor-0-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.22913256955810146,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    },
+    "actor-1-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.22580645161290322,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    },
+    "actor-2-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.22913256955810146,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    },
+    "actor-3-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.22727272727272727,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    },
+    "actor-4-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.2280130293159609,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    },
+    "actor-5-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.2422145328719723,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    },
+    "orchestrator-away": {
+      "cuts": [
+        0,
+        724,
+        1448,
+        2172
+      ],
+      "scale": 0.22508038585209003,
+      "frameHip": [
+        48,
+        166
+      ],
+      "horizontallyFlipped": true,
+      "frameFeetBaseline": 205
+    }
+  }
+}

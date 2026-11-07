@@ -6,16 +6,16 @@ const input = process.argv[2] || (fs.existsSync('assets/office/manifest.json') ?
 const manifest = JSON.parse(fs.readFileSync(input, 'utf8'));
 const data = {};
 for (const [key, spec] of Object.entries({...manifest.assets, ...manifest.sheets})) {
-  if (manifest.sheets && !manifest.sheets[key] && !/^(background-|lead-front-|pod-|hud-panel$)/.test(key)) continue;
+  if (key.startsWith('rug-') && !manifest.restLayout?.memberLounge?.enabled) continue;
+  if (manifest.sheets && !manifest.sheets[key] && !/^(background-|lead-front-|lead-back-|pod-|beanbag-|rug-|provider-icon-|hud-panel$)/.test(key)) continue;
   if (!spec.file || (key.startsWith('actor-') && !key.endsWith('-sheet') && !manifest.sheets?.[key])) continue;
   const file = path.resolve(path.dirname(input), spec.file);
   const mime = path.extname(file)==='.webp' ? 'image/webp' : 'image/png';
   data[key] = {...spec, uri:`data:${mime};base64,${fs.readFileSync(file).toString('base64')}`};
 }
-// Provider marks identify the provider only; see assets/CREDITS.md.
-for(const provider of ['claude','codex','antigravity','copilot','muse','opencode']){
-  const file=path.resolve('assets/reference/provider-icons',provider+'-64.png');
-  data['provider-icon-'+provider]={file:path.relative(process.cwd(),file),size:[64,64],uri:'data:image/png;base64,'+fs.readFileSync(file).toString('base64')};
+// Provider assets and aliases are owned by the manifest; no provider-name allowlist.
+for(const key of new Set(Object.values(manifest.providerIcons||{}))){
+  if(!data[key])throw new Error(`Missing provider icon asset: ${key}`);
 }
 fs.mkdirSync('client/scene/generated', {recursive:true});
 // JSON string avoids TypeScript constructing huge literal types for embedded images.

@@ -47,6 +47,15 @@
         "tests"
       ],
       "instructions": "상태 기계 전환(이벤트→상태, idle timeout→sleep/phone)을 unit test로 검증하고, Playwright로 실제 렌더링에서 상태별 애니메이션이 맞게 나오는지 시각 회귀 테스트를 만든다. 발견한 결함은 담당 역할과 재현 단계를 붙여 orchestrator에게 보고한다."
+    },
+    {
+      "name": "visual-qa",
+      "provider": "claude",
+      "model": "claude-opus-5-5",
+      "folders": [
+        "docs/visual-qa"
+      ],
+      "instructions": "렌더링된 오피스 화면을 사람의 눈으로 보고 어색한 장면을 찾아내는 역할이다. 코드나 에셋은 직접 고치지 않고, 문제를 찾아 담당 역할에게 고치도록 안내한다. 확인할 자료는 client/scene의 preview(preview.html, render-check, verify-preview), tests/visual의 하네스와 스냅샷, assets/office/review의 액터별 상태 GIF와 contact-sheet이고, 실제 paseo 패널 화면도 직접 본다. 상태(working, idle, sleeping, phone, away, walk)와 상태 전환 순간마다 스크린샷을 찍거나 프레임을 하나씩 넘겨 보며 다음 같은 어색함을 찾는다: 캐릭터가 책상이나 의자, 가구 위에 올라가 있거나 겹쳐 그려짐, 앞뒤 그리기 순서(z-order)가 틀림, 발이 바닥에서 뜨거나 바닥에 묻힘, 걷는 방향과 스프라이트 방향이 다름, 제자리걸음을 하거나 미끄러지듯 이동함, 오케스트레이터에게 명령을 받으러 가는 등 의미 없이 걸어 다님, 일하는 상태인데 자리를 비우거나 쉬는 상태인데 타이핑함, 말풍선·Zzz·이펙트 위치가 틀리거나 잘림, 프레임이 튀거나 깜빡임, 캐릭터끼리 같은 자리에 겹침, 스케일과 화풍이 서로 맞지 않음. 문제마다 docs/visual-qa에 리포트를 남긴다. 리포트에는 증상, 재현 조건(상태, 액터 번호, 전환 순서, 화면 크기), 스크린샷이나 프레임 경로, 왜 어색한지, 기대하는 모습, 원인으로 보이는 담당 역할(배치·경로·z-order·상태별 연출 문제는 scene, 스프라이트 프레임·앵커·가구 에셋 문제는 art, 상태 매핑이나 잘못된 상태 전환은 plugin)을 적는다. orchestrator를 통해 담당 역할에게 수정을 요청하고, 수정이 끝나면 같은 조건으로 다시 확인해 닫는다. 같은 어색함이 반복되지 않아야 하면 qa에게 시각 회귀 테스트 케이스로 추가해 달라고 요청한다."
     }
   ]
 }

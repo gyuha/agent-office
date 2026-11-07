@@ -1,0 +1,375 @@
+{
+  "beforeBytes": 994288,
+  "afterBytes": 1575544,
+  "embeddedBytes": 1264180,
+  "quality": 85,
+  "alphaQuality": 100,
+  "method": 6,
+  "runtimeScale": 0.625,
+  "lossless": [],
+  "removed": [
+    "runtime/static-actor-1-sleeping-1.webp",
+    "runtime/static-actor-4-working-2.webp",
+    "runtime/static-actor-3-sheet.webp",
+    "runtime/static-actor-5-working-3.webp",
+    "runtime/static-flame-0.webp",
+    "runtime/static-actor-0-phone-1.webp",
+    "runtime/static-actor-3-working-2.webp",
+    "runtime/static-actor-2-working-3.webp",
+    "runtime/static-actor-1-phone-0.webp",
+    "runtime/static-actor-lead-working-1.webp",
+    "runtime/static-icon-active.webp",
+    "runtime/static-zzz.webp",
+    "runtime/static-actor-3-walking-right-1.webp",
+    "runtime/static-actor-3-walking-right-0.webp",
+    "runtime/static-actor-lead-working-0.webp",
+    "runtime/static-actor-1-phone-1.webp",
+    "runtime/static-actor-2-working-2.webp",
+    "runtime/static-bubble-done.webp",
+    "runtime/static-actor-3-working-3.webp",
+    "runtime/static-actor-0-phone-0.webp",
+    "runtime/static-flame-1.webp",
+    "runtime/static-actor-5-working-2.webp",
+    "runtime/static-actor-1-sleeping-0.webp",
+    "runtime/static-actor-4-working-3.webp",
+    "runtime/static-actor-4-walking-left-0.webp",
+    "runtime/static-actor-2-walking-left-1.webp",
+    "runtime/static-actor-1-sheet.webp",
+    "runtime/static-actor-lead-phone-0.webp",
+    "runtime/static-actor-5-walking-left-0.webp",
+    "runtime/static-actor-2-walking-right-1.webp",
+    "runtime/static-actor-3-walking-left-1.webp",
+    "runtime/static-actor-0-walking-left-1.webp",
+    "runtime/static-actor-1-walking-left-1.webp",
+    "runtime/static-actor-lead-walking-left-1.webp",
+    "runtime/static-actor-1-working-3.webp",
+    "runtime/static-actor-0-sleeping-0.webp",
+    "runtime/static-actor-0-working-2.webp",
+    "runtime/static-actor-0-working-3.webp",
+    "runtime/static-actor-1-working-2.webp",
+    "runtime/static-actor-0-sleeping-1.webp",
+    "runtime/static-actor-lead-walking-left-0.webp",
+    "runtime/static-actor-1-walking-left-0.webp",
+    "runtime/static-actor-0-walking-left-0.webp",
+    "runtime/static-points-3.webp",
+    "runtime/static-actor-3-walking-left-0.webp",
+    "runtime/static-actor-5-walking-left-1.webp",
+    "runtime/static-actor-2-walking-right-0.webp",
+    "runtime/static-actor-lead-phone-1.webp",
+    "runtime/static-actor-2-walking-left-0.webp",
+    "runtime/static-bubble-pr.webp",
+    "runtime/static-actor-4-sheet.webp",
+    "runtime/static-actor-4-walking-left-1.webp",
+    "runtime/static-actor-4-walking-right-0.webp",
+    "runtime/static-actor-1-walking-right-0.webp",
+    "runtime/static-actor-0-working-0.webp",
+    "runtime/static-actor-5-sleeping-1.webp",
+    "runtime/static-actor-2-sleeping-0.webp",
+    "runtime/static-actor-1-working-1.webp",
+    "runtime/static-icon-tokens.webp",
+    "runtime/static-actor-2-sheet.webp",
+    "runtime/static-actor-1-working-0.webp",
+    "runtime/static-actor-5-sleeping-0.webp",
+    "runtime/static-actor-2-sleeping-1.webp",
+    "runtime/static-actor-0-working-1.webp",
+    "runtime/static-emphasis.webp",
+    "runtime/static-actor-1-walking-right-1.webp",
+    "runtime/static-actor-4-walking-right-1.webp",
+    "runtime/static-actor-3-phone-1.webp",
+    "runtime/static-actor-4-phone-1.webp",
+    "runtime/static-actor-lead-sleeping-1.webp",
+    "runtime/static-actor-3-sleeping-1.webp",
+    "runtime/static-flame-2.webp",
+    "runtime/static-actor-4-sleeping-0.webp",
+    "runtime/static-points-10.webp",
+    "runtime/static-actor-5-working-1.webp",
+    "runtime/static-actor-4-working-0.webp",
+    "runtime/static-actor-lead-walking-right-1.webp",
+    "runtime/static-actor-5-walking-right-0.webp",
+    "runtime/static-actor-lead-working-3.webp",
+    "runtime/static-actor-2-phone-0.webp",
+    "runtime/static-actor-5-phone-0.webp",
+    "runtime/static-actor-5-sheet.webp",
+    "runtime/static-actor-2-working-1.webp",
+    "runtime/static-actor-0-walking-right-0.webp",
+    "runtime/static-actor-3-working-0.webp",
+    "runtime/static-actor-lead-sheet.webp",
+    "runtime/static-actor-3-working-1.webp",
+    "runtime/static-actor-0-walking-right-1.webp",
+    "runtime/static-actor-2-working-0.webp",
+    "runtime/static-actor-5-phone-1.webp",
+    "runtime/static-actor-2-phone-1.webp",
+    "runtime/static-actor-lead-working-2.webp",
+    "runtime/static-actor-0-sheet.webp",
+    "runtime/static-actor-5-walking-right-1.webp",
+    "runtime/static-actor-lead-walking-right-0.webp",
+    "runtime/static-actor-4-working-1.webp",
+    "runtime/static-actor-5-working-0.webp",
+    "runtime/static-actor-3-sleeping-0.webp",
+    "runtime/static-actor-4-sleeping-1.webp",
+    "runtime/static-actor-lead-sleeping-0.webp",
+    "runtime/static-actor-4-phone-0.webp",
+    "runtime/static-actor-3-phone-0.webp"
+  ],
+  "paddedStatics": {
+    "lead-front-small": [
+      520,
+      160
+    ],
+    "lead-front-medium": [
+      504,
+      136
+    ],
+    "background-large": [
+      1256,
+      1256
+    ],
+    "lead-front-large": [
+      456,
+      136
+    ],
+    "pod-0-back": [
+      480,
+      368
+    ],
+    "pod-0-front": [
+      480,
+      368
+    ],
+    "pod-1-back": [
+      480,
+      376
+    ],
+    "pod-1-front": [
+      480,
+      376
+    ],
+    "pod-2-back": [
+      488,
+      376
+    ],
+    "pod-2-front": [
+      488,
+      376
+    ],
+    "hud-panel": [
+      352,
+      160
+    ]
+  },
+  "largest": [
+    {
+      "file": "runtime/background-medium.webp",
+      "bytes": 122238
+    },
+    {
+      "file": "runtime/background-large.webp",
+      "bytes": 102406
+    },
+    {
+      "file": "runtime/background-small.webp",
+      "bytes": 99170
+    },
+    {
+      "file": "runtime/actor-4-working.webp",
+      "bytes": 23694
+    },
+    {
+      "file": "runtime/actor-3-working.webp",
+      "bytes": 23520
+    }
+  ],
+  "previousExportBytes": 1317636,
+  "layerUpdate": {
+    "runtimeFiles": 73,
+    "deltaBytes": -11160,
+    "newAssetKeys": [
+      "lead-back-small",
+      "lead-back-medium",
+      "lead-back-large",
+      "beanbag-moss-back",
+      "beanbag-moss-front",
+      "beanbag-terracotta-back",
+      "beanbag-terracotta-front",
+      "beanbag-navy-back",
+      "beanbag-navy-front",
+      "beanbag-mustard-back",
+      "beanbag-mustard-front"
+    ]
+  },
+  "expectedEmbeddedBytesAfterSceneFilterUpdate": 1575544,
+  "keyboardUpdate": {
+    "beforeBytes": 1306476,
+    "afterBytes": 1311546,
+    "workingCombinations": 84,
+    "idleCombinations": 42
+  },
+  "loungeUpdate": {
+    "beforeBytes": 1311546,
+    "afterBytes": 1438076,
+    "newKeys": [
+      "rug-lounge-short",
+      "rug-lounge-medium",
+      "rug-lounge-long"
+    ],
+    "beanbagSizeUnchanged": [
+      240,
+      192
+    ],
+    "memberSlots": 4,
+    "managerSlots": 1
+  },
+  "rotatedLounge": {
+    "beforeBytes": 1438076,
+    "afterBytes": 1407596,
+    "changedSheets": 7
+  },
+  "leftLoungeUpdate": {
+    "beforeBytes": 1407596,
+    "afterBytes": 1351350,
+    "backgrounds": {
+      "small": {
+        "editedRectangles": [
+          [
+            0,
+            230,
+            292,
+            780
+          ],
+          [
+            180,
+            365,
+            410,
+            590
+          ]
+        ],
+        "outsideRegionPixelsUnchanged": true,
+        "size": [
+          1536,
+          1024
+        ]
+      },
+      "medium": {
+        "editedRectangles": [
+          [
+            0,
+            170,
+            258,
+            705
+          ],
+          [
+            145,
+            335,
+            392,
+            625
+          ],
+          [
+            0,
+            700,
+            275,
+            1024
+          ]
+        ],
+        "outsideRegionPixelsUnchanged": true,
+        "size": [
+          1536,
+          1024
+        ]
+      },
+      "large": {
+        "editedRectangles": [
+          [
+            0,
+            215,
+            235,
+            680
+          ],
+          [
+            0,
+            590,
+            85,
+            1254
+          ],
+          [
+            0,
+            1040,
+            215,
+            1254
+          ]
+        ],
+        "outsideRegionPixelsUnchanged": true,
+        "size": [
+          1254,
+          1254
+        ]
+      }
+    },
+    "maxSlots": {
+      "small": 2,
+      "medium": 2,
+      "large": 4
+    },
+    "managerSlotUnchanged": true
+  },
+  "vqaUpdate": {
+    "attentionFrames": 3,
+    "flameFrames": 4,
+    "providerSourcesUnmodified": true,
+    "walkMetadataSheets": 14
+  },
+  "vqa019020": {
+    "flameFrames": 4,
+    "newFlameAnchorInActor": [
+      44,
+      166
+    ],
+    "beanbagResizeRequired": false,
+    "proportionGuide": "review/proportion-guide.png"
+  },
+  "rearSeatUpdate": {
+    "handsSheets": 7,
+    "sheets": 56,
+    "frames": 193
+  },
+  "armOverlayUpdate": {
+    "actors": 7,
+    "states": 3,
+    "sheets": 70,
+    "frames": 233
+  },
+  "vqa031": {
+    "editedNativeRows": [
+      1234,
+      1254
+    ],
+    "unchangedAboveRow": 1234,
+    "sourceGeneratedTrimStart": 1224,
+    "runtimeSize": [
+      785,
+      785
+    ],
+    "updatedStaticAliases": [],
+    "assetBottomTrim": {
+      "anchor": "bottom",
+      "height": 24,
+      "coordinateSpace": "1536-wide room logical pixels",
+      "sourceRect": [
+        0,
+        1234,
+        1254,
+        20
+      ],
+      "sourceHeight": 20,
+      "destinationHeight": 24,
+      "mode": "fixed-height; never stretch with floor",
+      "sourceYFormula": "size[1]-sourceHeight",
+      "runtimeRect": [
+        0,
+        771.25,
+        783.75,
+        12.5
+      ],
+      "note": "runtime coordinates exclude padded rows; fractional source crop is intentional"
+    }
+  }
+}

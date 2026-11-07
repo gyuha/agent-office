@@ -68,8 +68,12 @@ test('draw plays every state with any sheet length: the drawn source rect always
       assert.ok(drawn.length > 0);
       for (const img of drawn) {
         const spec = sprites[img.key].spec;
-        assert.ok(img.sx >= 0 && img.sx + img.sw <= spec.frameW * frames && img.sx % spec.frameW === 0, `${img.key} frames=${frames} sx=${img.sx}`);
-        assert.equal(img.sw, spec.frameW);
+        const cell = spec.frameW * spec.runtimeScale;
+        const frameStart = Math.floor((img.sx + 1e-6) / cell) * cell;
+        // 전체 프레임 그리기는 칸 경계에서 시작하고, 손·머리 오버레이(actorOverlay)는 한 칸 안의 부분 사각형이다.
+        assert.ok(img.sx >= 0 && img.sx + img.sw <= sprites[img.key].image.width + 1e-6, `${img.key} frames=${frames} sx=${img.sx}`);
+        assert.ok(img.sx + img.sw <= frameStart + cell + 1e-6, `${img.key}: crop stays inside one frame cell`);
+        assert.ok(img.sw <= cell + 1e-6);
       }
     }
   }
@@ -81,7 +85,7 @@ test('a longer sheet is actually played: with more frames, the frame index cover
   const sprites = fakeSprites({ 'actor-0-working': spec });
   const seen = new Set<number>();
   let actors: any = {};
-  for (let i = 0; i < 20; i++) { actors = step(actors, s, 100); seen.add(trace(s, { actors, sprites }).images.find(x => x.key === 'actor-0-working')!.sx / spec.frameW); }
+  for (let i = 0; i < 20; i++) { actors = step(actors, s, 100); seen.add(trace(s, { actors, sprites }).images.find(x => x.key === 'actor-0-working')!.sx / (spec.frameW * manifest.runtimeScale)); }
   assert.deepEqual([...seen].sort((a, b) => a - b), Array.from({ length: frames }, (_, i) => i));
 });
 
@@ -91,5 +95,8 @@ test('flame and zzz effect sheets of any length also stay inside their sheet', (
   const { images } = trace(s, { sprites, epoch: 1e6, timeMs: 0, actors: Object.fromEntries(layoutOffices(s).rooms[0].stations.map(st => [st.agent.id, { ...st.seat, moving: false, direction: 'right', phase: 3.3, state: 'working', changed: 0, elapsed: 100, route: [], destination: 'seat', home: st.seat }])) });
   const flames = images.filter(i => i.key === 'flame_aura');
   assert.ok(flames.length >= 3);
-  for (const f of flames) assert.ok(f.sx % 50 === 0 && f.sx < 300);
+  for (const f of flames) {
+    const idx = f.sx / (50 * manifest.runtimeScale);
+    assert.ok(Number.isInteger(idx) && idx >= 0 && idx < 6, `flame sx=${f.sx}`);
+  }
 });

@@ -1,0 +1,32 @@
+{
+  "furniture": {
+    "prompt": "Use image 1 (our own office) as exact warm high-resolution pixel illustration style reference. Image 2 is the furniture edit target. Produce ONE transparent PNG horizontal asset atlas with FOUR equally spaced isolated furniture items in one row: three staff desk variations and one wider manager wooden desk. Preserve warm wood, dark clean outlines, three-quarter front view and flat continuous wooden modesty panels, no drawers. All monitors on far RIGHT end, showing only BACK CASE, vents and cables to viewer. Staff variations: cream CRT/green chair; black LCD/blue chair; black LCD/brown chair. Manager desk larger with green brass lamp at far LEFT end, books at far left, black monitor far right and brown chair. Each desk has a mug/books/plant ONLY at extreme left/right ends. Keep middle-left 40% of tabletop entirely clear for a seated character head/arms, no keyboard or props in this area. No people, no text, no labels, no room or shadows outside furniture. Real transparent background. Four objects separated by generous transparent gutters, entire furniture visible. Match target perspective, proportions and original illustration density; never invent brand logos.",
+    "references": [
+      "assets/mockups/v8/office-c.png",
+      "assets/office/src/v10/pod-0-back.png"
+    ],
+    "file": "src/generated/furniture-layered.png",
+    "transparent_background": true
+  },
+  "beanbags": {
+    "prompt": "Use our own office reference image for exact warm detailed high-resolution pixel illustration, dark outlines and cozy golden light. Create one transparent PNG sprite atlas: FOUR separate beanbag armchairs in a single horizontal row with generous transparent gaps. Identical three-quarter front camera, very low round plump beanbag with a depressed seat, raised back and small rounded front lip. Four colors: moss green, muted terracotta, dusty navy blue, warm mustard. Sized for the small chubby 2–3-head-high people in reference to sit low holding a mug, feet toward viewer. No people, text, floor, rug, shadow outside the beanbag, logos or other objects. Keep full silhouettes with transparent RGBA background. Each beanbag same size and perspective. Seat should cradle hips, no tall arms obscuring character.",
+    "references": [
+      "assets/mockups/v8/office-c.png"
+    ],
+    "file": "src/generated/beanbags.png",
+    "transparent_background": true
+  },
+  "backgrounds": {
+    "prompt": "Precise object removal. Image 1 is our own office style reference. Image 2 is the EDIT TARGET. Remove ONLY the large central manager desk, its chair, lamp, books, mug, monitor and hanging desk plant. Fill their former area with a natural continuation of the existing rear wall/shelving and wooden floor. Keep whiteboard, room geometry, every other furniture item, lighting, palette and image dimensions unchanged. No new furniture or people. The purpose is a clean background plate so an independent layered desk can later be composited at the exact same location. Do not redesign the room, add text or alter the camera.",
+    "references": [
+      "assets/mockups/v8/office-c.png",
+      "assets/office/src/v10/background-{small,medium,large}.png"
+    ],
+    "files": [
+      "src/generated/background-clean-small.png",
+      "src/generated/background-clean-medium.png",
+      "src/generated/background-clean-large.png"
+    ],
+    "transparent_background": false
+  }
+}

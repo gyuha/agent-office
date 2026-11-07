@@ -53,28 +53,39 @@ test('empty space, headers and out-of-scene points return null', () => {
   assert.equal(agentAtPoint(layout, actors, 700, 10), null, 'top bar');
 });
 
-test('an agent without an actor yet is hit at its seat', () => {
-  const layout = layoutOffices(snap([solo('a')]));
-  const st = layout.rooms[0].stations[0];
-  assert.equal(agentAtPoint(layout, {}, st.seat.x, st.seat.y - 50), 'a');
-  assert.equal(agentAtPoint(layout, {}, st.seat.x + 400, st.seat.y), null);
+test('an agent without an actor is skipped (it is not on screen): no exception, null when nobody has an actor, others stay selectable', () => {
+  const s = snap([group(2)]);
+  const layout = layoutOffices(s);
+  const [lead, m0, m1] = layout.rooms[0].stations;
+  assert.doesNotThrow(() => agentAtPoint(layout, {}, m0.seat.x, m0.seat.y - 50));
+  assert.equal(agentAtPoint(layout, {}, m0.seat.x, m0.seat.y - 50), null);
+  assert.equal(agentAtPoint(layout, {}, m0.plate.x, m0.plate.y), null, 'not even its nameplate');
+  // 일부만 actor가 있으면 없는 쪽만 건너뛴다.
+  const partial: any = { [m1.agent.id]: step({}, s, 0, layout)[m1.agent.id] };
+  assert.equal(agentAtPoint(layout, partial, m0.seat.x, m0.seat.y - 50), null);
+  assert.equal(agentAtPoint(layout, partial, m1.seat.x, m1.seat.y - 50), m1.agent.id);
+  assert.equal(agentAtPoint(layout, partial, lead.plate.x, lead.plate.y), null);
 });
 
 test('a walking agent is hit where it is now, not at its seat', () => {
   const s = snap([solo('a', { state: 'away' })]);
   const layout = layoutOffices(s);
   const st = layout.rooms[0].stations[0];
-  const actors = advance({}, s, 700, layout);
+  let actors: any = step({}, s, 0, layout);
+  for (let i = 0; i < 100 && !actors.a.moving; i++) actors = step(actors, s, 100, layout);
   const a = actors.a;
-  assert.ok(a.moving);
+  assert.ok(a.moving, 'it eventually leaves the desk');
   assert.equal(agentAtPoint(layout, actors, a.x, a.y - st.actorHeight * 0.4), 'a');
-  assert.equal(agentAtPoint(layout, actors, st.seat.x - 200, st.seat.y), null);
+  assert.equal(agentAtPoint(layout, actors, st.seat.x, st.seat.y - st.actorHeight * 2), null);
 });
 
 test('hit box: x within ±0.36 of the figure height, y from 0.92 height above the feet to 10px below', () => {
   const s = snap([solo('a', { state: 'phone' })]);
   const layout = layoutOffices(s);
-  const st = layout.rooms[0].stations[0], h = st.actorHeight, a = { x: st.seat.x, y: st.seat.y };
+  const st = layout.rooms[0].stations[0], h = st.actorHeight;
+  // 앉은 몸통의 판정 상자는 발 위치(seat)가 아니라 그려진 몸통 기준: bodySeat + (205 - anchorY) * H/216 + 상태 y 오프셋.
+  const offset = st.desk.actorOffsets['actor-0'].phone?.[1] ?? 0;
+  const a = { x: st.seat.x, y: st.bodySeat.y + (205 - st.desk.actorAnchor[1]) * h / 216 + (st.desk.actorStateYOffset.phone + offset) * st.moduleScale };
   const actors = step({}, s, 0, layout);
   const hit = (dx: number, dy: number) => agentAtPoint(layout, actors, a.x + dx, a.y + dy) === 'a';
   const e = 0.01; // 부동소수 경계 오차를 피한다.
@@ -107,7 +118,7 @@ for (const width of [1536, 900, 410]) {
     const scale = Math.min(1, width / 1536);
     assert.equal(layout.viewportScale, scale);
     for (const st of layout.rooms[0].stations) {
-      const font = Math.max(18, 6.5 / scale), pad = Math.max(3, 1 / scale), height = font * 1.35 + pad * 2;
+      const font = Math.max(st.manager ? 30 * st.moduleScale : 18, 6.5 / scale), pad = Math.max(st.manager ? 3 * st.moduleScale : 3, 1 / scale), height = font * 1.35 + pad * 2;
       const left = st.plate.x - st.plateWidth / 2, top = st.plate.y - height / 2, e = 0.01;
       for (const [dx, dy] of [[e, e], [st.plateWidth - e, e], [e, height - e], [st.plateWidth - e, height - e], [st.plateWidth / 2, height / 2]]) {
         assert.equal(agentAtPoint(layout, actors, left + dx, top + dy), st.agent.id, `${st.agent.id} +(${dx},${dy})`);
@@ -130,7 +141,8 @@ test('plate depth: a walker in front of a desk owns the plate area, a walker beh
 
 test('scenePoint maps a scaled canvas click to scene coordinates, including fractional offsets and fit-to-width', () => {
   const layout = layoutOffices(snap([group(6)]));
-  assert.deepEqual(scenePoint(225, 150, { left: 50, top: 50, width: 768, height: layout.height / 2 }, layout), { x: 350, y: 200 });
+  const sp = scenePoint(225, 150, { left: 50, top: 50, width: 768, height: layout.height / 2 }, layout)!;
+  assert.ok(Math.abs(sp.x - 350) < 1e-9 && Math.abs(sp.y - 200) < 1e-9, JSON.stringify(sp));
   assert.equal(scenePoint(0, 0, { left: 0, top: 0, width: 0, height: 0 }, layout), null);
   const shown = fitSceneWidth(layout.width, layout.height, 400);
   const bounds = { left: 40, top: 10, ...shown };

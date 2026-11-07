@@ -1,0 +1,17 @@
+from pathlib import Path
+from PIL import Image,ImageDraw
+import json
+R=Path(__file__).resolve().parent;M=json.loads((R/'manifest.json').read_text());visible={}
+for actor,a in M['actors'].items():
+ im=Image.open(R/'src/sheets'/(a['away']+'.png')).convert('RGBA').crop((0,0,160,216));b=im.getchannel('A').point(lambda a:255 if a>32 else 0).getbbox();visible[actor]={'frameAlphaBounds':list(b),'visibleHeightToFrameHeight':round((b[3]-b[1])/216,6),'visibleHeightAt256':round((b[3]-b[1])*256/216,2)}
+M['furnitureProportions']={'units':'logical px; ratios use FULL actor frame display height, not head height or clipped upper body','actorFrame':[160,216],'uniformScaleFormula':'moduleScale = targetActorFrameHeight / referenceActorFrameHeight; multiply ALL furniture dimensions, seat, keyboard rect, actor offsets and actorHeight by moduleScale','forbidden':'shrinking actor independently while retaining native furniture size','pod':{'referenceActorFrameHeight':320,'widthToActorFrameHeightRange':[1.484375,1.50625],'keyboardWidthToActorFrameHeight':0.46875,'keyboardHeightToActorFrameHeight':0.09375},'lead':{'referenceActorFrameHeight':320,'widthToActorFrameHeight':{},'keyboardWidthToActorFrameHeight':0.46875,'chairBackApproxWidthToActorFrameHeight':0.44,'chairBackApproxHeightToActorFrameHeight':0.34,'placement':'uniformly scale around sourceBox seat pivot; sourceBox sets placement, not an independent forced furniture size'},'beanbag':{'referenceActorFrameHeight':256,'size':[240,200],'widthToActorFrameHeight':0.9375,'heightToActorFrameHeight':0.78125,'seatToActorFrameHeight':[102/256,132/256],'validHeightToVisibleActorHeightRange':[0.9,1.25],'observedHeightToVisibleActorHeightRange':[round(200/max(v['visibleHeightAt256'] for v in visible.values()),3),round(200/min(v['visibleHeightAt256'] for v in visible.values()),3)],'assetResizeRequired':False,'reason':'native coherent composite passes ratio; scene must scale beanbag and actor as one module'},'awayPoseMetrics':visible}
+for p in M['pods'].values():p['referenceActorFrameHeight']=320;p['moduleScaleFormula']='targetActorFrameHeight / 320'
+for kind,p in M['leadDesks'].items():
+ p['referenceActorFrameHeight']=320;p['moduleScaleFormula']='targetActorFrameHeight / 320';M['furnitureProportions']['lead']['widthToActorFrameHeight'][kind]=round(M['assets'][p['back']]['size'][0]/320,6)
+for p in M['beanbags'].values():p['referenceActorFrameHeight']=256;p['moduleScaleFormula']='targetActorFrameHeight / 256'
+(R/'manifest.json').write_text(json.dumps(M,ensure_ascii=False,indent=2))
+# Coherent proportions at three target frame heights, using original art.
+p=M['beanbags']['navy'];base=Image.new('RGBA',(288,270));base.alpha_composite(Image.open(R/M['assets'][p['back']]['sourceFile']).convert('RGBA'),(24,54));a=Image.open(R/'src/sheets/actor-2-away.png').convert('RGBA').crop((0,0,160,216)).resize((190,256),Image.Resampling.LANCZOS);f=256/216;base.alpha_composite(a,(round(24+102-48*f),round(54+132-166*f)));base.alpha_composite(Image.open(R/M['assets'][p['front']]['sourceFile']).convert('RGBA'),(24,54));out=Image.new('RGB',(1000,360),(242,229,207));d=ImageDraw.Draw(out)
+for col,h in enumerate([256,200,160]):
+ ratio=h/256;im=base.resize((round(288*ratio),round(270*ratio)),Image.Resampling.LANCZOS);out.paste(im,(col*330+10,60),im);d.text((col*330+10,12),'Actor full frame H='+str(h),fill='black');d.text((col*330+10,32),f'Bag {240*ratio:.1f} x {200*ratio:.1f}; same scale',fill='black')
+out.save(R/'review/proportion-guide.png');print(M['furnitureProportions']['beanbag'])

@@ -2,7 +2,8 @@
 // evaluate it in a tab serving preview.html (Paseo browser_evaluate or equivalent).
 async function browserChecks(){
   const assert=(ok,message)=>{if(!ok)throw new Error(message);};
-  const frame=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+  // Rendering is capped at 12fps; two display RAFs no longer imply a scene redraw.
+  const frame=()=>new Promise(r=>setTimeout(r,150));
   const preview=window.preview;assert(preview,'Preview API missing');
   for(let i=0;i<100&&!preview.inspect().ready;i++)await new Promise(r=>setTimeout(r,50));
   assert(preview.inspect().ready,'Assets failed to load');
@@ -15,7 +16,7 @@ async function browserChecks(){
     for(const room of scene.layout.rooms)for(const s of room.stations){const a=scene.actors[s.agent.id];assert(Math.hypot(a.x-s.seat.x,a.y-s.seat.y)<2,mode+' initial seated pose');}
     assert(!document.querySelector('.office-plate'),mode+' plates belong to the canvas depth pass');
     assert(scene.layout.rooms.every(r=>r.stations.every(s=>s.plateWidth>0)),mode+' canvas plate geometry');
-    for(let i=1;i<scene.layout.rooms.length;i++)assert(scene.layout.rooms[i].y>scene.layout.rooms[i-1].y+scene.layout.rooms[i-1].height,mode+' vertical stacking');
+    if(mode==='all'){assert(scene.cards.length===3,'One canvas per office');assert(scene.scheduler.timers===1,'One shared timer');const cards=[...document.querySelectorAll('.office-scene')];assert(cards.every(c=>c.getBoundingClientRect().width<=480),'Card width cap');}
     results.push(mode+' layout/plates');
   }
   const select=document.querySelector('#scenario');select.value='6';select.onchange();preview.reset();await frame();

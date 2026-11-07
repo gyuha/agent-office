@@ -72,12 +72,13 @@ export function buildVisualHarness() {
     window.__harness = {
       core,
       sprites,
-      spritesReady,
+      // 로드 완료(onload)와 디코드 완료는 다르다: 디코드 전에 처음 그리면 일부 이미지가 비어 보이므로 모두 디코드한 뒤 준비 완료로 본다.
+      spritesReady: spritesReady.then(() => Promise.all(Object.values(sprites).map((s) => (s.image.decode ? s.image.decode().catch(() => {}) : null)))),
       /**
        * steps: [{ dtMs, snapshot? }]를 차례로 core.step에 먹인 뒤 그린다.
        * epoch는 flame(working 60초) 판정에 쓰는 "현재 시각(ms)"이다.
        */
-      stepAndRender({ snapshot, steps = [], timeMs = 0, epoch = 0, scale = 1, initialActors = {} }) {
+      stepAndRender({ snapshot, steps = [], timeMs = 0, epoch = 0, scale = 0.5, initialActors = {} }) {
         let actors = initialActors;
         let current = snapshot;
         for (const s of steps) {
@@ -86,8 +87,17 @@ export function buildVisualHarness() {
         }
         const layout = core.layoutOffices(current);
         size(layout, scale);
+        // 높이가 소수면 마지막 행은 draw가 덮지 못하므로 매번 지워 결정성을 보장한다.
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.setTransform(scale, 0, 0, scale, 0, 0);
         // time 인자는 sprite-sheet 프레임(액터는 a.phase 사용)과 효과 시계로 쓰인다.
+        // Chrome은 큰 이미지를 처음 축소해 그릴 때 밉맵이 준비되기 전 저품질 경로를 쓰고(전체 화면 ±70 차이), 이후엔 고품질로 그린다.
+        // 한 번 버려지는 워밍업 그리기로 이 첫 호출 차이를 없애 결정성을 보장한다.
+        core.draw(ctx, layout, actors, timeMs, sprites, epoch);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.setTransform(scale, 0, 0, scale, 0, 0);
         core.draw(ctx, layout, actors, timeMs, sprites, epoch);
         return { layout, actors, width: canvas.width, height: canvas.height };
       },
@@ -123,7 +133,7 @@ export function buildVisualHarness() {
 export function buildMountHarness() {
   const sceneDir = path.join(repoRoot, "client/scene");
   const names = [...fs.readdirSync(path.join(sceneDir, "core")).filter((f) => f.endsWith(".ts")).map((f) => `core/${f.slice(0, -3)}`),
-    "mount-scene", "generated/office"];
+    "mount-scene", "mount-room", "scheduler", "generated/office"];
   const modules = Object.fromEntries(names.map((n) => [n, transpile(path.join(sceneDir, `${n}.ts`))]));
   const html = `<!doctype html>
 <html><head><meta charset="utf-8"><title>Mounted scene harness</title>
@@ -153,6 +163,12 @@ window.mount = {
     return handle.inspect().ready;
   },
   setTime: (ms, epoch) => handle.setTime(ms, epoch),
+  // from 스냅샷을 settleMs 동안 정착시킨 뒤 현재 스냅샷으로 전환해 ms 시점을 고정한다(프리뷰 전용 훅).
+  setTransition: (from, ms, epoch, settleMs) => handle.setTransition(from, ms, epoch, settleMs),
+  metrics: () => {
+    const c = document.querySelector('canvas'), r = document.querySelector('.office-scene').getBoundingClientRect();
+    return { backing: [c.width, c.height], cssWidth: c.getBoundingClientRect().width, rootLeft: r.left, rootWidth: r.width, dpr: window.devicePixelRatio };
+  },
   selected: () => selected,
   headers: () => [...document.querySelectorAll('.office-context')].map((h) => ({
     noWorkspace: h.classList.contains('no-workspace'),

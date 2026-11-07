@@ -1,7 +1,23 @@
 {
-  "sheets": 49,
-  "frames": 165,
+  "sheets": 70,
+  "frames": 233,
   "edgeHits": [
+    {
+      "id": "flame_aura",
+      "frame": 0
+    },
+    {
+      "id": "flame_aura",
+      "frame": 1
+    },
+    {
+      "id": "flame_aura",
+      "frame": 2
+    },
+    {
+      "id": "flame_aura",
+      "frame": 3
+    },
     {
       "id": "bubble_done",
       "frame": 0

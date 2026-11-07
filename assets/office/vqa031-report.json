@@ -1,0 +1,35 @@
+{
+  "editedNativeRows": [
+    1234,
+    1254
+  ],
+  "unchangedAboveRow": 1234,
+  "sourceGeneratedTrimStart": 1224,
+  "runtimeSize": [
+    785,
+    785
+  ],
+  "updatedStaticAliases": [],
+  "assetBottomTrim": {
+    "anchor": "bottom",
+    "height": 24,
+    "coordinateSpace": "1536-wide room logical pixels",
+    "sourceRect": [
+      0,
+      1234,
+      1254,
+      20
+    ],
+    "sourceHeight": 20,
+    "destinationHeight": 24,
+    "mode": "fixed-height; never stretch with floor",
+    "sourceYFormula": "size[1]-sourceHeight",
+    "runtimeRect": [
+      0,
+      771.25,
+      783.75,
+      12.5
+    ],
+    "note": "runtime coordinates exclude padded rows; fractional source crop is intentional"
+  }
+}

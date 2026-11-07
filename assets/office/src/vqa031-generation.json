@@ -1,0 +1,11 @@
+{
+  "prompt": "Precise local edit of our own pixel office illustration. Image 1 is style reference, Image 2 is EDIT TARGET large room, Image 3 shows the desired existing bottom room trim style. Add ONLY a continuous dark warm brown wooden baseboard / front cutaway wall strip along the VERY BOTTOM EDGE of Image 2, full width. Match Image 3's dark brown horizontal rim, thin warm golden top lip, reddish wood middle band and very dark bottom outline. Keep it shallow: approximately 24 source pixels tall on the 1254x1254 target, flush to left/right/bottom edge, perfectly horizontal. Everything ABOVE the last 28 pixels MUST remain unchanged: floor tiles, sunlight, empty room, wall decor and furniture. No new objects, plants, text, logos or HUD. This bottom strip must clearly close the room, not look like a random floor stripe. Same dimensions and camera as target.",
+  "references": [
+    "assets/mockups/v8/office-c.png",
+    "assets/office/src/modules/background-large.png",
+    "assets/office/src/modules/background-medium.png"
+  ],
+  "file": "src/generated/background-large-vqa031.png",
+  "transparent_background": false,
+  "finalEdit": "generated bottom trim cropped and registered into final20 native rows; all pixels above retained"
+}

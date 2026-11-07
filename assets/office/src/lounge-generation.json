@@ -1,0 +1,6 @@
+{
+  "prompt": "Use our own office illustration reference as exact warm high-resolution pixel-art illustration direction, clean dark outlines, golden lighting, detailed woven texture. Generate ONE isolated long horizontal office lounge RUG on a truly transparent RGBA background. Three-quarter elevated camera matching floor of reference. Wide shallow rectangle, about 5:1 width to visible depth. Warm muted terracotta outer border, cream double stitched thin trim, sage-green quiet interior with tiny subtle woven flecks. Rounded square corners, absolutely no tassels, furniture, people, props, text, logos, perspective vanishing point or floor shadow. Interior pattern must be simple and horizontally repeatable so the rug can be sliced into left cap, seamless repeating center and right cap. Long horizontal edges almost level, mild trapezoid perspective only. Entire rug visible with transparent padding. This rug will carry four beanbag seats in one row.",
+  "reference": "assets/mockups/v8/office-c.png",
+  "file": "src/generated/lounge-rug.png",
+  "transparent_background": true
+}

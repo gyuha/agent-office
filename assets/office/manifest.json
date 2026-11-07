@@ -4,211 +4,283 @@
   "processing": "cropping, padding, alpha-preserving layer separation only; no palette reduction, no low-resolution redraw",
   "assets": {
     "background-small": {
-      "file": "runtime/static-background-small.webp",
+      "file": "runtime/background-small.webp",
       "size": [
         1536,
         1024
       ],
-      "sourceFile": "src/v10/background-small.png",
+      "sourceFile": "src/modules/background-small.png",
       "runtimeSize": [
         960,
         640
-      ]
+      ],
+      "runtimePaddedLogicalSize": [
+        1536,
+        1024
+      ],
+      "bottomTrim": {
+        "anchor": "bottom",
+        "height": 24,
+        "coordinateSpace": "1536-wide room logical pixels",
+        "sourceRect": [
+          0,
+          1000,
+          1536,
+          24
+        ],
+        "sourceHeight": 24,
+        "destinationHeight": 24,
+        "mode": "fixed-height; never stretch with floor",
+        "sourceYFormula": "size[1]-sourceHeight",
+        "runtimeRect": [
+          0,
+          625.0,
+          960.0,
+          15.0
+        ],
+        "note": "runtime coordinates exclude padded rows; fractional source crop is intentional"
+      }
     },
     "lead-front-small": {
-      "file": "runtime/static-lead-front-small.webp",
+      "file": "runtime/lead-front-small.webp",
       "size": [
         520,
-        153
+        350
+      ],
+      "sourceFile": "src/modules/lead-front-small.png",
+      "runtimeSize": [
+        325,
+        220
+      ],
+      "runtimePaddedLogicalSize": [
+        520,
+        352
       ],
       "sourceBox": [
         545,
-        255,
+        58,
         1065,
         408
-      ],
-      "sourceFile": "src/v10/lead-front-small.png",
-      "runtimeSize": [
-        320,
-        94
       ]
     },
     "background-medium": {
-      "file": "runtime/static-background-medium.webp",
+      "file": "runtime/background-medium.webp",
       "size": [
         1536,
         1024
       ],
-      "sourceFile": "src/v10/background-medium.png",
+      "sourceFile": "src/modules/background-medium.png",
       "runtimeSize": [
         960,
         640
-      ]
+      ],
+      "runtimePaddedLogicalSize": [
+        1536,
+        1024
+      ],
+      "bottomTrim": {
+        "anchor": "bottom",
+        "height": 24,
+        "coordinateSpace": "1536-wide room logical pixels",
+        "sourceRect": [
+          0,
+          1000,
+          1536,
+          24
+        ],
+        "sourceHeight": 24,
+        "destinationHeight": 24,
+        "mode": "fixed-height; never stretch with floor",
+        "sourceYFormula": "size[1]-sourceHeight",
+        "runtimeRect": [
+          0,
+          625.0,
+          960.0,
+          15.0
+        ],
+        "note": "runtime coordinates exclude padded rows; fractional source crop is intentional"
+      }
     },
     "lead-front-medium": {
-      "file": "runtime/static-lead-front-medium.webp",
+      "file": "runtime/lead-front-medium.webp",
       "size": [
         498,
-        134
+        338
+      ],
+      "sourceFile": "src/modules/lead-front-medium.png",
+      "runtimeSize": [
+        315,
+        215
+      ],
+      "runtimePaddedLogicalSize": [
+        504,
+        344
       ],
       "sourceBox": [
         550,
-        235,
+        31,
         1048,
         369
-      ],
-      "sourceFile": "src/v10/lead-front-medium.png",
-      "runtimeSize": [
-        320,
-        86
       ]
     },
     "background-large": {
-      "file": "runtime/static-background-large.webp",
+      "file": "runtime/background-large.webp",
       "size": [
         1254,
         1254
       ],
-      "sourceFile": "src/v10/background-large.png",
+      "sourceFile": "src/modules/background-large.png",
       "runtimeSize": [
-        960,
-        960
-      ]
+        785,
+        785
+      ],
+      "runtimePaddedLogicalSize": [
+        1256,
+        1256
+      ],
+      "bottomTrim": {
+        "anchor": "bottom",
+        "height": 24,
+        "coordinateSpace": "1536-wide room logical pixels",
+        "sourceRect": [
+          0,
+          1234,
+          1254,
+          20
+        ],
+        "sourceHeight": 20,
+        "destinationHeight": 24,
+        "mode": "fixed-height; never stretch with floor",
+        "sourceYFormula": "size[1]-sourceHeight",
+        "runtimeRect": [
+          0,
+          771.25,
+          783.75,
+          12.5
+        ],
+        "note": "runtime coordinates exclude padded rows; fractional source crop is intentional"
+      }
     },
     "lead-front-large": {
-      "file": "runtime/static-lead-front-large.webp",
+      "file": "runtime/lead-front-large.webp",
       "size": [
         453,
-        133
+        313
+      ],
+      "sourceFile": "src/modules/lead-front-large.png",
+      "runtimeSize": [
+        285,
+        200
+      ],
+      "runtimePaddedLogicalSize": [
+        456,
+        320
       ],
       "sourceBox": [
         447,
-        228,
+        48,
         900,
         361
-      ],
-      "sourceFile": "src/v10/lead-front-large.png",
-      "runtimeSize": [
-        320,
-        94
       ]
     },
     "pod-0-back": {
-      "file": "runtime/static-pod-0-back.webp",
+      "file": "runtime/pod-0-back.webp",
       "size": [
         479,
         365
       ],
-      "sourceBox": [
-        21,
-        355,
-        500,
-        720
-      ],
-      "sourceFile": "src/v10/pod-0-back.png",
+      "sourceFile": "src/modules/pod-0-back.png",
       "runtimeSize": [
-        256,
-        195
+        300,
+        230
+      ],
+      "runtimePaddedLogicalSize": [
+        480,
+        368
       ]
     },
     "pod-0-front": {
-      "file": "runtime/static-pod-0-front.webp",
+      "file": "runtime/pod-0-front.webp",
       "size": [
         479,
         365
       ],
-      "split": {
-        "leftTopTransparent": [
-          0,
-          0,
-          0.53,
-          0.4
-        ]
-      },
-      "sourceFile": "src/v10/pod-0-front.png",
+      "sourceFile": "src/modules/pod-0-front.png",
       "runtimeSize": [
-        256,
-        195
+        300,
+        230
+      ],
+      "runtimePaddedLogicalSize": [
+        480,
+        368
       ]
     },
     "pod-1-back": {
-      "file": "runtime/static-pod-1-back.webp",
+      "file": "runtime/pod-1-back.webp",
       "size": [
         475,
         369
       ],
-      "sourceBox": [
-        527,
-        351,
-        1002,
-        720
-      ],
-      "sourceFile": "src/v10/pod-1-back.png",
+      "sourceFile": "src/modules/pod-1-back.png",
       "runtimeSize": [
-        256,
-        199
+        300,
+        235
+      ],
+      "runtimePaddedLogicalSize": [
+        480,
+        376
       ]
     },
     "pod-1-front": {
-      "file": "runtime/static-pod-1-front.webp",
+      "file": "runtime/pod-1-front.webp",
       "size": [
         475,
         369
       ],
-      "split": {
-        "leftTopTransparent": [
-          0,
-          0,
-          0.53,
-          0.4
-        ]
-      },
-      "sourceFile": "src/v10/pod-1-front.png",
+      "sourceFile": "src/modules/pod-1-front.png",
       "runtimeSize": [
-        256,
-        199
+        300,
+        235
+      ],
+      "runtimePaddedLogicalSize": [
+        480,
+        376
       ]
     },
     "pod-2-back": {
-      "file": "runtime/static-pod-2-back.webp",
+      "file": "runtime/pod-2-back.webp",
       "size": [
         482,
         369
       ],
-      "sourceBox": [
-        1030,
-        351,
-        1512,
-        720
-      ],
-      "sourceFile": "src/v10/pod-2-back.png",
+      "sourceFile": "src/modules/pod-2-back.png",
       "runtimeSize": [
-        256,
-        196
+        305,
+        235
+      ],
+      "runtimePaddedLogicalSize": [
+        488,
+        376
       ]
     },
     "pod-2-front": {
-      "file": "runtime/static-pod-2-front.webp",
+      "file": "runtime/pod-2-front.webp",
       "size": [
         482,
         369
       ],
-      "split": {
-        "leftTopTransparent": [
-          0,
-          0,
-          0.53,
-          0.4
-        ]
-      },
-      "sourceFile": "src/v10/pod-2-front.png",
+      "sourceFile": "src/modules/pod-2-front.png",
       "runtimeSize": [
-        256,
-        196
+        305,
+        235
+      ],
+      "runtimePaddedLogicalSize": [
+        488,
+        376
       ]
     },
     "actor-0-working-0": {
-      "file": "runtime/static-actor-0-working-0.webp",
+      "file": "src/v10/actor-0-working-0.png",
       "size": [
         320,
         432
@@ -218,13 +290,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-working-1": {
-      "file": "runtime/static-actor-0-working-1.webp",
+      "file": "src/v10/actor-0-working-1.png",
       "size": [
         320,
         432
@@ -234,13 +303,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-working-2": {
-      "file": "runtime/static-actor-0-working-2.webp",
+      "file": "src/v10/actor-0-working-2.png",
       "size": [
         320,
         432
@@ -250,13 +316,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-working-3": {
-      "file": "runtime/static-actor-0-working-3.webp",
+      "file": "src/v10/actor-0-working-3.png",
       "size": [
         320,
         432
@@ -266,13 +329,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-phone-0": {
-      "file": "runtime/static-actor-0-phone-0.webp",
+      "file": "src/v10/actor-0-phone-0.png",
       "size": [
         320,
         432
@@ -282,13 +342,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-phone-1": {
-      "file": "runtime/static-actor-0-phone-1.webp",
+      "file": "src/v10/actor-0-phone-1.png",
       "size": [
         320,
         432
@@ -298,13 +355,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-sleeping-0": {
-      "file": "runtime/static-actor-0-sleeping-0.webp",
+      "file": "src/v10/actor-0-sleeping-0.png",
       "size": [
         320,
         432
@@ -314,13 +368,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-sleeping-1": {
-      "file": "runtime/static-actor-0-sleeping-1.webp",
+      "file": "src/v10/actor-0-sleeping-1.png",
       "size": [
         320,
         432
@@ -330,13 +381,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-walking-left-0": {
-      "file": "runtime/static-actor-0-walking-left-0.webp",
+      "file": "src/v10/actor-0-walking-left-0.png",
       "size": [
         320,
         432
@@ -346,13 +394,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-walking-left-1": {
-      "file": "runtime/static-actor-0-walking-left-1.webp",
+      "file": "src/v10/actor-0-walking-left-1.png",
       "size": [
         320,
         432
@@ -362,13 +407,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-walking-right-0": {
-      "file": "runtime/static-actor-0-walking-right-0.webp",
+      "file": "src/v10/actor-0-walking-right-0.png",
       "size": [
         320,
         432
@@ -378,13 +420,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-walking-right-1": {
-      "file": "runtime/static-actor-0-walking-right-1.webp",
+      "file": "src/v10/actor-0-walking-right-1.png",
       "size": [
         320,
         432
@@ -394,13 +433,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-0-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-0-sheet": {
-      "file": "runtime/static-actor-0-sheet.webp",
+      "file": "src/v10/actor-0-sheet.png",
       "size": [
         1280,
         1296
@@ -418,13 +454,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-0-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-working-0": {
-      "file": "runtime/static-actor-1-working-0.webp",
+      "file": "src/v10/actor-1-working-0.png",
       "size": [
         320,
         432
@@ -434,13 +467,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-working-1": {
-      "file": "runtime/static-actor-1-working-1.webp",
+      "file": "src/v10/actor-1-working-1.png",
       "size": [
         320,
         432
@@ -450,13 +480,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-working-2": {
-      "file": "runtime/static-actor-1-working-2.webp",
+      "file": "src/v10/actor-1-working-2.png",
       "size": [
         320,
         432
@@ -466,13 +493,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-working-3": {
-      "file": "runtime/static-actor-1-working-3.webp",
+      "file": "src/v10/actor-1-working-3.png",
       "size": [
         320,
         432
@@ -482,13 +506,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-phone-0": {
-      "file": "runtime/static-actor-1-phone-0.webp",
+      "file": "src/v10/actor-1-phone-0.png",
       "size": [
         320,
         432
@@ -498,13 +519,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-phone-1": {
-      "file": "runtime/static-actor-1-phone-1.webp",
+      "file": "src/v10/actor-1-phone-1.png",
       "size": [
         320,
         432
@@ -514,13 +532,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-sleeping-0": {
-      "file": "runtime/static-actor-1-sleeping-0.webp",
+      "file": "src/v10/actor-1-sleeping-0.png",
       "size": [
         320,
         432
@@ -530,13 +545,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-sleeping-1": {
-      "file": "runtime/static-actor-1-sleeping-1.webp",
+      "file": "src/v10/actor-1-sleeping-1.png",
       "size": [
         320,
         432
@@ -546,13 +558,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-walking-left-0": {
-      "file": "runtime/static-actor-1-walking-left-0.webp",
+      "file": "src/v10/actor-1-walking-left-0.png",
       "size": [
         320,
         432
@@ -562,13 +571,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-walking-left-1": {
-      "file": "runtime/static-actor-1-walking-left-1.webp",
+      "file": "src/v10/actor-1-walking-left-1.png",
       "size": [
         320,
         432
@@ -578,13 +584,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-walking-right-0": {
-      "file": "runtime/static-actor-1-walking-right-0.webp",
+      "file": "src/v10/actor-1-walking-right-0.png",
       "size": [
         320,
         432
@@ -594,13 +597,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-walking-right-1": {
-      "file": "runtime/static-actor-1-walking-right-1.webp",
+      "file": "src/v10/actor-1-walking-right-1.png",
       "size": [
         320,
         432
@@ -610,13 +610,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-1-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-1-sheet": {
-      "file": "runtime/static-actor-1-sheet.webp",
+      "file": "src/v10/actor-1-sheet.png",
       "size": [
         1280,
         1296
@@ -634,13 +631,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-1-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-working-0": {
-      "file": "runtime/static-actor-2-working-0.webp",
+      "file": "src/v10/actor-2-working-0.png",
       "size": [
         320,
         432
@@ -650,13 +644,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-working-1": {
-      "file": "runtime/static-actor-2-working-1.webp",
+      "file": "src/v10/actor-2-working-1.png",
       "size": [
         320,
         432
@@ -666,13 +657,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-working-2": {
-      "file": "runtime/static-actor-2-working-2.webp",
+      "file": "src/v10/actor-2-working-2.png",
       "size": [
         320,
         432
@@ -682,13 +670,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-working-3": {
-      "file": "runtime/static-actor-2-working-3.webp",
+      "file": "src/v10/actor-2-working-3.png",
       "size": [
         320,
         432
@@ -698,13 +683,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-phone-0": {
-      "file": "runtime/static-actor-2-phone-0.webp",
+      "file": "src/v10/actor-2-phone-0.png",
       "size": [
         320,
         432
@@ -714,13 +696,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-phone-1": {
-      "file": "runtime/static-actor-2-phone-1.webp",
+      "file": "src/v10/actor-2-phone-1.png",
       "size": [
         320,
         432
@@ -730,13 +709,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-sleeping-0": {
-      "file": "runtime/static-actor-2-sleeping-0.webp",
+      "file": "src/v10/actor-2-sleeping-0.png",
       "size": [
         320,
         432
@@ -746,13 +722,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-sleeping-1": {
-      "file": "runtime/static-actor-2-sleeping-1.webp",
+      "file": "src/v10/actor-2-sleeping-1.png",
       "size": [
         320,
         432
@@ -762,13 +735,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-walking-left-0": {
-      "file": "runtime/static-actor-2-walking-left-0.webp",
+      "file": "src/v10/actor-2-walking-left-0.png",
       "size": [
         320,
         432
@@ -778,13 +748,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-walking-left-1": {
-      "file": "runtime/static-actor-2-walking-left-1.webp",
+      "file": "src/v10/actor-2-walking-left-1.png",
       "size": [
         320,
         432
@@ -794,13 +761,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-walking-right-0": {
-      "file": "runtime/static-actor-2-walking-right-0.webp",
+      "file": "src/v10/actor-2-walking-right-0.png",
       "size": [
         320,
         432
@@ -810,13 +774,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-walking-right-1": {
-      "file": "runtime/static-actor-2-walking-right-1.webp",
+      "file": "src/v10/actor-2-walking-right-1.png",
       "size": [
         320,
         432
@@ -826,13 +787,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-2-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-2-sheet": {
-      "file": "runtime/static-actor-2-sheet.webp",
+      "file": "src/v10/actor-2-sheet.png",
       "size": [
         1280,
         1296
@@ -850,13 +808,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-2-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-working-0": {
-      "file": "runtime/static-actor-3-working-0.webp",
+      "file": "src/v10/actor-3-working-0.png",
       "size": [
         320,
         432
@@ -866,13 +821,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-working-1": {
-      "file": "runtime/static-actor-3-working-1.webp",
+      "file": "src/v10/actor-3-working-1.png",
       "size": [
         320,
         432
@@ -882,13 +834,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-working-2": {
-      "file": "runtime/static-actor-3-working-2.webp",
+      "file": "src/v10/actor-3-working-2.png",
       "size": [
         320,
         432
@@ -898,13 +847,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-working-3": {
-      "file": "runtime/static-actor-3-working-3.webp",
+      "file": "src/v10/actor-3-working-3.png",
       "size": [
         320,
         432
@@ -914,13 +860,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-phone-0": {
-      "file": "runtime/static-actor-3-phone-0.webp",
+      "file": "src/v10/actor-3-phone-0.png",
       "size": [
         320,
         432
@@ -930,13 +873,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-phone-1": {
-      "file": "runtime/static-actor-3-phone-1.webp",
+      "file": "src/v10/actor-3-phone-1.png",
       "size": [
         320,
         432
@@ -946,13 +886,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-sleeping-0": {
-      "file": "runtime/static-actor-3-sleeping-0.webp",
+      "file": "src/v10/actor-3-sleeping-0.png",
       "size": [
         320,
         432
@@ -962,13 +899,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-sleeping-1": {
-      "file": "runtime/static-actor-3-sleeping-1.webp",
+      "file": "src/v10/actor-3-sleeping-1.png",
       "size": [
         320,
         432
@@ -978,13 +912,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-walking-left-0": {
-      "file": "runtime/static-actor-3-walking-left-0.webp",
+      "file": "src/v10/actor-3-walking-left-0.png",
       "size": [
         320,
         432
@@ -994,13 +925,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-walking-left-1": {
-      "file": "runtime/static-actor-3-walking-left-1.webp",
+      "file": "src/v10/actor-3-walking-left-1.png",
       "size": [
         320,
         432
@@ -1010,13 +938,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-walking-right-0": {
-      "file": "runtime/static-actor-3-walking-right-0.webp",
+      "file": "src/v10/actor-3-walking-right-0.png",
       "size": [
         320,
         432
@@ -1026,13 +951,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-walking-right-1": {
-      "file": "runtime/static-actor-3-walking-right-1.webp",
+      "file": "src/v10/actor-3-walking-right-1.png",
       "size": [
         320,
         432
@@ -1042,13 +964,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-3-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-3-sheet": {
-      "file": "runtime/static-actor-3-sheet.webp",
+      "file": "src/v10/actor-3-sheet.png",
       "size": [
         1280,
         1296
@@ -1066,13 +985,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-3-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-working-0": {
-      "file": "runtime/static-actor-4-working-0.webp",
+      "file": "src/v10/actor-4-working-0.png",
       "size": [
         320,
         432
@@ -1082,13 +998,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-working-1": {
-      "file": "runtime/static-actor-4-working-1.webp",
+      "file": "src/v10/actor-4-working-1.png",
       "size": [
         320,
         432
@@ -1098,13 +1011,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-working-2": {
-      "file": "runtime/static-actor-4-working-2.webp",
+      "file": "src/v10/actor-4-working-2.png",
       "size": [
         320,
         432
@@ -1114,13 +1024,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-working-3": {
-      "file": "runtime/static-actor-4-working-3.webp",
+      "file": "src/v10/actor-4-working-3.png",
       "size": [
         320,
         432
@@ -1130,13 +1037,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-phone-0": {
-      "file": "runtime/static-actor-4-phone-0.webp",
+      "file": "src/v10/actor-4-phone-0.png",
       "size": [
         320,
         432
@@ -1146,13 +1050,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-phone-1": {
-      "file": "runtime/static-actor-4-phone-1.webp",
+      "file": "src/v10/actor-4-phone-1.png",
       "size": [
         320,
         432
@@ -1162,13 +1063,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-sleeping-0": {
-      "file": "runtime/static-actor-4-sleeping-0.webp",
+      "file": "src/v10/actor-4-sleeping-0.png",
       "size": [
         320,
         432
@@ -1178,13 +1076,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-sleeping-1": {
-      "file": "runtime/static-actor-4-sleeping-1.webp",
+      "file": "src/v10/actor-4-sleeping-1.png",
       "size": [
         320,
         432
@@ -1194,13 +1089,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-walking-left-0": {
-      "file": "runtime/static-actor-4-walking-left-0.webp",
+      "file": "src/v10/actor-4-walking-left-0.png",
       "size": [
         320,
         432
@@ -1210,13 +1102,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-walking-left-1": {
-      "file": "runtime/static-actor-4-walking-left-1.webp",
+      "file": "src/v10/actor-4-walking-left-1.png",
       "size": [
         320,
         432
@@ -1226,13 +1115,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-walking-right-0": {
-      "file": "runtime/static-actor-4-walking-right-0.webp",
+      "file": "src/v10/actor-4-walking-right-0.png",
       "size": [
         320,
         432
@@ -1242,13 +1128,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-walking-right-1": {
-      "file": "runtime/static-actor-4-walking-right-1.webp",
+      "file": "src/v10/actor-4-walking-right-1.png",
       "size": [
         320,
         432
@@ -1258,13 +1141,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-4-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-4-sheet": {
-      "file": "runtime/static-actor-4-sheet.webp",
+      "file": "src/v10/actor-4-sheet.png",
       "size": [
         1280,
         1296
@@ -1282,13 +1162,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-4-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-working-0": {
-      "file": "runtime/static-actor-5-working-0.webp",
+      "file": "src/v10/actor-5-working-0.png",
       "size": [
         320,
         432
@@ -1298,13 +1175,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-working-1": {
-      "file": "runtime/static-actor-5-working-1.webp",
+      "file": "src/v10/actor-5-working-1.png",
       "size": [
         320,
         432
@@ -1314,13 +1188,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-working-2": {
-      "file": "runtime/static-actor-5-working-2.webp",
+      "file": "src/v10/actor-5-working-2.png",
       "size": [
         320,
         432
@@ -1330,13 +1201,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-working-3": {
-      "file": "runtime/static-actor-5-working-3.webp",
+      "file": "src/v10/actor-5-working-3.png",
       "size": [
         320,
         432
@@ -1346,13 +1214,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-phone-0": {
-      "file": "runtime/static-actor-5-phone-0.webp",
+      "file": "src/v10/actor-5-phone-0.png",
       "size": [
         320,
         432
@@ -1362,13 +1227,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-phone-1": {
-      "file": "runtime/static-actor-5-phone-1.webp",
+      "file": "src/v10/actor-5-phone-1.png",
       "size": [
         320,
         432
@@ -1378,13 +1240,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-sleeping-0": {
-      "file": "runtime/static-actor-5-sleeping-0.webp",
+      "file": "src/v10/actor-5-sleeping-0.png",
       "size": [
         320,
         432
@@ -1394,13 +1253,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-sleeping-1": {
-      "file": "runtime/static-actor-5-sleeping-1.webp",
+      "file": "src/v10/actor-5-sleeping-1.png",
       "size": [
         320,
         432
@@ -1410,13 +1266,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-walking-left-0": {
-      "file": "runtime/static-actor-5-walking-left-0.webp",
+      "file": "src/v10/actor-5-walking-left-0.png",
       "size": [
         320,
         432
@@ -1426,13 +1279,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-walking-left-1": {
-      "file": "runtime/static-actor-5-walking-left-1.webp",
+      "file": "src/v10/actor-5-walking-left-1.png",
       "size": [
         320,
         432
@@ -1442,13 +1292,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-walking-right-0": {
-      "file": "runtime/static-actor-5-walking-right-0.webp",
+      "file": "src/v10/actor-5-walking-right-0.png",
       "size": [
         320,
         432
@@ -1458,13 +1305,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-walking-right-1": {
-      "file": "runtime/static-actor-5-walking-right-1.webp",
+      "file": "src/v10/actor-5-walking-right-1.png",
       "size": [
         320,
         432
@@ -1474,13 +1318,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-5-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-5-sheet": {
-      "file": "runtime/static-actor-5-sheet.webp",
+      "file": "src/v10/actor-5-sheet.png",
       "size": [
         1280,
         1296
@@ -1498,13 +1339,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-5-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-working-0": {
-      "file": "runtime/static-actor-lead-working-0.webp",
+      "file": "src/v10/actor-lead-working-0.png",
       "size": [
         320,
         432
@@ -1514,13 +1352,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-working-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-working-1": {
-      "file": "runtime/static-actor-lead-working-1.webp",
+      "file": "src/v10/actor-lead-working-1.png",
       "size": [
         320,
         432
@@ -1530,13 +1365,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-working-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-working-2": {
-      "file": "runtime/static-actor-lead-working-2.webp",
+      "file": "src/v10/actor-lead-working-2.png",
       "size": [
         320,
         432
@@ -1546,13 +1378,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-working-2.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-working-3": {
-      "file": "runtime/static-actor-lead-working-3.webp",
+      "file": "src/v10/actor-lead-working-3.png",
       "size": [
         320,
         432
@@ -1562,13 +1391,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-working-3.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-phone-0": {
-      "file": "runtime/static-actor-lead-phone-0.webp",
+      "file": "src/v10/actor-lead-phone-0.png",
       "size": [
         320,
         432
@@ -1578,13 +1404,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-phone-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-phone-1": {
-      "file": "runtime/static-actor-lead-phone-1.webp",
+      "file": "src/v10/actor-lead-phone-1.png",
       "size": [
         320,
         432
@@ -1594,13 +1417,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-phone-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-sleeping-0": {
-      "file": "runtime/static-actor-lead-sleeping-0.webp",
+      "file": "src/v10/actor-lead-sleeping-0.png",
       "size": [
         320,
         432
@@ -1610,13 +1430,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-sleeping-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-sleeping-1": {
-      "file": "runtime/static-actor-lead-sleeping-1.webp",
+      "file": "src/v10/actor-lead-sleeping-1.png",
       "size": [
         320,
         432
@@ -1626,13 +1443,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-sleeping-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-walking-left-0": {
-      "file": "runtime/static-actor-lead-walking-left-0.webp",
+      "file": "src/v10/actor-lead-walking-left-0.png",
       "size": [
         320,
         432
@@ -1642,13 +1456,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-walking-left-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-walking-left-1": {
-      "file": "runtime/static-actor-lead-walking-left-1.webp",
+      "file": "src/v10/actor-lead-walking-left-1.png",
       "size": [
         320,
         432
@@ -1658,13 +1469,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-walking-left-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-walking-right-0": {
-      "file": "runtime/static-actor-lead-walking-right-0.webp",
+      "file": "src/v10/actor-lead-walking-right-0.png",
       "size": [
         320,
         432
@@ -1674,13 +1482,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-walking-right-0.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-walking-right-1": {
-      "file": "runtime/static-actor-lead-walking-right-1.webp",
+      "file": "src/v10/actor-lead-walking-right-1.png",
       "size": [
         320,
         432
@@ -1690,13 +1495,10 @@
         410
       ],
       "sourceFile": "src/v10/actor-lead-walking-right-1.png",
-      "runtimeSize": [
-        128,
-        173
-      ]
+      "runtimeExcluded": true
     },
     "actor-lead-sheet": {
-      "file": "runtime/static-actor-lead-sheet.webp",
+      "file": "src/v10/actor-lead-sheet.png",
       "size": [
         1280,
         1296
@@ -1714,13 +1516,10 @@
         3
       ],
       "sourceFile": "src/v10/actor-lead-sheet.png",
-      "runtimeSize": [
-        320,
-        324
-      ]
+      "runtimeExcluded": true
     },
     "flame-0": {
-      "file": "runtime/static-flame-0.webp",
+      "file": "src/v10/flame-0.png",
       "size": [
         305,
         226
@@ -1738,13 +1537,10 @@
         297
       ],
       "sourceFile": "src/v10/flame-0.png",
-      "runtimeSize": [
-        256,
-        190
-      ]
+      "runtimeExcluded": true
     },
     "flame-1": {
-      "file": "runtime/static-flame-1.webp",
+      "file": "src/v10/flame-1.png",
       "size": [
         316,
         261
@@ -1762,13 +1558,10 @@
         297
       ],
       "sourceFile": "src/v10/flame-1.png",
-      "runtimeSize": [
-        256,
-        211
-      ]
+      "runtimeExcluded": true
     },
     "flame-2": {
-      "file": "runtime/static-flame-2.webp",
+      "file": "src/v10/flame-2.png",
       "size": [
         351,
         278
@@ -1786,13 +1579,10 @@
         298
       ],
       "sourceFile": "src/v10/flame-2.png",
-      "runtimeSize": [
-        256,
-        203
-      ]
+      "runtimeExcluded": true
     },
     "emphasis": {
-      "file": "runtime/static-emphasis.webp",
+      "file": "src/v10/emphasis.png",
       "size": [
         243,
         165
@@ -1810,13 +1600,10 @@
         252
       ],
       "sourceFile": "src/v10/emphasis.png",
-      "runtimeSize": [
-        243,
-        165
-      ]
+      "runtimeExcluded": true
     },
     "points-3": {
-      "file": "runtime/static-points-3.webp",
+      "file": "src/v10/points-3.png",
       "size": [
         244,
         210
@@ -1834,13 +1621,10 @@
         284
       ],
       "sourceFile": "src/v10/points-3.png",
-      "runtimeSize": [
-        244,
-        210
-      ]
+      "runtimeExcluded": true
     },
     "points-10": {
-      "file": "runtime/static-points-10.webp",
+      "file": "src/v10/points-10.png",
       "size": [
         271,
         210
@@ -1858,13 +1642,10 @@
         284
       ],
       "sourceFile": "src/v10/points-10.png",
-      "runtimeSize": [
-        256,
-        198
-      ]
+      "runtimeExcluded": true
     },
     "bubble-done": {
-      "file": "runtime/static-bubble-done.webp",
+      "file": "src/v10/bubble-done.png",
       "size": [
         301,
         210
@@ -1882,13 +1663,10 @@
         284
       ],
       "sourceFile": "src/v10/bubble-done.png",
-      "runtimeSize": [
-        256,
-        179
-      ]
+      "runtimeExcluded": true
     },
     "bubble-pr": {
-      "file": "runtime/static-bubble-pr.webp",
+      "file": "src/v10/bubble-pr.png",
       "size": [
         319,
         210
@@ -1906,13 +1684,10 @@
         284
       ],
       "sourceFile": "src/v10/bubble-pr.png",
-      "runtimeSize": [
-        256,
-        169
-      ]
+      "runtimeExcluded": true
     },
     "zzz": {
-      "file": "runtime/static-zzz.webp",
+      "file": "src/v10/zzz.png",
       "size": [
         255,
         205
@@ -1930,10 +1705,7 @@
         281
       ],
       "sourceFile": "src/v10/zzz.png",
-      "runtimeSize": [
-        255,
-        205
-      ]
+      "runtimeExcluded": true
     },
     "hud-panel": {
       "file": "runtime/static-hud-panel.webp",
@@ -1955,12 +1727,16 @@
       ],
       "sourceFile": "src/v10/hud-panel.png",
       "runtimeSize": [
-        256,
-        116
+        220,
+        100
+      ],
+      "runtimePaddedLogicalSize": [
+        352,
+        160
       ]
     },
     "icon-active": {
-      "file": "runtime/static-icon-active.webp",
+      "file": "src/v10/icon-active.png",
       "size": [
         276,
         172
@@ -1978,13 +1754,10 @@
         259
       ],
       "sourceFile": "src/v10/icon-active.png",
-      "runtimeSize": [
-        256,
-        160
-      ]
+      "runtimeExcluded": true
     },
     "icon-tokens": {
-      "file": "runtime/static-icon-tokens.webp",
+      "file": "src/v10/icon-tokens.png",
       "size": [
         206,
         210
@@ -2002,9 +1775,366 @@
         276
       ],
       "sourceFile": "src/v10/icon-tokens.png",
+      "runtimeExcluded": true
+    },
+    "lead-back-small": {
+      "file": "runtime/lead-back-small.webp",
+      "size": [
+        520,
+        350
+      ],
+      "sourceFile": "src/modules/lead-back-small.png",
       "runtimeSize": [
-        206,
-        210
+        325,
+        220
+      ],
+      "runtimePaddedLogicalSize": [
+        520,
+        352
+      ],
+      "sourceBox": [
+        545,
+        58,
+        1065,
+        408
+      ]
+    },
+    "lead-back-medium": {
+      "file": "runtime/lead-back-medium.webp",
+      "size": [
+        498,
+        338
+      ],
+      "sourceFile": "src/modules/lead-back-medium.png",
+      "runtimeSize": [
+        315,
+        215
+      ],
+      "runtimePaddedLogicalSize": [
+        504,
+        344
+      ],
+      "sourceBox": [
+        550,
+        31,
+        1048,
+        369
+      ]
+    },
+    "lead-back-large": {
+      "file": "runtime/lead-back-large.webp",
+      "size": [
+        453,
+        313
+      ],
+      "sourceFile": "src/modules/lead-back-large.png",
+      "runtimeSize": [
+        285,
+        200
+      ],
+      "runtimePaddedLogicalSize": [
+        456,
+        320
+      ],
+      "sourceBox": [
+        447,
+        48,
+        900,
+        361
+      ]
+    },
+    "beanbag-moss-back": {
+      "file": "runtime/beanbag-moss-back.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-moss-back.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-moss-front": {
+      "file": "runtime/beanbag-moss-front.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-moss-front.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-terracotta-back": {
+      "file": "runtime/beanbag-terracotta-back.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-terracotta-back.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-terracotta-front": {
+      "file": "runtime/beanbag-terracotta-front.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-terracotta-front.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-navy-back": {
+      "file": "runtime/beanbag-navy-back.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-navy-back.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-navy-front": {
+      "file": "runtime/beanbag-navy-front.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-navy-front.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-mustard-back": {
+      "file": "runtime/beanbag-mustard-back.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-mustard-back.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "beanbag-mustard-front": {
+      "file": "runtime/beanbag-mustard-front.webp",
+      "size": [
+        240,
+        200
+      ],
+      "sourceFile": "src/modules/beanbag-mustard-front.png",
+      "runtimeSize": [
+        150,
+        125
+      ],
+      "runtimePaddedLogicalSize": [
+        240,
+        200
+      ]
+    },
+    "rug-lounge-short": {
+      "file": "runtime/rug-lounge-short.webp",
+      "sourceFile": "src/modules/rug-lounge-short.png",
+      "size": [
+        800,
+        256
+      ],
+      "runtimeSize": [
+        500,
+        160
+      ],
+      "runtimePaddedLogicalSize": [
+        800,
+        256
+      ],
+      "enabled": false,
+      "unusedReason": "bottom lounge strip disabled; key preserved"
+    },
+    "rug-lounge-medium": {
+      "file": "runtime/rug-lounge-medium.webp",
+      "sourceFile": "src/modules/rug-lounge-medium.png",
+      "size": [
+        1080,
+        256
+      ],
+      "runtimeSize": [
+        675,
+        160
+      ],
+      "runtimePaddedLogicalSize": [
+        1080,
+        256
+      ],
+      "enabled": false,
+      "unusedReason": "bottom lounge strip disabled; key preserved"
+    },
+    "rug-lounge-long": {
+      "file": "runtime/rug-lounge-long.webp",
+      "sourceFile": "src/modules/rug-lounge-long.png",
+      "size": [
+        1360,
+        256
+      ],
+      "runtimeSize": [
+        850,
+        160
+      ],
+      "runtimePaddedLogicalSize": [
+        1360,
+        256
+      ],
+      "enabled": false,
+      "unusedReason": "bottom lounge strip disabled; key preserved"
+    },
+    "provider-icon-claude": {
+      "file": "runtime/provider-icon-claude.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-claude.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
+      ]
+    },
+    "provider-icon-codex": {
+      "file": "runtime/provider-icon-codex.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-codex.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
+      ]
+    },
+    "provider-icon-antigravity": {
+      "file": "runtime/provider-icon-antigravity.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-antigravity.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
+      ]
+    },
+    "provider-icon-copilot": {
+      "file": "runtime/provider-icon-copilot.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-copilot.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
+      ]
+    },
+    "provider-icon-muse": {
+      "file": "runtime/provider-icon-muse.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-muse.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
+      ]
+    },
+    "provider-icon-opencode": {
+      "file": "runtime/provider-icon-opencode.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-opencode.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
+      ]
+    },
+    "provider-icon-default": {
+      "file": "runtime/provider-icon-default.webp",
+      "size": [
+        64,
+        64
+      ],
+      "sourceFile": "src/modules/provider-icon-default.png",
+      "runtimeSize": [
+        40,
+        40
+      ],
+      "runtimePaddedLogicalSize": [
+        64,
+        64
       ]
     }
   },
@@ -3827,17 +3957,14 @@
   "bundleVersion": 1,
   "drawingOrder": [
     "background",
-    "orchestrator actor",
-    "lead-front occlusion",
-    "upper body/hand clip",
-    "depth-sort pods and walkers by feet Y",
-    "pod-back",
-    "flame_aura",
-    "actor state",
-    "pod-front",
-    "upper body/hand clip",
+    "chair + desk back full furniture",
+    "actor body (only horizontal rear-edge occlusion)",
+    "desk front tabletop, excluding upper-left chair",
+    "armOverlays: sleeves/forearms/hands or phone/head, same pose transform",
+    "nameplate",
+    "beanbag groups sorted byY",
     "effects",
-    "HTML context header and nameplates"
+    "HTML context header"
   ],
   "stateContract": {
     "states": [
@@ -3911,7 +4038,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-0-walk_right": {
       "file": "runtime/actor-0-walk_right.webp",
@@ -3923,7 +4059,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-0-away": {
       "file": "runtime/actor-0-away.webp",
@@ -3983,7 +4128,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-1-walk_right": {
       "file": "runtime/actor-1-walk_right.webp",
@@ -3995,7 +4149,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-1-away": {
       "file": "runtime/actor-1-away.webp",
@@ -4055,7 +4218,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-2-walk_right": {
       "file": "runtime/actor-2-walk_right.webp",
@@ -4067,7 +4239,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-2-away": {
       "file": "runtime/actor-2-away.webp",
@@ -4127,7 +4308,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-3-walk_right": {
       "file": "runtime/actor-3-walk_right.webp",
@@ -4139,7 +4329,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-3-away": {
       "file": "runtime/actor-3-away.webp",
@@ -4199,7 +4398,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-4-walk_right": {
       "file": "runtime/actor-4-walk_right.webp",
@@ -4211,7 +4419,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-4-away": {
       "file": "runtime/actor-4-away.webp",
@@ -4271,7 +4488,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-5-walk_right": {
       "file": "runtime/actor-5-walk_right.webp",
@@ -4283,7 +4509,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "actor-5-away": {
       "file": "runtime/actor-5-away.webp",
@@ -4439,7 +4674,16 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
     },
     "orchestrator-walk_right": {
       "file": "runtime/orchestrator-walk_right.webp",
@@ -4451,7 +4695,310 @@
       "anchor": [
         80,
         205
-      ]
+      ],
+      "locomotion": {
+        "cycleDistance": 128,
+        "referenceActorHeight": 216,
+        "stepsPerCycle": 2,
+        "cycleSeconds": 0.5,
+        "speedAtReferenceHeight": 256.0,
+        "speedFormula": "cycleDistance * fps / frames * renderedActorHeight / referenceActorHeight",
+        "calibration": "visual stride estimate, not motion-capture root motion"
+      }
+    },
+    "hands-actor-0-working": {
+      "file": "runtime/hands-actor-0-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-0-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "hands-actor-1-working": {
+      "file": "runtime/hands-actor-1-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-1-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "hands-actor-2-working": {
+      "file": "runtime/hands-actor-2-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-2-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "hands-actor-3-working": {
+      "file": "runtime/hands-actor-3-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-3-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "hands-actor-4-working": {
+      "file": "runtime/hands-actor-4-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-4-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "hands-actor-5-working": {
+      "file": "runtime/hands-actor-5-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-5-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "hands-orchestrator-working": {
+      "file": "runtime/hands-orchestrator-working.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 4,
+      "fps": 8,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "orchestrator-working",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-0-phone": {
+      "file": "runtime/arms-actor-0-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-0-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-0-sleeping": {
+      "file": "runtime/arms-actor-0-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-0-sleeping",
+      "overlayType": "headArmsSleeves"
+    },
+    "arms-actor-1-phone": {
+      "file": "runtime/arms-actor-1-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-1-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-1-sleeping": {
+      "file": "runtime/arms-actor-1-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-1-sleeping",
+      "overlayType": "headArmsSleeves"
+    },
+    "arms-actor-2-phone": {
+      "file": "runtime/arms-actor-2-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-2-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-2-sleeping": {
+      "file": "runtime/arms-actor-2-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-2-sleeping",
+      "overlayType": "headArmsSleeves"
+    },
+    "arms-actor-3-phone": {
+      "file": "runtime/arms-actor-3-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-3-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-3-sleeping": {
+      "file": "runtime/arms-actor-3-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-3-sleeping",
+      "overlayType": "headArmsSleeves"
+    },
+    "arms-actor-4-phone": {
+      "file": "runtime/arms-actor-4-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-4-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-4-sleeping": {
+      "file": "runtime/arms-actor-4-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-4-sleeping",
+      "overlayType": "headArmsSleeves"
+    },
+    "arms-actor-5-phone": {
+      "file": "runtime/arms-actor-5-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-5-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-actor-5-sleeping": {
+      "file": "runtime/arms-actor-5-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "actor-5-sleeping",
+      "overlayType": "headArmsSleeves"
+    },
+    "arms-orchestrator-phone": {
+      "file": "runtime/arms-orchestrator-phone.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 2,
+      "fps": 3,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "orchestrator-phone",
+      "overlayType": "armsSleevesHands"
+    },
+    "arms-orchestrator-sleeping": {
+      "file": "runtime/arms-orchestrator-sleeping.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 2,
+      "fps": 1.5,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ],
+      "overlaySource": "orchestrator-sleeping",
+      "overlayType": "headArmsSleeves"
     }
   },
   "actors": {
@@ -4521,5 +5068,2023 @@
     "zzz": "zzz",
     "attention": "attention"
   },
-  "defaultActor": "actor-0"
+  "defaultActor": "actor-0",
+  "runtimeScale": 0.625,
+  "pods": {
+    "0": {
+      "back": "pod-0-back",
+      "front": "pod-0-front",
+      "size": [
+        479,
+        365
+      ],
+      "seat": [
+        177,
+        157
+      ],
+      "actorHeight": 320,
+      "actorAnchor": [
+        80,
+        125
+      ],
+      "actorStateYOffset": {
+        "working": 0,
+        "phone": -8,
+        "sleeping": 30
+      },
+      "frontOcclusionY": 157,
+      "actorClip": [
+        -256,
+        -256,
+        735,
+        159
+      ],
+      "clearTableZone": [
+        115,
+        146,
+        326,
+        226
+      ],
+      "nameplate": {
+        "center": [
+          239.5,
+          292.0
+        ],
+        "width": 354.46
+      },
+      "chairIncludedInBack": true,
+      "keyboard": {
+        "rect": [
+          152,
+          163,
+          130,
+          26
+        ],
+        "keycapRect": [
+          156,
+          166,
+          104,
+          18
+        ],
+        "mouseRect": [
+          263,
+          166,
+          19,
+          22
+        ],
+        "layer": "front-tabletop-before-hands",
+        "targetHandCenter": [
+          207,
+          175
+        ],
+        "includedInFront": true
+      },
+      "actorOffsets": {
+        "actor-0": {
+          "working": [
+            3,
+            0
+          ]
+        },
+        "actor-1": {
+          "working": [
+            -13,
+            -6
+          ]
+        },
+        "actor-2": {
+          "working": [
+            3,
+            4
+          ]
+        },
+        "actor-3": {
+          "working": [
+            -6,
+            4
+          ]
+        },
+        "actor-4": {
+          "working": [
+            -3,
+            -3
+          ]
+        },
+        "actor-5": {
+          "working": [
+            6,
+            -4
+          ]
+        },
+        "orchestrator": {
+          "working": [
+            9,
+            -6
+          ]
+        }
+      },
+      "actorSourceClip": {
+        "working": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "phone": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ]
+      },
+      "referenceActorFrameHeight": 320,
+      "moduleScaleFormula": "targetActorFrameHeight / 320",
+      "previousSeat": [
+        177,
+        157
+      ],
+      "tableRearY": 157,
+      "actorOverlay": {
+        "clipInModule": [
+          -256,
+          -256,
+          735,
+          247
+        ],
+        "rule": "body -> complete tabletop -> original shoulder/arm/sleeve overlays -> nameplate; no left/right silhouette clips",
+        "working": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "hands-actor-0-working",
+            "actor-1": "hands-actor-1-working",
+            "actor-2": "hands-actor-2-working",
+            "actor-3": "hands-actor-3-working",
+            "actor-4": "hands-actor-4-working",
+            "actor-5": "hands-actor-5-working",
+            "orchestrator": "hands-orchestrator-working"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "phone": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-phone",
+            "actor-1": "arms-actor-1-phone",
+            "actor-2": "arms-actor-2-phone",
+            "actor-3": "arms-actor-3-phone",
+            "actor-4": "arms-actor-4-phone",
+            "actor-5": "arms-actor-5-phone",
+            "orchestrator": "arms-orchestrator-phone"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "sleeping": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-sleeping",
+            "actor-1": "arms-actor-1-sleeping",
+            "actor-2": "arms-actor-2-sleeping",
+            "actor-3": "arms-actor-3-sleeping",
+            "actor-4": "arms-actor-4-sleeping",
+            "actor-5": "arms-actor-5-sleeping",
+            "orchestrator": "arms-orchestrator-sleeping"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        }
+      },
+      "seatMeaning": "body at table rear edge, anchored to source-frame torso row125",
+      "frontLayerContract": {
+        "noLeftChairAboveRear": true,
+        "frontStartsAt": 157,
+        "backContainsFullFurniture": true,
+        "seamPrevention": "full furniture underlay plus foreground tabletop; body clip overlaps rear by2 logical px"
+      }
+    },
+    "1": {
+      "back": "pod-1-back",
+      "front": "pod-1-front",
+      "size": [
+        475,
+        369
+      ],
+      "seat": [
+        176,
+        159
+      ],
+      "actorHeight": 320,
+      "actorAnchor": [
+        80,
+        125
+      ],
+      "actorStateYOffset": {
+        "working": 0,
+        "phone": -8,
+        "sleeping": 30
+      },
+      "frontOcclusionY": 159,
+      "actorClip": [
+        -256,
+        -256,
+        731,
+        161
+      ],
+      "clearTableZone": [
+        114,
+        148,
+        323,
+        229
+      ],
+      "nameplate": {
+        "center": [
+          237.5,
+          295.2
+        ],
+        "width": 351.5
+      },
+      "chairIncludedInBack": true,
+      "keyboard": {
+        "rect": [
+          151,
+          165,
+          130,
+          26
+        ],
+        "keycapRect": [
+          155,
+          168,
+          104,
+          18
+        ],
+        "mouseRect": [
+          262,
+          168,
+          19,
+          22
+        ],
+        "layer": "front-tabletop-before-hands",
+        "targetHandCenter": [
+          206,
+          177
+        ],
+        "includedInFront": true
+      },
+      "actorOffsets": {
+        "actor-0": {
+          "working": [
+            3,
+            0
+          ]
+        },
+        "actor-1": {
+          "working": [
+            -13,
+            -6
+          ]
+        },
+        "actor-2": {
+          "working": [
+            3,
+            4
+          ]
+        },
+        "actor-3": {
+          "working": [
+            -6,
+            4
+          ]
+        },
+        "actor-4": {
+          "working": [
+            -3,
+            -3
+          ]
+        },
+        "actor-5": {
+          "working": [
+            6,
+            -4
+          ]
+        },
+        "orchestrator": {
+          "working": [
+            9,
+            -6
+          ]
+        }
+      },
+      "actorSourceClip": {
+        "working": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "phone": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ]
+      },
+      "referenceActorFrameHeight": 320,
+      "moduleScaleFormula": "targetActorFrameHeight / 320",
+      "previousSeat": [
+        176,
+        159
+      ],
+      "tableRearY": 159,
+      "actorOverlay": {
+        "clipInModule": [
+          -256,
+          -256,
+          731,
+          249
+        ],
+        "rule": "body -> complete tabletop -> original shoulder/arm/sleeve overlays -> nameplate; no left/right silhouette clips",
+        "working": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "hands-actor-0-working",
+            "actor-1": "hands-actor-1-working",
+            "actor-2": "hands-actor-2-working",
+            "actor-3": "hands-actor-3-working",
+            "actor-4": "hands-actor-4-working",
+            "actor-5": "hands-actor-5-working",
+            "orchestrator": "hands-orchestrator-working"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "phone": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-phone",
+            "actor-1": "arms-actor-1-phone",
+            "actor-2": "arms-actor-2-phone",
+            "actor-3": "arms-actor-3-phone",
+            "actor-4": "arms-actor-4-phone",
+            "actor-5": "arms-actor-5-phone",
+            "orchestrator": "arms-orchestrator-phone"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "sleeping": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-sleeping",
+            "actor-1": "arms-actor-1-sleeping",
+            "actor-2": "arms-actor-2-sleeping",
+            "actor-3": "arms-actor-3-sleeping",
+            "actor-4": "arms-actor-4-sleeping",
+            "actor-5": "arms-actor-5-sleeping",
+            "orchestrator": "arms-orchestrator-sleeping"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        }
+      },
+      "seatMeaning": "body at table rear edge, anchored to source-frame torso row125",
+      "frontLayerContract": {
+        "noLeftChairAboveRear": true,
+        "frontStartsAt": 159,
+        "backContainsFullFurniture": true,
+        "seamPrevention": "full furniture underlay plus foreground tabletop; body clip overlaps rear by2 logical px"
+      }
+    },
+    "2": {
+      "back": "pod-2-back",
+      "front": "pod-2-front",
+      "size": [
+        482,
+        369
+      ],
+      "seat": [
+        178,
+        159
+      ],
+      "actorHeight": 320,
+      "actorAnchor": [
+        80,
+        125
+      ],
+      "actorStateYOffset": {
+        "working": 0,
+        "phone": -8,
+        "sleeping": 30
+      },
+      "frontOcclusionY": 159,
+      "actorClip": [
+        -256,
+        -256,
+        738,
+        161
+      ],
+      "clearTableZone": [
+        116,
+        148,
+        328,
+        229
+      ],
+      "nameplate": {
+        "center": [
+          241.0,
+          295.2
+        ],
+        "width": 356.68
+      },
+      "chairIncludedInBack": true,
+      "keyboard": {
+        "rect": [
+          153,
+          165,
+          130,
+          26
+        ],
+        "keycapRect": [
+          157,
+          168,
+          104,
+          18
+        ],
+        "mouseRect": [
+          264,
+          168,
+          19,
+          22
+        ],
+        "layer": "front-tabletop-before-hands",
+        "targetHandCenter": [
+          208,
+          177
+        ],
+        "includedInFront": true
+      },
+      "actorOffsets": {
+        "actor-0": {
+          "working": [
+            3,
+            0
+          ]
+        },
+        "actor-1": {
+          "working": [
+            -13,
+            -6
+          ]
+        },
+        "actor-2": {
+          "working": [
+            3,
+            4
+          ]
+        },
+        "actor-3": {
+          "working": [
+            -6,
+            4
+          ]
+        },
+        "actor-4": {
+          "working": [
+            -3,
+            -3
+          ]
+        },
+        "actor-5": {
+          "working": [
+            6,
+            -4
+          ]
+        },
+        "orchestrator": {
+          "working": [
+            9,
+            -6
+          ]
+        }
+      },
+      "actorSourceClip": {
+        "working": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "phone": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ]
+      },
+      "referenceActorFrameHeight": 320,
+      "moduleScaleFormula": "targetActorFrameHeight / 320",
+      "previousSeat": [
+        178,
+        159
+      ],
+      "tableRearY": 159,
+      "actorOverlay": {
+        "clipInModule": [
+          -256,
+          -256,
+          738,
+          249
+        ],
+        "rule": "body -> complete tabletop -> original shoulder/arm/sleeve overlays -> nameplate; no left/right silhouette clips",
+        "working": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "hands-actor-0-working",
+            "actor-1": "hands-actor-1-working",
+            "actor-2": "hands-actor-2-working",
+            "actor-3": "hands-actor-3-working",
+            "actor-4": "hands-actor-4-working",
+            "actor-5": "hands-actor-5-working",
+            "orchestrator": "hands-orchestrator-working"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "phone": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-phone",
+            "actor-1": "arms-actor-1-phone",
+            "actor-2": "arms-actor-2-phone",
+            "actor-3": "arms-actor-3-phone",
+            "actor-4": "arms-actor-4-phone",
+            "actor-5": "arms-actor-5-phone",
+            "orchestrator": "arms-orchestrator-phone"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "sleeping": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-sleeping",
+            "actor-1": "arms-actor-1-sleeping",
+            "actor-2": "arms-actor-2-sleeping",
+            "actor-3": "arms-actor-3-sleeping",
+            "actor-4": "arms-actor-4-sleeping",
+            "actor-5": "arms-actor-5-sleeping",
+            "orchestrator": "arms-orchestrator-sleeping"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        }
+      },
+      "seatMeaning": "body at table rear edge, anchored to source-frame torso row125",
+      "frontLayerContract": {
+        "noLeftChairAboveRear": true,
+        "frontStartsAt": 159,
+        "backContainsFullFurniture": true,
+        "seamPrevention": "full furniture underlay plus foreground tabletop; body clip overlaps rear by2 logical px"
+      }
+    }
+  },
+  "leadDesks": {
+    "small": {
+      "back": "lead-back-small",
+      "front": "lead-front-small",
+      "sourceBox": [
+        545,
+        58,
+        1065,
+        408
+      ],
+      "seat": [
+        234,
+        187
+      ],
+      "actorHeight": 320,
+      "actorAnchor": [
+        80,
+        125
+      ],
+      "actorStateYOffset": {
+        "working": 0,
+        "phone": -8,
+        "sleeping": 30
+      },
+      "frontOcclusionY": 187,
+      "actorClip": [
+        -256,
+        -256,
+        776,
+        189
+      ],
+      "nameplate": {
+        "center": [
+          260.0,
+          292.8
+        ],
+        "width": 234.0
+      },
+      "backgroundDeskOverlay": false,
+      "backgroundDeskRemoved": true,
+      "keyboard": {
+        "rect": [
+          209,
+          193,
+          130,
+          26
+        ],
+        "keycapRect": [
+          213,
+          196,
+          104,
+          18
+        ],
+        "mouseRect": [
+          320,
+          196,
+          19,
+          22
+        ],
+        "layer": "front-tabletop-before-hands",
+        "targetHandCenter": [
+          264,
+          205
+        ],
+        "includedInFront": true
+      },
+      "actorOffsets": {
+        "actor-0": {
+          "working": [
+            3,
+            0
+          ]
+        },
+        "actor-1": {
+          "working": [
+            -13,
+            -6
+          ]
+        },
+        "actor-2": {
+          "working": [
+            3,
+            4
+          ]
+        },
+        "actor-3": {
+          "working": [
+            -6,
+            4
+          ]
+        },
+        "actor-4": {
+          "working": [
+            -3,
+            -3
+          ]
+        },
+        "actor-5": {
+          "working": [
+            6,
+            -4
+          ]
+        },
+        "orchestrator": {
+          "working": [
+            9,
+            -6
+          ]
+        }
+      },
+      "actorSourceClip": {
+        "working": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "phone": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ]
+      },
+      "alphaCleanupRect": [
+        135,
+        0,
+        187,
+        189
+      ],
+      "alphaCleanup": "cleaned generated furniture, bbox registered; alpha<24 removed before scale",
+      "referenceActorFrameHeight": 320,
+      "moduleScaleFormula": "targetActorFrameHeight / 320",
+      "previousSeat": [
+        234,
+        187
+      ],
+      "tableRearY": 187,
+      "actorOverlay": {
+        "clipInModule": [
+          -256,
+          -256,
+          776,
+          277
+        ],
+        "rule": "body -> complete tabletop -> original shoulder/arm/sleeve overlays -> nameplate; no left/right silhouette clips",
+        "working": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "hands-actor-0-working",
+            "actor-1": "hands-actor-1-working",
+            "actor-2": "hands-actor-2-working",
+            "actor-3": "hands-actor-3-working",
+            "actor-4": "hands-actor-4-working",
+            "actor-5": "hands-actor-5-working",
+            "orchestrator": "hands-orchestrator-working"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "phone": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-phone",
+            "actor-1": "arms-actor-1-phone",
+            "actor-2": "arms-actor-2-phone",
+            "actor-3": "arms-actor-3-phone",
+            "actor-4": "arms-actor-4-phone",
+            "actor-5": "arms-actor-5-phone",
+            "orchestrator": "arms-orchestrator-phone"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "sleeping": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-sleeping",
+            "actor-1": "arms-actor-1-sleeping",
+            "actor-2": "arms-actor-2-sleeping",
+            "actor-3": "arms-actor-3-sleeping",
+            "actor-4": "arms-actor-4-sleeping",
+            "actor-5": "arms-actor-5-sleeping",
+            "orchestrator": "arms-orchestrator-sleeping"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        }
+      },
+      "seatMeaning": "body at table rear edge, anchored to source-frame torso row125",
+      "frontLayerContract": {
+        "noLeftChairAboveRear": true,
+        "frontStartsAt": 187,
+        "backContainsFullFurniture": true,
+        "seamPrevention": "full furniture underlay plus foreground tabletop; body clip overlaps rear by2 logical px"
+      }
+    },
+    "medium": {
+      "back": "lead-back-medium",
+      "front": "lead-front-medium",
+      "sourceBox": [
+        550,
+        31,
+        1048,
+        369
+      ],
+      "seat": [
+        224,
+        182
+      ],
+      "actorHeight": 320,
+      "actorAnchor": [
+        80,
+        125
+      ],
+      "actorStateYOffset": {
+        "working": 0,
+        "phone": -8,
+        "sleeping": 30
+      },
+      "frontOcclusionY": 182,
+      "actorClip": [
+        -256,
+        -256,
+        754,
+        184
+      ],
+      "nameplate": {
+        "center": [
+          249.0,
+          283.20000000000005
+        ],
+        "width": 224.1
+      },
+      "backgroundDeskOverlay": false,
+      "backgroundDeskRemoved": true,
+      "keyboard": {
+        "rect": [
+          199,
+          188,
+          130,
+          26
+        ],
+        "keycapRect": [
+          203,
+          191,
+          104,
+          18
+        ],
+        "mouseRect": [
+          310,
+          191,
+          19,
+          22
+        ],
+        "layer": "front-tabletop-before-hands",
+        "targetHandCenter": [
+          254,
+          200
+        ],
+        "includedInFront": true
+      },
+      "actorOffsets": {
+        "actor-0": {
+          "working": [
+            3,
+            0
+          ]
+        },
+        "actor-1": {
+          "working": [
+            -13,
+            -6
+          ]
+        },
+        "actor-2": {
+          "working": [
+            3,
+            4
+          ]
+        },
+        "actor-3": {
+          "working": [
+            -6,
+            4
+          ]
+        },
+        "actor-4": {
+          "working": [
+            -3,
+            -3
+          ]
+        },
+        "actor-5": {
+          "working": [
+            6,
+            -4
+          ]
+        },
+        "orchestrator": {
+          "working": [
+            9,
+            -6
+          ]
+        }
+      },
+      "actorSourceClip": {
+        "working": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "phone": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ]
+      },
+      "alphaCleanupRect": [
+        129,
+        0,
+        179,
+        182
+      ],
+      "alphaCleanup": "cleaned generated furniture, bbox registered; alpha<24 removed before scale",
+      "referenceActorFrameHeight": 320,
+      "moduleScaleFormula": "targetActorFrameHeight / 320",
+      "previousSeat": [
+        224,
+        182
+      ],
+      "tableRearY": 182,
+      "actorOverlay": {
+        "clipInModule": [
+          -256,
+          -256,
+          754,
+          272
+        ],
+        "rule": "body -> complete tabletop -> original shoulder/arm/sleeve overlays -> nameplate; no left/right silhouette clips",
+        "working": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "hands-actor-0-working",
+            "actor-1": "hands-actor-1-working",
+            "actor-2": "hands-actor-2-working",
+            "actor-3": "hands-actor-3-working",
+            "actor-4": "hands-actor-4-working",
+            "actor-5": "hands-actor-5-working",
+            "orchestrator": "hands-orchestrator-working"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "phone": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-phone",
+            "actor-1": "arms-actor-1-phone",
+            "actor-2": "arms-actor-2-phone",
+            "actor-3": "arms-actor-3-phone",
+            "actor-4": "arms-actor-4-phone",
+            "actor-5": "arms-actor-5-phone",
+            "orchestrator": "arms-orchestrator-phone"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "sleeping": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-sleeping",
+            "actor-1": "arms-actor-1-sleeping",
+            "actor-2": "arms-actor-2-sleeping",
+            "actor-3": "arms-actor-3-sleeping",
+            "actor-4": "arms-actor-4-sleeping",
+            "actor-5": "arms-actor-5-sleeping",
+            "orchestrator": "arms-orchestrator-sleeping"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        }
+      },
+      "seatMeaning": "body at table rear edge, anchored to source-frame torso row125",
+      "frontLayerContract": {
+        "noLeftChairAboveRear": true,
+        "frontStartsAt": 182,
+        "backContainsFullFurniture": true,
+        "seamPrevention": "full furniture underlay plus foreground tabletop; body clip overlaps rear by2 logical px"
+      }
+    },
+    "large": {
+      "back": "lead-back-large",
+      "front": "lead-front-large",
+      "sourceBox": [
+        447,
+        48,
+        900,
+        361
+      ],
+      "seat": [
+        204,
+        171
+      ],
+      "actorHeight": 320,
+      "actorAnchor": [
+        80,
+        125
+      ],
+      "actorStateYOffset": {
+        "working": 0,
+        "phone": -8,
+        "sleeping": 30
+      },
+      "frontOcclusionY": 171,
+      "actorClip": [
+        -256,
+        -256,
+        709,
+        173
+      ],
+      "nameplate": {
+        "center": [
+          226.5,
+          263.20000000000005
+        ],
+        "width": 203.85
+      },
+      "backgroundDeskOverlay": false,
+      "backgroundDeskRemoved": true,
+      "keyboard": {
+        "rect": [
+          179,
+          177,
+          130,
+          26
+        ],
+        "keycapRect": [
+          183,
+          180,
+          104,
+          18
+        ],
+        "mouseRect": [
+          290,
+          180,
+          19,
+          22
+        ],
+        "layer": "front-tabletop-before-hands",
+        "targetHandCenter": [
+          234,
+          189
+        ],
+        "includedInFront": true
+      },
+      "actorOffsets": {
+        "actor-0": {
+          "working": [
+            3,
+            0
+          ]
+        },
+        "actor-1": {
+          "working": [
+            -13,
+            -6
+          ]
+        },
+        "actor-2": {
+          "working": [
+            3,
+            4
+          ]
+        },
+        "actor-3": {
+          "working": [
+            -6,
+            4
+          ]
+        },
+        "actor-4": {
+          "working": [
+            -3,
+            -3
+          ]
+        },
+        "actor-5": {
+          "working": [
+            6,
+            -4
+          ]
+        },
+        "orchestrator": {
+          "working": [
+            9,
+            -6
+          ]
+        }
+      },
+      "actorSourceClip": {
+        "working": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "phone": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ]
+      },
+      "alphaCleanupRect": [
+        118,
+        0,
+        163,
+        166
+      ],
+      "alphaCleanup": "cleaned generated furniture, bbox registered; alpha<24 removed before scale",
+      "referenceActorFrameHeight": 320,
+      "moduleScaleFormula": "targetActorFrameHeight / 320",
+      "previousSeat": [
+        204,
+        171
+      ],
+      "tableRearY": 171,
+      "actorOverlay": {
+        "clipInModule": [
+          -256,
+          -256,
+          709,
+          261
+        ],
+        "rule": "body -> complete tabletop -> original shoulder/arm/sleeve overlays -> nameplate; no left/right silhouette clips",
+        "working": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "hands-actor-0-working",
+            "actor-1": "hands-actor-1-working",
+            "actor-2": "hands-actor-2-working",
+            "actor-3": "hands-actor-3-working",
+            "actor-4": "hands-actor-4-working",
+            "actor-5": "hands-actor-5-working",
+            "orchestrator": "hands-orchestrator-working"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "phone": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-phone",
+            "actor-1": "arms-actor-1-phone",
+            "actor-2": "arms-actor-2-phone",
+            "actor-3": "arms-actor-3-phone",
+            "actor-4": "arms-actor-4-phone",
+            "actor-5": "arms-actor-5-phone",
+            "orchestrator": "arms-orchestrator-phone"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        },
+        "sleeping": {
+          "preferSheet": true,
+          "sheetByActor": {
+            "actor-0": "arms-actor-0-sleeping",
+            "actor-1": "arms-actor-1-sleeping",
+            "actor-2": "arms-actor-2-sleeping",
+            "actor-3": "arms-actor-3-sleeping",
+            "actor-4": "arms-actor-4-sleeping",
+            "actor-5": "arms-actor-5-sleeping",
+            "orchestrator": "arms-orchestrator-sleeping"
+          },
+          "type": "armOverlays",
+          "sameTransformAsBody": true
+        }
+      },
+      "seatMeaning": "body at table rear edge, anchored to source-frame torso row125",
+      "frontLayerContract": {
+        "noLeftChairAboveRear": true,
+        "frontStartsAt": 171,
+        "backContainsFullFurniture": true,
+        "seamPrevention": "full furniture underlay plus foreground tabletop; body clip overlaps rear by2 logical px"
+      }
+    }
+  },
+  "beanbags": {
+    "moss": {
+      "back": "beanbag-moss-back",
+      "front": "beanbag-moss-front",
+      "size": [
+        240,
+        200
+      ],
+      "seat": [
+        102,
+        132
+      ],
+      "actorHeight": 256,
+      "actorAnchor": [
+        48,
+        166
+      ],
+      "actorOffset": [
+        0,
+        0
+      ],
+      "spacing": [
+        288,
+        0
+      ],
+      "rotationDegrees": 60,
+      "frontOcclusionRect": [
+        0,
+        105,
+        50,
+        95
+      ],
+      "legExit": "lower right, no foreground pixels in x>=50",
+      "referenceActorFrameHeight": 256,
+      "moduleScaleFormula": "targetActorFrameHeight / 256"
+    },
+    "terracotta": {
+      "back": "beanbag-terracotta-back",
+      "front": "beanbag-terracotta-front",
+      "size": [
+        240,
+        200
+      ],
+      "seat": [
+        102,
+        132
+      ],
+      "actorHeight": 256,
+      "actorAnchor": [
+        48,
+        166
+      ],
+      "actorOffset": [
+        0,
+        0
+      ],
+      "spacing": [
+        288,
+        0
+      ],
+      "rotationDegrees": 60,
+      "frontOcclusionRect": [
+        0,
+        105,
+        50,
+        95
+      ],
+      "legExit": "lower right, no foreground pixels in x>=50",
+      "referenceActorFrameHeight": 256,
+      "moduleScaleFormula": "targetActorFrameHeight / 256"
+    },
+    "navy": {
+      "back": "beanbag-navy-back",
+      "front": "beanbag-navy-front",
+      "size": [
+        240,
+        200
+      ],
+      "seat": [
+        102,
+        132
+      ],
+      "actorHeight": 256,
+      "actorAnchor": [
+        48,
+        166
+      ],
+      "actorOffset": [
+        0,
+        0
+      ],
+      "spacing": [
+        288,
+        0
+      ],
+      "rotationDegrees": 60,
+      "frontOcclusionRect": [
+        0,
+        105,
+        50,
+        95
+      ],
+      "legExit": "lower right, no foreground pixels in x>=50",
+      "referenceActorFrameHeight": 256,
+      "moduleScaleFormula": "targetActorFrameHeight / 256"
+    },
+    "mustard": {
+      "back": "beanbag-mustard-back",
+      "front": "beanbag-mustard-front",
+      "size": [
+        240,
+        200
+      ],
+      "seat": [
+        102,
+        132
+      ],
+      "actorHeight": 256,
+      "actorAnchor": [
+        48,
+        166
+      ],
+      "actorOffset": [
+        0,
+        0
+      ],
+      "spacing": [
+        288,
+        0
+      ],
+      "rotationDegrees": 60,
+      "frontOcclusionRect": [
+        0,
+        105,
+        50,
+        95
+      ],
+      "legExit": "lower right, no foreground pixels in x>=50",
+      "referenceActorFrameHeight": 256,
+      "moduleScaleFormula": "targetActorFrameHeight / 256"
+    }
+  },
+  "restLayout": {
+    "placement": "left clear floor beside desk grid; manager private slot unchanged",
+    "columns": 1,
+    "slotStride": [
+      0,
+      180
+    ],
+    "occupancy": "one member per slot; manager uses private slot",
+    "overflow": "own desk when full; no extra room height",
+    "memberLounge": {
+      "origin": "room logical coordinates [0, deskGridBottom + gapAfterGrid]; deskGridBottom=max(podTop+renderedPodHeight), excluding walkers/effects",
+      "gapAfterGrid": 48,
+      "addedRoomHeight": 0,
+      "stripHeight": 0,
+      "roomHeightRule": "base room height unchanged",
+      "roomWidthReference": 1536,
+      "rug": {
+        "variants": {
+          "short": "rug-lounge-short",
+          "medium": "rug-lounge-medium",
+          "long": "rug-lounge-long"
+        },
+        "selection": "long for width>=1456; medium for width>=1176; short for width>=896; narrower: scale entire lounge uniformly to fit width-96",
+        "offset": [
+          88,
+          32
+        ],
+        "size": [
+          1360,
+          256
+        ],
+        "alignment": "horizontal center in room, keep original variant width; no stretch"
+      },
+      "slots": [
+        {
+          "id": "lounge-0",
+          "beanbag": "moss",
+          "topLeft": [
+            216,
+            56
+          ],
+          "seat": [
+            318,
+            188
+          ]
+        },
+        {
+          "id": "lounge-1",
+          "beanbag": "terracotta",
+          "topLeft": [
+            504,
+            56
+          ],
+          "seat": [
+            606,
+            188
+          ]
+        },
+        {
+          "id": "lounge-2",
+          "beanbag": "navy",
+          "topLeft": [
+            792,
+            56
+          ],
+          "seat": [
+            894,
+            188
+          ]
+        },
+        {
+          "id": "lounge-3",
+          "beanbag": "mustard",
+          "topLeft": [
+            1080,
+            56
+          ],
+          "seat": [
+            1182,
+            188
+          ]
+        }
+      ],
+      "slotStride": [
+        288,
+        0
+      ],
+      "maxSlots": 4,
+      "beanbagSize": [
+        240,
+        200
+      ],
+      "narrowLayout": {
+        "short": {
+          "maxSlots": 2
+        },
+        "medium": {
+          "maxSlots": 3
+        },
+        "rule": "firstX=(roomWidth-(count*240+(count-1)*48))/2; y=56; rugX=(roomWidth-rugWidth)/2; seat=topLeft+[102,132]"
+      },
+      "overflow": "remain at own desk in phone or sleeping state; no floor seating",
+      "arrivalAnchor": {
+        "seatedFrameHip": [
+          48,
+          166
+        ],
+        "walkFrameAnchor": "sheet.anchor (feet)",
+        "transition": "crossfade at slot seat; away frame hip placed at seat; walking feet target=seat+[0,64]; never interpolate incompatible frame anchors"
+      },
+      "enabled": false,
+      "deprecated": true,
+      "disabledReason": "replaced by leftLounge; do not draw bottom rug/strip"
+    },
+    "managerSlot": {
+      "origin": "lead desk sourceBox top-left in background-native logical coordinates; transform exactly like lead desk",
+      "id": "manager-private",
+      "beanbag": "navy",
+      "topLeftFormula": "[leadWidth+32, leadHeight-100]",
+      "byBackground": {
+        "small": {
+          "topLeft": [
+            552,
+            250
+          ],
+          "seat": [
+            654,
+            382
+          ]
+        },
+        "medium": {
+          "topLeft": [
+            530,
+            238
+          ],
+          "seat": [
+            632,
+            370
+          ]
+        },
+        "large": {
+          "topLeft": [
+            485,
+            213
+          ],
+          "seat": [
+            587,
+            345
+          ]
+        }
+      },
+      "size": [
+        240,
+        200
+      ],
+      "seatInBeanbag": [
+        102,
+        132
+      ],
+      "occupancy": "orchestrator only; never consumes member lounge slot",
+      "fallback": "own desk if blocked; never floor"
+    },
+    "leftLounge": {
+      "enabled": true,
+      "origin": "room top-left, logical world pixels; background-native pixels must first be scaled to canvas",
+      "beanbagSize": [
+        240,
+        200
+      ],
+      "actorHeight": 256,
+      "seatedFrameHip": [
+        48,
+        166
+      ],
+      "roomHeightPolicy": "base canvas only; never append memberLounge height",
+      "walkingCorridorX": [
+        284,
+        340
+      ],
+      "walkingCenterX": 312,
+      "walkingRule": "reserved foot-center lane between bag right edge276 and nearest pod left340/350; do not allocate furniture here",
+      "overflow": "rest at own desk; never share slot",
+      "byBackground": {
+        "small": {
+          "canvas": [
+            1536,
+            1024
+          ],
+          "maxSlots": 3,
+          "slots": [
+            {
+              "id": "left-0",
+              "beanbag": "moss",
+              "topLeft": [
+                36,
+                400
+              ],
+              "seat": [
+                138,
+                532
+              ]
+            },
+            {
+              "id": "left-1",
+              "beanbag": "terracotta",
+              "topLeft": [
+                36,
+                580
+              ],
+              "seat": [
+                138,
+                712
+              ]
+            },
+            {
+              "id": "left-2",
+              "beanbag": "navy",
+              "topLeft": [
+                36,
+                760
+              ],
+              "seat": [
+                138,
+                892
+              ]
+            }
+          ],
+          "walkingCorridorX": [
+            284,
+            340
+          ]
+        },
+        "medium": {
+          "canvas": [
+            1536,
+            1024
+          ],
+          "maxSlots": 3,
+          "slots": [
+            {
+              "id": "left-0",
+              "beanbag": "moss",
+              "topLeft": [
+                36,
+                390
+              ],
+              "seat": [
+                138,
+                522
+              ]
+            },
+            {
+              "id": "left-1",
+              "beanbag": "terracotta",
+              "topLeft": [
+                36,
+                570
+              ],
+              "seat": [
+                138,
+                702
+              ]
+            },
+            {
+              "id": "left-2",
+              "beanbag": "navy",
+              "topLeft": [
+                36,
+                750
+              ],
+              "seat": [
+                138,
+                882
+              ]
+            }
+          ],
+          "walkingCorridorX": [
+            284,
+            340
+          ]
+        },
+        "large": {
+          "canvas": [
+            1536,
+            1536
+          ],
+          "maxSlots": 6,
+          "slots": [
+            {
+              "id": "left-0",
+              "beanbag": "moss",
+              "topLeft": [
+                36,
+                400
+              ],
+              "seat": [
+                138,
+                532
+              ]
+            },
+            {
+              "id": "left-1",
+              "beanbag": "terracotta",
+              "topLeft": [
+                36,
+                580
+              ],
+              "seat": [
+                138,
+                712
+              ]
+            },
+            {
+              "id": "left-2",
+              "beanbag": "navy",
+              "topLeft": [
+                36,
+                760
+              ],
+              "seat": [
+                138,
+                892
+              ]
+            },
+            {
+              "id": "left-3",
+              "beanbag": "mustard",
+              "topLeft": [
+                36,
+                940
+              ],
+              "seat": [
+                138,
+                1072
+              ]
+            },
+            {
+              "id": "left-4",
+              "beanbag": "moss",
+              "topLeft": [
+                36,
+                1120
+              ],
+              "seat": [
+                138,
+                1252
+              ]
+            },
+            {
+              "id": "left-5",
+              "beanbag": "terracotta",
+              "topLeft": [
+                36,
+                1300
+              ],
+              "seat": [
+                138,
+                1432
+              ]
+            }
+          ],
+          "walkingCorridorX": [
+            284,
+            340
+          ]
+        }
+      },
+      "slotStride": [
+        0,
+        180
+      ],
+      "verticalOverlap": 20,
+      "drawOrder": "sort complete beanbag-back -> actor -> beanbag-front groups by slot topLeft.y ascending",
+      "protectedActorRegion": "face and cup above local y=130; next occupied group starts near local y=160 or lower"
+    }
+  },
+  "keyboardAlignment": {
+    "source": "src/generated/keyboard-mouse.png",
+    "handCentersIn160x216Frames": {
+      "actor-0": [
+        98,
+        137
+      ],
+      "actor-1": [
+        109,
+        141
+      ],
+      "actor-2": [
+        98,
+        134
+      ],
+      "actor-3": [
+        104,
+        134
+      ],
+      "actor-4": [
+        102,
+        139
+      ],
+      "actor-5": [
+        96,
+        140
+      ],
+      "orchestrator": [
+        94,
+        141
+      ]
+    },
+    "offsetUnits": "desk logical pixels; applied only to named state after actorStateYOffset",
+    "framePolicy": "constant per actor across all 4 working frames; no per-frame jitter correction",
+    "draw": "body -> full tabletop/keyboard -> hand source rectangles; hands share exactly the same actor transform"
+  },
+  "effectPlacement": {
+    "attention": {
+      "sheet": "attention",
+      "anchor": "sheet.anchor bottom-center",
+      "position": "current rendered pose headTopCenter + [0,-10] logical px; never station foot minus fixed height",
+      "preferredDisplayHeight": 64
+    },
+    "flame_aura": {
+      "sheet": "flame_aura",
+      "referenceActorFrame": [
+        160,
+        216
+      ],
+      "anchorInActorFrame": [
+        44,
+        166
+      ],
+      "sheetAnchor": [
+        64,
+        144
+      ],
+      "renderScaleFormula": "renderedActorFrameHeight / 216",
+      "renderSizeToActorFrameHeight": [
+        0.5925925925925926,
+        0.7407407407407407
+      ],
+      "inkBounds": [
+        2,
+        8,
+        126,
+        108
+      ],
+      "emptyLowerBand": [
+        0,
+        109,
+        128,
+        160
+      ],
+      "target": "upper back and shoulders, slightly left of torso center",
+      "layer": "behind actor, then actor drawn once",
+      "clipPolicy": "exclude monitor/keyboard/nameplate foreground only; NEVER intersect with actor opaque silhouette or redraw torso on top of a clipped narrow sliver",
+      "minimumVisibleShoulderMarginAtReference": 18,
+      "positionFormula": "current pose frame top-left + [44,166]*actorScale - [64,144]*actorScale; never use desk seat or hand center as effect anchor"
+    },
+    "zzz": {
+      "position": "current pose head upper-left empty space; avoid monitor bounding box"
+    }
+  },
+  "providerIcons": {
+    "claude": "provider-icon-claude",
+    "codex": "provider-icon-codex",
+    "antigravity": "provider-icon-antigravity",
+    "copilot": "provider-icon-copilot",
+    "muse": "provider-icon-muse",
+    "opencode": "provider-icon-opencode",
+    "gemini": "provider-icon-default",
+    "orchestrator": "provider-icon-default",
+    "default": "provider-icon-default"
+  },
+  "furnitureProportions": {
+    "units": "logical px; ratios use FULL actor frame display height, not head height or clipped upper body",
+    "actorFrame": [
+      160,
+      216
+    ],
+    "uniformScaleFormula": "moduleScale = targetActorFrameHeight / referenceActorFrameHeight; multiply ALL furniture dimensions, seat, keyboard rect, actor offsets and actorHeight by moduleScale",
+    "forbidden": "shrinking actor independently while retaining native furniture size",
+    "pod": {
+      "referenceActorFrameHeight": 320,
+      "widthToActorFrameHeightRange": [
+        1.484375,
+        1.50625
+      ],
+      "keyboardWidthToActorFrameHeight": 0.40625,
+      "keyboardHeightToActorFrameHeight": 0.09375
+    },
+    "lead": {
+      "referenceActorFrameHeight": 320,
+      "widthToActorFrameHeight": {
+        "small": 1.625,
+        "medium": 1.55625,
+        "large": 1.415625
+      },
+      "keyboardWidthToActorFrameHeight": 0.40625,
+      "chairBackApproxWidthToActorFrameHeight": 0.44,
+      "chairBackApproxHeightToActorFrameHeight": 0.34,
+      "placement": "uniformly scale around sourceBox seat pivot; sourceBox sets placement, not an independent forced furniture size"
+    },
+    "beanbag": {
+      "referenceActorFrameHeight": 256,
+      "size": [
+        240,
+        200
+      ],
+      "widthToActorFrameHeight": 0.9375,
+      "heightToActorFrameHeight": 0.78125,
+      "seatToActorFrameHeight": [
+        0.3984375,
+        0.515625
+      ],
+      "validHeightToVisibleActorHeightRange": [
+        0.9,
+        1.25
+      ],
+      "observedHeightToVisibleActorHeightRange": [
+        1.029,
+        1.172
+      ],
+      "assetResizeRequired": false,
+      "reason": "native coherent composite passes ratio; scene must scale beanbag and actor as one module"
+    },
+    "awayPoseMetrics": {
+      "actor-0": {
+        "frameAlphaBounds": [
+          11,
+          47,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.731481,
+        "visibleHeightAt256": 187.26
+      },
+      "actor-1": {
+        "frameAlphaBounds": [
+          10,
+          54,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.699074,
+        "visibleHeightAt256": 178.96
+      },
+      "actor-2": {
+        "frameAlphaBounds": [
+          10,
+          61,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.666667,
+        "visibleHeightAt256": 170.67
+      },
+      "actor-3": {
+        "frameAlphaBounds": [
+          10,
+          56,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.689815,
+        "visibleHeightAt256": 176.59
+      },
+      "actor-4": {
+        "frameAlphaBounds": [
+          10,
+          53,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.703704,
+        "visibleHeightAt256": 180.15
+      },
+      "actor-5": {
+        "frameAlphaBounds": [
+          10,
+          41,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.759259,
+        "visibleHeightAt256": 194.37
+      },
+      "orchestrator": {
+        "frameAlphaBounds": [
+          10,
+          54,
+          150,
+          205
+        ],
+        "visibleHeightToFrameHeight": 0.699074,
+        "visibleHeightAt256": 178.96
+      }
+    }
+  },
+  "rearSeatContract": {
+    "bodyOcclusion": "tableRearY, not tabletop front edge",
+    "overlay": "actorOverlay source rectangles use original160x216 frame coordinates; multiply source coordinates by runtimeScale when cropping runtime sheet, do not change actor destination origin",
+    "clipping": "actorClip applies to body; actorOverlay.clipInModule applies separately to hand/head overlay",
+    "moduleScale": "all new coordinates follow existing uniform furniture scale"
+  },
+  "workingHandOverlays": {
+    "actor-0": "hands-actor-0-working",
+    "actor-1": "hands-actor-1-working",
+    "actor-2": "hands-actor-2-working",
+    "actor-3": "hands-actor-3-working",
+    "actor-4": "hands-actor-4-working",
+    "actor-5": "hands-actor-5-working",
+    "orchestrator": "hands-orchestrator-working"
+  },
+  "armOverlays": {
+    "actor-0": {
+      "working": "hands-actor-0-working",
+      "phone": "arms-actor-0-phone",
+      "sleeping": "arms-actor-0-sleeping"
+    },
+    "actor-1": {
+      "working": "hands-actor-1-working",
+      "phone": "arms-actor-1-phone",
+      "sleeping": "arms-actor-1-sleeping"
+    },
+    "actor-2": {
+      "working": "hands-actor-2-working",
+      "phone": "arms-actor-2-phone",
+      "sleeping": "arms-actor-2-sleeping"
+    },
+    "actor-3": {
+      "working": "hands-actor-3-working",
+      "phone": "arms-actor-3-phone",
+      "sleeping": "arms-actor-3-sleeping"
+    },
+    "actor-4": {
+      "working": "hands-actor-4-working",
+      "phone": "arms-actor-4-phone",
+      "sleeping": "arms-actor-4-sleeping"
+    },
+    "actor-5": {
+      "working": "hands-actor-5-working",
+      "phone": "arms-actor-5-phone",
+      "sleeping": "arms-actor-5-sleeping"
+    },
+    "orchestrator": {
+      "working": "hands-orchestrator-working",
+      "phone": "arms-orchestrator-phone",
+      "sleeping": "arms-orchestrator-sleeping"
+    }
+  },
+  "armOverlayContract": {
+    "frameSize": [
+      160,
+      216
+    ],
+    "transform": "same source pose frame index, destination origin, factor and actorOffsets as body; never re-anchor overlay independently",
+    "drawOrder": [
+      "body",
+      "tabletop",
+      "armOverlays",
+      "nameplate"
+    ],
+    "workingHandOverlays": "compatibility alias now contains full sleeves and arms, not skin-only hands",
+    "sourceClip": "entire original160x216 cell; alpha mask defines arms, never use rectangular source clipping inside visible silhouette"
+  },
+  "backgroundTrim": {
+    "wallHeight": 400,
+    "bottomTrimHeight": 24,
+    "coordinateSpace": "room world logical pixels",
+    "draw": "keep bottomTrim at sceneY+sceneHeight-24; stretch only middle floor",
+    "perAsset": "assets[background-key].bottomTrim",
+    "legacySceneCompatibility": "current hardcoded trim24 already samples the correct bottom band; sourceRect can replace hardcoded source scale for explicit handling"
+  }
 }

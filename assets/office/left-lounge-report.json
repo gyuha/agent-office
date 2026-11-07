@@ -1,0 +1,87 @@
+{
+  "beforeBytes": 1351350,
+  "afterBytes": 1351350,
+  "backgrounds": {
+    "small": {
+      "editedRectangles": [
+        [
+          0,
+          230,
+          292,
+          780
+        ],
+        [
+          180,
+          365,
+          410,
+          590
+        ]
+      ],
+      "outsideRegionPixelsUnchanged": true,
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "medium": {
+      "editedRectangles": [
+        [
+          0,
+          170,
+          258,
+          705
+        ],
+        [
+          145,
+          335,
+          392,
+          625
+        ],
+        [
+          0,
+          700,
+          275,
+          1024
+        ]
+      ],
+      "outsideRegionPixelsUnchanged": true,
+      "size": [
+        1536,
+        1024
+      ]
+    },
+    "large": {
+      "editedRectangles": [
+        [
+          0,
+          215,
+          235,
+          680
+        ],
+        [
+          0,
+          590,
+          85,
+          1254
+        ],
+        [
+          0,
+          1040,
+          215,
+          1254
+        ]
+      ],
+      "outsideRegionPixelsUnchanged": true,
+      "size": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "maxSlots": {
+    "small": 3,
+    "medium": 3,
+    "large": 6
+  },
+  "managerSlotUnchanged": true
+}

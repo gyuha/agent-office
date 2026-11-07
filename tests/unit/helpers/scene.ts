@@ -12,6 +12,7 @@ register('data:text/javascript,' + encodeURIComponent(`export async function res
 export const { draw, sheetFrame, providerColor } = await import('../../../client/scene/core/draw.ts');
 export const { layoutOffices } = await import('../../../client/scene/core/layout.ts');
 export const { step } = await import('../../../client/scene/core/actors.ts');
+export const { route } = await import('../../../client/scene/core/navigation.ts');
 export const { manifest, assetData } = await import('../../../client/scene/core/office-assets.ts');
 export const { agentAtPoint, scenePoint } = await import('../../../client/scene/core/hitTest.ts');
 
@@ -63,18 +64,23 @@ export function advance(actors: any, snapshot: OfficeSnapshot, ms: number, layou
   return a;
 }
 
-export interface Drawn { key: string; sx: number; sy: number; sw: number; sh: number; dx: number; dy: number; dw: number; dh: number; alpha: number; order: number }
+export interface Drawn { key: string; sx: number; sy: number; sw: number; sh: number; dx: number; dy: number; dw: number; dh: number; alpha: number; order: number; transform?: number[]; clip?: { x: number; y: number; width: number; height: number }[] | null }
 export interface DrawnText { text: string; x: number; y: number; order: number; font: string }
 export interface DrawnArc { x: number; y: number; r: number; fill: string; order: number }
 
-/** 매니페스트 메타데이터만으로 만든 가짜 이미지. 시트 길이는 frames·frameW에서 계산된다. */
+/** 런타임 로더(loadOfficeAssets)와 같은 runtimeScale 규칙: provider 아이콘은 1, 나머지는 spec 또는 manifest 값(0.5). */
+export const runtimeScaleOf = (key: string, spec: any) => key.startsWith('provider-icon-') ? 1 : spec.runtimeScale ?? (manifest as any).runtimeScale ?? 1;
+
+/** 매니페스트 메타데이터만으로 만든 가짜 이미지. 실제 이미지처럼 논리 크기 × runtimeScale 픽셀이다. */
 export function fakeSprites(overrides: Record<string, any> = {}, omit: string[] = []) {
   const sprites: Record<string, { image: any; spec: any }> = {};
-  for (const [key, spec] of Object.entries<any>({ ...assetData, ...overrides })) {
+  for (const [key, raw] of Object.entries<any>({ ...assetData, ...overrides })) {
     if (omit.includes(key)) continue;
+    const rs = runtimeScaleOf(key, raw);
+    const spec = { ...raw, runtimeScale: rs };
     const frames = Array.isArray(spec.frames) ? spec.frames.length : spec.frames || 1;
-    const width = spec.frameW ? spec.frameW * frames : spec.size?.[0] ?? 1;
-    const height = spec.frameH ?? spec.size?.[1] ?? 1;
+    const width = (spec.frameW ? spec.frameW * frames : spec.size?.[0] ?? 1) * rs;
+    const height = (spec.frameH ?? spec.size?.[1] ?? 1) * rs;
     sprites[key] = { image: { key, width, height }, spec };
   }
   return sprites;
@@ -84,22 +90,28 @@ export function fakeSprites(overrides: Record<string, any> = {}, omit: string[] 
  * draw를 실제 매니페스트로 실행하고 drawImage·fillText·arc 호출을 그리는 순서(order)와 함께 기록한다.
  * 명판은 canvas로 그려지므로 fillText(이름)와 arc(provider 폴백 원)로 식별한다. `epoch`로 flame 판정 시각을 고정한다.
  */
-export function trace(snapshot: OfficeSnapshot, opts: { actors?: any; timeMs?: number; epoch?: number; sprites?: any; width?: number } = {}) {
+export function trace(snapshot: OfficeSnapshot, opts: { actors?: any; timeMs?: number; epoch?: number; sprites?: any; width?: number; background?: any } = {}) {
   const layout = layoutOffices(snapshot, opts.width ?? 1536);
   const actors = opts.actors ?? step({}, snapshot, 0, layout);
   const images: Drawn[] = [], texts: DrawnText[] = [], arcs: DrawnArc[] = [];
-  const stack: number[] = [];
+  const stack: any[] = [];
   let order = 0;
-  const ctx: any = { fillStyle: '', strokeStyle: '', font: '', lineWidth: 1, textAlign: '', textBaseline: '', globalAlpha: 1, imageSmoothingEnabled: true, imageSmoothingQuality: 'high',
-    save() { stack.push(ctx.globalAlpha); }, restore() { ctx.globalAlpha = stack.pop() ?? 1; },
-    beginPath() {}, rect() {}, clip() {}, fillRect() {}, fill() {}, stroke() {},
-    measureText: (text: string) => ({ width: Array.from(text).length * 10 }),
+  let path: { x: number; y: number; width: number; height: number }[] = [];
+  const ctx: any = { clipRects: null, transform: [1, 0, 0, 1, 0, 0], fillStyle: '', strokeStyle: '', font: '', lineWidth: 1, textAlign: '', textBaseline: '', globalAlpha: 1, imageSmoothingEnabled: true, imageSmoothingQuality: 'high',
+    save() { stack.push([ctx.globalAlpha, ctx.clipRects]); }, restore() { const [a, c] = stack.pop() ?? [1, null]; ctx.globalAlpha = a; ctx.clipRects = c; },
+    beginPath() { path = []; }, rect(x: number, y: number, width: number, height: number) { path.push({ x, y, width, height }); }, clip() { ctx.clipRects = [...path]; }, fillRect() {}, fill() {}, stroke() {},
+    measureText: (text: string) => ({ width: Array.from(text).length * 0.6 * Number(/(\d+(?:\.\d+)?)px/.exec(ctx.font)?.[1] ?? 10) }), // 고정폭 글꼴 근사: 글자당 0.6em
     fillText(text: string, x: number, y: number) { texts.push({ text, x, y, order: order++, font: ctx.font }); },
     arc(x: number, y: number, r: number) { arcs.push({ x, y, r, fill: ctx.fillStyle, order: order++ }); },
-    drawImage(image: { key: string }, sx: number, sy: number, sw: number, sh: number, dx: number, dy: number, dw: number, dh: number) {
-      images.push({ key: image.key, sx, sy, sw, sh, dx, dy, dw, dh, alpha: ctx.globalAlpha, order: order++ });
+    setTransform(...m: number[]) { ctx.transform = m; },
+    // drawImage는 3/5/9 인자 형태를 모두 지원한다. 3·5 인자는 원본 전체를 그린다.
+    drawImage(image: { key: string; width: number; height: number }, ...a: number[]) {
+      const [sx, sy, sw, sh, dx, dy, dw, dh] = a.length === 8 ? a
+        : a.length === 4 ? [0, 0, image.width, image.height, ...a]
+        : [0, 0, image.width, image.height, a[0], a[1], image.width, image.height];
+      images.push({ key: image.key, sx, sy, sw, sh, dx, dy, dw, dh, alpha: ctx.globalAlpha, order: order++, transform: ctx.transform, clip: ctx.clipRects });
     } };
-  draw(ctx, layout, actors, opts.timeMs ?? 0, opts.sprites ?? fakeSprites(), opts.epoch ?? 0);
+  draw(ctx, layout, actors, opts.timeMs ?? 0, opts.sprites ?? fakeSprites(), opts.epoch ?? 0, opts.background);
   return { layout, actors, images, texts, arcs };
 }
 
