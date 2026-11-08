@@ -6,8 +6,10 @@ import { mountFake } from './helpers/dom.ts';
 const GAP = 20, PADDING = 16, MIN = 410, MAX = 480;
 
 // 구현과 독립적으로 다시 계산한 masonry 규칙: 카드 최대 480, 최소 410, 간격 20. 배정 단위는 프로젝트 블록이고, 블록은 그 시점 가장 짧은 열에 순서대로 붙는다.
-const columnsFor = (width: number, count: number) => Math.max(1, Math.min(count || 1, Math.floor((width - PADDING * 2 + GAP) / (MIN + GAP))));
-const cardWidthFor = (width: number, columns: number) => Math.min(MAX, (width - PADDING * 2 - GAP * (columns - 1)) / columns);
+// VQA-039: 폭이 410px 이상이면 바깥 여백은 min(16, (폭 - 410) / 2)라서 1열 카드가 410px 아래로 내려가지 않는다.
+const paddingFor = (width: number) => (width >= MIN ? Math.min(PADDING, (width - MIN) / 2) : PADDING);
+const columnsFor = (width: number, count: number) => Math.max(1, Math.min(count || 1, Math.floor((width - paddingFor(width) * 2 + GAP) / (MIN + GAP))));
+const cardWidthFor = (width: number, columns: number) => Math.min(MAX, (width - paddingFor(width) * 2 - GAP * (columns - 1)) / columns);
 
 type Office = ReturnType<typeof group> | ReturnType<typeof solo>;
 const projectsOf = (specs: { name: string; offices: Office[] }[]) => snapAll(specs);
@@ -19,7 +21,8 @@ function expectedPlacement(snapshot: any, width: number) {
   const cards = projects.flatMap((p: any) => p.offices.filter((o: any) => o.manager || o.members.length).map((o: any) => ({ key: `${p.projectId}/${o.id}`, project: p.projectId, snap: cardSnapshot(snapshot, p, o) })));
   const columns = columnsFor(width, cards.length), cardWidth = cardWidthFor(width, columns);
   const heights = cards.map(c => layoutOffices(c.snap, cardWidth).height * cardWidth / 1536);
-  const bottoms: number[] = Array(columns).fill(PADDING), left = (width - (columns * cardWidth + (columns - 1) * GAP)) / 2;
+  const padding = paddingFor(width);
+  const bottoms: number[] = Array(columns).fill(padding), left = (width - (columns * cardWidth + (columns - 1) * GAP)) / 2;
   const placed: { key: string; project: string; col: number; left: number; top: number; width: number; height: number }[] = [];
   // 같은 프로젝트의 연속된 카드를 한 블록으로 묶고, 블록 전체를 가장 짧은 열에 둔다.
   const blocks: number[][] = [];
@@ -28,7 +31,7 @@ function expectedPlacement(snapshot: any, width: number) {
     const col = bottoms.indexOf(Math.min(...bottoms));
     for (const i of block) { placed[i] = { key: cards[i].key, project: cards[i].project, col, left: left + col * (cardWidth + GAP), top: bottoms[col], width: cardWidth, height: heights[i] }; bottoms[col] += heights[i] + GAP; }
   }
-  return { columns, cardWidth, placed, blocks, totalHeight: Math.max(...bottoms) - (cards.length ? GAP : 0) + PADDING };
+  return { columns, cardWidth, placed, blocks, totalHeight: Math.max(...bottoms) - (cards.length ? GAP : 0) + padding };
 }
 
 const num = (css: string, prop: string) => { const m = new RegExp(`(?:^|;)${prop}:(-?[\\d.]+)px`).exec(css); return m ? Number(m[1]) : NaN; };
@@ -325,4 +328,124 @@ test('project scope stays a single column: one card, capped at 480px, no absolut
 test('scope all with a single room (or empty rooms skipped): one card, columns never exceed the number of cards', async () => {
   const s = projectsOf([{ name: 'only', offices: [solo('s', {}), { id: 'empty', kind: 'group', manager: null, members: [] } as any] }]);
   await withAll(s, 2000, m => { assert.equal(m.holders().length, 1); assert.equal(expectedPlacement(s, 2000).columns, 1); });
+});
+
+// ───────── VQA-039: 410~430px 화면에서도 카드가 410px 이상, 명판 말줄임 0 ─────────
+const fullNames = ['plugin#FDF9', 'search#64CA', 'scene#3C71', 'art#94A2', 'review#A1C2', 'infra#55E3', 'qa#0499', 'mobile#E27D'];
+function n16All() {
+  const o: any = group(16, 'big');
+  o.members.forEach((m: any, i: number) => { m.name = fullNames[i % fullNames.length]; });
+  return snapAll([{ name: 'delta', offices: [o] }]);
+}
+
+test('VQA-039: the outer margin is min(16, (width - 410) / 2) from 410px up, so a one-column card never drops below 410px', () => {
+  assert.equal(paddingFor(410), 0);
+  assert.equal(paddingFor(420), 5);
+  assert.equal(paddingFor(426), 8);
+  assert.equal(paddingFor(442), 16);
+  assert.equal(paddingFor(1200), 16);
+  for (let w = 410; w <= 440; w++) assert.ok(cardWidthFor(w, 1) >= 410 - 1e-9, `${w}px: card ${cardWidthFor(w, 1)}`);
+  assert.equal(cardWidthFor(400, 1), 368, 'below 410 the old margin still applies');
+});
+
+for (const width of [410, 415, 420, 425, 430, 442, 480]) {
+  test(`VQA-039 (${width}px screen): scope all one-column card is at least 410px wide, centered inside the margin, and no plate name is ellipsized (N16)`, async () => {
+    const s = n16All();
+    await withAll(s, width, m => {
+      const holders = m.holders();
+      assert.equal(holders.length, 1);
+      const g = geometry(holders[0]);
+      const padding = paddingFor(width);
+      assert.ok(g.width >= 410 - 1e-6, `${width}px: card ${g.width}px`);
+      assert.ok(Math.abs(g.width - Math.min(MAX, width - 2 * padding)) < 1e-6, `${width}px: card = width - 2 * margin`);
+      assert.ok(g.left >= padding - 1e-6 && g.left + g.width <= width - padding + 1e-6, `${width}px: card stays inside the margins (${g.left}..${g.left + g.width})`);
+      assert.ok(g.left >= -1e-6 && g.left + g.width <= width + 1e-6, 'never wider than the screen');
+      // 같은 카드 폭으로 그린 N16 명판은 일반 이름을 말줄임 없이 전부 보여 준다.
+      const o = s.projects[0].offices[0];
+      const t = trace(snap([o]), { width: g.width });
+      for (const text of t.texts) assert.ok(!text.text.includes('…'), `${width}px (card ${g.width}px): "${text.text}" is ellipsized`);
+      for (const name of [...fullNames, 'Orchestrator']) assert.ok(t.texts.some(x => x.text === name), `${width}px: ${name} shown in full`);
+    });
+  });
+}
+
+test('VQA-039: the margin shrinks smoothly (it is not a step): 410 → 0, 426 → 8, 442 → 16', async () => {
+  const lefts: number[] = [];
+  for (const width of [410, 426, 442]) await withAll(n16All(), width, m => lefts.push(geometry(m.holders()[0]).left));
+  assert.deepEqual(lefts.map(v => Math.round(v * 1000) / 1000), [0, 8, 16]);
+});
+
+// ───────── VQA-038: 필터 결과에 새로 들어온 카드는 첫 표시 프레임부터 그려져 있다 ─────────
+const barButton = (m: any, f: string) => m.parent.children.find((c: any) => c.className === 'office-filter-bar').children.find((b: any) => b.dataset.filter === f);
+
+/** 화면 안(미리 그리기 구간 안)에 있는 카드의 canvas가 폭 0이면 빈 카드 프레임이다. */
+const blankCards = (m: any) => m.sceneRoots().filter((r: any) => r.children[1].width === 0 || r.children[1].height === 0).length;
+
+function filterScenario() {
+  const mk = (id: string, ...states: [string, boolean?][]) => { const o: any = group(Math.max(states.length - 1, 1), id); [o.manager, ...o.members].forEach((a: any, i: number) => { a.state = states[i]?.[0] ?? 'away'; a.needsAttention = !!states[i]?.[1]; }); return o; };
+  const make = (overrides: Record<string, string> = {}) => snapAll([
+    { name: 'alpha', offices: [mk('a0', [overrides.a0 ?? 'working'], ['away']), mk('a1', [overrides.a1 ?? 'away'], ['away'])] },
+    { name: 'beta', offices: [mk('b0', [overrides.b0 ?? 'away'], ['phone']), mk('b1', [overrides.b1 ?? 'working'], ['away'])] },
+  ]);
+  return make;
+}
+
+test('VQA-038: cards that enter the filter result are painted before their first visible frame (zero blank-canvas frames)', async () => {
+  const make = filterScenario();
+  let current = make();
+  const m = await mountFake(() => current, { clientWidth: 1200 });
+  try {
+    await m.runPaint(300);
+    barButton(m, 'working').onclick();               // Working: a0, b1
+    await m.runPaint(300);
+    assert.equal(m.holders().length, 2);
+    let blankFrames = 0, frames = 0;
+    m.onPaint(() => { frames++; blankFrames += blankCards(m) > 0 ? 1 : 0; });
+    // 1) 스냅샷이 바뀌어 a1, b0이 Working에 들어온다(rAF 안에서 카드가 생긴다).
+    current = make({ a1: 'working', b0: 'working' });
+    await m.runPaint(1000);
+    assert.equal(m.holders().length, 4, 'two cards entered');
+    // 2) 필터 버튼 클릭으로 카드가 한꺼번에 들어온다. 클릭 핸들러가 끝난 직후(마이크로태스크 처리 뒤, 화면을 칠하기 전)에 이미 그려져 있다.
+    for (const f of ['all', 'idle', 'working']) {
+      barButton(m, f).onclick();
+      await m.flush();
+      assert.equal(blankCards(m), 0, `${f}: no blank card at the first paint after the click`);
+    }
+    await m.runPaint(1000);
+    assert.ok(frames >= 10, `observed ${frames} frames`);
+    assert.equal(blankFrames, 0, 'no frame showed a blank card');
+  } finally { m.handle.dispose(); m.restore(); }
+});
+
+test('VQA-038: every newly mounted card is drawn at once, including the case where several cards enter in the same refresh', async () => {
+  const make = filterScenario();
+  let current = make({ a0: 'away', b1: 'away' });   // Working 결과가 비어 있다
+  const m = await mountFake(() => current, { clientWidth: 1600 });
+  try {
+    await m.runPaint(300);
+    barButton(m, 'working').onclick();
+    await m.runPaint(300);
+    assert.equal(m.holders().length, 0, 'empty result: nothing mounted');
+    let blankFrames = 0;
+    m.onPaint(() => { blankFrames += blankCards(m) > 0 ? 1 : 0; });
+    current = make({ a0: 'working', a1: 'working', b0: 'working', b1: 'working' });
+    await m.runPaint(100);
+    assert.equal(m.holders().length, 4, 'all four entered in one refresh');
+    for (const r of m.sceneRoots()) assert.ok(r.children[1].width > 0 && r.children[1].height > 0, 'canvas has a backing store');
+    await m.runPaint(1000);
+    assert.equal(blankFrames, 0);
+  } finally { m.handle.dispose(); m.restore(); }
+});
+
+test('VQA-038: a new card whose canvas stays at 0x0 would be caught: the blank-card detector sees a card that is mounted but not yet drawn', async () => {
+  const m = await mountFake(snapAll([{ name: 'a', offices: [group(3, 'a0')] }]), { clientWidth: 1200 });
+  try {
+    m.run(300);
+    const root = m.sceneRoots()[0];
+    const saved = [root.children[1].width, root.children[1].height];
+    root.children[1].width = 0; root.children[1].height = 0;
+    assert.equal(blankCards(m), 1, 'detector flags a 0x0 canvas');
+    [root.children[1].width, root.children[1].height] = saved;
+    assert.equal(blankCards(m), 0);
+  } finally { m.handle.dispose(); m.restore(); }
 });

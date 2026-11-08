@@ -283,3 +283,233 @@ test("mounted scope all at 1600px: 3 columns, project blocks stay in one column,
   for (const [project, lefts] of Object.entries(cols.byProject)) expect(new Set(lefts).size, `project ${project} stays in one column`).toBe(1);
   await expect(page.locator(".office-collection")).toHaveScreenshot("mount-all-masonry-1600.png");
 });
+
+// ───────── office filter (All · Working · Awaiting · Idle) ─────────
+type FilterName = "all" | "working" | "awaiting" | "idle";
+type FSpec = [State, boolean?]; // [상태, 질문 대기]
+/** 오피스: 첫 항목이 manager, solo면 구성원 1명. 에이전트 이름을 오피스 id로 두어 헤더(AGENT)로 오피스를 알아본다. */
+function filterOffice(id: string, ...specs: FSpec[]) {
+  const make = (s: FSpec, name: string, i: number) => agent(`${id}-${i}`, name, s[0], { needsAttention: !!s[1] });
+  if (specs.length === 1 && id.startsWith("solo-")) return { id, kind: "solo" as const, manager: null, members: [make(specs[0], id, 0)] };
+  const [lead, ...rest] = specs;
+  return { id, kind: "group" as const, manager: make(lead, id, 0), members: rest.map((s, i) => make(s, `${id}-m${i + 1}`, i + 1)) };
+}
+const PROJECTS: { name: string; offices: (() => ReturnType<typeof filterOffice>)[] }[] = [
+  { name: "alpha", offices: [() => filterOffice("a0", ["working"], ["away"]), () => filterOffice("a1", ["working", true], ["away"])] },
+  { name: "beta", offices: [() => filterOffice("b0", ["away"], ["phone"]), () => filterOffice("b1", ["working"], ["working", true])] },
+  { name: "gamma", offices: [() => filterOffice("solo-g0", ["sleeping"]), () => filterOffice("solo-g1", ["working"])] },
+];
+// working: a0, b1, solo-g1 / awaiting: a1, b1 / idle: b0, solo-g0
+const EXPECTED: Record<FilterName, string[]> = { all: ["a0", "a1", "b0", "b1", "solo-g0", "solo-g1"], working: ["a0", "b1", "solo-g1"], awaiting: ["a1", "b1"], idle: ["b0", "solo-g0"] };
+const COUNTS: Record<FilterName, number> = { all: 6, working: 3, awaiting: 2, idle: 2 };
+const LABEL: Record<FilterName, string> = { all: "All", working: "Working", awaiting: "Awaiting", idle: "Idle" };
+const FILTER_NAMES: FilterName[] = ["all", "working", "awaiting", "idle"];
+
+const filterAll = (mods: Partial<Record<string, (o: any) => any>> = {}) => ({
+  scope: "all", generatedAt: 0,
+  projects: PROJECTS.map((p) => ({ projectId: p.name, projectName: p.name, offices: p.offices.map((f) => { const o = f(); return mods[o.id] ? mods[o.id]!(o) : o; }) })),
+});
+/** scope project(워크스페이스 패널): 같은 오피스 6개를 한 프로젝트에 둔다. */
+const filterPanel = () => ({
+  scope: "project", generatedAt: 0, workspaceName: "Filters",
+  projects: [{ projectId: "panel", projectName: "Panel", offices: PROJECTS.flatMap((p) => p.offices.map((f) => f())) }],
+});
+
+async function openFilter(page: Page, snap: unknown, width = 1200) {
+  await page.goto(mountUrl);
+  await page.evaluate(([snapshot, w]) => (window as any).mount.open({ snapshot, width: w }), [snap, width] as any);
+  await page.waitForFunction(() => (window as any).mount.headers().length > 0);
+}
+const bar = (page: Page) => page.evaluate(() => (window as any).mount.filterBar());
+/** 화면에 있는 오피스(방) 제목 순서: 헤더의 AGENT 값. */
+const shownOffices = (page: Page) => page.evaluate(() => (window as any).mount.headers().map((h: any) => h.cells.find((c: string[]) => c[0] === "AGENT")[1]));
+const press = (page: Page, f: FilterName) => page.locator(`.office-filter-bar button[data-filter="${f}"]`).click();
+const SCOPES = [["scope all", filterAll], ["scope project (panel)", filterPanel]] as const;
+
+for (const [scopeName, build] of SCOPES) {
+  test(`office filter: ${scopeName}: the bar shows All/Working/Awaiting/Idle with the office counts and starts on All`, async ({ page }) => {
+    await openFilter(page, build());
+    const b = await bar(page);
+    expect(b.buttons.map((x: any) => x.filter)).toEqual(FILTER_NAMES);
+    expect(b.buttons.map((x: any) => x.text)).toEqual(FILTER_NAMES.map((f) => `${LABEL[f]} ${COUNTS[f]}`));
+    expect(b.buttons.map((x: any) => x.pressed)).toEqual([true, false, false, false]);
+    expect(b.position).toBe("sticky");
+    expect(await shownOffices(page)).toEqual(EXPECTED.all);
+  });
+
+  test(`office filter: ${scopeName}: each button keeps only the matching offices and the visible offices equal the button count`, async ({ page }) => {
+    await openFilter(page, build());
+    for (const f of [...FILTER_NAMES, "all"] as FilterName[]) {
+      await press(page, f);
+      // 패널(scope project)은 방이 한 카드 안에 있어 다음 12fps 갱신에서 반영된다.
+      await expect.poll(() => shownOffices(page), { message: f, timeout: 3000 }).toEqual(EXPECTED[f]);
+      const shown = await shownOffices(page);
+      expect(shown.length, `${f}: offices on screen = button count`).toBe(COUNTS[f]);
+      const b = await bar(page);
+      expect(b.buttons.find((x: any) => x.pressed).filter).toBe(f);
+      expect(b.buttons.filter((x: any) => x.pressed)).toHaveLength(1);
+      expect(b.buttons.map((x: any) => x.text), "counts do not change with the filter").toEqual(FILTER_NAMES.map((n) => `${LABEL[n]} ${COUNTS[n]}`));
+      expect(b.emptyVisible).toBe(false);
+    }
+  });
+
+  test(`office filter: ${scopeName}: when nothing matches, "No offices match" is shown and no card is mounted`, async ({ page }) => {
+    const idleOnly = build();
+    for (const p of idleOnly.projects) for (const o of p.offices as any[]) for (const a of [o.manager, ...o.members].filter(Boolean)) Object.assign(a, { state: "away", needsAttention: false });
+    await openFilter(page, idleOnly);
+    expect((await bar(page)).buttons.map((x: any) => x.text)).toEqual(["All 6", "Working 0", "Awaiting 0", "Idle 6"]);
+    await press(page, "working");
+    const b = await bar(page);
+    expect(b.emptyVisible).toBe(true);
+    expect(b.emptyText).toBe("No offices match");
+    expect(b.cards).toBe(0);
+    expect(b.canvases).toBe(0);
+    expect(await shownOffices(page)).toEqual([]);
+    await press(page, "awaiting");
+    expect((await bar(page)).emptyVisible).toBe(true);
+    await press(page, "idle");
+    const idle = await bar(page);
+    expect(idle.emptyVisible).toBe(false);
+    expect((await shownOffices(page)).length).toBe(6);
+  });
+}
+
+test("office filter: scope all: a new snapshot adds and removes cards on the next refresh and keeps the order of the rest", async ({ page }) => {
+  await openFilter(page, filterAll());
+  await press(page, "working");
+  expect(await shownOffices(page)).toEqual(["a0", "b1", "solo-g1"]);
+  // a0이 쉬고, b0과 solo-g0이 일을 시작한다(스냅샷은 새 객체).
+  const rest = (o: any) => ({ ...o, manager: { ...o.manager, state: "away" }, members: o.members.map((m: any) => ({ ...m, state: "away" })) });
+  const work = (o: any) => ({ ...o, manager: o.manager && { ...o.manager, state: "working" }, members: o.members.map((m: any, i: number) => ({ ...m, state: i === 0 ? "working" : m.state })) });
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), filterAll({ a0: rest, b0: work, "solo-g0": work }) as any);
+  await page.waitForFunction(() => (window as any).mount.headers().length === 4, null, { timeout: 5000 });
+  expect(await shownOffices(page)).toEqual(["b0", "b1", "solo-g0", "solo-g1"]);
+  expect((await bar(page)).buttons.map((x: any) => x.text)).toEqual(["All 6", "Working 4", "Awaiting 2", "Idle 1"]);
+  // 질문이 생기면 Working에서 빠지고, 그 오피스는 순서를 유지한 채 Awaiting 쪽으로 간다.
+  const ask = (o: any) => ({ ...o, manager: { ...o.manager, state: "working", needsAttention: true } });
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), filterAll({ a0: rest, b0: work, "solo-g0": work, b1: ask }) as any);
+  await page.waitForFunction(() => (window as any).mount.headers().length === 3, null, { timeout: 5000 });
+  expect(await shownOffices(page)).toEqual(["b0", "solo-g0", "solo-g1"]);
+  await press(page, "awaiting");
+  expect(await shownOffices(page)).toEqual(["a1", "b1"]);
+  // 같은 상태의 2초 갱신은 카드를 건드리지 않는다.
+  const before = await page.evaluate(() => [...document.querySelectorAll(".office-collection > div")].map((c: any) => c.style.cssText));
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), JSON.parse(JSON.stringify(filterAll({ a0: rest, b0: work, "solo-g0": work, b1: ask }))));
+  await page.waitForTimeout(600);
+  expect(await page.evaluate(() => [...document.querySelectorAll(".office-collection > div")].map((c: any) => c.style.cssText))).toEqual(before);
+});
+
+test("office filter: scope project: a new snapshot updates the rooms of the panel on the next refresh in the same order", async ({ page }) => {
+  await openFilter(page, filterPanel());
+  await press(page, "idle");
+  await expect.poll(() => shownOffices(page), { timeout: 3000 }).toEqual(["b0", "solo-g0"]);
+  const next: any = filterPanel();
+  for (const o of next.projects[0].offices) if (o.id === "a0") for (const a of [o.manager, ...o.members]) a.state = "away"; // a0: working → idle
+  for (const o of next.projects[0].offices) if (o.id === "b0") o.manager.state = "working";                                      // b0: idle → working
+  await page.evaluate((s) => (window as any).mount.setSnapshot(s), next);
+  await expect.poll(() => shownOffices(page), { timeout: 5000 }).toEqual(["a0", "solo-g0"]);
+  expect((await bar(page)).buttons.map((x: any) => x.text)).toEqual(["All 6", "Working 3", "Awaiting 2", "Idle 2"]);
+});
+
+for (const [scopeName, build] of SCOPES) {
+  test(`office filter: ${scopeName}: at 410px the bar is not clipped (all four buttons fully visible, text not cut)`, async ({ page }) => {
+    await openFilter(page, build(), 410);
+    const b = await bar(page);
+    expect(b.scrollWidth, "no horizontal overflow").toBeLessThanOrEqual(b.clientWidth);
+    expect(b.left).toBeGreaterThanOrEqual(0);
+    expect(b.right).toBeLessThanOrEqual(410 + 0.5);
+    for (const btn of b.buttons) {
+      expect(btn.left, `${btn.filter} left`).toBeGreaterThanOrEqual(b.left - 0.5);
+      expect(btn.right, `${btn.filter} right`).toBeLessThanOrEqual(b.right + 0.5);
+      expect(btn.scrollWidth, `${btn.filter} text fits`).toBeLessThanOrEqual(btn.clientWidth + 1);
+      expect(btn.text).toMatch(/^(All|Working|Awaiting|Idle) \d+$/);
+    }
+    // 두 줄로 접혀도 서로 겹치지 않는다.
+    for (let i = 0; i < b.buttons.length; i++) for (let j = i + 1; j < b.buttons.length; j++) {
+      const a = b.buttons[i], c = b.buttons[j];
+      expect(a.left < c.right - 0.5 && c.left < a.right - 0.5 && a.top < c.bottom - 0.5 && c.top < a.bottom - 0.5, `${a.filter}/${c.filter} overlap`).toBe(false);
+    }
+    // 가장 큰 개수(두 자리)에서도 안 잘린다.
+    const many: any = build();
+    const extra = many.projects[0].offices;
+    while (extra.length < 12) extra.push({ ...extra[0], id: `x${extra.length}`, manager: { ...extra[0].manager, id: `x${extra.length}-l`, name: `x${extra.length}` }, members: [] });
+    await page.evaluate((s) => (window as any).mount.setSnapshot(s), many);
+    await page.waitForFunction(() => /All 1[0-9]/.test((window as any).mount.filterBar().buttons[0].text), null, { timeout: 5000 });
+    const wide = await bar(page);
+    expect(wide.scrollWidth).toBeLessThanOrEqual(wide.clientWidth);
+    for (const btn of wide.buttons) expect(btn.scrollWidth).toBeLessThanOrEqual(btn.clientWidth + 1);
+  });
+}
+
+test("office filter: baselines for every filter (scope all 1200px, scope project 480px) and the empty state", async ({ page }) => {
+  for (const f of FILTER_NAMES) {
+    await openFilter(page, filterAll(), 1200);
+    if (f !== "all") await press(page, f);
+    await expect.poll(() => shownOffices(page)).toEqual(EXPECTED[f]);
+    await page.evaluate(() => (window as any).mount.setTime(3500, 1000));
+    await expect(page.locator("#mount")).toHaveScreenshot(`office-filter-all-${f}.png`);
+  }
+  for (const f of FILTER_NAMES) {
+    await openFilter(page, filterPanel(), 480);
+    if (f !== "all") await press(page, f);
+    await expect.poll(() => shownOffices(page)).toEqual(EXPECTED[f]);
+    await page.evaluate(() => (window as any).mount.setTime(3500, 1000));
+    await expect(page.locator("#mount")).toHaveScreenshot(`office-filter-panel-${f}.png`);
+  }
+  const idleOnly: any = filterAll();
+  for (const p of idleOnly.projects) for (const o of p.offices) for (const a of [o.manager, ...o.members].filter(Boolean)) Object.assign(a, { state: "away", needsAttention: false });
+  await openFilter(page, idleOnly, 480);
+  await press(page, "working");
+  await expect(page.locator("#mount")).toHaveScreenshot("office-filter-empty.png");
+  await openFilter(page, filterAll(), 410);
+  await expect(page.locator(".office-filter-bar")).toHaveScreenshot("office-filter-bar-410.png");
+});
+
+// ───────── VQA-038 / VQA-039 (실제 브라우저) ─────────
+test("office filter: cards entering the filter result are never a blank frame (rAF-measured, real 12fps loop)", async ({ page }) => {
+  await openFilter(page, filterAll(), 1600);
+  await press(page, "working");
+  await expect.poll(() => shownOffices(page)).toEqual(EXPECTED.working);
+  // 매 프레임: 화면에 보이는 카드 중 캔버스 폭이 0인 것의 수를 센다.
+  await page.evaluate(() => {
+    const w = window as any; w.__blank = 0; w.__frames = 0; w.__stop = false;
+    const loop = () => {
+      w.__frames++;
+      for (const c of document.querySelectorAll(".office-collection > div") as any) {
+        const r = c.getBoundingClientRect(), canvas = c.querySelector("canvas");
+        if (r.bottom > 0 && r.top < innerHeight && canvas && canvas.width === 0) w.__blank++;
+      }
+      if (!w.__stop) requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  });
+  const rest = (o: any) => ({ ...o, manager: { ...o.manager, state: "away" }, members: o.members.map((m: any) => ({ ...m, state: "away" })) });
+  const work = (o: any) => ({ ...o, manager: { ...o.manager, state: "working" } });
+  // 1) 스냅샷 변경으로 b0과 solo-g0이 Working에 들어온다.
+  await page.evaluate((s) => (window as any).mount.setSnapshot(s), filterAll({ a0: rest, b0: work, "solo-g0": (o: any) => ({ ...o, members: [{ ...o.members[0], state: "working" }] }) }) as any);
+  await expect.poll(() => shownOffices(page), { timeout: 5000 }).toEqual(["b0", "b1", "solo-g0", "solo-g1"]);
+  // 2) 버튼 클릭으로 카드가 한꺼번에 들어온다.
+  for (const f of ["all", "idle", "awaiting", "working"] as FilterName[]) { await press(page, f); await page.waitForTimeout(250); }
+  const r = await page.evaluate(() => { const w = window as any; w.__stop = true; return { blank: w.__blank, frames: w.__frames }; });
+  expect(r.frames).toBeGreaterThan(20);
+  expect(r.blank, `${r.blank} frames showed a card with a 0-width canvas`).toBe(0);
+});
+
+for (const width of [410, 420, 430]) {
+  test(`office filter: ${width}px screen: scope all one-column cards are at least 410px wide and plate names are not ellipsized`, async ({ page }) => {
+    const big: any = filterAll();
+    const o = big.projects[0].offices[0];
+    big.projects = [{ projectId: "delta", projectName: "delta", offices: [{ ...o, id: "n16", manager: { ...o.manager, id: "n16-lead", name: "Orchestrator" }, members: Array.from({ length: 16 }, (_, i) => agent(`n16-${i}`, ["plugin#FDF9", "search#64CA", "review#A1C2", "qa#0499"][i % 4], STATES[i % 4])) }] }];
+    await openFilter(page, big, width);
+    const m = await page.evaluate(() => {
+      const card = document.querySelector(".office-collection > div") as HTMLElement, r = card.getBoundingClientRect();
+      return { width: r.width, left: r.left, right: r.right, canvas: !!card.querySelector("canvas") };
+    });
+    expect(m.width).toBeGreaterThanOrEqual(410);
+    expect(m.left).toBeGreaterThanOrEqual(-0.5);
+    expect(m.right).toBeLessThanOrEqual(width + 0.5);
+    expect(m.canvas).toBe(true);
+    await page.evaluate(() => (window as any).mount.setTime(3500, 1000));
+    await expect(page.locator(".office-collection")).toHaveScreenshot(`office-filter-n16-${width}.png`);
+  });
+}

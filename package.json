@@ -1,7 +1,7 @@
 {
   "name": "agent-office",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "files": [
     "paseo-plugin.json",
@@ -23,6 +23,10 @@
     "assets/CREDITS.md"
   ],
   "scripts": {
+    "preversion": "npm run typecheck && npm test",
+    "release:patch": "npm version patch -m \"Release v%s\"",
+    "release:minor": "npm version minor -m \"Release v%s\"",
+    "release:major": "npm version major -m \"Release v%s\"",
     "typecheck": "tsc --noEmit",
     "check:state": "node --experimental-strip-types shared/state/selfcheck.ts",
     "test": "node --experimental-strip-types --test 'tests/unit/*.test.ts'",

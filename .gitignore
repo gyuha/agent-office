@@ -6,3 +6,13 @@ tests/playwright-report/
 tests/blob-report/
 tests/visual/harness/index.html
 client/scene/review/
+
+# forge loop state: ignore volatile state, track permanent docs only
+.forge/*
+!.forge/CONTEXT.md
+!.forge/adr/
+!.forge/retro/
+!.forge/followups.md
+!.forge/codebase/
+!.forge/config.json
+!.forge/branch/

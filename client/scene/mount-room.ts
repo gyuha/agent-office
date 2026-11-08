@@ -34,7 +34,7 @@ export function mountOfficeRoom(parent:any,getSnapshot:()=>OfficeSnapshot,onSele
   let backgroundKey='',cacheBuilds=0,drawCount=0,drawTime=0;
   let unsubscribe:(()=>void)|undefined,inView=true;
   let ready=false,failed=false,active=true,paused=false,last=0,actors:Actors={},layout:Layout|null=null,oldSnapshot:OfficeSnapshot|null=null,oldWidth=0,overlaySignature='';
-  spritesReady.then(()=>{ready=true;schedule();}).catch((error:Error)=>{failed=true;const msg=document.createElement('p');msg.textContent='오피스 이미지를 불러오지 못했습니다. 화면을 다시 열어 주세요.';msg.setAttribute('role','alert');root.append(msg);console.error(error);});
+  spritesReady.then(()=>{ready=true;firstDraw();schedule();}).catch((error:Error)=>{failed=true;const msg=document.createElement('p');msg.textContent='오피스 이미지를 불러오지 못했습니다. 화면을 다시 열어 주세요.';msg.setAttribute('role','alert');root.append(msg);console.error(error);});
   function overlays(l:Layout,width:number){
     const signature=JSON.stringify([width,l.rooms.map(r=>[r.y,r.sceneY,r.title,r.projectName,r.workspaceName,r.stations.map(s=>[s.agent.name,s.agent.id,s.agent.state,s.agent.provider,s.plate,s.plateWidth])])]);
     if(signature===overlaySignature)return;overlaySignature=signature;
@@ -55,6 +55,12 @@ export function mountOfficeRoom(parent:any,getSnapshot:()=>OfficeSnapshot,onSele
   const click=(event:any)=>{const id=target(event);if(id)onSelect?.(id);};
   const move=(event:any)=>{canvas.style.cursor=target(event)?'pointer':'default';};
   canvas.addEventListener('click',click);canvas.addEventListener('mousemove',move);
+  /** Paint a new card before the browser's next paint (no blank frame); cards far outside the prepaint band wait for the loop. */
+  function firstDraw(){
+    if(!active||paused||document.hidden||!(window.innerHeight>0))return;
+    const r=root.getBoundingClientRect();if(r.bottom<-1200||r.top>window.innerHeight+1200)return;
+    tick(performance.now());
+  }
   function canRun(){return active&&ready&&!failed&&!paused&&!document.hidden&&inView;}
   function stopLoop(){unsubscribe?.();unsubscribe=undefined;last=0;}
   function schedule(){if(canRun()&&!unsubscribe)unsubscribe=subscribeFrames(time=>tick(time),canRun);}

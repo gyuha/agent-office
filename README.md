@@ -115,6 +115,19 @@ npm run test:visual          # Playwright visual comparison
 npm run test:visual:update   # update baselines after an intended change
 ```
 
+## Releases
+
+Versions follow semantic versioning in `package.json`, and every release is a `vX.Y.Z` Git tag with a matching GitHub Release.
+
+```sh
+npm run release:patch   # or release:minor / release:major
+git push --follow-tags
+```
+
+`npm version` runs the typecheck and unit tests first (`preversion`), then bumps `package.json`, commits `Release vX.Y.Z` and creates the tag. It needs a clean working tree. Pushing the tag starts the `Release` workflow (`.github/workflows/release.yml`), which checks that the tag matches `package.json`, runs the typecheck and unit tests again, and publishes a GitHub Release with generated notes.
+
+The Paseo plugin registry pins the reviewed tag. After a new release, submit the update with the new tag so registry installs pick it up.
+
 ## Project layout
 
 | Path | Contents |

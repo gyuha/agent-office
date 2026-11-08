@@ -356,3 +356,14 @@ Captures: /tmp/scene-vqa10-{1200,1600,2000,min410}.png, contact sheet
 /tmp/scene-vqa10-contact.png. Minimum-width crop shows Delta group+solo at410px.
 Fixed preview seeks also settle collection width if a scrollbar disappears.
 Unit failures are listed in /tmp/scene-vqa10-test-failures.txt; tests unchanged.
+
+### Office status filter
+
+core/officeFilter.ts holds the pure rules (officeMatches, countOffices, filterSnapshot).
+mount-scene.ts adds a sticky navy bar (All/Working/Awaiting/Idle with counts) above the
+collection; it sits after the collection in the DOM and is moved up with flex order, so
+the collection stays the parent's first child. Selection is per mount, default All, and
+the filtered snapshot is recomputed on every new snapshot. A non-All filter with no match
+shows "No offices match" and mounts no card. Preview: scenarios `filters` (scope all) and
+`filters-panel` (one project), `preview.setFilter('awaiting')`, `preview.filter`;
+inspect() also reports filter, counts and empty.

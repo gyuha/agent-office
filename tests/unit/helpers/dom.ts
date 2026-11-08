@@ -43,7 +43,7 @@ export async function mountFake(snapshotOrGetter: any, opts: MountOptions = {}) 
   const doc: any = { hidden: !!opts.hidden, createElement: (tag: string) => new El(tag),
     addEventListener: (t: string, fn: () => void) => { (docListeners.get(t) ?? docListeners.set(t, new Set()).get(t)!).add(fn); },
     removeEventListener: (t: string, fn: () => void) => { docListeners.get(t)?.delete(fn); } };
-  const win: any = { devicePixelRatio: opts.devicePixelRatio ?? 1 };
+  const win: any = { devicePixelRatio: opts.devicePixelRatio ?? 1, innerHeight: 800 };
   const io = { callback: null as null | ((entries: any[]) => void), callbacks: [] as ((entries: any[]) => void)[], options: [] as any[], observed: [] as any[], disconnected: false, disconnects: 0 };
   if (opts.intersectionObserver !== false) {
     win.IntersectionObserver = class { constructor(cb: any, options?: any) { io.callback = cb; io.callbacks.push(cb); io.options.push(options ?? {}); } observe(el: any) { io.observed.push(el); } disconnect() { io.disconnected = true; io.disconnects++; } };
@@ -55,7 +55,11 @@ export async function mountFake(snapshotOrGetter: any, opts: MountOptions = {}) 
   g.clearTimeout = (id: number) => { timers.delete(id); };
   g.requestAnimationFrame = (cb: (t: number) => void) => { const id = nextId++; rafs.set(id, cb); return id; };
   g.cancelAnimationFrame = (id: number) => { rafs.delete(id); };
-  const flushRafs = () => { for (const [id, cb] of [...rafs]) { rafs.delete(id); cb(now); } };
+  let paintHook: null | (() => void) = null;
+  // rAF 콜백이 모두 끝난 직후가 브라우저가 화면을 칠하는 시점이다("한 프레임"의 경계).
+  const flushRafs = (hook = true) => { let any = false; for (const [id, cb] of [...rafs]) { rafs.delete(id); cb(now); any = true; } if (any && hook) paintHook?.(); };
+  /** 마이크로태스크를 모두 비운다: 브라우저는 이벤트 핸들러·rAF 콜백이 끝난 뒤 마이크로태스크를 처리하고 나서야 화면을 칠한다. */
+  const flush = async () => { for (let i = 0; i < 5; i++) await new Promise(r => queueMicrotask(() => r(undefined))); };
   /** `ms`만큼 가짜 시간을 진행하며 예약된 타이머와 rAF를 실행한다. */
   const run = (ms: number) => {
     const end = now + ms;
@@ -63,6 +67,17 @@ export async function mountFake(snapshotOrGetter: any, opts: MountOptions = {}) 
       const due = [...timers].filter(([, t]) => t.at <= end).sort((a, b) => a[1].at - b[1].at)[0];
       if (!due) break;
       timers.delete(due[0]); now = Math.max(now, due[1].at); due[1].fn(); flushRafs();
+    }
+    now = end;
+  };
+  /** run과 같지만 rAF마다 마이크로태스크를 비운 뒤 "화면 칠하기" 훅을 부른다(실제 브라우저의 프레임 경계). */
+  const runPaint = async (ms: number) => {
+    const end = now + ms;
+    for (;;) {
+      const due = [...timers].filter(([, t]) => t.at <= end).sort((a, b) => a[1].at - b[1].at)[0];
+      if (!due) break;
+      timers.delete(due[0]); now = Math.max(now, due[1].at); due[1].fn();
+      const had = rafs.size > 0; flushRafs(false); await flush(); if (had) paintHook?.();
     }
     now = end;
   };
@@ -85,7 +100,7 @@ export async function mountFake(snapshotOrGetter: any, opts: MountOptions = {}) 
     const headers = () => sceneRoots().flatMap((r: El) => (r.children[2] as El).children.filter((c: El) => c.className.startsWith('office-context')));
     const plates = () => sceneRoots().flatMap((r: El) => (r.children[2] as El).children.filter((c: El) => c.className === 'office-plate'));
     const clickScene = (x: number, y: number) => { const layout = handle.inspect().layout; canvas.listeners.click({ clientX: x * canvas.getBoundingClientRect().width / layout.width, clientY: y * canvas.getBoundingClientRect().height / layout.height }); };
-    return { parent, collection, root, canvas, handle, sceneRoots, cardParts, holders: () => collection.children as El[], clicks, headers, plates, clickScene, run, restore, io, doc, win,
+    return { flush, runPaint, onPaint: (fn: (() => void) | null) => { paintHook = fn; }, parent, collection, root, canvas, handle, sceneRoots, cardParts, holders: () => collection.children as El[], clicks, headers, plates, clickScene, run, restore, io, doc, win,
       cells: (h: El) => h.children.map((c: El) => [c.children[0].textContent, c.children[1].textContent]),
       pendingTimers: () => timers.size + rafs.size,
       fire: (type: string) => docListeners.get(type)?.forEach(fn => fn()),

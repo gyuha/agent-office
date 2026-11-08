@@ -170,6 +170,23 @@ window.mount = {
     return { backing: [c.width, c.height], cssWidth: c.getBoundingClientRect().width, rootLeft: r.left, rootWidth: r.width, dpr: window.devicePixelRatio };
   },
   selected: () => selected,
+  // 라이브 갱신 재현: 다음 스냅샷으로 바꾼다(마운트는 getSnapshot으로 매 프레임 읽는다).
+  setSnapshot(next) { snap = next; },
+  // 필터 바 상태(DOM): 버튼 문구·눌림, 잘림 여부, '맞는 오피스 없음' 안내.
+  filterBar() {
+    const bar = document.querySelector('.office-filter-bar');
+    if (!bar) return null;
+    const r = bar.getBoundingClientRect();
+    const empty = document.querySelector('.office-filter-empty');
+    return {
+      position: getComputedStyle(bar).position, left: r.left, right: r.right, width: r.width, scrollWidth: bar.scrollWidth, clientWidth: bar.clientWidth,
+      buttons: [...bar.querySelectorAll('button')].map((b) => { const br = b.getBoundingClientRect(); return { filter: b.dataset.filter, text: b.textContent, pressed: b.getAttribute('aria-pressed') === 'true', left: br.left, right: br.right, top: br.top, bottom: br.bottom, scrollWidth: b.scrollWidth, clientWidth: b.clientWidth }; }),
+      emptyVisible: !!empty && getComputedStyle(empty).display !== 'none' && empty.getBoundingClientRect().height > 0,
+      emptyText: empty ? empty.textContent : null,
+      cards: document.querySelectorAll('.office-collection > div').length,
+      canvases: document.querySelectorAll('.office-collection canvas').length,
+    };
+  },
   headers: () => [...document.querySelectorAll('.office-context')].map((h) => ({
     noWorkspace: h.classList.contains('no-workspace'),
     cells: [...h.querySelectorAll('.office-context-cell')].map((c) => [c.querySelector('small').textContent, c.querySelector('strong').textContent]) })),
