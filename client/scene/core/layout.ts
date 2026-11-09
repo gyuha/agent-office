@@ -15,7 +15,7 @@ export interface Room extends Rect {
 export interface Layout {viewportScale?:number;width:number;height:number;rooms:Room[];headers:{text:string;x:number;y:number}[]}
 export interface Actor extends Point {
   walkPhase?:number; moving:boolean; direction:'left'|'right'; phase:number; state:AgentState;
-  previous?:string; changed:number; elapsed:number; route:Point[]; destination:string; home:Point;
+  previous?:string; ask?:number; changed:number; elapsed:number; route:Point[]; destination:string; home:Point;
 }
 export type Actors=Record<string,Actor>;
 /** v10 coordinates are shared by all rooms; scale only at the viewport boundary. */

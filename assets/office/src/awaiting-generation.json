@@ -1,0 +1,120 @@
+{
+  "task": "forge #2 awaiting-question-pose / S1",
+  "model": "openai/gpt-image-2.5/flare/edit",
+  "settings": {
+    "quality": "medium",
+    "image_size": "1024x1024",
+    "num_images": 1,
+    "background": "transparent"
+  },
+  "budget": {
+    "maxImages": 16,
+    "perImageCapUsd": 0.5
+  },
+  "status": "complete: 8 of 16 images used, no regeneration",
+  "imagesGenerated": 8,
+  "totalCostUsd": null,
+  "jobs": [
+    {
+      "id": "actor-0-awaiting",
+      "file": "src/generated/actor-0-awaiting.png",
+      "request_id": "01a1c04c-4280-7ee3-bcea-2054c2204752",
+      "refs": [
+        "assets/mockups/v10/parts/actor-0-working-0.png + actor-0-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "Image 1 shows the EXACT character (left: typing pose, right: phone pose), our own generated artwork. Image 2 is the art-direction reference of our office illustration. Draw the SAME person (identical face, hairstyle, hoodie and pants colors, outline weight, warm high-resolution pixel-illustration detail; do not redesign) in a new pose, as THREE frames side by side in ONE horizontal row of 3 equal columns with wide transparent gutters, no overlapping. Pose: seated upright as if on an office chair, torso and face turned to look straight forward at the viewer (the user), friendly hopeful expression, mouth slightly open as if asking a question. The person's right hand (on the viewer's left) is raised above shoulder height beside the head, open palm, like raising a hand to ask a question; the other arm rests low in front of the lap (as if on a desk edge). Frame 1: hand raised, palm slightly tilted outward. Frame 2: hand a little higher and tilted the other way (small wave). Frame 3: same as frame 1 but with the hand mid-way. Only the raised hand/forearm and a slight head tilt change; head, torso, hips and feet stay at the same position and scale in all frames. Full body including legs and shoes. True transparent background, no chair, desk, monitor, room, floor, text, labels or grid lines.",
+      "result": "good: identity kept, 3 frames, alpha ok (0..254)"
+    },
+    {
+      "id": "actor-1-awaiting",
+      "file": "src/generated/actor-1-awaiting.png",
+      "request_id": "01a1c04e-392b-7542-8706-631c4ce8ab99",
+      "refs": [
+        "assets/mockups/v10/parts/actor-1-working-0.png + actor-1-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "same structure as actor-0-awaiting; identity clause reads \"identical face, hairstyle, accessories, clothing colors, outline weight\" instead of \"hoodie and pants colors\"",
+      "result": "good"
+    },
+    {
+      "id": "actor-2-awaiting",
+      "file": "src/generated/actor-2-awaiting.png",
+      "request_id": "01a1c04e-a9fb-70e0-9b0c-9d0e7b3ab225",
+      "refs": [
+        "assets/mockups/v10/parts/actor-2-working-0.png + actor-2-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "same structure as actor-0-awaiting; identity clause reads \"identical face, hairstyle, accessories, clothing colors, outline weight\" instead of \"hoodie and pants colors\"",
+      "result": "good"
+    },
+    {
+      "id": "actor-3-awaiting",
+      "file": "src/generated/actor-3-awaiting.png",
+      "request_id": "01a1c04e-f2c1-7392-b622-5b031dff5153",
+      "refs": [
+        "assets/mockups/v10/parts/actor-3-working-0.png + actor-3-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "same structure as actor-0-awaiting; identity clause reads \"identical face, hairstyle, accessories, clothing colors, outline weight\" instead of \"hoodie and pants colors\"",
+      "result": "good"
+    },
+    {
+      "id": "actor-4-awaiting",
+      "file": "src/generated/actor-4-awaiting.png",
+      "request_id": "01a1c04f-5e3c-7680-af96-50a3034310e8",
+      "refs": [
+        "assets/mockups/v10/parts/actor-4-working-0.png + actor-4-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "same structure as actor-0-awaiting; identity clause reads \"identical face, hairstyle, accessories, clothing colors, outline weight\" instead of \"hoodie and pants colors\"",
+      "result": "good"
+    },
+    {
+      "id": "actor-5-awaiting",
+      "file": "src/generated/actor-5-awaiting.png",
+      "request_id": "01a1c04f-c056-74c0-9d46-9d6c0c05f1f4",
+      "refs": [
+        "assets/mockups/v10/parts/actor-5-working-0.png + actor-5-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "same structure as actor-0-awaiting; identity clause reads \"identical face, hairstyle, accessories, clothing colors, outline weight\" instead of \"hoodie and pants colors\"",
+      "result": "good"
+    },
+    {
+      "id": "orchestrator-awaiting",
+      "file": "src/generated/orchestrator-awaiting.png",
+      "request_id": "01a1c050-1256-7361-b221-4407f7f64037",
+      "refs": [
+        "assets/mockups/v10/parts/actor-lead-working-0.png + actor-lead-phone-0.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "same structure as actor-0-awaiting; identity clause reads \"identical face, hairstyle, accessories, clothing colors, outline weight\" instead of \"hoodie and pants colors\"",
+      "result": "good"
+    },
+    {
+      "id": "question_bubble",
+      "file": "src/generated/question_bubble.png",
+      "request_id": "01a1c050-e7b9-7352-85fc-a33bbfe22ce8",
+      "refs": [
+        "assets/mockups/v10/parts/zzz.png + bubble-done.png + emphasis.png (side-by-side composite)",
+        "assets/mockups/v8/office-c.png"
+      ],
+      "prompt": "Image 1 shows our existing effect designs (left to right: a cream 'Zzz' speech balloon, a 'done' speech balloon, a yellow '!' emphasis). Image 2 is the art-direction reference of our office illustration. Create the SAME kind of cream speech balloon (identical outline weight, cream fill, rounded shape with a small tail pointing down at the bottom center, warm high-resolution pixel illustration) but containing a single bold dark '?' question mark, with a small orange/yellow accent like the emphasis symbol. Make THREE frames side by side in ONE horizontal row of 3 equal columns with wide transparent gutters, no overlap, same balloon in each: frame 1 normal size, frame 2 slightly squashed-wide and lower (bounce down), frame 3 slightly taller and higher (bounce up, about 6 percent larger). The tail tip stays at the same bottom-center position in all frames. True transparent background. No character, no furniture, no extra text besides the single '?', no labels or grid lines.",
+      "result": "good; tail sits left of bottom center"
+    }
+  ],
+  "costNote": "청구액 조회 불가 (fal MCP tools expose no billed amount; orchestrator approved continuing by image-count cap)",
+  "pipeline": {
+    "pack": "pack_awaiting.py (does not touch existing sheets)",
+    "export": "export_runtime.py (runtimeScale .625, WebP q85, alpha 100)",
+    "review": "review_awaiting.py -> review/awaiting-compose.png"
+  },
+  "regenerations": [
+    {
+      "date": "2026-11-09",
+      "images": 0,
+      "reason": "user feedback \"hips do not look seated\": fixed by per-desk actorOffsets.awaiting raise (27-38 logical px); head width ratio vs working = 1.00 so no rescale or re-draw needed. question_bubble-clean.png is a non-generative edit (yellow accent erased)."
+    }
+  ]
+}

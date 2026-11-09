@@ -154,6 +154,13 @@ function load(name) {
   return exports;
 }
 let snap = null, selected = [], handle = null;
+{
+  const original = CanvasRenderingContext2D.prototype.drawImage;
+  CanvasRenderingContext2D.prototype.drawImage = function (img, ...a) {
+    if (window.__rec && a.length === 8 && img && typeof img.src === 'string') window.__rec.push({ src: img.src, sx: a[0], sy: a[1], sw: a[2], sh: a[3], dx: a[4], dy: a[5], dw: a[6], dh: a[7] });
+    return original.call(this, img, ...a);
+  };
+}
 window.mount = {
   open({ snapshot, width = 1200 }) {
     if (handle) handle.dispose();
@@ -170,8 +177,58 @@ window.mount = {
     return { backing: [c.width, c.height], cssWidth: c.getBoundingClientRect().width, rootLeft: r.left, rootWidth: r.width, dpr: window.devicePixelRatio };
   },
   selected: () => selected,
+  // 시트 첫 프레임의 머리 꼭대기·어깨선·몸통선(논리 160x216 프레임 px). art의 pack_awaiting.py와 같은 정의:
+  // 머리 꼭대기 = 불투명(alpha>32) 픽셀이 18개 이상인 첫 행, 머리 열 = 그 뒤 8행의 평균 x,
+  // 어깨 = 머리 열 ±50px, y<125 영역 질량의 25%에 처음 도달하는 행, 몸통 = 50% 행.
+  /** 책상 뒤 이미지에서 열 구간 [cx-half, cx+half](논리 책상 px)의 가장 위 불투명 행 = 의자 등받이 꼭대기. */
+  async columnTop(name, cx, half) {
+    const { assetData } = load('core/office-assets');
+    const spec = assetData[name], img = new Image();
+    await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = spec.uri; });
+    const [W, H] = spec.size, c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const ctx = c.getContext('2d', { willReadFrequently: true });
+    ctx.drawImage(img, 0, 0, W, H);
+    const d = ctx.getImageData(0, 0, W, H).data;
+    for (let y = 0; y < H; y++) for (let x = Math.max(0, Math.round(cx - half)); x < Math.min(W, Math.round(cx + half)); x++) if (d[(y * W + x) * 4 + 3] > 32) return y;
+    return null;
+  },
+  async sheetMetrics(names) {
+    const { assetData } = load('core/office-assets');
+    const out = {};
+    for (const name of names) {
+      const spec = assetData[name];
+      const img = new Image();
+      await new Promise((res, rej) => { img.onload = res; img.onerror = rej; img.src = spec.uri; });
+      const rs = spec.runtimeScale ?? (load('core/office-assets').manifest.runtimeScale ?? 1);
+      const FW = spec.frameW, FH = spec.frameH, c = document.createElement('canvas');
+      c.width = FW; c.height = FH;
+      const ctx = c.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(img, 0, 0, FW * rs, FH * rs, 0, 0, FW, FH); // 프레임 0을 논리 크기로
+      const d = ctx.getImageData(0, 0, FW, FH).data;
+      const op = (x, y) => d[(y * FW + x) * 4 + 3] > 32;
+      const rowSum = (y) => { let n = 0; for (let x = 0; x < FW; x++) if (op(x, y)) n++; return n; };
+      let ht = 0; while (ht < FH && rowSum(ht) < 18) ht++;
+      let sx = 0, sn = 0; for (let y = ht; y < ht + 8; y++) for (let x = 0; x < FW; x++) if (op(x, y)) { sx += x; sn++; }
+      const hx = Math.trunc(sx / sn), x0 = Math.max(0, hx - 50), x1 = Math.min(FW, hx + 50);
+      const cum = []; let acc = 0;
+      for (let y = 0; y < 125; y++) { for (let x = x0; x < x1; x++) if (op(x, y)) acc++; cum.push(acc); }
+      const base = ht ? cum[ht - 1] : 0, tot = cum[cum.length - 1] - base;
+      const q = (f) => { const t = f * tot; let i = 0; while (i < cum.length && cum[i] - base < t) i++; return i; };
+      let hw = 0; { const y = ht + 20; let a = -1, b = -1; for (let x = 0; x < FW; x++) if (op(x, y)) { if (a < 0) a = x; b = x; } hw = a < 0 ? 0 : b - a; }
+      out[name] = { headTop: ht, shoulder: q(0.25), torso: q(0.5), headWidth: hw };
+    }
+    return out;
+  },
   // 라이브 갱신 재현: 다음 스냅샷으로 바꾼다(마운트는 getSnapshot으로 매 프레임 읽는다).
   setSnapshot(next) { snap = next; },
+  // 현재 레이아웃의 자리(station) 정보: 오프셋·배율 계산용.
+  stations() { return handle.inspect().layout.rooms.flatMap((r) => r.stations.map((s) => ({ agentId: s.agent.id, manager: s.manager, variant: s.variant, actorHeight: s.actorHeight, moduleScale: s.moduleScale, x: s.x, y: s.y, width: s.width, height: s.height, seat: s.seat, bodySeat: s.bodySeat, desk: { back: s.desk.back, seat: s.desk.seat, tableRearY: s.desk.tableRearY, actorStateYOffset: s.desk.actorStateYOffset, actorOffsets: s.desk.actorOffsets, actorAnchor: s.desk.actorAnchor } }))); },
+  // 그리기 기록: drawImage(이미지, sx,sy,sw,sh, dx,dy,dw,dh) 호출을 장면 좌표(변환 전)로 기록한다. 이미지는 src(data URI)로 시트를 알아본다.
+  record(on) { window.__rec = on ? [] : null; },
+  recorded() { return window.__rec || []; },
+  /** data URI로 시트 이름을 찾는다. */
+  sheetUris(names) { const { assetData } = load('core/office-assets'); return Object.fromEntries(names.map((n) => [n, assetData[n].uri])); },
   // 필터 바 상태(DOM): 버튼 문구·눌림, 잘림 여부, '맞는 오피스 없음' 안내.
   filterBar() {
     const bar = document.querySelector('.office-filter-bar');

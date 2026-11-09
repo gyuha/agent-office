@@ -1,0 +1,1102 @@
+{
+  "actor-0-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        18,
+        47,
+        70
+      ],
+      "before": [
+        [
+          16,
+          49,
+          72
+        ],
+        [
+          17,
+          47,
+          71
+        ],
+        [
+          19,
+          52,
+          75
+        ]
+      ],
+      "after": [
+        [
+          14,
+          47,
+          71
+        ],
+        [
+          15,
+          45,
+          70
+        ],
+        [
+          17,
+          51,
+          74
+        ]
+      ],
+      "raisedBy": 2,
+      "handTopY": 12
+    },
+    "scale": 0.3861788617886179,
+    "workingHeadWidth": 95,
+    "workingHipX": 75.94578668238067,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          10,
+          251,
+          314,
+          793
+        ],
+        "legCenterX": 185.04247053400934,
+        "paste": [
+          8,
+          12
+        ]
+      },
+      {
+        "box": [
+          30,
+          252,
+          337,
+          793
+        ],
+        "legCenterX": 196.59513466550825,
+        "paste": [
+          12,
+          12
+        ]
+      },
+      {
+        "box": [
+          22,
+          257,
+          324,
+          793
+        ],
+        "legCenterX": 203.42422066264078,
+        "paste": [
+          6,
+          14
+        ]
+      }
+    ]
+  },
+  "actor-1-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        17,
+        49,
+        72
+      ],
+      "before": [
+        [
+          19,
+          53,
+          76
+        ],
+        [
+          19,
+          52,
+          76
+        ],
+        [
+          22,
+          55,
+          79
+        ]
+      ],
+      "after": [
+        [
+          15,
+          50,
+          74
+        ],
+        [
+          15,
+          49,
+          74
+        ],
+        [
+          18,
+          52,
+          77
+        ]
+      ],
+      "raisedBy": 4,
+      "handTopY": 13
+    },
+    "scale": 0.41706161137440756,
+    "workingHeadWidth": 88,
+    "workingHipX": 82.17937545388526,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          23,
+          219,
+          318,
+          804
+        ],
+        "legCenterX": 190.03201625799574,
+        "paste": [
+          13,
+          13
+        ]
+      },
+      {
+        "box": [
+          11,
+          219,
+          316,
+          804
+        ],
+        "legCenterX": 189.86942016414227,
+        "paste": [
+          8,
+          13
+        ]
+      },
+      {
+        "box": [
+          21,
+          228,
+          317,
+          804
+        ],
+        "legCenterX": 199.56750254151135,
+        "paste": [
+          8,
+          17
+        ]
+      }
+    ]
+  },
+  "actor-2-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        17,
+        45,
+        67
+      ],
+      "before": [
+        [
+          21,
+          51,
+          73
+        ],
+        [
+          21,
+          51,
+          73
+        ],
+        [
+          21,
+          51,
+          73
+        ]
+      ],
+      "after": [
+        [
+          15,
+          46,
+          70
+        ],
+        [
+          15,
+          46,
+          69
+        ],
+        [
+          15,
+          46,
+          69
+        ]
+      ],
+      "raisedBy": 6,
+      "handTopY": 13
+    },
+    "scale": 0.3877995642701525,
+    "workingHeadWidth": 89,
+    "workingHipX": 79.89143920595534,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          12,
+          242,
+          328,
+          799
+        ],
+        "legCenterX": 190.0229021228095,
+        "paste": [
+          11,
+          13
+        ]
+      },
+      {
+        "box": [
+          14,
+          243,
+          322,
+          800
+        ],
+        "legCenterX": 181.60626447557075,
+        "paste": [
+          15,
+          13
+        ]
+      },
+      {
+        "box": [
+          7,
+          243,
+          323,
+          800
+        ],
+        "legCenterX": 175.10868824531516,
+        "paste": [
+          15,
+          13
+        ]
+      }
+    ]
+  },
+  "actor-3-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        15,
+        48,
+        71
+      ],
+      "before": [
+        [
+          21,
+          54,
+          77
+        ],
+        [
+          19,
+          48,
+          73
+        ],
+        [
+          21,
+          54,
+          78
+        ]
+      ],
+      "after": [
+        [
+          15,
+          49,
+          74
+        ],
+        [
+          13,
+          43,
+          69
+        ],
+        [
+          15,
+          50,
+          74
+        ]
+      ],
+      "raisedBy": 6,
+      "handTopY": 11
+    },
+    "scale": 0.41012658227848103,
+    "workingHeadWidth": 81,
+    "workingHipX": 85.07660332541568,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          15,
+          224,
+          326,
+          817
+        ],
+        "legCenterX": 184.0161209964413,
+        "paste": [
+          16,
+          13
+        ]
+      },
+      {
+        "box": [
+          21,
+          219,
+          323,
+          817
+        ],
+        "legCenterX": 184.88169603289964,
+        "paste": [
+          18,
+          11
+        ]
+      },
+      {
+        "box": [
+          21,
+          224,
+          327,
+          817
+        ],
+        "legCenterX": 188.52311860539731,
+        "paste": [
+          16,
+          13
+        ]
+      }
+    ]
+  },
+  "actor-4-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        15,
+        45,
+        68
+      ],
+      "before": [
+        [
+          21,
+          51,
+          74
+        ],
+        [
+          22,
+          51,
+          74
+        ],
+        [
+          21,
+          52,
+          75
+        ]
+      ],
+      "after": [
+        [
+          15,
+          46,
+          71
+        ],
+        [
+          16,
+          46,
+          71
+        ],
+        [
+          15,
+          47,
+          72
+        ]
+      ],
+      "raisedBy": 6,
+      "handTopY": 14
+    },
+    "scale": 0.39914163090128757,
+    "workingHeadWidth": 93,
+    "workingHipX": 79.39010017678255,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          0,
+          247,
+          313,
+          776
+        ],
+        "legCenterX": 178.22736281431935,
+        "paste": [
+          8,
+          13
+        ]
+      },
+      {
+        "box": [
+          20,
+          250,
+          326,
+          775
+        ],
+        "legCenterX": 187.52388289676426,
+        "paste": [
+          13,
+          15
+        ]
+      },
+      {
+        "box": [
+          24,
+          246,
+          333,
+          777
+        ],
+        "legCenterX": 197.86535058277903,
+        "paste": [
+          10,
+          12
+        ]
+      }
+    ]
+  },
+  "actor-5-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        21,
+        47,
+        67
+      ],
+      "before": [
+        [
+          21,
+          51,
+          74
+        ],
+        [
+          19,
+          47,
+          73
+        ],
+        [
+          21,
+          51,
+          74
+        ]
+      ],
+      "after": [
+        [
+          17,
+          47,
+          71
+        ],
+        [
+          15,
+          44,
+          70
+        ],
+        [
+          17,
+          48,
+          71
+        ]
+      ],
+      "raisedBy": 4,
+      "handTopY": 12
+    },
+    "scale": 0.42696629213483145,
+    "workingHeadWidth": 95,
+    "workingHipX": 75.54087089381207,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          13,
+          249,
+          311,
+          779
+        ],
+        "legCenterX": 184.24599220103985,
+        "paste": [
+          2,
+          12
+        ]
+      },
+      {
+        "box": [
+          46,
+          252,
+          323,
+          779
+        ],
+        "legCenterX": 181.67881236696851,
+        "paste": [
+          18,
+          13
+        ]
+      },
+      {
+        "box": [
+          31,
+          256,
+          327,
+          780
+        ],
+        "legCenterX": 184.97332672987125,
+        "paste": [
+          10,
+          14
+        ]
+      }
+    ]
+  },
+  "orchestrator-awaiting": {
+    "alignment": {
+      "metrics": [
+        "headTop",
+        "shoulder",
+        "torso"
+      ],
+      "working": [
+        16,
+        46,
+        69
+      ],
+      "before": [
+        [
+          19,
+          49,
+          73
+        ],
+        [
+          19,
+          49,
+          73
+        ],
+        [
+          24,
+          54,
+          76
+        ]
+      ],
+      "after": [
+        [
+          15,
+          46,
+          71
+        ],
+        [
+          15,
+          46,
+          71
+        ],
+        [
+          20,
+          51,
+          73
+        ]
+      ],
+      "raisedBy": 4,
+      "handTopY": 13
+    },
+    "scale": 0.4253393665158371,
+    "workingHeadWidth": 94,
+    "workingHipX": 74.02239245727755,
+    "headTopY": 22,
+    "frames": [
+      {
+        "box": [
+          8,
+          249,
+          308,
+          782
+        ],
+        "legCenterX": 185.63953926845156,
+        "paste": [
+          -2,
+          13
+        ]
+      },
+      {
+        "box": [
+          35,
+          249,
+          334,
+          782
+        ],
+        "legCenterX": 195.956658786446,
+        "paste": [
+          6,
+          13
+        ]
+      },
+      {
+        "box": [
+          22,
+          261,
+          338,
+          782
+        ],
+        "legCenterX": 192.46574888041135,
+        "paste": [
+          2,
+          18
+        ]
+      }
+    ]
+  },
+  "question_bubble": {
+    "scale": 0.2986111111111111,
+    "commonCrop": [
+      16,
+      368,
+      325,
+      656
+    ],
+    "tailTipFrame0": [
+      56.0,
+      89
+    ]
+  },
+  "seatRaise": {
+    "0/actor-0": {
+      "chairTop": 0,
+      "tableRear": 157,
+      "headH": 126.7,
+      "working": {
+        "headTop": -1.5,
+        "shoulder": 125.1
+      },
+      "awaitingBefore": {
+        "headTop": -3.0,
+        "shoulder": 123.7,
+        "chestAboveTable": 33.3
+      },
+      "awaitingAfter": {
+        "headTop": -39.0,
+        "shoulder": 87.7,
+        "chestAboveTable": 69.3,
+        "raise": 36
+      }
+    },
+    "0/actor-1": {
+      "chairTop": 0,
+      "tableRear": 157,
+      "headH": 117.3,
+      "working": {
+        "headTop": -9.0,
+        "shoulder": 108.3
+      },
+      "awaitingBefore": {
+        "headTop": -7.5,
+        "shoulder": 109.8,
+        "chestAboveTable": 47.2
+      },
+      "awaitingAfter": {
+        "headTop": -35.5,
+        "shoulder": 81.8,
+        "chestAboveTable": 75.2,
+        "raise": 28
+      }
+    },
+    "0/actor-2": {
+      "chairTop": 0,
+      "tableRear": 157,
+      "headH": 118.7,
+      "working": {
+        "headTop": 1.0,
+        "shoulder": 119.7
+      },
+      "awaitingBefore": {
+        "headTop": -2.0,
+        "shoulder": 116.7,
+        "chestAboveTable": 40.3
+      },
+      "awaitingAfter": {
+        "headTop": -36.0,
+        "shoulder": 82.7,
+        "chestAboveTable": 74.3,
+        "raise": 34
+      }
+    },
+    "0/actor-3": {
+      "chairTop": 0,
+      "tableRear": 157,
+      "headH": 108.0,
+      "working": {
+        "headTop": -2.0,
+        "shoulder": 106.0
+      },
+      "awaitingBefore": {
+        "headTop": -2.0,
+        "shoulder": 106.0,
+        "chestAboveTable": 51.0
+      },
+      "awaitingAfter": {
+        "headTop": -33.0,
+        "shoulder": 75.0,
+        "chestAboveTable": 82.0,
+        "raise": 31
+      }
+    },
+    "0/actor-4": {
+      "chairTop": 0,
+      "tableRear": 157,
+      "headH": 124.0,
+      "working": {
+        "headTop": -9.0,
+        "shoulder": 115.0
+      },
+      "awaitingBefore": {
+        "headTop": -7.5,
+        "shoulder": 116.5,
+        "chestAboveTable": 40.5
+      },
+      "awaitingAfter": {
+        "headTop": -37.5,
+        "shoulder": 86.5,
+        "chestAboveTable": 70.5,
+        "raise": 30
+      }
+    },
+    "0/actor-5": {
+      "chairTop": 0,
+      "tableRear": 157,
+      "headH": 126.7,
+      "working": {
+        "headTop": -1.1,
+        "shoulder": 125.6
+      },
+      "awaitingBefore": {
+        "headTop": -7.0,
+        "shoulder": 119.7,
+        "chestAboveTable": 37.3
+      },
+      "awaitingAfter": {
+        "headTop": -39.0,
+        "shoulder": 87.7,
+        "chestAboveTable": 69.3,
+        "raise": 32
+      }
+    },
+    "1/actor-0": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 126.7,
+      "working": {
+        "headTop": 0.5,
+        "shoulder": 127.1
+      },
+      "awaitingBefore": {
+        "headTop": -1.0,
+        "shoulder": 125.7,
+        "chestAboveTable": 33.3
+      },
+      "awaitingAfter": {
+        "headTop": -39.0,
+        "shoulder": 87.7,
+        "chestAboveTable": 71.3,
+        "raise": 38
+      }
+    },
+    "1/actor-1": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 117.3,
+      "working": {
+        "headTop": -7.0,
+        "shoulder": 110.3
+      },
+      "awaitingBefore": {
+        "headTop": -5.5,
+        "shoulder": 111.8,
+        "chestAboveTable": 47.2
+      },
+      "awaitingAfter": {
+        "headTop": -35.5,
+        "shoulder": 81.8,
+        "chestAboveTable": 77.2,
+        "raise": 30
+      }
+    },
+    "1/actor-2": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 118.7,
+      "working": {
+        "headTop": 3.0,
+        "shoulder": 121.7
+      },
+      "awaitingBefore": {
+        "headTop": 0.0,
+        "shoulder": 118.7,
+        "chestAboveTable": 40.3
+      },
+      "awaitingAfter": {
+        "headTop": -36.0,
+        "shoulder": 82.7,
+        "chestAboveTable": 76.3,
+        "raise": 36
+      }
+    },
+    "1/actor-3": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 108.0,
+      "working": {
+        "headTop": 0.0,
+        "shoulder": 108.0
+      },
+      "awaitingBefore": {
+        "headTop": 0.0,
+        "shoulder": 108.0,
+        "chestAboveTable": 51.0
+      },
+      "awaitingAfter": {
+        "headTop": -33.0,
+        "shoulder": 75.0,
+        "chestAboveTable": 84.0,
+        "raise": 33
+      }
+    },
+    "1/actor-4": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 124.0,
+      "working": {
+        "headTop": -7.0,
+        "shoulder": 117.0
+      },
+      "awaitingBefore": {
+        "headTop": -5.5,
+        "shoulder": 118.5,
+        "chestAboveTable": 40.5
+      },
+      "awaitingAfter": {
+        "headTop": -37.5,
+        "shoulder": 86.5,
+        "chestAboveTable": 72.5,
+        "raise": 32
+      }
+    },
+    "1/actor-5": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 126.7,
+      "working": {
+        "headTop": 0.9,
+        "shoulder": 127.6
+      },
+      "awaitingBefore": {
+        "headTop": -5.0,
+        "shoulder": 121.7,
+        "chestAboveTable": 37.3
+      },
+      "awaitingAfter": {
+        "headTop": -39.0,
+        "shoulder": 87.7,
+        "chestAboveTable": 71.3,
+        "raise": 34
+      }
+    },
+    "2/actor-0": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 126.7,
+      "working": {
+        "headTop": 0.5,
+        "shoulder": 127.1
+      },
+      "awaitingBefore": {
+        "headTop": -1.0,
+        "shoulder": 125.7,
+        "chestAboveTable": 33.3
+      },
+      "awaitingAfter": {
+        "headTop": -39.0,
+        "shoulder": 87.7,
+        "chestAboveTable": 71.3,
+        "raise": 38
+      }
+    },
+    "2/actor-1": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 117.3,
+      "working": {
+        "headTop": -7.0,
+        "shoulder": 110.3
+      },
+      "awaitingBefore": {
+        "headTop": -5.5,
+        "shoulder": 111.8,
+        "chestAboveTable": 47.2
+      },
+      "awaitingAfter": {
+        "headTop": -35.5,
+        "shoulder": 81.8,
+        "chestAboveTable": 77.2,
+        "raise": 30
+      }
+    },
+    "2/actor-2": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 118.7,
+      "working": {
+        "headTop": 3.0,
+        "shoulder": 121.7
+      },
+      "awaitingBefore": {
+        "headTop": 0.0,
+        "shoulder": 118.7,
+        "chestAboveTable": 40.3
+      },
+      "awaitingAfter": {
+        "headTop": -36.0,
+        "shoulder": 82.7,
+        "chestAboveTable": 76.3,
+        "raise": 36
+      }
+    },
+    "2/actor-3": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 108.0,
+      "working": {
+        "headTop": 0.0,
+        "shoulder": 108.0
+      },
+      "awaitingBefore": {
+        "headTop": 0.0,
+        "shoulder": 108.0,
+        "chestAboveTable": 51.0
+      },
+      "awaitingAfter": {
+        "headTop": -33.0,
+        "shoulder": 75.0,
+        "chestAboveTable": 84.0,
+        "raise": 33
+      }
+    },
+    "2/actor-4": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 124.0,
+      "working": {
+        "headTop": -7.0,
+        "shoulder": 117.0
+      },
+      "awaitingBefore": {
+        "headTop": -5.5,
+        "shoulder": 118.5,
+        "chestAboveTable": 40.5
+      },
+      "awaitingAfter": {
+        "headTop": -37.5,
+        "shoulder": 86.5,
+        "chestAboveTable": 72.5,
+        "raise": 32
+      }
+    },
+    "2/actor-5": {
+      "chairTop": 0,
+      "tableRear": 159,
+      "headH": 126.7,
+      "working": {
+        "headTop": 0.9,
+        "shoulder": 127.6
+      },
+      "awaitingBefore": {
+        "headTop": -5.0,
+        "shoulder": 121.7,
+        "chestAboveTable": 37.3
+      },
+      "awaitingAfter": {
+        "headTop": -39.0,
+        "shoulder": 87.7,
+        "chestAboveTable": 71.3,
+        "raise": 34
+      }
+    },
+    "lead-small/orchestrator": {
+      "chairTop": 70,
+      "tableRear": 187,
+      "headH": 125.3,
+      "working": {
+        "headTop": 19.5,
+        "shoulder": 144.9
+      },
+      "awaitingBefore": {
+        "headTop": 25.4,
+        "shoulder": 150.8,
+        "chestAboveTable": 36.2
+      },
+      "awaitingAfter": {
+        "headTop": -1.6,
+        "shoulder": 123.8,
+        "chestAboveTable": 63.2,
+        "raise": 27
+      }
+    },
+    "lead-medium/orchestrator": {
+      "chairTop": 70,
+      "tableRear": 182,
+      "headH": 125.3,
+      "working": {
+        "headTop": 14.5,
+        "shoulder": 139.9
+      },
+      "awaitingBefore": {
+        "headTop": 20.4,
+        "shoulder": 145.8,
+        "chestAboveTable": 36.2
+      },
+      "awaitingAfter": {
+        "headTop": -6.6,
+        "shoulder": 118.8,
+        "chestAboveTable": 63.2,
+        "raise": 27
+      }
+    },
+    "lead-large/orchestrator": {
+      "chairTop": 70,
+      "tableRear": 171,
+      "headH": 125.3,
+      "working": {
+        "headTop": 3.5,
+        "shoulder": 128.9
+      },
+      "awaitingBefore": {
+        "headTop": 9.4,
+        "shoulder": 134.8,
+        "chestAboveTable": 36.2
+      },
+      "awaitingAfter": {
+        "headTop": -17.6,
+        "shoulder": 107.8,
+        "chestAboveTable": 63.2,
+        "raise": 27
+      }
+    }
+  }
+}
