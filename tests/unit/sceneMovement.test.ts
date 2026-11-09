@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { mountFake } from './helpers/dom.ts';
-import { actorImages, advance, assetData, group, layoutOffices, manifest, mixed, route, sheetFrame, snap, solo, step, trace, withState } from './helpers/scene.ts';
+import { actorImages, advance, assetData, fakeSprites, group, layoutOffices, manifest, mixed, route, sheetFrame, snap, solo, step, trace, withState } from './helpers/scene.ts';
 
 const M = manifest as any;
 const DT = 50;
@@ -481,6 +481,9 @@ test('VQA-003: manager route polylines (out and back) use the side opening: firs
 });
 
 // ───────── VQA-010: attention이 현재 자세의 머리 위 아래 중앙 anchor에 맞음 ─────────
+// 착석한 대기 에이전트는 이제 손 든 자세와 '?' 말풍선을 쓴다(sceneAwaiting.test.ts). '!'는 폴백(걷는 중, 빈백, awaiting 시트 없음)이므로
+// 착석 사례는 awaiting 시트를 뺀 스프라이트로 폴백 경로를 검증한다.
+const noAwaiting = () => fakeSprites({}, Object.keys(assetData).filter(k => /-awaiting$/.test(k)));
 function headOf(fig: { dx: number; dy: number; dw: number; sw: number }) {
   const f = fig.dw * M.runtimeScale / fig.sw; // 그려진 확대 배율(논리 프레임 → 장면)
   return { x: fig.dx + 80 * f, y: fig.dy + 12 * f, f };
@@ -490,11 +493,11 @@ function attentionAnchor(img: { dx: number; dy: number; dw: number; dh: number }
   return { x: img.dx + ax * img.dw / spec.frameW, y: img.dy + ay * img.dh / spec.frameH };
 }
 
-test('VQA-010 (seated): the bottom-center anchor of the attention mark sits 10px above the drawn head, centered, scaled with the actor', () => {
+test('VQA-010 (seated, fallback without awaiting sheets): the bottom-center anchor of the attention mark sits 10px above the drawn head, centered, scaled with the actor', () => {
   for (const n of [1, 3, 10]) {
     const o = n === 1 ? solo('a', { state: 'working', needsAttention: true }) : group(n, 'g', { state: 'working', needsAttention: true });
     const s = snap([o]);
-    const t = trace(s, { actors: advance({}, s, 600), epoch: 1 });
+    const t = trace(s, { actors: advance({}, s, 600), epoch: 1, sprites: noAwaiting() });
     const marks = t.images.filter(i => i.key === 'attention');
     assert.equal(marks.length, t.layout.rooms[0].stations.length, `N=${n}`);
     for (const st of t.layout.rooms[0].stations) {
@@ -547,11 +550,11 @@ test('VQA-010 (on a beanbag): the mark follows the seated-away pose', () => {
   }
 });
 
-test('VQA-010: the attention mark is drawn on top of furniture and figures (after the nameplates), only for flagged agents', () => {
+test('VQA-010 (fallback): the attention mark is drawn on top of furniture and figures (after the nameplates), only for flagged agents', () => {
   const o = group(3, 'g', { state: 'working' });
   (o.members[0] as any).needsAttention = true;
   const s = snap([o]);
-  const t = trace(s, { actors: advance({}, s, 600), epoch: 1 });
+  const t = trace(s, { actors: advance({}, s, 600), epoch: 1, sprites: noAwaiting() });
   const marks = t.images.filter(i => i.key === 'attention');
   assert.equal(marks.length, 1);
   assert.ok(marks[0].order > Math.max(...t.texts.map(x => x.order)), 'above every nameplate');

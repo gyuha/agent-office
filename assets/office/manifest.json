@@ -3989,7 +3989,8 @@
       205
     ],
     "assetGeometry": "assets.size and layout remain v10 native logical coordinates; runtimeSize is actual WebP size; sheets dimensions are actual source pixels",
-    "reservedRuntimePrefix": "runtime/"
+    "reservedRuntimePrefix": "runtime/",
+    "awaiting": "needsAttention while seated at a desk: awaiting sheet replaces working/typing and its hand overlay; effects.question_bubble replaces effects.attention. Raised arm stays above the tabletop, the other arm rests behind it, so no armOverlays.awaiting is needed."
   },
   "sheets": {
     "actor-0-working": {
@@ -4999,6 +5000,102 @@
       ],
       "overlaySource": "orchestrator-sleeping",
       "overlayType": "headArmsSleeves"
+    },
+    "actor-0-awaiting": {
+      "file": "runtime/actor-0-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-1-awaiting": {
+      "file": "runtime/actor-1-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-2-awaiting": {
+      "file": "runtime/actor-2-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-3-awaiting": {
+      "file": "runtime/actor-3-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-4-awaiting": {
+      "file": "runtime/actor-4-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "actor-5-awaiting": {
+      "file": "runtime/actor-5-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "orchestrator-awaiting": {
+      "file": "runtime/orchestrator-awaiting.webp",
+      "frameW": 160,
+      "frameH": 216,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        80,
+        205
+      ]
+    },
+    "question_bubble": {
+      "file": "runtime/question_bubble.webp",
+      "frameW": 128,
+      "frameH": 96,
+      "frames": 3,
+      "fps": 4,
+      "loop": true,
+      "anchor": [
+        64,
+        90
+      ]
     }
   },
   "actors": {
@@ -5008,7 +5105,8 @@
       "sleeping": "actor-0-sleeping",
       "walk_left": "actor-0-walk_left",
       "walk_right": "actor-0-walk_right",
-      "away": "actor-0-away"
+      "away": "actor-0-away",
+      "awaiting": "actor-0-awaiting"
     },
     "actor-1": {
       "working": "actor-1-working",
@@ -5016,7 +5114,8 @@
       "sleeping": "actor-1-sleeping",
       "walk_left": "actor-1-walk_left",
       "walk_right": "actor-1-walk_right",
-      "away": "actor-1-away"
+      "away": "actor-1-away",
+      "awaiting": "actor-1-awaiting"
     },
     "actor-2": {
       "working": "actor-2-working",
@@ -5024,7 +5123,8 @@
       "sleeping": "actor-2-sleeping",
       "walk_left": "actor-2-walk_left",
       "walk_right": "actor-2-walk_right",
-      "away": "actor-2-away"
+      "away": "actor-2-away",
+      "awaiting": "actor-2-awaiting"
     },
     "actor-3": {
       "working": "actor-3-working",
@@ -5032,7 +5132,8 @@
       "sleeping": "actor-3-sleeping",
       "walk_left": "actor-3-walk_left",
       "walk_right": "actor-3-walk_right",
-      "away": "actor-3-away"
+      "away": "actor-3-away",
+      "awaiting": "actor-3-awaiting"
     },
     "actor-4": {
       "working": "actor-4-working",
@@ -5040,7 +5141,8 @@
       "sleeping": "actor-4-sleeping",
       "walk_left": "actor-4-walk_left",
       "walk_right": "actor-4-walk_right",
-      "away": "actor-4-away"
+      "away": "actor-4-away",
+      "awaiting": "actor-4-awaiting"
     },
     "actor-5": {
       "working": "actor-5-working",
@@ -5048,7 +5150,8 @@
       "sleeping": "actor-5-sleeping",
       "walk_left": "actor-5-walk_left",
       "walk_right": "actor-5-walk_right",
-      "away": "actor-5-away"
+      "away": "actor-5-away",
+      "awaiting": "actor-5-awaiting"
     },
     "orchestrator": {
       "working": "orchestrator-working",
@@ -5056,7 +5159,8 @@
       "sleeping": "orchestrator-sleeping",
       "away": "orchestrator-away",
       "walk_left": "orchestrator-walk_left",
-      "walk_right": "orchestrator-walk_right"
+      "walk_right": "orchestrator-walk_right",
+      "awaiting": "orchestrator-awaiting"
     }
   },
   "effects": {
@@ -5066,7 +5170,8 @@
     "bubble_done": "bubble_done",
     "bubble_prup": "bubble_prup",
     "zzz": "zzz",
-    "attention": "attention"
+    "attention": "attention",
+    "question_bubble": "question_bubble"
   },
   "defaultActor": "actor-0",
   "runtimeScale": 0.625,
@@ -5090,7 +5195,8 @@
       "actorStateYOffset": {
         "working": 0,
         "phone": -8,
-        "sleeping": 30
+        "sleeping": 30,
+        "awaiting": 0
       },
       "frontOcclusionY": 157,
       "actorClip": [
@@ -5144,40 +5250,68 @@
           "working": [
             3,
             0
+          ],
+          "awaiting": [
+            3,
+            -36
           ]
         },
         "actor-1": {
           "working": [
             -13,
             -6
+          ],
+          "awaiting": [
+            -13,
+            -34
           ]
         },
         "actor-2": {
           "working": [
             3,
             4
+          ],
+          "awaiting": [
+            3,
+            -30
           ]
         },
         "actor-3": {
           "working": [
             -6,
             4
+          ],
+          "awaiting": [
+            -6,
+            -27
           ]
         },
         "actor-4": {
           "working": [
             -3,
             -3
+          ],
+          "awaiting": [
+            -3,
+            -33
           ]
         },
         "actor-5": {
           "working": [
             6,
             -4
+          ],
+          "awaiting": [
+            6,
+            -36
           ]
         },
         "orchestrator": {
           "working": [
+            9,
+            -6
+          ],
+          "awaiting": [
             9,
             -6
           ]
@@ -5197,6 +5331,12 @@
           216
         ],
         "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "awaiting": [
           0,
           0,
           160,
@@ -5288,7 +5428,8 @@
       "actorStateYOffset": {
         "working": 0,
         "phone": -8,
-        "sleeping": 30
+        "sleeping": 30,
+        "awaiting": 0
       },
       "frontOcclusionY": 159,
       "actorClip": [
@@ -5342,40 +5483,68 @@
           "working": [
             3,
             0
+          ],
+          "awaiting": [
+            3,
+            -38
           ]
         },
         "actor-1": {
           "working": [
             -13,
             -6
+          ],
+          "awaiting": [
+            -13,
+            -36
           ]
         },
         "actor-2": {
           "working": [
             3,
             4
+          ],
+          "awaiting": [
+            3,
+            -32
           ]
         },
         "actor-3": {
           "working": [
             -6,
             4
+          ],
+          "awaiting": [
+            -6,
+            -29
           ]
         },
         "actor-4": {
           "working": [
             -3,
             -3
+          ],
+          "awaiting": [
+            -3,
+            -35
           ]
         },
         "actor-5": {
           "working": [
             6,
             -4
+          ],
+          "awaiting": [
+            6,
+            -38
           ]
         },
         "orchestrator": {
           "working": [
+            9,
+            -6
+          ],
+          "awaiting": [
             9,
             -6
           ]
@@ -5395,6 +5564,12 @@
           216
         ],
         "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "awaiting": [
           0,
           0,
           160,
@@ -5486,7 +5661,8 @@
       "actorStateYOffset": {
         "working": 0,
         "phone": -8,
-        "sleeping": 30
+        "sleeping": 30,
+        "awaiting": 0
       },
       "frontOcclusionY": 159,
       "actorClip": [
@@ -5540,40 +5716,68 @@
           "working": [
             3,
             0
+          ],
+          "awaiting": [
+            3,
+            -38
           ]
         },
         "actor-1": {
           "working": [
             -13,
             -6
+          ],
+          "awaiting": [
+            -13,
+            -36
           ]
         },
         "actor-2": {
           "working": [
             3,
             4
+          ],
+          "awaiting": [
+            3,
+            -32
           ]
         },
         "actor-3": {
           "working": [
             -6,
             4
+          ],
+          "awaiting": [
+            -6,
+            -29
           ]
         },
         "actor-4": {
           "working": [
             -3,
             -3
+          ],
+          "awaiting": [
+            -3,
+            -35
           ]
         },
         "actor-5": {
           "working": [
             6,
             -4
+          ],
+          "awaiting": [
+            6,
+            -38
           ]
         },
         "orchestrator": {
           "working": [
+            9,
+            -6
+          ],
+          "awaiting": [
             9,
             -6
           ]
@@ -5593,6 +5797,12 @@
           216
         ],
         "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "awaiting": [
           0,
           0,
           160,
@@ -5688,7 +5898,8 @@
       "actorStateYOffset": {
         "working": 0,
         "phone": -8,
-        "sleeping": 30
+        "sleeping": 30,
+        "awaiting": 0
       },
       "frontOcclusionY": 187,
       "actorClip": [
@@ -5737,10 +5948,18 @@
           "working": [
             3,
             0
+          ],
+          "awaiting": [
+            3,
+            0
           ]
         },
         "actor-1": {
           "working": [
+            -13,
+            -6
+          ],
+          "awaiting": [
             -13,
             -6
           ]
@@ -5749,10 +5968,18 @@
           "working": [
             3,
             4
+          ],
+          "awaiting": [
+            3,
+            4
           ]
         },
         "actor-3": {
           "working": [
+            -6,
+            4
+          ],
+          "awaiting": [
             -6,
             4
           ]
@@ -5761,10 +5988,18 @@
           "working": [
             -3,
             -3
+          ],
+          "awaiting": [
+            -3,
+            -3
           ]
         },
         "actor-5": {
           "working": [
+            6,
+            -4
+          ],
+          "awaiting": [
             6,
             -4
           ]
@@ -5773,6 +6008,10 @@
           "working": [
             9,
             -6
+          ],
+          "awaiting": [
+            9,
+            -33
           ]
         }
       },
@@ -5790,6 +6029,12 @@
           216
         ],
         "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "awaiting": [
           0,
           0,
           160,
@@ -5890,7 +6135,8 @@
       "actorStateYOffset": {
         "working": 0,
         "phone": -8,
-        "sleeping": 30
+        "sleeping": 30,
+        "awaiting": 0
       },
       "frontOcclusionY": 182,
       "actorClip": [
@@ -5939,10 +6185,18 @@
           "working": [
             3,
             0
+          ],
+          "awaiting": [
+            3,
+            0
           ]
         },
         "actor-1": {
           "working": [
+            -13,
+            -6
+          ],
+          "awaiting": [
             -13,
             -6
           ]
@@ -5951,10 +6205,18 @@
           "working": [
             3,
             4
+          ],
+          "awaiting": [
+            3,
+            4
           ]
         },
         "actor-3": {
           "working": [
+            -6,
+            4
+          ],
+          "awaiting": [
             -6,
             4
           ]
@@ -5963,10 +6225,18 @@
           "working": [
             -3,
             -3
+          ],
+          "awaiting": [
+            -3,
+            -3
           ]
         },
         "actor-5": {
           "working": [
+            6,
+            -4
+          ],
+          "awaiting": [
             6,
             -4
           ]
@@ -5975,6 +6245,10 @@
           "working": [
             9,
             -6
+          ],
+          "awaiting": [
+            9,
+            -33
           ]
         }
       },
@@ -5992,6 +6266,12 @@
           216
         ],
         "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "awaiting": [
           0,
           0,
           160,
@@ -6092,7 +6372,8 @@
       "actorStateYOffset": {
         "working": 0,
         "phone": -8,
-        "sleeping": 30
+        "sleeping": 30,
+        "awaiting": 0
       },
       "frontOcclusionY": 171,
       "actorClip": [
@@ -6141,10 +6422,18 @@
           "working": [
             3,
             0
+          ],
+          "awaiting": [
+            3,
+            0
           ]
         },
         "actor-1": {
           "working": [
+            -13,
+            -6
+          ],
+          "awaiting": [
             -13,
             -6
           ]
@@ -6153,10 +6442,18 @@
           "working": [
             3,
             4
+          ],
+          "awaiting": [
+            3,
+            4
           ]
         },
         "actor-3": {
           "working": [
+            -6,
+            4
+          ],
+          "awaiting": [
             -6,
             4
           ]
@@ -6165,10 +6462,18 @@
           "working": [
             -3,
             -3
+          ],
+          "awaiting": [
+            -3,
+            -3
           ]
         },
         "actor-5": {
           "working": [
+            6,
+            -4
+          ],
+          "awaiting": [
             6,
             -4
           ]
@@ -6177,6 +6482,10 @@
           "working": [
             9,
             -6
+          ],
+          "awaiting": [
+            9,
+            -33
           ]
         }
       },
@@ -6194,6 +6503,12 @@
           216
         ],
         "sleeping": [
+          0,
+          0,
+          160,
+          216
+        ],
+        "awaiting": [
           0,
           0,
           160,
@@ -6874,6 +7189,17 @@
     },
     "zzz": {
       "position": "current pose head upper-left empty space; avoid monitor bounding box"
+    },
+    "question_bubble": {
+      "sheet": "question_bubble",
+      "anchor": "sheet.anchor bottom-center",
+      "position": "current rendered awaiting pose headTopCenter + [0,-10] logical px; replaces attention while the agent is waiting on a question",
+      "preferredDisplayHeight": 64,
+      "tailTipInSheetFrame0": [
+        56.0,
+        89
+      ],
+      "note": "tail tip sits left of the sheet anchor; shift by (anchorX - tailTipX)*scale if the tail must point at the head"
     }
   },
   "providerIcons": {

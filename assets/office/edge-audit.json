@@ -1,6 +1,6 @@
 {
-  "sheets": 70,
-  "frames": 233,
+  "sheets": 78,
+  "frames": 257,
   "edgeHits": [
     {
       "id": "flame_aura",
@@ -25,6 +25,18 @@
     {
       "id": "bubble_prup",
       "frame": 0
+    },
+    {
+      "id": "actor-5-awaiting",
+      "frame": 0
+    },
+    {
+      "id": "orchestrator-awaiting",
+      "frame": 0
+    },
+    {
+      "id": "orchestrator-awaiting",
+      "frame": 2
     }
   ],
   "detachedEdgeFragments": [],

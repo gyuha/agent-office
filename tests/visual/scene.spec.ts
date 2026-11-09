@@ -513,3 +513,104 @@ for (const width of [410, 420, 430]) {
     await expect(page.locator(".office-collection")).toHaveScreenshot(`office-filter-n16-${width}.png`);
   });
 }
+
+// ───────── awaiting pose: 질문 대기 중 손 든 자세와 '?' 말풍선 (실제 마운트 경로, 프레임 고정) ─────────
+// 시트는 3프레임 @ 4fps: 시각 3000/3250/3500ms는 프레임 0/1/2다(액터 시계 = 경과 시간).
+const waitingSolo = () => snapshot([solo("working", { needsAttention: true })]);
+for (const [width, times] of [[480, [3000, 3250, 3500]], [410, [3500]]] as const) {
+  for (const ms of times) {
+    test(`awaiting pose: solo agent with a raised hand and a question bubble, ${width}px, t=${ms}ms`, async ({ page }) => {
+      await openMount(page, waitingSolo(), width, ms, 1000);
+      await mountShot(page, `awaiting-pose-solo-${width}-${ms}`);
+    });
+  }
+}
+
+test("awaiting pose: the typing pose and the hand overlay are gone while waiting; an unflagged office next to it is unchanged", async ({ page }) => {
+  const asking = group(5, "working"); // 모두 working이어야 대기 자세가 된다(group(n)만 쓰면 상태가 섞인다)
+  asking.manager.needsAttention = true;
+  (asking.members[1] as any).needsAttention = true;
+  await openMount(page, snapshot([asking]), 480, 3500, 1000);
+  await mountShot(page, "awaiting-pose-group-480");
+  const calm = group(5, "working");
+  await openMount(page, snapshot([calm]), 480, 3500, 1000);
+  await mountShot(page, "awaiting-pose-group-480-calm");
+});
+
+test("awaiting pose: every look (six members and the manager) raises a hand with a question bubble at 410px", async ({ page }) => {
+  const all = group(6, "working");
+  all.manager.needsAttention = true;
+  for (const m of all.members) (m as any).needsAttention = true;
+  await openMount(page, snapshot([all]), 410, 3250, 1000);
+  await mountShot(page, "awaiting-pose-all-looks-410");
+});
+
+test("awaiting pose: a walking waiting agent keeps the '!' fallback and, when the wait ends, typing returns", async ({ page }) => {
+  // 걷는 중(돌아오는 길) 대기: 같은 마운트에서 스냅샷을 대기 상태로 두고 전환 시점을 고정한다.
+  await openMount(page, snapshot([solo("working", { needsAttention: true })]), 480, 0, 1000);
+  await page.evaluate(([from, t]) => (window as any).mount.setTransition(from, t, 1000, 30000), [snapshot([solo("away")]), 1200] as any);
+  await mountShot(page, "awaiting-pose-walking-fallback-480");
+  await openMount(page, snapshot([solo("working", { needsAttention: false })]), 480, 3500, 1000);
+  await mountShot(page, "awaiting-pose-resolved-typing-480");
+});
+
+// ───────── awaiting pose: 의자에 앉은 느낌(렌더 기준) ─────────
+// 사용자 피드백("엉덩이가 의자에 앉아 있는 느낌이 안 든다")으로 대기 자세는 일부러 working보다 높게 앉는다.
+// 기대: 머리 꼭대기가 의자 등받이 꼭대기 위로 충분히 올라오고, 어깨~상판 뒤 모서리 사이가 충분히 떨어져 있으며, 머리 크기는 같다.
+// 값은 manifest 오프셋을 계산식으로 다시 쓰지 않고, 실제 마운트 경로가 canvas에 그린 drawImage 호출(dy)에서 읽는다.
+async function renderedTorso(page: Page, snap: unknown, width: number, names: string[]) {
+  await page.goto(mountUrl);
+  await page.evaluate(([snapshot, w]) => (window as any).mount.open({ snapshot, width: w }), [snap, width] as any);
+  await page.waitForFunction(() => (window as any).mount.headers().length > 0);
+  await page.evaluate(() => (window as any).mount.record(true));
+  await page.evaluate(() => (window as any).mount.setTime(3500, 1000));
+  const draws: any[] = await page.evaluate(() => (window as any).mount.recorded());
+  await page.evaluate(() => (window as any).mount.record(false));
+  const uris: Record<string, string> = await page.evaluate((n) => (window as any).mount.sheetUris(n), names);
+  return { draws, uris };
+}
+
+test("awaiting pose: seated like on a chair (rendered): head top clears the chair back by 30% of the head height, shoulders sit 50% of the head height above the table rear edge, head size unchanged", async ({ page }) => {
+  const WIDTH = 480;
+  const asking = group(6, "working");
+  asking.manager.needsAttention = true;
+  for (const m of asking.members) (m as any).needsAttention = true;
+  await openMount(page, snapshot([group(6, "working")]), WIDTH, 3500, 1000);
+  const stations: any[] = await page.evaluate(() => (window as any).mount.stations());
+  expect(stations).toHaveLength(7);
+  const looks = stations.map((st) => (st.manager ? "orchestrator" : `actor-${st.variant}`));
+  expect(new Set(looks).size).toBe(7);
+  const sheets = looks.flatMap((id) => [`${id}-working`, `${id}-awaiting`]);
+  const metrics: Record<string, any> = await page.evaluate((n) => (window as any).mount.sheetMetrics(n), sheets);
+  const waiting = await renderedTorso(page, snapshot([asking]), WIDTH, sheets);
+  const typing = await renderedTorso(page, snapshot([group(6, "working")]), WIDTH, sheets);
+  const lastDraw = (r: { draws: any[]; uris: Record<string, string> }, name: string, st: any) => {
+    const same = r.draws.filter((d) => d.src === r.uris[name]);
+    expect(same.length, `${name} was drawn`).toBeGreaterThan(0);
+    // 같은 시트를 쓰는 다른 자리(큰 방의 6종 반복)와 섞이지 않게 이 자리에 가장 가까운 마지막 그림을 쓴다.
+    const nearest = Math.min(...same.map((d) => Math.abs(d.dx + d.dw / 2 - st.seat.x)));
+    return same.filter((d) => Math.abs(d.dx + d.dw / 2 - st.seat.x) === nearest).at(-1);
+  };
+  const report: string[] = [];
+  for (const [i, st] of stations.entries()) {
+    const id = looks[i], w = metrics[`${id}-working`], a = metrics[`${id}-awaiting`];
+    const A = lastDraw(waiting, `${id}-awaiting`, st), W = lastDraw(typing, `${id}-working`, st);
+    const f = A.dh / 216, headH = 62 * f; // 머리 박스(논리 프레임 y 18..80)의 높이
+    const headTop = A.dy + a.headTop * f, shoulder = A.dy + a.shoulder * f;
+    const rear = st.y + st.desk.tableRearY * st.moduleScale;
+    const chairModule: number | null = await page.evaluate(([name, cx]) => (window as any).mount.columnTop(name, cx, 35), [st.desk.back, st.desk.seat[0]] as any);
+    expect(chairModule, `${id}: chair back found in ${st.desk.back}`).not.toBeNull();
+    const chairTop = st.y + chairModule! * st.moduleScale;
+    const aboveChair = (chairTop - headTop) / headH, chest = (rear - shoulder) / headH, headSize = a.headWidth / w.headWidth, drawnSize = A.dh / W.dh;
+    const typingAbove = (chairTop - (W.dy + w.headTop * (W.dh / 216))) / headH;
+    report.push(`${id}: (typing ${typingAbove.toFixed(2)}H) head above chair ${aboveChair.toFixed(2)}H, shoulder→rear ${chest.toFixed(2)}H, head width ratio ${headSize.toFixed(2)}`);
+    expect(aboveChair, `${id}: ${report.at(-1)}`).toBeGreaterThanOrEqual(0.3);
+    expect(aboveChair, `${id}: sits higher than while typing (${report.at(-1)})`).toBeGreaterThan(typingAbove + 0.2);
+    expect(chest, `${id}: ${report.at(-1)}`).toBeGreaterThanOrEqual(0.5);
+    expect(Math.abs(headSize - 1), `${id}: head width differs from typing (${report.at(-1)})`).toBeLessThanOrEqual(0.1);
+    expect(Math.abs(drawnSize - 1), `${id}: the awaiting cell is drawn at the typing scale`).toBeLessThan(1e-6);
+    // 대기 자세는 working보다 위에 그려진다(앉은 높이를 일부러 올렸다).
+    expect(A.dy, `${id}: raised relative to the typing pose`).toBeLessThan(W.dy);
+  }
+  test.info().annotations.push({ type: "metrics", description: report.join(" | ") });
+});

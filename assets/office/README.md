@@ -669,3 +669,18 @@ background-large(runtime/background-large.webp,785×785)의 맨 아래에 small/
 assets.background-small/medium/large 모두 같은 **bottomTrim** 형식을 추가했습니다. height=24/destinationHeight=24는 방 월드 논리px, anchor=bottom입니다. small/medium sourceRect=[0,1000,1536,24], large sourceRect=[0,1234,1254,20]이며 sourceRect는 원본 PNG 좌표의[x,y,width,height]입니다. large runtimeRect=[0,771.25,783.75,12.5]는 .625배 실제 WebP 좌표이며 투명 패딩을 제외합니다. 소수점 crop은 허용하고 반올림해 다른 행을 포함시키지 마세요.
 
 새 최상위 backgroundTrim={wallHeight:400,bottomTrimHeight:24,...}도 추가했습니다. sourceRect를 sceneY+sceneHeight−24부터 높이24로 그려 방 끝에 붙이고 중간 바닥만 늘립니다. 현재 scene의 하드코딩된24px trim도 새 벽선을 샘플링하므로 호환됩니다. 방 높이·가구·캐릭터는 변경하지 않았습니다. review/vqa031-bottom-trim.png에서 세 배경 하단을 비교했고, review/background-large-bottom.png는 최종 런타임 아래80px입니다. 재현은 기존 빌드 마지막에 fix_bottom_trim.py → validate_half.py입니다. runtimeScale .625, q85/alpha100/method6, runtime785×785 유지입니다.
+
+## 질문 대기(awaiting) 모션 — 2026-11-09
+
+needsAttention 중 착석 상태에서 쓰는 모션입니다. 직원 6명과 orchestrator의 `<id>-awaiting`(3프레임, 4fps, loop, 160×216, anchor [80,205])과 `question_bubble`(3프레임, 128×96, anchor [64,90])이 추가되었습니다.
+
+- 생성: fal.ai `openai/gpt-image-2.5/flare/edit`, quality medium, 1024×1024, transparent. 캐릭터별 working·phone 프레임과 office-c를 참조해 캐릭터당 1장(가로 3프레임), 말풍선 1장, 총 **8장**(재생성 없음). 청구액은 조회할 수 없어 totalCostUsd는 null입니다. 프롬프트와 request_id는 [src/awaiting-generation.json](src/awaiting-generation.json)에 있습니다. 원본은 src/generated/*-awaiting.png, question_bubble.png입니다.
+- 패킹: `pack_awaiting.py`가 기존 시트를 건드리지 않고 awaiting 시트와 manifest 키를 추가합니다. 머리 폭을 working 프레임 0에 맞추고 하체 중심을 working의 골반 x에 맞춥니다. 머리 윗선은 y=22이며 하체는 프레임 아래로 잘리지만 책상 뒤에 가려집니다. 정렬 값은 src/awaiting-alignment.json에 있습니다.
+- 책상: actorOffsets·actorStateYOffset·actorSourceClip의 `awaiting`은 working 값과 같습니다. 들어 올린 팔이 상판 위에 있고 다른 팔은 상판 뒤에 있으므로 armOverlays.awaiting은 두지 않았습니다. 장면은 awaiting 중 working 손 오버레이를 그리지 않아야 합니다.
+- 말풍선: effects.question_bubble과 effectPlacement.question_bubble(머리 위 -10, 표시 높이 64)이 추가되었고 attention 대신 씁니다. 꼬리 끝은 anchor 왼쪽에 있어 effectPlacement.tailTipInSheetFrame0에 기록했습니다.
+- 검토: [review/awaiting-compose.png](review/awaiting-compose.png)는 `review_awaiting.py`로 만들며, 7명×3프레임을 뒤 → 몸 → 상판 → 말풍선 순서로 합성합니다.
+- 주의: `export_runtime.py`는 provider-icon 런타임 WebP를 삭제하고 manifest 경로를 되돌립니다. 이번에는 실행 뒤 git으로 복원한 다음 `pack_awaiting.py`를 다시 돌려 manifest를 맞췄습니다.
+
+### awaiting 착석 높이 보정
+
+working과 같은 높이로 맞추면 머리가 등받이 높이에 파묻혀 보여, 데스크마다 `actorOffsets[actor].awaiting`의 y를 working 값보다 위로 올렸습니다(pod 27~38, lead 27 logical px). `actorStateYOffset.awaiting`은 working과 같은 0입니다. 기준: 머리 꼭대기가 등받이 꼭대기보다 머리 높이의 30% 이상 위에 있고, 어깨에서 상판 뒤 모서리까지 머리 높이의 50% 이상이어야 합니다. 머리 높이는 working 머리 폭×0.9로 추정합니다. 계산은 `pack_awaiting.py`가 하며 전후 값은 `src/awaiting-alignment.json`의 `seatRaise`에 있습니다. 비교 이미지는 `review/awaiting-seated-compare.png`입니다. 추가 이미지 생성은 없습니다(누적 8장).

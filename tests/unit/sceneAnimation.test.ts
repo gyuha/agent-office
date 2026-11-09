@@ -139,17 +139,22 @@ test('sleeping: seated with the sleeping sheet and a zzz effect', () => {
   assert.equal(effects(awake, 'zzz').length, 0);
 });
 
-test('needsAttention draws the attention effect on the flagged agent only, state stays working', () => {
+test('needsAttention shows the question pose on the flagged agent only: awaiting sheet + question bubble (no "!"), state stays working', () => {
   const o = group(3);
   (o.members[1] as { needsAttention: boolean }).needsAttention = true;
   const s = snap([o]);
   const actors = advance({}, s, 1000);
-  const { images } = trace(s, { actors, epoch: 1 });
-  assert.equal(effects(images, 'attention').length, 1);
-  assert.ok(actorImages(images).every(i => i.key.endsWith('-working')));
-  assert.equal(effects(trace(withState(s, 'working', { needsAttention: false }), { actors }).images, 'attention').length, 0);
-  assert.equal(effects(trace(s, { actors, epoch: 1 }).images, 'attention').length, 1);
+  const { images, layout } = trace(s, { actors, epoch: 1 });
+  assert.equal(effects(images, 'question_bubble').length, 1, 'one question bubble');
+  assert.equal(effects(images, 'attention').length, 0, 'the "!" is replaced while the agent asks a question');
+  const flagged = layout.rooms[0].stations.find(x => x.agent.id === 'g1')!;
+  assert.equal(images.filter(i => i.key === `actor-${flagged.variant}-awaiting`).length, 1);
+  assert.equal(images.filter(i => i.key === `actor-${flagged.variant}-working`).length, 0);
+  assert.ok(actorImages(images).filter(i => !i.key.startsWith(`actor-${flagged.variant}-`)).every(i => i.key.endsWith('-working')), 'everybody else keeps typing');
+  assert.equal(effects(trace(withState(s, 'working', { needsAttention: false }), { actors }).images, 'question_bubble').length, 0);
+  assert.equal(effects(trace(s, { actors, epoch: 1 }).images, 'question_bubble').length, 1);
 });
+
 
 test('repeated identical snapshots (2s polling, new object each time) never reset animation clocks', () => {
   const base = snap([group(3, 'g', { state: 'working' })]);
@@ -271,7 +276,7 @@ test('VQA-019: the flame is clipped to the area left of the monitor and above th
 const DECOR = ['pop_plus3', 'pop_plus10', 'bubble_done', 'bubble_prup'];
 const decorKeys = () => new Set(DECOR.map(n => (manifest as any).effects[n]));
 
-test('VQA-024: agents that need attention never show Done!/PR up!/+number decorations; the attention mark is always there', () => {
+test('VQA-024: agents that need attention never show Done!/PR up!/+number decorations; the question bubble is always there', () => {
   const o = group(15, 'g', { state: 'working', needsAttention: true });
   const s = snap([o]);
   const keys = decorKeys();
@@ -280,7 +285,7 @@ test('VQA-024: agents that need attention never show Done!/PR up!/+number decora
     actors = advance(actors, s, 500);
     const { images } = trace(s, { actors, epoch: 1e9, timeMs: t });
     assert.equal(images.filter(i => keys.has(i.key)).length, 0, `t=${t}: decoration drawn over an attention request`);
-    assert.equal(effects(images, 'attention').length, 16, `t=${t}: every flagged agent shows the attention mark`);
+    assert.equal(effects(images, 'question_bubble').length, 16, `t=${t}: every flagged agent shows its question bubble`);
   }
 });
 
@@ -297,11 +302,11 @@ test('VQA-024 (control): the same office without attention does show decorations
   for (let t = 0; t < 30_000; t += 500) {
     actors = advance(actors, mixedSnap, 500);
     const { images } = trace(mixedSnap, { actors, epoch: 1e9 });
-    // 깃발 에이전트 머리 위 영역에는 장식이 없다: attention 효과의 사각형과 겹치는 장식이 하나도 없다.
-    const mark = effects(images, 'attention')[0];
+    // 깃발 에이전트 머리 위 영역에는 장식이 없다: 질문 말풍선의 사각형과 겹치는 장식이 하나도 없다.
+    const mark = effects(images, 'question_bubble')[0];
     for (const img of images.filter(i => keys.has(i.key))) {
       const overlap = Math.min(img.dx + img.dw, mark.dx + mark.dw) > Math.max(img.dx, mark.dx) && Math.min(img.dy + img.dh, mark.dy + mark.dh) > Math.max(img.dy, mark.dy);
-      assert.ok(!overlap, `t=${t}: a decoration overlaps the attention mark`);
+      assert.ok(!overlap, `t=${t}: a decoration overlaps the question bubble`);
     }
   }
 });

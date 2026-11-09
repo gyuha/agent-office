@@ -74,8 +74,15 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
     const factor=height/f.h;
     const anch=walking?sp.anchor:desk?.actorAnchor||(onRest?s.rest!.spec.actorAnchor:sp.anchor);
     const anchor=Array.isArray(anch)?anch:[(anch as any)?.x??80,(anch as any)?.y??205];
-    const adj=desk?.actorOffsets?.[s.manager?'orchestrator':`actor-${s.variant}`]?.[state]||(onRest?s.rest!.spec.actorOffset:[0,0]);
-    const offset=desk?.actorStateYOffset?.[state]??(state==='away'?desk?.actorStateYOffset?.phone:0)??0;
+    const who=s.manager?'orchestrator':`actor-${s.variant}`;
+    let adj=desk?.actorOffsets?.[who]?.[state]||(onRest?s.rest!.spec.actorOffset:[0,0]);
+    let offset=desk?.actorStateYOffset?.[state]??(state==='away'?desk?.actorStateYOffset?.phone:0)??0;
+    if(desk&&!walking&&(state==='working'||state==='awaiting')&&sprites[actorKey(s,'awaiting',sprites)]){
+      // Typing and the raised-hand pose share one continuous seat height: eased by a.ask (0 working .. 1 awaiting).
+      const b=a.ask??0,w=desk.actorOffsets?.[who]?.working||[0,0],q=desk.actorOffsets?.[who]?.awaiting||w;
+      const wy=desk.actorStateYOffset?.working??0,qy=desk.actorStateYOffset?.awaiting??wy;
+      adj=[w[0]+(q[0]-w[0])*b,w[1]+(q[1]-w[1])*b];offset=wy+(qy-wy)*b;
+    }
     const moduleScale=desk?s.moduleScale:onRest?s.rest!.scale:1;
     const origin=onRest?s.rest!.seat:desk&&!walking?s.bodySeat:walking?{x:a.x,y:a.y-actorWalkLift(s,a)}:a;
     const x=origin.x-anchor[0]*factor+adj[0]*moduleScale;
@@ -108,9 +115,11 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
     }
     c.restore();
   };
+  /** Seated agent waiting on a question: raised-hand loop replaces typing (needs the awaiting sheet). */
+  const awaitingPose=(s:Station,a:Actor,seated:boolean)=>seated&&a.state==='working'&&s.agent.needsAttention&&!!sprites[actorKey(s,'awaiting',sprites)];
   const occupant=(s:Station,a:Actor,desk?:DeskSpec,rest=false)=>{
     // A single opaque pose: no translucent double silhouettes during transitions.
-    const state=a.moving||(!desk&&!rest)?`walking-${a.direction}`:rest?'away':desk&&a.state==='away'?'phone':a.state;
+    const state=a.moving||(!desk&&!rest)?`walking-${a.direction}`:rest?'away':desk&&a.state==='away'?'phone':desk&&awaitingPose(s,a,true)?'awaiting':a.state;
     figure(s,a,state,1,desk,rest);
   };
   const nameplate=(s:Station)=>{
@@ -145,7 +154,7 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
         image(s.desk.back,s.x,s.y,s.width,s.height,1,time/1000,true);
 
         if(seated||ownWalker){
-          if(seated&&a.state==='working'&&epoch-s.agent.stateSince>=60000&&a.elapsed-a.changed>.2){
+          if(seated&&a.state==='working'&&!s.agent.needsAttention&&epoch-s.agent.stateSince>=60000&&a.elapsed-a.changed>.2){
             const g=geometry(s,a,'working',s.desk),placement=manifest.effectPlacement?.flame_aura;
             if(g&&placement){
               const spec=sprites[placement.sheet||'flame_aura']?.spec;
@@ -180,7 +189,7 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
           c.clip();
         }
         image(s.desk.front,s.x,s.y,s.width,s.height);c.restore();
-        if(seated)actorOverlay(s,a,a.state==='away'?'phone':a.state);
+        if(seated)actorOverlay(s,a,awaitingPose(s,a,true)?'awaiting':a.state==='away'?'phone':a.state);
         nameplate(s);
       };
       jobs.push({y:managerBehind?Math.max(deskDepth(s,room.sceneY),...room.rests.map(r=>r.y+r.height))+1:deskDepth(s,room.sceneY),draw:drawStation});
@@ -203,15 +212,47 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
       }});
     }
     jobs.sort((a,b)=>a.y-b.y).forEach(j=>j.draw());
-    for(const s of room.stations){const a=actors[s.agent.id];if(!a)continue;
+    const poseInfo=(s:Station)=>{const a=actors[s.agent.id];if(!a)return null;
       const seated=!a.moving&&Math.hypot(a.x-s.seat.x,a.y-s.seat.y)<2;
       const rest=!!s.rest&&!a.moving&&Math.hypot(a.x-s.away.x,a.y-s.away.y)<2;
-      const pose=a.moving||(!seated&&!rest)?`walking-${a.direction}`:rest?'away':a.state==='away'?'phone':a.state;
-      const g=geometry(s,a,pose,seated?s.desk:undefined,rest);if(!g)continue;
-      const head={x:g.x+80*g.factor,y:g.y+12*g.factor};
+      const asking=awaitingPose(s,a,seated),pose=a.moving||(!seated&&!rest)?`walking-${a.direction}`:rest?'away':a.state==='away'?'phone':asking?'awaiting':a.state;
+      const g=geometry(s,a,pose,seated?s.desk:undefined,rest);if(!g)return null;
+      return {a,seated,asking,g,head:{x:g.x+80*g.factor,y:g.y+12*g.factor}};
+    };
+    const infos=new Map(room.stations.map(o=>[o,poseInfo(o)] as const));
+    for(const s of room.stations){const info=infos.get(s);if(!info)continue;
+      const {a,seated,asking,g,head}=info;
       const fy=head.y;
       if(a.state==='sleeping'&&seated)effect('zzz',head.x-65*g.factor,head.y-48*g.factor,64*g.factor,48*g.factor,a.phase);
-      if(s.agent.needsAttention){
+      if(asking&&sprites.question_bubble){
+        // The bubble tail tip sits left of the sheet anchor; shift so the tail points at the head.
+        const placement=manifest.effectPlacement?.question_bubble,spec=sprites.question_bubble.spec;
+        const height=(placement?.preferredDisplayHeight??64)*g.factor,factor=height/(spec?.frameH||96);
+        const anchor=Array.isArray(spec?.anchor)?spec.anchor:[64,90];
+        const tail=placement?.tailTipInSheetFrame0||anchor;
+        // Default: tail tip just above the head. A nameplate in the way lowers the tip toward the hair (tail still
+        // points at this head, bubble stays above it) and, if needed, shrinks the bubble. Candidates must keep the
+        // tail within ~12 CSS px of the head box, the center nearer this head than any other, and stay inside the scene.
+        const f=g.factor,hb={x0:g.x+52*f,x1:g.x+108*f,y0:g.y+18*f,y1:g.y+80*f},hh=hb.y1-hb.y0;
+        const fw=(spec?.frameW||128)*factor,reach=Math.max(12/(layout.viewportScale||1),6*f+11);
+        const plates=room.stations.map(o=>plateGeometry(o,layout.viewportScale));
+        const others=[...infos].filter(([o,i])=>o!==s&&i).map(([,i])=>({x:i!.head.x,y:i!.g.y+49*i!.g.factor}));
+        const own={x:head.x,y:g.y+49*f};
+        const valid=(x:number,y:number,w:number,h:number,tx:number,ty:number)=>{
+          if(x<0||x+w>layout.width||plates.some(r=>x<r.x+r.width&&x+w>r.x&&y<r.y+r.height&&y+h>r.y))return false;
+          if(Math.hypot(Math.max(hb.x0-tx,0,tx-hb.x1),Math.max(hb.y0-ty,0,ty-hb.y1))>reach)return false;
+          const cx=x+w/2,cy=y+h/2,mine=Math.hypot(cx-own.x,cy-own.y);
+          return others.every(o=>Math.hypot(cx-o.x,cy-o.y)>mine);
+        };
+        let box={x:head.x-tail[0]*factor,y:head.y-10-anchor[1]*factor,w:fw,h:height};
+        const tip0=head.y-10,tipLow=hb.y0+.45*hh;
+        search:for(const k of [1,.85,.7])for(const drop of [0,.25,.5,.75,1])for(const dx of [0,-1,1,-2,2]){
+          const w=fw*k,h=height*k,tx=head.x+dx*(hb.x1-hb.x0)*.125,ty=tip0+drop*(tipLow-tip0);
+          const x=tx-tail[0]*factor*k,y=ty-anchor[1]*factor*k;
+          if(valid(x,y,w,h,tx,ty)){box={x,y,w,h};break search;}
+        }
+        effect('question_bubble',box.x,box.y,box.w,box.h,a.phase);
+      }else if(s.agent.needsAttention){
         const placement=manifest.effectPlacement?.attention;
         const spec=sprites[placement?.sheet||'attention']?.spec;
         const height=(placement?.preferredDisplayHeight??64)*g.factor,factor=height/(spec?.frameH||96);

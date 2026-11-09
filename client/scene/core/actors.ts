@@ -13,6 +13,10 @@ export function step(previous:Actors,snapshot:OfficeSnapshot,dt:number,layout=la
     }
     a.home={...s.seat};
     a.elapsed+=seconds; a.phase+=seconds;
+    // Seated height blend for the question pose: new actors start at their target, changes ease over ~0.2s.
+    const asks=s.agent.needsAttention&&s.agent.state==='working'?1:0;
+    a.ask=asks;
+    if(old&&old.ask!==undefined){const d=asks-old.ask,m=seconds/.2;a.ask=Math.abs(d)<=m?asks:old.ask+Math.sign(d)*m;}
     if(a.state!==s.agent.state){a.previous=a.state;a.state=s.agent.state;a.changed=a.elapsed;a.destination='changed';}
     let target=s.seat, destination='seat';
     if(a.state==='away'&&s.rest){target=s.away;destination='beanbag';}
