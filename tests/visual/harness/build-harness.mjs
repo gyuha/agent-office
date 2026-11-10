@@ -162,11 +162,11 @@ let snap = null, selected = [], handle = null;
   };
 }
 window.mount = {
-  open({ snapshot, width = 1200 }) {
+  open({ snapshot, width = 1200, initialFilter }) {
     if (handle) handle.dispose();
     document.querySelector('#mount').style.width = width + 'px';
     snap = snapshot; selected = [];
-    handle = load('mount-scene').mountOfficeScene(document.querySelector('#mount'), () => snap, (id) => selected.push(id));
+    handle = load('mount-scene').mountOfficeScene(document.querySelector('#mount'), () => snap, (id) => selected.push(id), { initialFilter });
     return handle.inspect().ready;
   },
   setTime: (ms, epoch) => handle.setTime(ms, epoch),

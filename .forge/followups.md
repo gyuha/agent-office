@@ -11,3 +11,7 @@
 <!-- followup: fu-4ebfa3233f06 | source: awaiting-question-pose | task: 2 | date: 2026-11-09 | status: open | taken: - -->
 - `assets/office/export_runtime.py`가 provider-icon 런타임 WebP 7개를 지우고 manifest 경로를 되돌리는 부작용을 고친다. 또 `validate_half.py`가 실행할 때마다 `edge-audit.json`, `validation.json`, `.pyc`를 다시 쓰는 문제도 정리한다.
   근거: art가 S1에서 export_runtime.py 실행 직후 git으로 provider-icon을 복원해야 했고, S1과 VQA-042에서 validate가 추적 파일을 다시 썼다.
+
+<!-- followup: fu-5d1c9a0e7b42 | source: sidebar-awaiting-badge | task: 3 | date: 2026-11-10 | status: open | taken: - -->
+- 사용자가 Awaiting으로 연 화면에서 필터를 바꾼 뒤 배지를 다시 누르면 Awaiting이 다시 적용되게 한다(sidebarTarget params에 nonce를 넣고 scene이 그 값 변경에 반응).
+  근거: scene이 S1에서 한계로 보고했고, visual-qa가 VQA-045에서 범위 밖 항목으로 기록했다.

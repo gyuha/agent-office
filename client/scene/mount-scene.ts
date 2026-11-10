@@ -1,14 +1,14 @@
 import type {OfficeSnapshot} from '../../shared/state/contract';
 import {layoutOffices} from './core/layout';
-import {countOffices,filterSnapshot,type OfficeFilter} from './core/officeFilter';
+import {countOffices,filterSnapshot,parseOfficeFilter,type OfficeFilter} from './core/officeFilter';
 import {mountOfficeRoom} from './mount-room';
 import {subscribeFrames,schedulerMetrics} from './scheduler';
 declare const document:any,window:any;
 /** Cards own geometry and caches; decoded assets and the 12fps scheduler are shared. */
-export function mountOfficeScene(parent:any,getRawSnapshot:()=>OfficeSnapshot,onSelect?:(id:string)=>void){
+export function mountOfficeScene(parent:any,getRawSnapshot:()=>OfficeSnapshot,onSelect?:(id:string)=>void,options?:{initialFilter?:string}){
   // Filter bar: same navy/cream look as the office header; selection lives only in this instance.
   const FILTERS:[OfficeFilter,string][]=[['all','All'],['working','Working'],['awaiting','Awaiting'],['idle','Idle']];
-  let filter:OfficeFilter='all',rawSnapshot:OfficeSnapshot|undefined,filteredSnapshot:OfficeSnapshot|undefined,counts=countOffices({scope:'project',projects:[],generatedAt:0});
+  let filter:OfficeFilter=parseOfficeFilter(options?.initialFilter),rawSnapshot:OfficeSnapshot|undefined,filteredSnapshot:OfficeSnapshot|undefined,counts=countOffices({scope:'project',projects:[],generatedAt:0});
   const bar=document.createElement('div');bar.className='office-filter-bar';bar.setAttribute('role','group');bar.setAttribute('aria-label','Office filter');
   bar.style.cssText='position:sticky;top:0;z-index:5;box-sizing:border-box;width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:8px 10px;background:#202b40;border-bottom:3px solid #e9d4ab;font-family:monospace';
   const barStyle=document.createElement('style');barStyle.textContent='.office-filter-bar button{flex:1 1 auto;max-width:150px;min-width:0;padding:6px 10px;border:2px solid #e9d4ab;border-radius:0;background:transparent;color:#fff2d9;font:900 13px/1.2 monospace;letter-spacing:.04em;white-space:nowrap;cursor:pointer}.office-filter-bar button:hover{background:#34425f}.office-filter-bar button[aria-pressed=true]{background:#fff2d9;color:#202b40;border-color:#fff2d9}';

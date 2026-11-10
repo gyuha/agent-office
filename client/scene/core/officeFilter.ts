@@ -2,6 +2,11 @@ import type {AgentView, Office, OfficeSnapshot} from '../../../shared/state/cont
 
 export type OfficeFilter = 'all' | 'working' | 'awaiting' | 'idle';
 
+/** Unknown or missing values fall back to 'all'. */
+export function parseOfficeFilter(value: unknown): OfficeFilter {
+  return value === 'working' || value === 'awaiting' || value === 'idle' ? value : 'all';
+}
+
 /** Office-level rule: working = some agent works without asking, awaiting = some agent needs attention, idle = neither. */
 export function officeMatches(office: Office, filter: OfficeFilter): boolean {
   if (filter === 'all') return true;

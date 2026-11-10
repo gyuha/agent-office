@@ -614,3 +614,45 @@ test("awaiting pose: seated like on a chair (rendered): head top clears the chai
   }
   test.info().annotations.push({ type: "metrics", description: report.join(" | ") });
 });
+
+// ───────── sidebar awaiting: 사이드바 배지가 여는 초기 필터(initialFilter) ─────────
+async function openWithInitialFilter(page: Page, initialFilter?: string) {
+  await page.goto(mountUrl);
+  await page.evaluate(([snapshot, f]) => (window as any).mount.open({ snapshot, width: 1200, initialFilter: f }), [filterAll(), initialFilter] as any);
+  await page.waitForFunction(() => (window as any).mount.headers().length > 0 || (window as any).mount.filterBar().buttons.length > 0);
+}
+
+test("sidebar awaiting: initialFilter 'awaiting' starts with Awaiting pressed and only the waiting offices", async ({ page }) => {
+  await openWithInitialFilter(page, "awaiting");
+  const b = await bar(page);
+  expect(b.buttons.find((x: any) => x.pressed).filter).toBe("awaiting");
+  expect(b.buttons.filter((x: any) => x.pressed)).toHaveLength(1);
+  await expect(page.locator('.office-filter-bar button[data-filter="awaiting"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(page.locator('.office-filter-bar button[data-filter="all"]')).toHaveAttribute("aria-pressed", "false");
+  expect(await shownOffices(page)).toEqual(EXPECTED.awaiting);
+  expect(b.emptyVisible).toBe(false);
+});
+
+for (const [label, value] of [["bogus value", "bogus"], ["no value", undefined], ["empty string", ""]] as const) {
+  test(`sidebar awaiting: ${label} starts on All with every office visible`, async ({ page }) => {
+    await openWithInitialFilter(page, value);
+    await expect(page.locator('.office-filter-bar button[data-filter="all"]')).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator('.office-filter-bar button[data-filter="awaiting"]')).toHaveAttribute("aria-pressed", "false");
+    expect(await shownOffices(page)).toEqual(EXPECTED.all);
+  });
+}
+
+test("sidebar awaiting: a filter the user picks after an awaiting start survives snapshot refreshes", async ({ page }) => {
+  await openWithInitialFilter(page, "awaiting");
+  await press(page, "all");
+  await expect.poll(() => shownOffices(page), { timeout: 3000 }).toEqual(EXPECTED.all);
+  // 2초 폴링처럼 내용이 같은 새 스냅샷 객체, 그리고 내용이 바뀐 스냅샷을 차례로 제공한다.
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), JSON.parse(JSON.stringify(filterAll())));
+  await page.waitForTimeout(600);
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), filterAll({ a0: (o: any) => ({ ...o, members: [{ ...o.members[0], needsAttention: true }] }) }) as any);
+  await page.waitForTimeout(600);
+  const b = await bar(page);
+  expect(b.buttons.find((x: any) => x.pressed).filter).toBe("all");
+  expect(b.buttons.map((x: any) => x.text)).toEqual(["All 6", "Working 3", "Awaiting 3", "Idle 2"]);
+  expect(await shownOffices(page)).toEqual(EXPECTED.all);
+});

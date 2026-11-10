@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from "react-native";
 import type { PluginTheme } from "@getpaseo/plugin";
 import type { AgentView, OfficeSnapshot } from "../shared/state/contract";
 
-type OfficeViewComponent = ComponentType<{ snapshot: OfficeSnapshot; onAgentSelect?: (agentId: string) => void }>;
+type OfficeViewComponent = ComponentType<{ snapshot: OfficeSnapshot; onAgentSelect?: (agentId: string) => void; filter?: string }>;
 
 // scene이 client/scene/index.tsx를 만들기 전에도 typecheck와 번들이 깨지지 않도록 동적으로 불러온다.
 // 파일이 없으면 null이 되어 개발용 텍스트 폴백을 쓴다.
@@ -55,7 +55,7 @@ function SnapshotText({ snapshot, theme, onAgentSelect }: { snapshot: OfficeSnap
 }
 
 /** scene의 OfficeView가 있으면 그것을, 없으면 개발용 텍스트 폴백을 그린다. */
-export function SceneAdapter({ snapshot, theme, onAgentSelect }: { snapshot: OfficeSnapshot; theme: PluginTheme; onAgentSelect?: (agentId: string) => void }) {
+export function SceneAdapter({ snapshot, theme, onAgentSelect, filter }: { snapshot: OfficeSnapshot; theme: PluginTheme; onAgentSelect?: (agentId: string) => void; filter?: string }) {
   const [OfficeView, setOfficeView] = useState<OfficeViewComponent | null>(null);
   useEffect(() => {
     let cancelled = false;
@@ -67,5 +67,5 @@ export function SceneAdapter({ snapshot, theme, onAgentSelect }: { snapshot: Off
     };
   }, []);
 
-  return OfficeView ? <OfficeView snapshot={snapshot} onAgentSelect={onAgentSelect} /> : <SnapshotText snapshot={snapshot} theme={theme} onAgentSelect={onAgentSelect} />;
+  return OfficeView ? <OfficeView snapshot={snapshot} onAgentSelect={onAgentSelect} filter={filter} /> : <SnapshotText snapshot={snapshot} theme={theme} onAgentSelect={onAgentSelect} />;
 }
