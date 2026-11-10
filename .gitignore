@@ -16,3 +16,6 @@ client/scene/review/
 !.forge/codebase/
 !.forge/config.json
 !.forge/branch/
+
+# visual-qa 캡처는 로컬에만 둔다
+docs/visual-qa/shots/
