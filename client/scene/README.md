@@ -367,3 +367,13 @@ the filtered snapshot is recomputed on every new snapshot. A non-All filter with
 shows "No offices match" and mounts no card. Preview: scenarios `filters` (scope all) and
 `filters-panel` (one project), `preview.setFilter('awaiting')`, `preview.filter`;
 inspect() also reports filter, counts and empty.
+
+## 임시 직원 (running 서브에이전트)
+
+`Office.subagents`의 각 항목은 정규 member와 같은 일반 책상(pod 책상, 의자, 캐릭터 크기, 타이핑)으로 그린다(`core/workers.ts`).
+- 배치: `layoutOffices`가 정규 member 뒤에 부모 순서(같은 부모 안에서는 시작 순서)로 붙여 방의 책상 수 N에 포함한다. 정규 직원의 자리는 같은 방 크기 구간(N 1~3, 4~6, 7~16) 안에서는 바뀌지 않는다. 구간이 바뀔 때(3→4, 6→7)는 레이아웃 규칙상 전체가 재배치되어 정규 직원도 새 자리로 즉시 옮겨진다.
+- 휴게석(빈백)은 받지 않고 클릭에도 반응하지 않는다(Paseo 에이전트가 아님).
+- 표식: 청록색 점선 명판. 같은 부모의 형제끼리 공통 앞 단어는 뺀 이름(`workerLabel`)을 보여 준다.
+- 등장은 0.4초 페이드인, 스냅샷에서 빠진 뒤 0.6초 페이드아웃 동안 책상과 명판이 남고 끝나면 책상도 사라진다(`WORKER_ENTER_SECONDS`/`WORKER_EXIT_SECONDS`, `step()`이 `Actor.worker`로 상태를 유지, 마운트 경로는 `withExitingWorkers`로 퇴장 중인 항목을 레이아웃에 유지).
+- 방이 최대 `MAX_ROOM_MEMBERS`(16명, 정규 포함)를 넘을 때만 넘친 수를 마지막 책상 오른쪽 `+N` 배지로 센다(`room.hiddenSubagents`).
+- 미리보기 시나리오: `3+sub`, `6+sub`, `6+sub5`, `10+sub`, `solo+sub`, `16+sub`.

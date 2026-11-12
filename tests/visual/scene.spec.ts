@@ -656,3 +656,84 @@ test("sidebar awaiting: a filter the user picks after an awaiting start survives
   expect(b.buttons.map((x: any) => x.text)).toEqual(["All 6", "Working 3", "Awaiting 3", "Idle 2"]);
   expect(await shownOffices(page)).toEqual(EXPECTED.all);
 });
+
+// ───────── subagent worker: running 서브에이전트 = 부모 오피스의 임시 직원 ─────────
+const subView = (id: string, parentAgentId: string) => ({ id, parentAgentId, name: `job ${id}`, provider: "claude", since: 0 });
+const withSubs = (o: any, ...subs: ReturnType<typeof subView>[]) => ({ ...o, subagents: subs });
+type R = { x: number; y: number; width: number; height: number };
+type WorkerInfo = {
+  workers: { id: string; parentId: string | null; leaving: boolean; alpha: number; exit: number | null; state: string; rect: R | null; pod: number | null }[];
+  stations: { id: string; temp: boolean; manager: boolean; pod: number; rect: R }[];
+  rests: { owner: string; rect: R }[];
+  hidden: number[];
+};
+const workerInfo = (page: Page): Promise<WorkerInfo> => page.evaluate(() => (window as any).mount.workerInfo());
+const rectsOverlap = (a: R, b: R) => a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+const openSubs = (page: Page, snap: unknown) => page.goto(mountUrl).then(() => page.evaluate(([s]) => (window as any).mount.open({ snapshot: s, width: 1200 }), [snap] as any));
+
+test("subagent worker: two running subagents sit at regular desks (same size as staff, no overlap), and leave after removal", async ({ page }) => {
+  const staff = group(3);
+  await openSubs(page, snapshot([withSubs(staff, subView("s1", "g-lead"), subView("s2", "g0"))]));
+  await expect.poll(async () => (await workerInfo(page)).workers.map((w) => w.id).sort(), { timeout: 5000 }).toEqual(["s1", "s2"]);
+  await expect.poll(async () => Math.min(...(await workerInfo(page)).workers.map((w) => w.alpha)), { timeout: 5000, message: "fade-in finishes" }).toBe(1);
+  const shown = await workerInfo(page);
+  expect(shown.workers.map((w) => w.state)).toEqual(["working", "working"]);
+  expect(shown.workers.map((w) => w.parentId).sort()).toEqual(["g-lead", "g0"]);
+  // 책상: 정규 4(manager 1 + member 3) + 임시 2. 임시 직원 책상은 정규 member와 같은 크기이고, 어느 책상·휴게석과도 겹치지 않는다.
+  expect(shown.stations.filter((s) => !s.temp)).toHaveLength(4);
+  expect(shown.stations.filter((s) => s.temp)).toHaveLength(2);
+  const members = shown.stations.filter((s) => !s.temp && !s.manager);
+  for (const w of shown.stations.filter((s) => s.temp)) {
+    // 같은 pod의 정규 member 책상과 크기가 같다(pod마다 크기가 다르다).
+    const twin = members.find((m) => m.pod === w.pod)!;
+    expect(twin, `${w.id} has a regular desk of pod ${w.pod}`).toBeTruthy();
+    expect(w.rect.width, `${w.id} desk width`).toBeCloseTo(twin.rect.width, 3);
+    expect(w.rect.height, `${w.id} desk height`).toBeCloseTo(twin.rect.height, 3);
+    expect(w.manager).toBe(false);
+  }
+  shown.stations.forEach((a, i) => {
+    shown.stations.slice(i + 1).forEach((b) => expect(rectsOverlap(a.rect, b.rect), `${a.id} × ${b.id}`).toBe(false));
+    for (const r of shown.rests) expect(rectsOverlap(a.rect, r.rect), `${a.id} × rest ${r.owner}`).toBe(false);
+  });
+  expect(shown.rests.some((r) => ["s1", "s2"].includes(r.owner))).toBe(false);
+  expect(shown.hidden).toEqual([0]);
+
+  // 제거 스냅샷: 퇴장 시간이 지나면 임시 직원 0명, 책상도 사라지고 정규 직원은 그대로.
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), snapshot([withSubs(staff)]) as any);
+  await expect.poll(async () => (await workerInfo(page)).workers.length, { timeout: 5000 }).toBe(0);
+  const after = await workerInfo(page);
+  expect(after.stations.filter((s) => s.temp)).toHaveLength(0);
+  expect(after.stations.map((s) => s.id).sort()).toEqual(["g-lead", "g0", "g1", "g2"]);
+});
+
+test("subagent worker: a removed subagent fades out first (desk stays while leaving) instead of vanishing on the next frame", async ({ page }) => {
+  const staff = solo("working");
+  await openSubs(page, snapshot([withSubs(staff, subView("s1", "s"))]));
+  await expect.poll(async () => (await workerInfo(page)).workers.length, { timeout: 5000 }).toBe(1);
+  await page.evaluate((next) => (window as any).mount.setSnapshot(next), snapshot([withSubs(staff)]) as any);
+  // 프레임마다 표본을 모아(폴링 간격에 좌우되지 않게) 퇴장 연출을 본다.
+  const samples: { exit: number | null; alpha: number; leaving: boolean; desks: number }[][] = await page.evaluate(() => new Promise<any>((resolve) => {
+    const out: any[] = [], start = performance.now();
+    const tick = () => {
+      const info = (window as any).mount.workerInfo();
+      out.push(info.workers.map((w: any) => ({ exit: w.exit, alpha: w.alpha, leaving: w.leaving, desks: info.stations.filter((s: any) => s.temp).length })));
+      if (performance.now() - start > 2000) resolve(out); else requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }));
+  const exiting = samples.flat().filter((w) => w.exit !== null);
+  expect(exiting.length, "exit frames were visible").toBeGreaterThan(0);
+  expect(exiting.every((w) => w.leaving && w.desks === 1), "desk stays while fading").toBe(true);
+  expect(exiting.some((w) => w.alpha < 1 && w.alpha > 0)).toBe(true);
+  expect(samples.at(-1)).toEqual([]);
+});
+
+test("subagent worker: past 16 desks the extra subagents are counted by hiddenSubagents instead of getting a desk", async ({ page }) => {
+  const staff = { ...group(14), };
+  const subs = ["g-lead", "g0", "g1", "g2"].map((p, i) => subView(`x${i}`, p));
+  await openSubs(page, snapshot([withSubs(staff, ...subs)]));
+  await expect.poll(async () => (await workerInfo(page)).workers.length, { timeout: 5000 }).toBe(2);
+  const info = await workerInfo(page);
+  expect(info.stations.filter((s) => !s.manager)).toHaveLength(16);
+  expect(info.hidden).toEqual([2]);
+});

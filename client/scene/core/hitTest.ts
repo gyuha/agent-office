@@ -7,6 +7,7 @@ export function agentAtPoint(layout:Layout,actors:Actors,x:number,y:number):stri
   const hits:{depth:number;order:number;id:string}[]=[];
   let order=0;
   for(const room of layout.rooms)for(const s of room.stations){
+    if(s.temp)continue; // temporary workers are not Paseo agents
     const a=actors[s.agent.id];if(!a)continue;
     const current=actors[s.agent.id],onRest=!!(s.rest&&!current.moving&&Math.hypot(a.x-s.away.x,a.y-s.away.y)<2);
     const h=s.actorHeight;

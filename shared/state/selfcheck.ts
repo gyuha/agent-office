@@ -187,6 +187,44 @@ const checks: Array<[string, () => void]> = [
       assert.equal(store.hasUnmappedWorkspace(), false);
     },
   ],
+  [
+    "서브에이전트: running만 부모 오피스에 임시 직원으로 들어가고 끝나면 빠진다. 처음부터 running이 아니면 추가하지 않고 부모 state는 그대로다",
+    () => {
+      const store = newStore();
+      store.upsert(agent("boss"));
+      store.upsert(agent("kid", "boss"));
+      const sub = (id: string, over: Partial<Parameters<typeof store.subagentUpsert>[0]> = {}) => ({
+        id, parentAgentId: "kid", parentSubagentId: null, provider: "claude", title: "Explore", description: null, status: "running" as const, since: clock, ...over,
+      });
+      store.subagentUpsert(sub("s1", { description: "코드 조사" }));
+      store.subagentUpsert(sub("s2", { title: null }));
+      store.subagentUpsert(sub("s3", { status: "completed" }));
+      const [office] = offices(store);
+      assert.deepEqual(office.subagents.map((s) => [s.id, s.parentAgentId, s.name]), [["s1", "kid", "코드 조사"], ["s2", "kid", "subagent s2"]]);
+      assert.equal(find(store, "kid")?.state, idlePoseFor("kid"));
+      store.subagentUpsert(sub("s1", { status: "failed" }));
+      store.subagentRemove("kid", "s2");
+      assert.deepEqual(offices(store)[0].subagents, []);
+    },
+  ],
+  [
+    "서브에이전트: 중첩은 맨 위 Paseo 에이전트에 붙고 부모를 모르면 무시하다가 부모가 생기면 나타난다. 부모가 지워지면 함께 지워진다",
+    () => {
+      const store = newStore();
+      const sub = (id: string, parentAgentId: string, parentSubagentId: string | null) => ({
+        id, parentAgentId, parentSubagentId, provider: "claude", title: id, description: null, status: "running" as const, since: clock,
+      });
+      store.subagentUpsert(sub("deep", "solo", "mid"));
+      store.subagentUpsert(sub("mid", "solo", null));
+      assert.deepEqual(offices(store), []);
+      store.upsert(agent("solo"));
+      const [office] = offices(store);
+      assert.deepEqual(office.subagents.map((s) => [s.id, s.parentAgentId]), [["deep", "solo"], ["mid", "solo"]]);
+      store.remove("solo");
+      store.upsert(agent("solo"));
+      assert.deepEqual(offices(store)[0].subagents, []);
+    },
+  ],
 ];
 
 let failed = 0;

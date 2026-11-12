@@ -229,6 +229,22 @@ window.mount = {
   recorded() { return window.__rec || []; },
   /** data URI로 시트 이름을 찾는다. */
   sheetUris(names) { const { assetData } = load('core/office-assets'); return Object.fromEntries(names.map((n) => [n, assetData[n].uri])); },
+  // 임시 직원(running 서브에이전트): 지금 그려지는 worker 액터와, 겹침 검사용 기존 책상·휴게석 사각형.
+  workerInfo() {
+    const { layout, actors } = handle.inspect();
+    const rect = (r) => ({ x: r.x, y: r.y, width: r.width, height: r.height });
+    const stations = layout.rooms.flatMap((r) => r.stations.map((s) => ({ ...s, room: r })));
+    return {
+      // 임시 직원은 정규 직원과 같은 책상(station.temp)을 쓴다. 액터의 worker는 페이드 상태.
+      workers: Object.values(actors).filter((a) => a.worker).map((a) => {
+        const s = stations.find((x) => x.agent.id === a.worker.sub.id);
+        return { id: a.worker.sub.id, name: a.worker.sub.name, parentId: s?.temp?.parentId ?? null, leaving: !!s?.temp?.leaving, alpha: a.worker.alpha, exit: a.worker.exit, state: a.state, rect: s ? rect(s) : null, pod: s?.pod ?? null };
+      }),
+      stations: stations.map((s) => ({ id: s.agent.id, temp: !!s.temp, manager: s.manager, pod: s.pod, rect: rect(s) })),
+      rests: layout.rooms.flatMap((r) => r.rests.map((s) => ({ owner: s.owner, rect: rect(s) }))),
+      hidden: layout.rooms.map((r) => r.hiddenSubagents || 0),
+    };
+  },
   // 필터 바 상태(DOM): 버튼 문구·눌림, 잘림 여부, '맞는 오피스 없음' 안내.
   filterBar() {
     const bar = document.querySelector('.office-filter-bar');

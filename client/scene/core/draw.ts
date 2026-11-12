@@ -1,6 +1,7 @@
 import type {Actors,Layout,Room,Station,Actor} from './layout';
 import {manifest,type OfficeSprites, type DeskSpec} from './office-assets';
 import {plateGeometry,deskDepth,managerBehindDesk,actorWalkLift} from './nameplates';
+import {workerLabel} from './workers';
 export interface Context {
   [key:string]:any;
   drawImage(...args:any[]):void;
@@ -51,9 +52,10 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
   if(background){c.save();c.setTransform(1,0,0,1,0,0);c.drawImage(background,0,0);c.restore();}
   else drawBackground(c,layout,sprites);
   c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';
+  let fade=1; // temporary workers fade in/out; 1 for everything else
   const image=(key:string,x:number,y:number,w?:number,h?:number,alpha=1,t=time/1000,nativeDeskBase=false)=>{
     const asset=sprites[key];if(!asset)return;
-    c.save();c.globalAlpha=alpha;
+    c.save();c.globalAlpha=alpha*fade;
     const bitmap=nativeDeskBase?(asset.deskBase||asset.image):asset.image;
     const f=sheetFrame(asset.spec,bitmap,t);
     const rs=asset.spec.runtimeScale??1;
@@ -92,7 +94,7 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
   const figure=(s:Station,a:Actor,state:string,alpha=1,desk?:DeskSpec,rest=false)=>{
     const g=geometry(s,a,state,desk,rest);if(!g)return;
     const {asset,f,rs,factor,x,y}=g;
-    c.save();c.globalAlpha=alpha;
+    c.save();c.globalAlpha=alpha*fade;
     if(desk?.actorClip){const p=desk.actorClip;c.beginPath();c.rect(s.x+p[0]*s.moduleScale,s.y+p[1]*s.moduleScale,(p[2]-p[0])*s.moduleScale,(p[3]-p[1])*s.moduleScale);c.clip();}
     const source=desk?.actorSourceClip?.[state]||[0,0,f.w,f.h];
     c.drawImage(asset.image,(f.x+source[0])*rs,(f.y+source[1])*rs,source[2]*rs,source[3]*rs,
@@ -122,24 +124,27 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
     const state=a.moving||(!desk&&!rest)?`walking-${a.direction}`:rest?'away':desk&&a.state==='away'?'phone':desk&&awaitingPose(s,a,true)?'awaiting':a.state;
     figure(s,a,state,1,desk,rest);
   };
-  const nameplate=(s:Station)=>{
+  const nameplate=(s:Station,room?:Room)=>{
     const p=plateGeometry(s,layout.viewportScale);c.save();
     const gradient=c.createLinearGradient?.(0,p.y,0,p.y+p.height);
-    if(gradient?.addColorStop){gradient.addColorStop(0,'#efcf99');gradient.addColorStop(1,'#d4ad72');}
-    c.fillStyle=gradient?.addColorStop?gradient:'#dfbc87';c.strokeStyle='#81603c';c.lineWidth=1;
+    // Temporary workers get a teal plate with a dashed border so they never read as regular staff.
+    const temp=!!s.temp;
+    if(gradient?.addColorStop){gradient.addColorStop(0,temp?'#bfe3e0':'#efcf99');gradient.addColorStop(1,temp?'#86bfbd':'#d4ad72');}
+    c.fillStyle=gradient?.addColorStop?gradient:temp?'#a2d0cd':'#dfbc87';c.strokeStyle=temp?'#2c6e75':'#81603c';c.lineWidth=1;
+    if(temp&&c.setLineDash)c.setLineDash([3,2]);
     c.beginPath();if(c.roundRect)c.roundRect(p.x,p.y,p.width,p.height,3);else c.rect(p.x,p.y,p.width,p.height);c.fill();c.stroke();
     c.font=`800 ${p.font}px monospace`;c.textAlign='left';c.textBaseline='middle';
     const measure=(text:string)=>c.measureText?.(text)?.width??Array.from(text).length*p.font*.6;
-    const available=p.width-p.padding*2-p.icon-p.gap;
-    let label=s.agent.name;
+    const lead=p.icon+p.gap,available=p.width-p.padding*2-lead;
+    let label=temp&&room?workerLabel(room,s):s.agent.name;
     if(measure(label)>available){const chars=Array.from(label);while(chars.length&&measure(chars.join('')+'…')>available)chars.pop();label=chars.join('')+'…';}
-    const content=p.icon+p.gap+measure(label),left=p.x+(p.width-content)/2;
+    const content=lead+measure(label),left=p.x+(p.width-content)/2;
     const icons=manifest.providerIcons||{};
     const iconKey=Object.prototype.hasOwnProperty.call(icons,s.agent.provider)?icons[s.agent.provider]:icons.default;
     const icon=iconKey&&sprites[iconKey];
     if(icon)image(iconKey,left,s.plate.y-p.icon/2,p.icon,p.icon);
     else{c.fillStyle=providerColor(s.agent.provider);c.beginPath();c.arc(left+p.icon/2,s.plate.y,p.icon*.3,0,Math.PI*2);c.fill();}
-    c.fillStyle='#4d3327';c.fillText(label,left+p.icon+p.gap,s.plate.y);c.restore();
+    c.fillStyle=temp?'#173f44':'#4d3327';c.fillText(label,left+lead,s.plate.y);c.restore();
   };
   for(const room of layout.rooms){
 
@@ -190,9 +195,12 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
         }
         image(s.desk.front,s.x,s.y,s.width,s.height);c.restore();
         if(seated)actorOverlay(s,a,awaitingPose(s,a,true)?'awaiting':a.state==='away'?'phone':a.state);
-        nameplate(s);
+        nameplate(s,room);
       };
-      jobs.push({y:managerBehind?Math.max(deskDepth(s,room.sceneY),...room.rests.map(r=>r.y+r.height))+1:deskDepth(s,room.sceneY),draw:drawStation});
+      jobs.push({y:managerBehind?Math.max(deskDepth(s,room.sceneY),...room.rests.map(r=>r.y+r.height))+1:deskDepth(s,room.sceneY),draw:a.worker&&a.worker.alpha<1?()=>{
+        // Temporary worker fading in/out: whole desk + occupant + plate share one alpha.
+        c.save();c.globalAlpha=a.worker!.alpha;fade=a.worker!.alpha;drawStation();fade=1;c.restore();
+      }:drawStation});
       const onBeanbag=s.rest&&!a.moving&&Math.hypot(a.x-s.away.x,a.y-s.away.y)<2;
       if(!seated&&!onBeanbag&&!ownWalker){
         // Transition walkers are local side/front poses and always remain fully visible.
@@ -212,6 +220,14 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
       }});
     }
     jobs.sort((a,b)=>a.y-b.y).forEach(j=>j.draw());
+    // "+N": subagents that did not fit in the largest room. Badge sits right of the last desk.
+    if(room.hiddenSubagents>0&&room.stations.length){
+      const last=room.stations[room.stations.length-1],w=44,h=28,x=last.x+last.width+6,y=last.y+last.height/2-h/2;c.save();
+      c.fillStyle='#86bfbd';c.strokeStyle='#2c6e75';c.lineWidth=1;if(c.setLineDash)c.setLineDash([3,2]);
+      c.beginPath();if(c.roundRect)c.roundRect(x,y,w,h,4);else c.rect(x,y,w,h);c.fill();c.stroke();
+      c.fillStyle='#173f44';c.font=`800 ${Math.max(11,5.5/Math.max(.01,layout.viewportScale??1))}px monospace`;c.textAlign='center';c.textBaseline='middle';
+      c.fillText('+'+room.hiddenSubagents,x+w/2,y+h/2+1);c.restore();
+    }
     const poseInfo=(s:Station)=>{const a=actors[s.agent.id];if(!a)return null;
       const seated=!a.moving&&Math.hypot(a.x-s.seat.x,a.y-s.seat.y)<2;
       const rest=!!s.rest&&!a.moving&&Math.hypot(a.x-s.away.x,a.y-s.away.y)<2;
@@ -259,7 +275,7 @@ export function draw(c:Context,layout:Layout,actors:Actors,time:number,sprites:O
         const anchor=Array.isArray(spec?.anchor)?spec.anchor:[40,88];
         effect('attention',head.x-anchor[0]*factor,head.y-10-anchor[1]*factor,(spec?.frameW||80)*factor,height,a.phase);
       }
-      if(a.state==='working'&&seated&&!s.agent.needsAttention&&a.elapsed-a.changed>.2){const p=(a.phase+s.index*.43)%6;
+      if(a.state==='working'&&seated&&!s.agent.needsAttention&&a.elapsed-a.changed>.2&&!(a.worker&&a.worker.alpha<1)){const p=(a.phase+s.index*.43)%6;
         if(p<1.5)effect(s.index%2?'pop_plus10':'pop_plus3',a.x+40,fy+20-p*23,70,54,p,1-p/1.5);
         if((a.phase+s.index*.93)%13<1.3){const x=a.x-44,y=fy-35;const blocked=room.stations.some(b=>b!==s&&!b.manager&&x<b.x+b.width&&x+95>b.x&&y<b.y+b.height&&y+62>b.y);if(!blocked)effect(s.index%2?'bubble_prup':'bubble_done',x,y,95,62,(a.phase+s.index*.93)%13);}
       }

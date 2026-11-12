@@ -13,6 +13,10 @@
  * - 1차 묶음은 프로젝트다. scope가 "all"이면 projects마다 섹션 헤더(projectName)를 그리고, "project"면 헤더 없이 그려도 된다.
  *   같은 프로젝트의 다른 워크스페이스 에이전트도 부모 트리가 같으면 한 오피스다. 닫히거나 아카이브된 에이전트는 들어 있지 않다.
  * - Office.members에는 manager가 들어 있지 않다. solo 오피스는 manager가 null이고 members에 에이전트 1명이 있다.
+ * - Office.subagents는 그 오피스의 Paseo 에이전트가 띄운 provider 서브에이전트(Agent 도구 등) 중 지금 running인 것만이다.
+ *   임시 직원으로, 항상 일하는 중이다. 끝나면(completed/failed/canceled) 목록에서 빠진다. 중첩 서브에이전트도 맨 위
+ *   Paseo 에이전트의 오피스에 평평하게 들어 있다. 서브에이전트가 있어도 부모 에이전트의 state와 needsAttention은 그대로다.
+ *   오래된 스냅샷에는 이 필드가 없을 수 있으니 없으면 빈 배열로 본다.
  *
  * scene 진입 방식(어댑터)
  * - scene은 `client/scene/index.tsx`에서 아래 시그니처로 OfficeView를 export한다.
@@ -35,6 +39,18 @@ export interface AgentView {
   readonly needsAttention: boolean;
 }
 
+/** 부모 에이전트가 띄운 running 서브에이전트. 오피스의 임시 직원이다. */
+export interface SubagentView {
+  readonly id: string;
+  /** 오피스 안 Paseo 에이전트(manager 또는 member)의 id. 중첩이면 맨 위 Paseo 에이전트. */
+  readonly parentAgentId: string;
+  /** 표시 이름. 설명, 없으면 제목, 없으면 id 앞부분으로 만든 기본값. */
+  readonly name: string;
+  readonly provider: AgentProvider;
+  /** 서브에이전트가 시작된 시각(epoch ms). */
+  readonly since: number;
+}
+
 export interface Office {
   /** 그룹은 manager의 에이전트 id, solo는 그 에이전트의 id. */
   readonly id: string;
@@ -43,6 +59,8 @@ export interface Office {
   readonly manager: AgentView | null;
   /** manager를 제외한 구성원. 생성 순서. */
   readonly members: readonly AgentView[];
+  /** 이 오피스의 running 서브에이전트. 시작 순서. 없으면 빈 배열. */
+  readonly subagents: readonly SubagentView[];
 }
 
 /** 한 프로젝트의 오피스들. 프로젝트의 여러 워크스페이스에 걸친 에이전트도 부모 트리별로 묶여 여기에 들어온다. */

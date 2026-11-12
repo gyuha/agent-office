@@ -2,16 +2,25 @@ import type { OfficeSnapshot } from '../../../shared/state/contract';
 import {layoutOffices,type Actors} from './layout';
 import {route} from './navigation';
 import {manifest} from './office-assets';
+import {WORKER_ENTER_SECONDS,WORKER_EXIT_SECONDS,nextLayoutHold} from './workers';
 /** Keep clocks and positions keyed by id, never by immutable snapshot object identity. */
 export function step(previous:Actors,snapshot:OfficeSnapshot,dt:number,layout=layoutOffices(snapshot)):Actors {
-  const next:Actors={}; const seconds=Math.max(0,dt)/1000;
+  const next:Actors={}; const seconds=Math.max(0,dt)/1000; const firstStep=!Object.keys(previous).length;
   for(const room of layout.rooms)for(const s of room.stations){
     const old=previous[s.agent.id];
     const a=old?{...old,route:[...old.route]}:{...s.seat,moving:false,direction:'right' as const,phase:0,state:s.agent.state,changed:0,elapsed:0,route:[],destination:'seat',home:{...s.seat}};
-    if(old&&(old.home.x!==s.seat.x||old.home.y!==s.seat.y)){
-      a.x+=s.seat.x-old.home.x;a.y+=s.seat.y-old.home.y;a.route=[];a.destination='changed';
+    // The room was re-laid out (desk moved) or this agent's beanbag was re-assigned/moved (room height changes the lounge slots).
+    const seatMoved=!!old&&(old.home.x!==s.seat.x||old.home.y!==s.seat.y);
+    // s.away is the seat when there is no beanbag, so a lost beanbag (room shrank) also counts as moved.
+    const restMoved=!!old&&!!old.awayHome&&(old.awayHome.x!==s.away.x||old.awayHome.y!==s.away.y);
+    if(old&&(seatMoved||restMoved)){
+      // A seated agent moves with its desk. Anyone else (on a beanbag, walking) is off the new corridor graph, so it goes back to
+      // its desk and the normal route (desk -> new beanbag for away) takes over; otherwise it would stand still at the old spot.
+      if(!old.moving&&Math.hypot(old.x-old.home.x,old.y-old.home.y)<2){a.x+=s.seat.x-old.home.x;a.y+=s.seat.y-old.home.y;}
+      else{a.x=s.seat.x;a.y=s.seat.y;a.moving=false;}
+      a.route=[];a.destination='changed';
     }
-    a.home={...s.seat};
+    a.home={...s.seat};a.awayHome={...s.away};
     a.elapsed+=seconds; a.phase+=seconds;
     // Seated height blend for the question pose: new actors start at their target, changes ease over ~0.2s.
     const asks=s.agent.needsAttention&&s.agent.state==='working'?1:0;
@@ -40,7 +49,21 @@ export function step(previous:Actors,snapshot:OfficeSnapshot,dt:number,layout=la
     a.moving=a.route.length>0&&!waiting;
     if(a.route.length&&waiting){a.direction=a.destination==='beanbag'?'left':'right';}
     if(old?.moving&&!a.moving){a.previous=`walking-${old.direction}`;a.changed=a.elapsed;}
+    if(s.temp){
+      // Temporary worker: fades in (not on the very first step), and after leaving the snapshot fades out, then drops.
+      const w=old?.worker,leaving=s.temp.leaving;
+      const enter=Math.min(WORKER_ENTER_SECONDS,(w?.enter??(firstStep?WORKER_ENTER_SECONDS:-seconds))+seconds);
+      const exit=leaving?(w?.exit==null?0:w.exit+seconds):null;
+      if(exit!==null&&exit>=WORKER_EXIT_SECONDS)continue;
+      a.worker={sub:s.temp.sub,enter,exit,alpha:Math.min(1,enter/WORKER_ENTER_SECONDS)*(exit===null?1:Math.max(0,1-exit/WORKER_EXIT_SECONDS))};
+    }
     next[s.agent.id]=a;
+  }
+  // Per-office layout hold: only subagent departures can shrink a room, and they do so after LAYOUT_HOLD_SECONDS.
+  for(const room of layout.rooms){
+    const lead=room.stations[0],a=lead&&next[lead.agent.id];if(!a)continue;
+    const members=room.stations.filter(s=>!s.manager).length,regular=room.stations.filter(s=>!s.manager&&!s.temp).length;
+    a.hold=nextLayoutHold(previous[lead.agent.id]?.hold,members,regular,seconds);
   }
   return next;
 }

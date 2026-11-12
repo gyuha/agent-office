@@ -1,5 +1,5 @@
 import type {OfficeSnapshot} from '../../shared/state/contract';
-import {draw,drawBackground,layoutOffices,step,loadOfficeAssets,assetData,type Actors,type Layout} from './core';
+import {draw,drawBackground,layoutOffices,step,loadOfficeAssets,assetData,withExitingWorkers,type Actors,type Layout} from './core';
 import {agentAtPoint,scenePoint} from './core/hitTest';
 import {subscribeFrames} from './scheduler';
 import {fitSceneWidth} from './core/viewport';
@@ -76,8 +76,32 @@ export function mountOfficeRoom(parent:any,getSnapshot:()=>OfficeSnapshot,onSele
   observer?.observe(root);
   function tick(time:number,epoch?:number,fixed=false,transition?:PreviewReplay,measureOnly=false){if(!active||failed||(!fixed&&!measureOnly&&!canRun()))return;
     const snapshot=getSnapshot(),width=Math.min(480,Math.max(1,parent.clientWidth||700));
-    if(snapshot!==oldSnapshot||width!==oldWidth){layout=layoutOffices(snapshot,width);overlays(layout,width);oldSnapshot=snapshot;oldWidth=width;}
-    const l=layout!;const fit=fitSceneWidth(l.width,l.height,width),ratio=Math.min(2,window.devicePixelRatio>0?window.devicePixelRatio:1);
+    // Subagent workers that just left stay in the layout until their fade-out ends (withExitingWorkers returns `snapshot` itself otherwise).
+    const replaying=fixed&&ready&&!measureOnly;
+    let l:Layout,source:OfficeSnapshot=snapshot;
+    if(replaying){
+      // Replay first: retained workers can change the final layout, which then sizes the canvas.
+      const cache=new Map<OfficeSnapshot,Layout>();let lastLayout!:Layout;
+      const advance=(from:OfficeSnapshot,ms:number)=>{const eff=withExitingWorkers(from,actors);let L=cache.get(eff);if(!L){L=layoutOffices(eff,width);if(eff===from)cache.set(eff,L);}lastLayout=L;actors=step(actors,eff,ms,L);};
+      const initial=transition?.from||snapshot;
+      actors={};advance(initial,0);
+      if(transition)for(let elapsed=0;elapsed<transition.settle;elapsed+=100)advance(initial,Math.min(100,transition.settle-elapsed));
+      if(transition?.stages){
+        for(const stage of transition.stages){
+          advance(stage.snapshot,0);
+          for(let elapsed=0;elapsed<stage.duration;elapsed+=100)advance(stage.snapshot,Math.min(100,stage.duration-elapsed));
+        }
+      }else{
+        for(let elapsed=0;elapsed<time;elapsed+=100)advance(snapshot,Math.min(100,time-elapsed));
+        if(time===0&&transition)advance(snapshot,0);
+      }
+      l=lastLayout;layout=l;overlays(l,width);oldSnapshot=null;oldWidth=width;
+    }else{
+      source=withExitingWorkers(snapshot,actors);
+      if(source!==oldSnapshot||width!==oldWidth||!layout){layout=layoutOffices(source,width);overlays(layout,width);oldSnapshot=source;oldWidth=width;}
+      l=layout;
+    }
+    const fit=fitSceneWidth(l.width,l.height,width),ratio=Math.min(2,window.devicePixelRatio>0?window.devicePixelRatio:1);
     const w=Math.floor(fit.width*ratio),h=Math.floor(fit.height*ratio);
     if(!measureOnly&&(canvas.width!==w||canvas.height!==h)){canvas.width=w;canvas.height=h;}
     canvas.style.width=fit.width+'px';canvas.style.height=fit.height+'px';
@@ -91,22 +115,7 @@ export function mountOfficeRoom(parent:any,getSnapshot:()=>OfficeSnapshot,onSele
         const bg=background.getContext('2d');bg.setTransform(background.width/l.width,0,0,background.height/l.height,0,0);
         drawBackground(bg,l,sprites);backgroundKey=key;cacheBuilds++;
       }
-      if(fixed){
-        const initial=transition?.from||snapshot;
-        const initialLayout=transition?layoutOffices(initial,width):l;
-        actors=step({},initial,0,initialLayout);
-        if(transition)for(let elapsed=0;elapsed<transition.settle;elapsed+=100)actors=step(actors,initial,Math.min(100,transition.settle-elapsed),initialLayout);
-        if(transition?.stages){
-          for(const stage of transition.stages){
-            const stageLayout=layoutOffices(stage.snapshot,width);
-            actors=step(actors,stage.snapshot,0,stageLayout);
-            for(let elapsed=0;elapsed<stage.duration;elapsed+=100)actors=step(actors,stage.snapshot,Math.min(100,stage.duration-elapsed),stageLayout);
-          }
-        }else{
-          for(let elapsed=0;elapsed<time;elapsed+=100)actors=step(actors,snapshot,Math.min(100,time-elapsed),l);
-          if(time===0&&transition)actors=step(actors,snapshot,0,l);
-        }
-      }else actors=step(actors,snapshot,last?Math.min(100,time-last):0,l);
+      if(!replaying)actors=step(actors,source,last?Math.min(100,time-last):0,l);
       ctx.setTransform(fit.width/l.width*ratio,0,0,fit.width/l.width*ratio,0,0);
       draw(ctx,l,actors,time,sprites,epoch,background);drawCount++;drawTime+=performance.now()-started;
     }

@@ -1,5 +1,17 @@
 const names=['plugin#FDF9','scene#3C71','art#94A2','qa#0499','review#A1C2','docs#7B10','infra#55E3','api#C0DE','ui#5E19','perf#0F42','data#91AB','auth#3D7E','ci#B8F0','search#64CA','mobile#E27D','ops#4A09'];
+/** `<scenario>+sub` adds running subagents (drawn as regular desks after the real members): manager 2, member 0 one, member 1 two; `+sub5` gives member 0 five; `16+sub` overflows the largest room ("+N"). */
 function fixture(mode='6',state='mixed'){
+  const m=/^(.*)\+sub(\d*)$/.exec(String(mode));
+  if(!m)return base(mode,state);
+  const value=base(m[1],state),words=['vqa sleeper 1/2','vqa waiter 3/4','explore','test-run','docs-gen','refactor'],big=Number(m[2])||0;
+  const sub=(parent,i,n)=>Array.from({length:n},(_,k)=>({id:parent.id+'-sub'+k,parentAgentId:parent.id,name:words[(i+k)%words.length],provider:['claude','codex'][k%2],since:Date.now()-30000+k}));
+  for(const p of value.projects)for(const o of p.offices){
+    const who=[o.manager,...o.members].filter(Boolean);
+    o.subagents=who.flatMap((a,i)=>sub(a,i,big&&i===(o.manager?1:0)?big:o.manager?(i===0?2:i===1?1:i===2?2:0):(i===0?1:0)));
+  }
+  return value;
+}
+function base(mode='6',state='mixed'){
   const now=Date.now();
   if(String(mode).startsWith('filters')){
     // Mixed states for the office filter: working-only, awaiting-only, working+awaiting, idle, solo idle, solo working.
