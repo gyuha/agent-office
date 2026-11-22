@@ -22,8 +22,8 @@
     },
     {
       "name": "scene",
-      "provider": "codex",
-      "model": "gpt-6.1-sol",
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
       "folders": [
         "client",
         "index.client.tsx"
@@ -32,8 +32,8 @@
     },
     {
       "name": "art",
-      "provider": "codex",
-      "model": "gpt-6.1-sol",
+      "provider": "claude",
+      "model": "claude-sonnet-5-5",
       "folders": [
         "assets"
       ],
